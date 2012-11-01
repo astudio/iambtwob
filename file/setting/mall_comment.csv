@@ -1,0 +1,15 @@
+cid,評論ID,
+itemid,訂單ID,
+mallid,商品ID,
+buyer,買家,
+seller,賣家,
+buyer_star,賣家對買家的評分,1差評2中評3好評
+buyer_comment,賣家對買家的評論,
+buyer_ctime,賣家對買家的評論時間,
+buyer_reply,賣家對買家評論的解釋,
+buyer_rtime,賣家對買家評論的解釋時間,
+seller_star,買家對賣家的評分,1差評2中評3好評
+seller_comment,買家對賣家的評論,
+seller_ctime,買家對賣家的評論時間,
+seller_reply,買家對賣家評論的解釋,
+seller_rtime,買家對賣家評論的解釋時間,

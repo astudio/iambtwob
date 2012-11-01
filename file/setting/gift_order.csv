@@ -1,0 +1,8 @@
+oid,ID,
+itemid,禮品ID,
+credit,兌換積分,
+username,會員名,
+ip,IP,
+addtime,下單時間,
+status,狀態,
+note,備註,

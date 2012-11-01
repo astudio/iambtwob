@@ -1,0 +1,12 @@
+{template 'header'}
+<div class="m">
+<div style="padding:20px 300px 20px 50px;line-height:220%;">
+&nbsp;<strong class="px16">公司主頁正在等待開通</strong><br/>
+&nbsp;<span class="px14">您正在訪問的公司主頁已經註冊，將在所屬公司完善詳細資料後自動開通，請稍後訪問...</span><br/>
+{if $username == $_username}
+<hr size="1"/>
+&nbsp;系統檢測到您為該公司所屬會員，<a href="{$MODULE[2][linkurl]}edit.php?tab=2" class="f_b">請點這裡立即完善公司資料，激活公司主頁</a>
+{/if}
+</div>
+</div>
+{template 'footer'}

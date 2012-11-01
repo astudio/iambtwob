@@ -1,0 +1,150 @@
+{template 'header', $module}
+<script type="text/javascript">c(2);</script>
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="action"><a href="credit.php"><span>{$DT[credit_name]}記錄</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="action_buy"><a href="credit.php?action=buy"><span>{$DT[credit_name]}購買</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab"><a href="invite.php"><span>推廣賺{$DT[credit_name]}</span></a></td>
+{if $MOD[credit_exchange]}
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="action_exchange"><a href="credit.php?action=exchange"><span>{$DT[credit_name]}兌換</span></a></td>
+{/if}
+</tr>
+</table>
+</div>
+{if $action == 'exchange'}
+<form method="post" action="credit.php" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="submit" value="1"/>
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl">可用{$MOD[ex_name]}</td>
+<td class="tr"><strong class="f_blue">{$num}</strong></td>
+</tr>
+<tr>
+<td class="tl">兌換比率</td>
+<td class="tr"><span class="f_blue">1</span> {$MOD[ex_name]} 兌換 <span class="f_red">{$MOD[ex_rate]}</span> {$DT[credit_name]}</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 兌換額度</td>
+<td class="tr"><input type="text" size="8`" name="amount"/> <span id="damount" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" value=" 確 定 " class="btn"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">
+function check() {
+	m = parseInt(Dd('amount').value);
+	n = {$num};
+	if(m > 0 && m < n) {
+		return confirm('確定要兌換'+m+'{$MOD[ex_name]}嗎？ 可換取'+(m*{$MOD[ex_rate]})+'{$DT[credit_name]}\n\n注意:兌換{$MOD[ex_name]}可能會降低您在論壇的會員級別');
+	} else {
+		Dd('amount').value = '';
+		Dmsg('請填寫兌換額度', 'amount');
+		return false;
+	}
+}
+</script>
+<script type="text/javascript">s('credit');m('action_exchange');</script>
+{elseif $action == 'buy'}
+<form method="post" action="credit.php" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl">帳戶可用餘額</td>
+<td class="tr"><strong class="f_blue">{$_money}</strong> {$DT[money_unit]}</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 購買額度</td>
+<td class="tr c_p">
+<table cellpadding="5" cellspacing="3">
+<tr align="center">
+<td>選</td>
+<td>&nbsp;&nbsp;{$DT[credit_name]}({$DT[credit_unit]})&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;{$DT[money_name]}({$DT[money_unit]})&nbsp;&nbsp;</td>
+</tr>
+{loop $C $k $v}
+<tr align="center" onclick="Dd('type_{$k}').checked=true;">
+<td><input type="radio" name="type" id="type_{$k}" value="{$k}" {if $k==0}checked{/if}/></td>
+<td class="f_red">&nbsp;&nbsp;{$v}&nbsp;&nbsp;</td>
+<td class="f_blue">&nbsp;&nbsp;{$P[$k]}&nbsp;&nbsp;</td>
+</tr>
+{/loop}
+</table>
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 支付密碼</td>
+<td class="tr">{template 'password', 'chip'}&nbsp;<span id="dpassword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">
+function check() {
+	if(Dd('password').value == '') {
+		Dmsg('請填寫支付密碼', 'password');
+		return false;
+	}
+}
+</script>
+<script type="text/javascript">s('credit');m('action_buy');</script>
+{else}
+<form action="?">
+<div class="tt">
+{$fields_select}&nbsp;
+<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<select name="type">
+<option value="0">類型</option>
+<option value="1" {if $type==1}selected{/if}>收入</option>
+<option value="2" {if $type==2}selected{/if}>支出</option>
+</select>
+&nbsp;
+{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}
+&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+</div>
+</form>
+<div class="bd">
+<table cellpadding="1" cellspacing="0" class="tb">
+<tr>
+<th>流水號</th>
+<th>收入</th>
+<th>支出</th>
+<th>餘額</th>
+<th width="130">發生時間</th>
+<th width="150">事由</th>
+<th width="150">備註</th>
+</tr>
+{loop $records $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td height="30" class="px11">{$v[itemid]}</td>
+<td class="px11 f_blue">{if $v[amount] > 0}{$v[amount]}{else}&nbsp;{/if}</td>
+<td class="px11 f_red">{if $v[amount] < 0}{$v[amount]}{else}&nbsp;{/if}</td>
+<td class="px11">{if $v[balance]}{$v[balance]}{else}&nbsp;{/if}</td>
+<td class="px11 f_gray">{$v[addtime]}</td>
+<td title="{$v[reason]}"><input type="text" size="20" value="{$v[reason]}"/></td>
+<td title="{$v[note]}"><input type="text" size="20" value="{$v[note]}"/></td>
+</tr>
+{/loop}
+<tr align="center">
+<td height="35"><strong>小計</strong></td>
+<td class="px11 f_blue">{$income}</td>
+<td class="px11 f_red">{$expense}</td>
+<td colspan="4">&nbsp;</td>
+</tr>
+</table>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('credit');m('action');</script>
+{/if}
+{template 'footer', $module}

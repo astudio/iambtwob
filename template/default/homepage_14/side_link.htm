@@ -1,0 +1,19 @@
+{if $file != 'link'}
+<div class="title"><h4><strong>{$side_name[$HS]}</strong></h4></div>
+<div class="in">
+<!--{php $tags=tag("table=link&condition=status=3 and username='$username'&pagesize=".$side_num[$HS]."&order=listorder desc&template=null");}-->
+<ul id="subnav">
+{if $tags}
+{loop $tags $t}
+<li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></li>
+{/loop}
+{else}
+<li>No data</li>
+{/if}
+</ul>
+{if $tags}
+<div class="more"><a href="{userurl($username, 'file=link', $domain)}"><img src="{$MODULE[4][linkurl]}image/more.gif" title="More"/></a></div>
+{/if}
+</div>
+<div class="h10"></div>
+{/if}

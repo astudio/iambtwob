@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-Type" content="text/html;charset=utf-8" />
+<title>Send_Message</title>
+<link rel="stylesheet" type="text/css" href="{$HSPATH}style.css" />
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+<script type="text/javascript">
+if(parent.location == window.location) window.location='{userurl($username)}';
+</script>
+</head>
+<body style="background:#FFFFFF;">
+<iframe src="" name="send" id="send" style="display:none;" scrolling="no" frameborder="0"></iframe>
+<form method="post" action="{$MOD[linkurl]}home.php" id="dform" onsubmit="return check();" target="send">
+<input type="hidden" name="job" value="{$job}"/>
+<input type="hidden" name="username" value="{$username}"/>
+<input type="hidden" name="action" value="send"/>
+<table cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td width="100">Subject <span class="f_red">*</span></td>
+<td><input type="text" name="title" value="{if $job=='inquiry' || $job=='price'}I`m interested in your &ldquo;{$title}&rdquo;{elseif $job=='order'}[Order] I want to buy &ldquo;{$title}&rdquo;{/if}" size="60" id="title" class="pd3"/></td>
+</tr>
+<tr>
+<td>Content <span class="f_red">*</span></td>
+<td>
+<textarea rows="8" cols="80" name="content" id="content" style="width:497px;">
+{if $job=='inquiry'}
+Our company intends to purchase this product.  Please provide the quotation and MOQ.
+
+I need more details as below:
+
+{elseif $job=='price'}
+Demand quantity of this product.  Is it a long-term demand?
+
+I need more details as below:
+
+{elseif $job=='order'}
+Supply Ability: 
+
+Introduction:
+
+{/if}
+</textarea></td>
+</tr>
+<tr>
+<td>Co. Name </td>
+<td><input type="text" name="company" size="30" id="company" value="{$company}"/></td>
+</tr>
+<tr>
+<td>Contact <span class="f_red">*</span></td>
+<td><input type="text" name="truename" size="15" id="truename" value="{$truename}" title="Enter your first name."/> <input type="text" name="lastname" size="15" id="lastname" value="{$lastname}" title="Enter your last name."/></td>
+</tr>
+<tr>
+<td>TEL <span class="f_red">*</span></td>
+<td><input type="text" name="telephone" size="30" id="telephone" value="{$telephone}"/></td>
+</tr>
+<tr>
+<td>Email <span class="f_red">*</span></td>
+<td><input type="text" name="email" size="30" id="email" value="{$email}"/></td>
+</tr>
+{if $DT[im_qq]}
+<tr>
+<td>QQ </td>
+<td><input type="text" size="20" name="qq" id="qq" value="{$qq}"/></td>
+</tr>
+{/if}
+{if $DT[im_ali]}
+<tr>
+<td>阿里旺旺 </td>
+<td><input type="text" size="20" name="ali" id="ali" value="{$ali}"/></td>
+</tr>
+{/if}
+{if $DT[im_msn]}
+<tr>
+<td>MSN </td>
+<td><input type="text" size="30" name="msn" id="msn" value="{$msn}"/></td>
+</tr>
+{/if}
+{if $DT[im_skype]}
+<tr>
+<td>Skype </td>
+<td><input type="text" size="20" name="skype" id="skype" value="{$skype}"/></td>
+</tr>
+{/if}
+<tr>
+<td>Security Code <span class="f_red">*</span></td>
+<td>{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<input type="submit" name="submit" value=" Submit " class="sbm"/>&nbsp;
+<input type="reset" value=" Reset " class="sbm"/>
+</td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">
+function is_captcha(v) {
+	if(v == L['str_captcha']) return false;
+	if(v.match(/^[a-z0-9A-Z]{1,}$/)) {
+		return v.match(/^[a-z0-9A-Z]{4,}$/);
+	} else {
+		return v.length > 1;
+	}
+}
+function check() {
+	var l;
+	var f;
+	f = 'title';
+	l = $(f).value.length;
+	if(l < 5 || l > 200) {
+		alert('Subject should be between 5 to 200 characters. '+l+' characters has been entered.');
+		$(f).focus();
+		return false;
+	}
+	f = 'content';
+	l = $(f).value.length;
+	if(l < 10 || l > 2000) {
+		alert('Content should be between 10 to 2000 characters. '+l+' characters has been entered.');
+		$(f).focus();
+		return false;
+	}
+    f = 'truename';
+	l = $(f).value;
+	if(l.length < 2 || l == 'First Name') {
+		alert('Enter your first name.', f);$(f).focus();return false;
+	}
+	f = 'lastname';
+	l = $(f).value;
+	if(l.length < 2 || l == 'Last Name') {
+		alert('Enter your last name.');$(f).focus();return false;
+	}
+	f = 'telephone';
+	l = $(f).value.length;
+	if(l < 7) {
+		alert('Enter your telephone number.');
+		$(f).focus();
+		return false;
+	}
+    f = 'email';//新增必填
+	l = $(f).value;
+    var r = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
+    if(!r.test(l)){
+       	alert('Enter your valid email address.');$(f).focus();return false;
+    }						
+	f = 'captcha';
+	l = $(f).value;
+	if(!is_captcha(l)) {
+		alert('Enter the valid security code.');
+		$(f).focus();
+		return false;
+	}
+	if($('c'+f).innerHTML.indexOf('error') != -1) {
+		$(f).focus();
+		return false;
+	}
+}
+</script>
+</body>
+</html>

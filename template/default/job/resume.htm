@@ -1,0 +1,109 @@
+{template 'header'}
+<div class="m">
+	<div class="left_box">		
+		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; 求職簡歷</div>
+		<div class="pd20 px13">
+			<table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5">			
+			<tr>
+			<td colspan="5" bgcolor="#F1F7FC" align="center"><strong>{$truename}個人簡歷</strong></td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center" width="120">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</td>
+			<td width="240">{$truename}</td>
+			<td align="center" width="120">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別</td>
+			<td width="240">{if $gender == 1}男{else}女{/if}</td>
+			<td rowspan="5" align="center"><img src="{if $thumb}{$thumb}{else}{DT_SKIN}image/nohead.gif{/if}" width="{$MOD[thumb_width]}" height="{$MOD[thumb_height]}" alt=""/></td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</td>
+			<td>{$birthday}</td>
+			<td align="center">婚姻狀況</td>
+			<td>{if $marriage == 2}已婚{else}未婚{/if}</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高</td>
+			<td>{$height} cm</td>
+			<td align="center">體&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重</td>
+			<td>{$weight} kg</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">居 住 地</td>
+			<td>{area_pos($areaid, '')}</td>
+			<td align="center">學&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;歷</td>
+			<td>{$EDUCATION[$education]}</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">畢業院校</td>
+			<td>{$school}</td>
+			<td align="center">專&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;業</td>
+			<td>{$major}</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">工作性質</td>
+			<td>{$TYPE[$type]}</td>
+			<td align="center">工作經驗</td>
+			<td colspan="2">{if $experience}{$experience}年{else}無{/if}</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">行業意向</td>
+			<td>{$CATEGORY[$parentid][catname]}</td>
+			<td align="center">職位意向</td>
+			<td colspan="2">{$CATEGORY[$catid][catname]}</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">專業技能</td>
+			<td>{$skill}</td>
+			<td align="center">語言水平</td>
+			<td colspan="2">{$language}</td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
+			<td align="center">期望薪資</td>
+			<td>
+			{if $minsalary && $maxsalary}
+				{$minsalary}-{$maxsalary}{$DT[money_unit]}/月
+			{elseif $minsalary}
+				{$minsalary}{$DT[money_unit]}/月以上
+			{elseif $maxsalary}
+				{$maxsalary}{$DT[money_unit]}/月以內
+			{else}
+				面議
+			{/if}
+			</td>
+			<td align="center">求職狀態</td>
+			<td colspan="2">{$SITUATION[$situation]}</td>
+			</tr>
+			<tr>
+			<td colspan="5" bgcolor="#F1F7FC">&nbsp;&nbsp;&nbsp;&nbsp;<strong>自我鑒定</strong></td>
+			</tr>
+			<tr>
+			<td colspan="5" bgcolor="#FFFFFF"><div class="pd10 lh18">{$content}</div></td>
+			</tr>
+			<tr>
+			<td colspan="5" bgcolor="#F1F7FC">&nbsp;&nbsp;&nbsp;&nbsp;<strong>聯繫方式</strong></td>
+			</tr>			
+			<tr>
+			<td colspan="5" bgcolor="#FFFFFF">
+			{template 'content', 'chip'}
+			</td>
+			</tr>
+			</table>
+			<br/>
+			<br/>
+			<center class="f_gray">
+			<a href="{rewrite('talent.php?itemid='.$itemid)}">加入人才庫</a> &nbsp; | &nbsp;
+			<a href="{rewrite('resume.php?print=1&itemid='.$itemid)}" target="_blank">打印簡歷(A4紙)</a> &nbsp; | &nbsp;
+			<script type="text/javascript">addFav('加入收藏');</script> &nbsp; | &nbsp;
+			<a href="javascript:window.close()">關閉窗口</a>
+			</center>
+			<br/>
+			<br/>
+			<center class="f_red px12">
+			免責聲明：以上信息由個人自行提供，內容的真實性、準確性和合法性由發佈個人負責，本站對此不承擔任何責任。
+			</center>
+			<br/>
+			<br/>
+
+		</div>
+	</div>
+</div>
+{template 'footer'}

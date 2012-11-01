@@ -1,0 +1,1 @@
+document.write('<a href="http://demo.imb2b.com/extend/redirect.php?aid=186" target="_blank"><img src="http://www.imb2b.com/file/upload/201210/18/16-02-12-44-4690.jpg" width="160" height="600" alt=""/></a>');

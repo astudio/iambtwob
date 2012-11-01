@@ -1,0 +1,60 @@
+<tr>
+<td colspan="2" style="background:#AACCEE;">
+&nbsp;&nbsp;
+<strong>非會員補充信息：</strong>
+&nbsp;&nbsp;
+建議 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">立即登錄</a> 或 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">註冊會員</a> 以便系統長久保存您的聯繫方式
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 公司名稱</td>
+<td class="tr"><input name="post[company]" type="text" id="company" size="50" value="{$company}" /> 個人請填姓名 例如：張三<br/><span id="dcompany" class="f_red"></span> </td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 所在地區</td>
+<td class="tr">{ajax_area_select('post[areaid]', '請選擇', $areaid)} <span id="dareaid" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 聯繫人</td>
+<td class="tr"><input name="post[truename]" type="text" id="truename" size="20" value="{$truename}" /> <br/><span id="dtruename" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 聯繫手機</td>
+<td class="tr"><input name="post[mobile]" id="mobile" type="text" size="30" value="{$mobile}"/> <span id="dmobile" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">電子郵件</td>
+<td class="tr"><input name="post[email]" id="email" type="text" size="30" value="{$email}" /> <span id="demail" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">聯繫電話</td>
+<td class="tr"><input name="post[telephone]" id="telephone" type="text" size="30" value="{$telephone}"/> <span id="dtelephone" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">聯繫地址</td>
+<td class="tr"><input name="post[address]" type="text" size="60" value="{$address}"/></td>
+</tr>
+{if $DT[im_qq]}
+<tr>
+<td class="tl">QQ</td>
+<td class="tr"><input name="post[qq]" type="text" size="30" value="{$qq}"/></td>
+</tr>
+{/if}
+{if $DT[im_ali]}
+<tr>
+<td class="tl">阿里旺旺</td>
+<td class="tr"><input name="post[ali]" type="text" size="30" value="{$ali}"/></td>
+</tr>
+{/if}
+{if $DT[im_msn]}
+<tr>
+<td class="tl">MSN</td>
+<td class="tr"><input name="post[msn]" type="text" size="40" value="{$msn}"/></td>
+</tr>
+{/if}
+{if $DT[im_skype]}
+<tr>
+<td class="tl">Skype</td>
+<td class="tr"><input name="post[skype]" type="text" size="30" value="{$skype}"/></td>
+</tr>
+{/if}

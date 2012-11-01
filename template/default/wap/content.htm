@@ -1,0 +1,57 @@
+{if $user_status == 3}
+	{if $module == 'exhibit'}
+		{if $page==1}
+		<strong>聯繫方式</strong><br/>
+		姓名:{$truename}<br/>
+		{if $addr}地址:{$addr}<br/>{/if}
+		{if $mobile}手機:{$mobile}<br/>{/if}
+		{if $telephone}電話:{$telephone}<br/>{/if}
+		{if $fax}傳真:{$fax}<br/>{/if}
+		{if $email}郵件:{$email}<br/>{/if}
+		{if $msn}MSN:{$msn}<br/>{/if}
+		{if $qq}QQ:{$qq}<br/>{/if}
+		<strong>詳細介紹</strong><br/>
+		{/if}	
+		{$content}<br/>
+	{elseif $module == 'job'}
+		手機:{$mobile}<br/>
+		郵件:{$email}<br/>
+		電話:{$telephone}<br/>
+		地址:{$address}<br/>
+		MSN:{$msn}<br/>
+		QQ:{$qq}<br/>
+	{elseif $module == 'know'}
+		{if $best}
+		{nl2br($best[content])}<br/>
+		回答：{if $best[hidden]}匿名{else}{if $best[username]}<a href="index.php?moduleid=4&amp;username={$best[username]}">{$best[username]}</a>{else}{hide_ip($best[ip])}{/if}{/if}<br/>
+		<small>{timetodate($best[addtime], 5)}</small>
+		{else}
+		暫無最佳答案
+		{/if}
+	{else}
+	{$content}
+	{/if}
+{elseif $user_status == 2}
+	{if $description}{$description}<br/>{/if}
+	<div class="pay">
+	查看詳細內容或聯繫方式需支付<strong>{$fee}</strong>{$fee_unit}<br/>
+	{if $currency == 'money'}
+	{$fee_name}餘額:{$_money}{$fee_unit} <a href="index.php?moduleid=2&amp;action=charge">充值</a> <br/>
+	{else}
+	{$fee_name}餘額:{$_credit}{$fee_unit} <br/>
+	{/if}
+	<form action="index.php" method="post">
+	<input type="hidden" name="moduleid" value="{$moduleid}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="resume" value="1"/>
+	<input type="hidden" name="action" value="pay"/>
+	{if $currency == 'money'}支付密碼:<input type="password" name="password" size="5"/>{/if}
+	<input type="submit" name="submit" value="確定" class="fm_sbm"/>
+	</form>
+	</div>
+{elseif $user_status == 1}
+	無權查看，請升級<br/>
+	{if $DT[telephone]}咨詢電話：{$DT[telephone]}<br/>{/if}
+{elseif $user_status == 0}
+	<a href="index.php?moduleid=2&amp;action=login">請登錄查看</a><br/>
+{/if}

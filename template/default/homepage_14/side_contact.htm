@@ -1,0 +1,21 @@
+{if $file != 'contact' && $could_contact}
+<div class="side_head"><div><strong>{$side_name[$HS]}</strong></div></div>
+<div class="side_body">
+<ul>
+<li>Contact: {$COM[truename]} {$COM[lastname]}</li>
+{if $COM[telephone]}
+<li title="{$COM[telephone]}">TEL: {$COM[telephone]}</li>
+{/if}
+{if $COM[mail]}
+<li title="{$COM[mail]}">Email: {$COM[mail]}</li>
+{/if}
+{if $COM[mobile]}
+<li title="{$COM[mobile]}">Mobile: {$COM[mobile]}</li>
+{/if}
+{if $COM[fax]}
+<li title="{$COM[fax]}">FAX: {$COM[fax]}</li>
+{/if}
+</ul>
+<div class="more"><a href="{userurl($username, 'file=contact', $domain)}"><img src="{$MODULE[4][linkurl]}image/more.gif" title="More"/></a></div>
+</div>
+{/if}

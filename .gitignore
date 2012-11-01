@@ -1,0 +1,4 @@
+.htaccess
+config.inc.php
+*Thumbs.db
+file/cache/*

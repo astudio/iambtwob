@@ -1,0 +1,19 @@
+{template 'header', 'wap'}
+<div class="nav">
+<a href="index.php">首頁</a> >
+<a href="index.php?moduleid={$moduleid}">{$MOD[name]}</a> >
+<a href="index.php?moduleid={$moduleid}&amp;action=message">站內信</a> >
+<a href="index.php?moduleid={$moduleid}&amp;action=message_send">發送信件</a> >
+</div>
+<div class="main">
+<div class="fm">
+<form action="index.php" method="post">
+<input type="hidden" name="moduleid" value="{$moduleid}"/>
+<input type="hidden" name="action" value="{$action}"/>
+會員:<input type="text" name="touser" value="{$touser}" size="15" class="fm_inp"/><br/>
+標題:<input type="text" name="title" value="{$title}" size="15" class="fm_inp"/><br/>
+內容:<input type="text" name="content" value="{$content}" size="15" class="fm_inp"/><br/>
+<input type="submit" name="submit" value="發送" class="fm_sbm"/>
+</form>
+</div>
+{template 'footer', 'wap'}

@@ -1,0 +1,1 @@
+var DTPath = "http://demo.imb2b.com/";var SKPath = "http://demo.imb2b.com/skin/default/";var EXPath = "http://demo.imb2b.com/extend/";var CKDomain = "";var CKPath = "/";var CKPrex = "cf2_";

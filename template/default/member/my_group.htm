@@ -1,0 +1,353 @@
+{template 'header', 'member'}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add"><span>添加{$MOD[name]}</span></a></td>
+{if $_userid}
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s3"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}"><span>已發佈<span class="px10">({$nums[3]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s2"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=2"><span>審核中<span class="px10">({$nums[2]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s1"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=1"><span>未通過<span class="px10">({$nums[1]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s4"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=4"><span>已過期<span class="px10">({$nums[4]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="type"><a href="{$MODULE[2][linkurl]}group.php"><span>訂單管理<span class="px10">({$nums[9]})</span></span></a></td>
+{/if}
+</tr>
+</table>
+</div>
+{if $action=='add' || $action=='edit'}
+<iframe src="" name="send" id="send" style="display:none;"></iframe>
+<form method="post" id="dform" action="{$MODULE[2][linkurl]}{$DT[file_my]}" target="send" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<table cellpadding="6" cellspacing="1" class="tb">
+{if $status==1 && $action=='edit' && $note}
+<tr>
+<td class="tl">未通過原因</td>
+<td class="tr f_blue">{$note}</td>
+</tr>
+{/if}
+<tr>
+<td class="tl"><span class="f_red">*</span> 所屬分類</td>
+<td class="tr">{category_select('post[catid]', '選擇分類', $catid, $moduleid)} <span id="dcatid" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> {$MOD[name]}標題</td>
+<td class="tr f_gray"><input name="post[title]" type="text" id="title" size="50" value="{$title}"/><span id="dtitle" class="f_red"></span></td>
+</tr>
+{if $action=='add' && $could_color}
+<tr>
+<td class="tl">標題顏色</td>
+<td class="tr">
+{dstyle('style')}&nbsp;
+設置信息標題顏色需消費 <strong class="f_red">{$MOD[credit_color]}</strong> {$DT[credit_name]}
+</td>
+</tr>
+{/if}
+<tr>
+<td class="tl"><span class="f_red">*</span> 標題圖片</td>
+<td class="tr"><input name="post[thumb]" id="thumb" type="text" size="60" value="{$thumb}" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[刪除]</a></td>
+</tr>
+
+<tr>
+<td class="tl"><span class="f_red">*</span> 團購價</td>
+<td class="tr"><input name="post[price]" type="text" size="10" value="{$price}" id="drice"/><span id="dprice" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 市場價</td>
+<td class="tr"><input name="post[marketprice]" type="text" size="10" value="{$marketprice}" id="marketprice"/><span id="dmarketprice" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">最低人數</td>
+<td class="tr"><input name="post[minamount]" type="text" size="10" value="{$minamount}" id="minamount"/><span id="dminamount" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">最多人數</td>
+<td class="tr"><input name="post[amount]" type="text" size="10" value="{$amount}" id="damount"/><span id="damount" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">過期時間</td>
+<td class="tr f_gray">{dcalendar('post[totime]', $totime)}&nbsp;
+<select onchange="Dd('posttotime').value=this.value;">
+<option value="">快捷選擇</option>
+<option value="">長期有效</option>
+<option value="{timetodate($DT_TIME+86400*3, 3)}">3天</option>
+<option value="{timetodate($DT_TIME+86400*7, 3)}">一周</option>
+<option value="{timetodate($DT_TIME+86400*15, 3)}">半月</option>
+<option value="{timetodate($DT_TIME+86400*30, 3)}">一月</option>
+<option value="{timetodate($DT_TIME+86400*182, 3)}">半年</option>
+<option value="{timetodate($DT_TIME+86400*365, 3)}">一年</option>
+</select>&nbsp;
+不選表示長期有效
+<span id="dposttotime" class="f_red"></span></td>
+</tr>
+{if $CP}
+<script type="text/javascript">
+var property_catid = {$catid};
+var property_itemid = {$itemid};
+var property_admin = 0;
+</script>
+<script type="text/javascript" src="{DT_PATH}file/script/property.js"></script>
+{if $itemid}<script type="text/javascript">setTimeout("load_property()", 1000);</script>{/if}
+<tbody id="load_property" style="display:none;">
+<tr><td></td><td></td></tr>
+</tbody>
+{/if}
+{if $FD}{fields_html('<td class="tl">', '<td class="tr">', $item)}{/if}
+<tr>
+<td class="tl">{$MOD[name]}簡介</td>
+<td class="tr"><textarea name="post[introduce]" style="width:90%;height:45px;">{$introduce}</textarea></td>
+</tr>
+<tr>
+<td class="tl">詳細說明</td>
+<td class="tr f_gray"><textarea name="post[content]" id="content" class="dsn">{$content}</textarea>
+{deditor($moduleid, 'content', $group_editor, '98%', 350)}<br/>
+<span id="dcontent" class="f_red"></span>
+</td>
+</tr>
+{if $MOD[swfu] == 1}
+{php include DT_ROOT.'/file/swfupload/editor.inc.php';}
+{/if}
+<tr>
+<td class="tl">需要物流</td>
+<td class="tr">
+<input type="radio" name="post[logistic]" value="1"{if $logistic} checked{/if} id="logistic_1"/><label for="logistic_1"> 是</label>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="post[logistic]" value="0"{if !$logistic} checked{/if} id="logistic_0"/><label for="logistic_0"> 否</label>
+</td>
+</tr>
+{if $fee_add}
+<tr>
+<td class="tl">發佈此信息需消費</td>
+<td class="tr"><span class="f_b f_red">{$fee_add}</span> {$fee_unit}</td>
+</tr>
+{if $fee_currency == 'money'}
+<tr>
+<td class="tl">{$DT[money_name]}餘額</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+</tr>
+{else}
+<tr>
+<td class="tl">{$DT[credit_name]}餘額</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}credit.php?action=buy" target="_blank" class="t">[購買]</a></td>
+</tr>
+{/if}
+{/if}
+{if $need_password}
+<tr>
+<td class="tl"><span class="f_red">*</span> 支付密碼</td>
+<td class="tr">{template 'password', 'chip'} <span id="dpassword" class="f_red"></span></td>
+</tr>
+{/if}
+{if $need_question}
+<tr>
+<td class="tl"><span class="f_red">*</span> 驗證問題</td>
+<td class="tr">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
+</tr>
+{/if}
+{if $need_captcha}
+<tr>
+<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
+</tr>
+{/if}
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 提 交 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+</tr>
+</table>
+</form>
+{load('clear.js')}
+{if $action=='add'}
+<script type="text/javascript">s('mid_{$mid}');m('{$action}');</script>
+{else}
+<script type="text/javascript">s('mid_{$mid}');m('s{$status}');</script>
+{/if}
+{else}
+<div class="tt">
+<form action="{$MODULE[2][linkurl]}{$DT[file_my]}">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="status" value="{$status}"/>
+&nbsp;{category_select('catid', '行業分類', $catid, $moduleid)}&nbsp;
+<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<select name="process">
+<option value="-1">狀態</option>
+<option value="0"{if $process == 0} selected{/if}>成團中</option>
+<option value="1"{if $process == 1} selected{/if}>團購中</option>
+<option value="2"{if $process == 2} selected{/if}>已結束</option>
+</select>&nbsp;
+{$order_select}&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>
+<input type="button" value=" 重 置 " class="btn" onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status={$status}';"/>
+</form>
+</div>
+<div class="ls">
+<form method="post">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th width="20"><input type="checkbox" onclick="checkall(this.form);"/></th>
+<th>圖片</th>
+<th>標題</th>
+<th>分類</th>
+<th>價格</th>
+<th>折扣</th>
+<th>訂單</th>
+<th>銷量</th>
+<th>人氣</th>
+<th width="100">管理</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
+<td><a href="javascript:_preview('{$v[thumb]}');"><img src="{if $v[thumb]}{$v[thumb]}{else}{DT_SKIN}image/nopic50.gif{/if}" width="50" class="thumb"/></a></td>
+<td align="left" title="{$v[alt]}"><ul><li>{if $v[status]==3}<a href="{$v[linkurl]}" target="_blank" class="t">{else}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="image/why.gif" title="未通過原因"/></a>{/if}</li><li title="更新時間 {timetodate($v[edittime], 5)} 添加時間 {timetodate($v[addtime], 5)}" class="px11 f_gray">{if $timetype=='add'}{timetodate($v[addtime], 5)}{else}{timetodate($v[edittime], 5)}{/if} {$_process[$v[process]]}</li></ul></td>
+<td><a href="{$v[caturl]}" target="_blank">{$v[catname]}</a></td>
+
+<td class="f_price">{$v[price]}</td>
+<td class="px11">{$v[discount]}</td>
+<td class="px11{if $v[orders]>0} f_blue f_b c_p" title="查看訂單" onclick="Go('{$MODULE[2][linkurl]}group.php?gid={$v[itemid]}');{/if}">{$v[orders]}</td>
+<td class="px11">{$v[sales]}</td>
+<td class="px11">{$v[hits]}</td>
+<td>
+<a href="{$MODULE[2][linkurl]}group.php?gid={$v[itemid]}"><img width="16" height="16" src="image/order.gif" title="訂單管理" alt=""/></a>
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="修改" alt=""/></a>
+{if $MG[copy]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add&itemid={$v[itemid]}&catid={$v[catid]}"><img width="16" height="16" src="image/new.png" title="複製信息" alt=""/></a>{/if}
+{if $MG[delete]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=delete&itemid={$v[itemid]}" onclick="return confirm('確定要刪除嗎？此操作將不可撤銷');"><img width="16" height="16" src="image/delete.png" title="刪除" alt=""/></a>{/if}
+</td>
+</tr>
+{/loop}
+</table>
+</div>
+{if $MG[delete] || $timetype!='add'}
+<div class="btns">
+{if $MG[delete]}
+<span class="f_r"><input type="submit" value=" 刪除選中 " class="btn" onclick="if(confirm('確定要刪除選中{$MOD[name]}嗎？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/></span>
+{/if}
+{if $timetype!='add'}
+<input type="submit" value=" 刷新選中 " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=refresh';"/>
+{if $MOD[credit_refresh]}
+刷新一條信息一次需消費 <strong class="f_red">{$MOD[credit_refresh]}</strong> {$DT[credit_name]}，當{$DT[credit_name]}不足時將不可刷新
+{/if}
+{/if}
+&nbsp;
+</div>
+{/if}
+</form>
+{if $MG[group_limit] || (!$MG['fee_mode'] && $MOD[fee_add])}
+<div class="limit">
+{if $MG[group_limit]}
+總共可發 <span class="f_b f_red">{$MG[group_limit]}</span> 條&nbsp;&nbsp;&nbsp;
+當前已發 <span class="f_b">{$limit_used}</span> 條&nbsp;&nbsp;&nbsp;
+還可以發 <span class="f_b f_blue">{$limit_free}</span> 條&nbsp;&nbsp;&nbsp;
+{/if}
+{if !$MG['fee_mode'] && $MOD[fee_add]}
+發佈信息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
+可免費發佈 <span class="f_b">{if $MG[group_free_limit]<0}無限{else}{$MG[group_free_limit]}{/if}</span> 條&nbsp;&nbsp;&nbsp;
+{/if}
+</div>
+{/if}
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('mid_{$mid}');m('s{$status}');</script>
+{/if}
+{if $action == 'add' || $action == 'edit'}
+<script type="text/javascript">
+function _p() {
+	if(Dd('tag').value) {
+		Ds('reccate');
+	}
+}
+function check() {
+	var l;
+	var f;
+	f = 'catid_1';
+	if(Dd(f).value == 0) {
+		Dmsg('請選擇所屬分類', 'catid', 1);
+		return false;
+	}
+	f = 'title';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('標題最少2字，當前已輸入'+l+'字', f);
+		return false;
+	}
+	f = 'thumb';
+	l = Dd(f).value.length;
+	if(l < 15) {
+		Dmsg('請上傳標題圖片', f);
+		return false;
+	}
+	f = 'price';
+	l = Dd(f).value;
+	if(l < 0.1) {
+		Dmsg('請填寫團購價', f);
+		return false;
+	}
+	f = 'marketprice';
+	l = Dd(f).value;
+	if(l < 0.1) {
+		Dmsg('請填寫市場價', f);
+		return false;
+	}
+	if(l <= Dd('price').value) {
+		Dmsg('團購價必須低於市場價', f);
+		return false;
+	}
+	f = 'username';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('請填寫會員名', f);
+		return false;
+	}
+
+	{if $FD}{fields_js()}{/if}
+	if(Dd('property_require') != null) {
+		var ptrs = Dd('property_require').getElementsByTagName('option');
+		for(var i = 0; i < ptrs.length; i++) {		
+			f = 'property-'+ptrs[i].value;
+			if(Dd(f).value == 0 || Dd(f).value == '') {
+				Dmsg('請填寫或選擇'+ptrs[i].innerHTML, f);
+				return false;
+			}
+		}
+	}
+{if $need_password}
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		Dmsg('請填寫支付密碼', f);
+		return false;
+	}
+{/if}
+{if $need_question}
+	f = 'answer';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('請填寫驗證問題', f);
+		return false;
+	}
+	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+		Dd(f).focus();
+		return false;
+	}
+{/if}
+{if $need_captcha}
+	f = 'captcha';
+	l = Dd(f).value;
+	if(!is_captcha(l)) {
+		Dmsg('請填寫正確的驗證碼', f);
+		return false;
+	}
+	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+		Dd(f).focus();
+		return false;
+	}
+{/if}
+	return true;
+}
+</script>
+{/if}
+{template 'footer', 'member'}

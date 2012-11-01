@@ -1,0 +1,6 @@
+{template 'header', $template}
+<div class="dsn" id="pos_show">您當前的位置：<a href="{$COM[linkurl]}">首頁</a> &raquo; 歡迎光臨</div>
+{loop $HMAIN $HM $MAIN}
+{template 'main_'.$main_file[$HM], $template}
+{/loop}
+{template 'footer', $template}

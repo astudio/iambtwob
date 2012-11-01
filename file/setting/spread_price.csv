@@ -1,0 +1,7 @@
+itemid,ID,
+word,關鍵詞,
+sell_price,供應起價,
+buy_price,求購起價,
+company_price,公司起價,
+editor,編輯,
+edittime,修改時間,

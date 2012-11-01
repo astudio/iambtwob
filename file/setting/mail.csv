@@ -1,0 +1,8 @@
+itemid,ID,
+typeid,分類ID,
+title,標題,
+content,內容,
+addtime,添加時間,
+editor,編輯,
+edittime,修改時間,
+sendtime,發送時間,

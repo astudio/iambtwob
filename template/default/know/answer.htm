@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}{/if}</title>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}answer.css"/>
+<link rel="shortcut icon" href="{DT_PATH}favicon.ico"/>
+<link rel="bookmark" href="{DT_PATH}favicon.ico"/>
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+<script type="text/javascript">
+if(parent.location == window.location) window.location='{$linkurl}';
+</script>
+</head>
+<body>
+<div id="destoon_answer">
+{if $action == 'vote_show'}
+<div class="left_head">投票結果</div>
+<div style="padding:15px;">
+<table cellpadding="6" cellspacing="1" width="100%" align="center" bgcolor="#C5D7ED">
+<tr bgcolor="#F1F7FC" align="center">
+<td>回答者</td>
+<td>票數</td>
+<td width="200">&nbsp;</td>
+<td>比例</td>
+</tr>
+{loop $votes $v}
+<tr bgcolor="#FFFFFF" align="center">
+<td>
+{if $v[hidden]}
+匿名
+{else}
+	{if $v[username]}
+	<a href="{userurl($v[username])}" target="_blank">{$v[username]}</a>
+	{else}
+	{hide_ip($v[ip])}
+	{/if}
+{/if}
+</td>
+<td class="px11">{$v[vote]}</td>
+<td align="left"><div class="vote_b"><div class="vote_s" style="width:{$v[precent]};"> </div></div></td>
+<td class="px11">{$v[precent]}</td>
+</tr>
+{/loop}
+</table>
+</div>
+<center><input type="button" value="返 回" onclick="window.location='answer.php?itemid={$itemid}';" class="btn"/></center>
+<br/>
+{else}
+	<iframe src="" name="send" id="send" style="display:none;"></iframe>
+	{if $could_admin && $item[process]==1}
+	<div class="left_head">處理提問</div>
+	<div class="question_op">
+	<div><span class="px14">如果已獲得滿意的回答，請及時採納，感謝回答者。若還沒有滿意的回答，可以嘗試以下操作： </span></div>	
+	{if $items>1}
+	<div><a href="answer.php?itemid={$itemid}&action=vote" onclick="return confirm('確定要舉行投票嗎？');" class="f_b px13" target="_top">舉行投票</a><span class="f_gray"> - 不知道哪個回答最好，讓網友投票來選出最佳答案;</span></div>
+	{/if}
+	<div><a href="javascript:" onclick="Ds('add_content');H();" class="f_b px13">補充問題</a><span class="f_gray"> - 補充提問細節，以得到更準確的答案;</span></div>
+	<div id="add_content" style="display:none;background:#F1F7FC;padding:15px;">
+	<form method="post" action="answer.php" target="_top">
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="action" value="addition"/>
+	<textarea name="content" id="content" style="width:90%;height:80px;margin:0 0 10px 0;">{$item[addition]}</textarea><br/>
+	<input type="submit" value=" 確 認 " class="btn"/>
+	<input type="button" value=" 取 消 " class="btn" onclick="Dh('add_content');H();"/>
+	</form>
+	</div>
+	{if $item[raise] < $MOD[maxraise]}
+	<div><a href="javascript:" onclick="Ds('add_credit');H();" class="px13 f_b">提高懸賞</a><span class="f_gray"> - 提高懸賞，以提高問題的關注度;</span></div>
+	<div id="add_credit" style="display:none;background:#F1F7FC;padding:15px;">
+	<form method="post" action="answer.php" target="_top">
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="action" value="raise"/>
+	提問期內，可以追加懸賞 <strong class="f_red">{$MOD[maxraise]}</strong> 次(已追加<strong>{$item[raise]}</strong>次)。懸賞一次，可延長問題的有效期 <strong class="f_blue">{$MOD[raisedays]}</strong> 天。<br/> 
+	當您一次懸賞的{$DT[credit_name]}高於 <strong>20</strong> 分時，該問題將等同於新提出的問題，在所屬分類的問題列表中顯示為最新。 <br/>
+	追加懸賞
+	<select name="credit">
+	{loop $CREDITS $v}
+	{if $v>0}<option value="{$v}">{$v}</option>{/if}
+	{/loop}
+	</select>
+	分  當前{$DT[credit_name]} <strong class="f_blue">{$_credit}</strong><br/>
+	<div style="padding:5px 0 5px 0;">
+	<input type="submit" value=" 確 認 " class="btn"/>
+	<input type="button" value=" 取 消 " class="btn" onclick="Dh('add_credit');H();"/>
+	</form>
+	</div>
+	</div>
+	{/if}
+	<div><a href="answer.php?itemid={$itemid}&action=close" onclick="return confirm('確定要關閉這個問題嗎？');" class="f_b px13" target="_top">關閉問題</a><span class="f_gray"> - 沒有滿意的回答 ，可以直接結束提問，關閉問題;</span></div>
+	</div>
+	{/if}
+	<div id="destoon_answers">
+	{if $answers}
+	<div class="left_head c_b">其他回答 <span class="px12">({$items})</span></div>
+	{loop $answers $k $v}
+	{if $k==count($answers)-1}<a name="last"></a>{/if}
+	<div class="answer_body" id="a_{$v[itemid]}">{$v[content]}</div>
+	<div class="answer_foot">
+	<span class="f_r"><span id="u_{$v[itemid]}">
+	{if $v[hidden]}
+	匿名
+	{else}
+		{if $v[username]}
+		<a href="{userurl($v[username])}" target="_blank">{$v[username]}{if $_username==$v[username]} <span class="f_blue">(我)</span>{/if}</a>
+		{else}
+		{hide_ip($v[ip])}
+		{/if}
+	{/if}
+	&nbsp;&nbsp;回答於&nbsp;&nbsp;<span class="px11">{timetodate($v[addtime], 5)}</span></span></span>
+	{if $could_admin && $item[process] == 1}
+	<input type="button" value="採納為答案" onclick="choose_answer({$v[itemid]});" class="btn"/>
+	{/if}
+	{if $item[process] == 2}
+		{if $could_admin}
+		<input type="button" value="移除選項" onclick="if(confirm('確定要移除此投票選項嗎？')) Dd('send').src='answer.php?itemid={$itemid}&aid={$v[itemid]}&action=vote_del';" class="btn"/>
+		{/if}
+		{if $could_vote}
+		<input type="button" value="投一票" onclick="Dd('send').src='answer.php?itemid={$itemid}&aid={$v[itemid]}&action=vote_add';" class="btn"/>
+		{/if}
+		{if !$could_vote || $could_admin}
+		<input type="button" value="投票結果" onclick="window.location='answer.php?itemid={$itemid}&action=vote_show';" class="btn"/>
+		{/if}
+	{/if}
+	&nbsp;&nbsp;
+	</div>
+	{/loop}
+	<div class="pages">{$pages}</div>
+	{/if}
+	</div>
+	<div id="choose_form" style="display:none;">
+	<div class="left_head">採納答案</div>
+	<div class="answer_body" id="choose_a"></div>
+	<div class="answer_foot" id="choose_u"></div>
+	<form method="post" action="answer.php" target="_top" onsubmit="return choose_check();">
+	<input type="hidden" name="aid" id="aid" value="0"/>
+	<input type="hidden" name="action" value="choose"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<table width="100%" cellpadding="8" cellspacing="0">
+	<tr>
+	<td align="right" valign="top" class="px14"><br/>感謝語或評論：</td>
+	<td><textarea rows="6" cols="70" name="thx" id="thx_content" class="f_gray" onfocus="if(this.value=='說聲謝謝，感謝回答者的無私幫助'){this.value='';this.className='';}">說聲謝謝，感謝回答者的無私幫助</textarea>
+	</td>
+	</tr>
+	<tr>
+	<td align="right"  class="px14">額外獎勵：</td>
+	<td>	
+	<select name="credit" id="choose_credit">
+	<option value="0">0</option>
+	{loop $CREDITS $v}
+	{if $v>0}<option value="{$v}">{$v}</option>{/if}
+	{/loop}
+	</select>
+	<span class="f_gray">如果您對這一回答非常滿意,您可以選擇給回答者額外的獎勵</span>
+	</td>
+	</tr>
+	<tr>
+	<td> </td>
+	<td>
+	<input type="submit" value=" 確 認 " class="btn"/>
+	<input type="button" value=" 取 消 " class="btn" onclick="choose_cancel();"/>
+	</td>
+	</tr>
+	</table>
+	</form>
+	</div>
+	<script type="text/javascript">
+	function choose_check() {
+		return true;
+	}
+	function choose_answer(id) {
+		Dd('choose_a').innerHTML = Dd('a_'+id).innerHTML;
+		Dd('choose_u').innerHTML = Dd('u_'+id).innerHTML;
+		Dd('aid').value = id;
+		Ds('choose_form');
+		H();
+		Dd('choose_credit').focus();
+	}
+	function choose_cancel() {
+		Dd('choose_a').innerHTML = '';
+		Dd('choose_u').innerHTML = '';
+		Dd('aid').value = 0;
+		Dh('choose_form');
+		H();
+	}
+	</script>
+
+	{if $could_answer}
+	<div class="left_head">我來回答</div>
+	<form method="post" action="answer.php" target="send" id="dform" onsubmit="return check();">
+	<input type="hidden" name="items" value="{$items}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<div class="px14">
+	<table width="100%" cellpadding="8" cellspacing="1">
+	<tr>
+	<td align="right" valign="top"><br/>我來回答：</td>
+	<td><textarea name="content" id="content" style="display:none;"></textarea>
+	<script type="text/javascript">var ModuleID = {$moduleid};var DTAdmin = 0;var EDPath = "{$MODULE[2][linkurl]}fckeditor/";var EDW = "98%";var FCKID = "content";</script><script type="text/javascript" src="{$MODULE[2][linkurl]}fckeditor/fckeditor.js"></script>	
+	<br/><span id="dcontent" class="f_red px12"></span>
+	</td>
+	</tr>
+	<tr>
+	<td align="right">參考資料：</td>
+	<td><input type="text" name="url" size="60" id="url"/></td>
+	</tr>
+	{if $_userid}
+	<tr>
+	<td align="right">匿名設定：</td>
+	<td class="px12"><input type="checkbox" name="hidden" value="1" id="hidden"/> 如果不需要顯示您的信息，您可以對回答設定匿名</td>
+	</tr>
+	{/if}
+	{if $need_captcha}
+	<tr>
+	<td align="right"><span class="f_red">*</span> 驗證碼：</td>
+	<td class="px12">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
+	</tr>
+	{/if}
+	{if $need_question}
+	<tr onmouseout="H();">
+	<td align="right"><span class="f_red">*</span> 驗證問題：</td>
+	<td class="px12">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
+	</tr>
+	{/if}
+	<tr>
+	<td> </td>
+	<td class="px12">
+	<input type="submit" name="submit" value=" 提交回答 " class="btn"/>&nbsp;
+	<a href="{$MOD[linkurl]}faq.php#credit" target="_blank">{$DT[credit_name]}規則</a>
+	</td>
+	</tr>
+	{if !$_userid}
+	<tr>
+	<td> </td>
+	<td class="px12 f_gray">
+	登錄後回答可以獲得{$DT[credit_name]}獎勵，並可以查看和管理所有的回答。<a href="{$MODULE[2][linkurl]}{$DT[file_login]}" target="_top">登錄</a> | <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" target="_top">註冊</a>
+	</td>
+	</tr>
+	{/if}
+	</table>
+	</div>
+	</form>
+	</div>
+	{load('clear.js')}
+	<script type="text/javascript">
+	function check() {
+		var l;
+		var f;
+		f = 'content';
+		l = FCKLen();
+		if(l < 5) {
+			Dmsg('內容應最少5字，當前已輸入'+l+'字', f);
+			return false;
+		}
+		{if $need_captcha}
+		f = 'captcha';
+		l = Dd(f).value;
+		if(!is_captcha(l)) {
+			Dmsg('請填寫正確的驗證碼', f);
+			return false;
+		}
+		if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+			Dd(f).focus();
+			return false;
+		}
+		{/if}
+		{if $need_question}
+		f = 'answer';
+		l = Dd(f).value.length;
+		if(l < 1) {
+			Dmsg('請填寫驗證問題', f);
+			return false;
+		}
+		if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+			Dd(f).focus();
+			return false;
+		}
+		{/if}
+	}
+	try{parent.Dd('answer_btn').style.display = '';}catch(e){}
+	</script>
+	{/if}
+{/if}
+<script type="text/javascript">
+function H() {
+	try{parent.Dd('destoon_answer').style.height = Dd('destoon_answer').scrollHeight+'px';}
+	catch(e){}
+}
+function ImgZoom(i, m) {
+	var m = m ? m : 550; var w = i.width;
+	if(w < m) return;
+	var h = i.height;
+	i.title = L['click_open'];
+	i.height = parseInt(h*m/w);
+	i.width = m;
+	i.onclick = function (e) {window.open(EXPath+'view.php?img='+i.src);}
+}
+function Z() {
+	try {
+	var content_id = 'destoon_answers';
+	var img_max_width = {$MOD[max_width]};
+	var Imgs = Dd(content_id).getElementsByTagName("img");
+	for(var i=0;i<Imgs.length;i++) {ImgZoom(Imgs[i], img_max_width);}
+	var Links = Dd(content_id).getElementsByTagName("a");
+	for(var i=0;i<Links.length;i++)	{if(Links[i].target != '_blank') {if(document.domain && Links[i].href.indexOf(document.domain) == -1) Links[i].target = '_blank';}}
+	} catch(e) {}
+}
+window.onload = function() {
+{if $could_answer}
+var sBasePath = "{$MODULE[2][linkurl]}fckeditor/";var oFCKeditor = new FCKeditor("content");oFCKeditor.Width = "98%";oFCKeditor.Height = "200px";oFCKeditor.BasePath = sBasePath;oFCKeditor.ToolbarSet = "Basic";oFCKeditor.ReplaceTextarea();
+{/if}
+Z();
+H();
+}
+</script>
+</body>
+</html>

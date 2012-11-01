@@ -1,0 +1,7 @@
+areaid,地區ID,
+areaname,地區名稱,
+parentid,上級ID,
+arrparentid,上級地區所有ID,
+child,是否有子地區,
+arrchildid,子地區所有ID,
+listorder,排序,

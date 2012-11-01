@@ -1,0 +1,6 @@
+itemid,ID,
+qid,問題ID,
+aid,答案ID,
+username,會員名,
+addtime,添加時間,
+ip,IP,

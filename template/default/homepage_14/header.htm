@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-Type" content="text/html;charset=utf-8"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]} {$DT[seo_delimiter]} {$COM[business]}{/if}</title>
+{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
+{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
+<meta name="generator" content="ImB2B,www.imb2b.com"/>
+<meta http-equiv="x-ua-compatible" content="ie=7"/>
+<link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
+{if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript">
+var DTPath = '{DT_PATH}';
+var SKPath = '{DT_SKIN}';
+var CKPrex = '{$CFG[cookie_pre]}';
+var DTTour = '{$MODULE[4][linkurl]}tour.php';
+{if !$domain && DT_DOMAIN}
+document.domain = '{DT_DOMAIN}';
+{/if}
+</script>
+<script type="text/javascript" src="{DT_PATH}file/script/homepage.js"></script>
+{if $css}<style type="text/css">{$css}</style>{/if}
+</head>
+<body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor} {/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
+
+<div id="main">
+<div id="header">
+	<div id="logo">{$COM[company]}</div>
+	<div class="top">
+		{if $lang_chinese == 1}<a href="http://{$username}.imb2b.com">English</a><a href=""> | </a><a href="http://{$username}.imb2b.net">中文</a><a href=""> | </a>{/if}
+        <a href="{$COM[linkurl]}" title="{$COM[company]}" rel="sidebar" onclick="window.external.addFavorite(this.href, this.title);return false;">Bookmark</a>
+	</div>
+</div>
+
+<div id="tray">
+    <ul>
+	<li id="{if $file=='homepage'}tray-active{/if}"><a href="{$COM[linkurl]}"><span>Home</span></a></li>
+	{loop $MENU $k $v}
+	<li id="{if $file==$menu_file[$k]}tray-active{/if}"><a href="{$v[linkurl]}"><span>{$v[name]}</span></a></li>
+	{/loop}
+	</ul>
+</div>
+
+<div id="col-top"></div>
+<div id="col" class="box">
+	{if $COM[banner]}<embed src="{$COM[banner]}" quality="high" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" wmode="transparent" scale="exactfit" width="100%"></embed>{elseif $banner}<img src="{$banner}" width="100%"/>{/if}
+</div>
+<div id="col-bottom"></div>
+
+<div id="cols">
+
+	{if $side_pos==0}
+    <div id="aside" style="float:left">
+    {else}
+    <div id="aside" style="float:right">
+    {/if}
+    	{loop $HSIDE $HS $SIDE}
+    	{template 'side_'.$side_file[$HS], $template}
+    	{/loop}
+	</div>
+    
+    {if $side_pos==0}
+    <div id="content" style="float:right">
+    {else}
+    <div id="content" style="float:left">
+    {/if}

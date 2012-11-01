@@ -1,0 +1,1 @@
+document.write('<a href="http://www.eazysport.imb2b.com/" target="_blank"><img src="http://www.imb2b.com/file/upload/201209/11/18-25-03-61-5662.jpg" width="300" height="60" alt=""/></a>');

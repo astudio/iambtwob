@@ -1,0 +1,5 @@
+logid,ID,
+qstring,網址參數,
+username,管理員會員名,
+ip,IP,
+logtime,日誌記錄時間,

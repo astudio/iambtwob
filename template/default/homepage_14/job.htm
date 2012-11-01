@@ -1,0 +1,122 @@
+{template 'header', $template}
+<div class="dsn" id="pos_show">You are here: <a href="{$COM[linkurl]}">Home</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
+
+
+{if $itemid}
+<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="main_body">
+	<div class="title">{$title}</div>
+	<div class="info">Updated Date: {timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Views: {$hits}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">Back to list</a></div>
+
+		<div class="content">
+		<table cellpadding="5" cellspacing="1" width="100%" bgcolor="#CCCCCC">
+		<tr bgcolor="#FFFFFF">
+		<td width="80">&nbsp;行業</td>
+		<td width="230">&nbsp;{$CATEGORY[$parentid][catname]}</td>
+		<td width="80">&nbsp;職位</td>
+		<td width="230">&nbsp;{$CATEGORY[$catid][catname]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;招聘部門</td>
+		<td>&nbsp;{$department}</td>
+		<td>&nbsp;招聘人數</td>
+		<td>&nbsp;{if $total}{$total}人{else}若干{/if}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;工作地區</td>
+		<td>&nbsp;{area_pos($areaid, '')}</td>
+		<td>&nbsp;工作性質</td>
+		<td>&nbsp;{$TYPE[$type]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;性別要求</td>
+		<td>&nbsp;{$GENDER[$gender]}</td>
+		<td>&nbsp;婚姻要求</td>
+		<td>&nbsp;{$MARRIAGE[$marriage]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;學歷要求</td>
+		<td>&nbsp;{$EDUCATION[$education]}</td>
+		<td>&nbsp;工作經驗</td>
+		<td>&nbsp;{if $experience}{$experience}年以上{else}不限{/if}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;招聘人數</td>
+		<td>&nbsp;{if $minage && $maxage}{$minage}-{$maxage}歲{elseif $minage}{$minage}歲以上{elseif $maxage}{$maxage}歲以內{else}不限年齡{/if}</td>
+		<td>&nbsp;待遇水平</td>
+		<td>&nbsp;{if $minsalary && $maxsalary}{$minsalary}-{$maxsalary}{$DT[money_unit]}/月{elseif $minsalary}{$minsalary}{$DT[money_unit]}/月以上{elseif $maxsalary}{$maxsalary}{$DT[money_unit]}/月以內{else}面議{/if}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;更新日期</td>
+		<td>&nbsp;{timetodate($edittime, 3)}</td>
+		<td>&nbsp;有效期至</td>
+		<td>&nbsp;{timetodate($totime, 3)}{if $expired}<span class="f_red">[已過期]</span>{/if}</td>
+		</tr>
+		</table>
+		</div>
+	</div>
+	<div class="main_head"><div><strong>Description</strong></div></div>
+	<div class="main_body">
+		<div class="content" id="content">{$content}</div>
+	</div>
+	{if $could_contact}
+	<div class="main_head"><div><strong>Contact Info</strong></div></div>
+	<div class="main_body">
+		<div class="px13 lh18">
+		<table width="98%" cellpadding="3" cellspacing="3" align="center">
+		<tr>
+		<td width="100">Contact: </td>
+		<td>{$truename}</td>
+		</tr>
+		<tr>
+		<td>TEL: </td>
+		<td>{if $domain}{$telephone}{else}{anti_spam($telephone)}{/if}</td>
+		</tr>
+		<tr>
+		<td>Email: </td>
+		<td>{if $domain}{$email}{else}{anti_spam($email)}{/if}</td>
+		</tr>
+		{if $mobile}
+		<tr>
+		<td>Mobile: </td>
+		<td>{if $domain}{$mobile}{else}{anti_spam($mobile)}{/if}</td>
+		</tr>
+		{/if}
+		{if $qq}
+		<tr>
+		<td>Skyp: </td>
+		<td>{$skype}</td>
+		</tr>
+		{/if}
+		{if $msn}
+		<tr>
+		<td>MSN: </td>
+		<td>{$msn}</td>
+		</tr>
+		{/if}
+		</table>
+		</div>
+	</div>
+	{/if}
+	<script type="text/javascript">
+	var content_id = 'content';
+	var img_max_width = {$MOD[max_width]};
+	</script>
+	<script type="text/javascript" src="{DT_PATH}file/script/content.js"></script>
+{else}
+<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="main_body">
+	<table cellpadding="2" cellspacing="1" width="100%" align="center">
+	{loop $lists $k $v}
+	<tr>
+	<td class="px13" height="25">&middot;<a href="{$v[linkurl]}">{$v[title]}</a></td>
+	<td align="center">&nbsp;{$v[department]}&nbsp;</td>
+	<td align="center">&nbsp;{if $v[total]}{$v[total]}人{else}若干{/if}&nbsp;</td>
+	<td align="center" width="80" class="f_gray px11">{timetodate($v[edittime], 3)}</td>
+	</tr>
+	{/loop}
+	</table>
+	<div class="pages">{$pages}</div>
+</div>
+{/if}
+{template 'footer', $template}

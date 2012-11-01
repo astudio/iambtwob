@@ -1,0 +1,6 @@
+userid,會員ID,
+username,會員名,
+ip,IP,
+moduleid,模塊ID,
+online,在線狀態,1在線0隱身
+lasttime,活動時間,

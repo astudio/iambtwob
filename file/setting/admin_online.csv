@@ -1,0 +1,6 @@
+sid,SessionID,
+username,會員名,
+ip,IP,
+moduleid,模塊ID,
+qstring,網址,
+lasttime,活動時間,

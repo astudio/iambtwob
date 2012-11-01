@@ -1,0 +1,1 @@
+document.write('<a href="http://www.gardenmachine.imb2b.com/" target="_blank"><img src="http://www.imb2b.com/file/upload/201210/09/16-44-09-10-5966.jpg" width="240" height="60" alt=""/></a>');

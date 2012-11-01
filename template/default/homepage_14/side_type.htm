@@ -1,0 +1,20 @@
+{if $file != 'sell' || ($file == 'sell' && $itemid)}
+<div class="title"><h4><strong>{$side_name[$HS]}</strong></h4></div>
+<div class="in">
+<!--{php $tags=tag("table=type&condition=item='product-".$userid."'&pagesize=".$side_num[$HS]."&order=listorder asc,typeid asc&template=null");}-->
+<ul id="subnav">
+{if $tags}
+<li><a href="{userurl($username, 'file=sell', $domain)}"><strong>All</strong></a></li>
+{loop $tags $t}
+<li><a href="{userurl($username, 'file=sell&typeid='.$t['typeid'], $domain)}" title="{$t[typename]}">{set_style($t[typename], $t[style])}</a></li>
+{/loop}
+{else}
+<li>No data</li>
+{/if}
+</ul>
+{if $tags}
+<div class="more"><a href="{userurl($username, 'file=sell', $domain)}"><img src="{$MODULE[4][linkurl]}image/more.gif" title="More" align="right"/></a></div>
+{/if}
+</div>
+<div class="h10"></div>
+{/if}

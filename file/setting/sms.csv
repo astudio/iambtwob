@@ -1,0 +1,7 @@
+itemid,ID,
+mobile,手機號,
+message,短信內容,
+word,短信字數,
+editor,編輯,
+sendtime,發送時間,
+code,發送狀態,

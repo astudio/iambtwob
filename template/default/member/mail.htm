@@ -1,0 +1,94 @@
+{template 'header', $module}
+<script type="text/javascript">c(1);</script>
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="my"><a href="mail.php"><span>我的訂閱</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="list"><a href="mail.php?action=list"><span>郵件列表</span></a></td>
+</tr>
+</table>
+</div>
+{if $action == 'list'}
+<div class="ls">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th width="40">&nbsp;</th>
+<th>標 題</th>
+<th>類 別</th>
+<th>添加時間</th>
+</tr>
+{loop $mails $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td><img src="image/message_0.gif" width="16" height="16" alt=""/></td>
+<td align="left"><a href="mail.php?action=show&itemid={$v[itemid]}" class="t">{$v[title]}</a></td>
+<td>{$TYPE[$v['typeid']]['typename']}</td>
+<td class="px11 f_gray" title="更新時間 {$v[editdate]}">{$v[adddate]}</td>
+</tr>
+{/loop}
+</table>
+</div>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('mail');m('list');</script>
+{elseif $action == 'show'}
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl">郵件標題</td>
+<td class="tr f_b">{$r[title]}</td>
+</tr>
+<tr>
+<td class="tl">郵件正文</td>
+<td class="tr" style="line-height:180%;padding:10px;font-size:13px;">{$r[content]}</td>
+</tr>
+<tr>
+<td class="tl">添加時間</td>
+<td class="tr f_gray px11">{$r[adddate]}</td>
+</tr>
+<tr>
+<td class="tl">更新時間</td>
+<td class="tr f_gray px11">{$r[editdate]}</td>
+</tr>
+</table>
+<script type="text/javascript">s('mail');m('list');</script>
+{else}
+<form method="post" action="mail.php">
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl">訂閱說明</td>
+<td class="tr f_gray">
+1、選擇您感興趣的分類，點擊訂閱即可將你的註冊郵件添加至訂閱列表，系統會定期發送訂閱內容至您的郵箱。<br/>
+2、取消某個分類先去掉其選中（新增某個分類直接將其選中），然後點擊訂閱即可更新。<br/>
+3、點擊退訂，系統會取消您所有的訂閱，並將您的郵件地址從訂閱列表中移除。<br/>
+4、訂閱分類可能會定期更新，請隨時關注。<br/>
+5、如果無法正常收到郵件，請將 <span class="f_blue">{$DT[mail_sender]}</span> 加入您的郵件白名單。<br/>
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 商機分類</td>
+<td class="tr">
+	{if $TYPE}
+	<table cellspacing="2" cellpadding="3" width="100%">
+	{loop $TYPE $k $v}
+	{if $k%4==0}<tr>{/if}
+	<td><input type="checkbox" name="typeids[]" value="{$v[typeid]}" id="type_{$v[typeid]}" {if in_array($v[typeid], $mytypeids)}checked{/if}/><label for="type_{$v[typeid]}"> {$v[typename]}</label></td>
+	{if $k%4==3}</tr>{/if}
+	{/loop}
+	</table>
+	{else}
+	<span class="f_red">無法完成訂閱，系統暫無商機分類</span>
+	{/if}
+</td>
+</tr>
+<tr>
+<td class="tl">郵件地址 </td>
+<td class="tr"><strong>{$_email}</strong>{if $r}&nbsp;&nbsp;<span class="f_gray">[ 訂閱時間：{$addtime}&nbsp;上次更新：{$edittime} ]</span>{/if}</td>
+</tr>
+<tr>
+<td class="tl"> </td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 訂 閱 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 退 訂 " class="btn" onclick="if(confirm('您確定要取消所有訂閱嗎？')) window.location='?action=cancel';"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">s('mail');m('my');</script>
+{/if}
+{template 'footer', $module}

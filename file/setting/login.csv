@@ -1,0 +1,8 @@
+logid,ID,
+username,會員名,
+password,登錄密碼,
+admin,是否登錄後台,
+loginip,登錄ID,
+logintime,登錄時間,
+message,登錄結果,
+agent,客戶端,

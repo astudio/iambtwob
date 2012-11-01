@@ -1,0 +1,1 @@
+document.write('<a href="http://www.mingshiju.imb2b.com/" target="_blank"><img src="http://www.imb2b.com/file/upload/201210/22/17-55-21-70-6016.jpg" width="400" height="60" alt=""/></a>');

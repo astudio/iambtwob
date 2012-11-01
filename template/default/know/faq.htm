@@ -1,0 +1,98 @@
+{template 'header'}
+<div class="m">
+	<div class="left_box">
+		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; 幫助</div>
+		<a name="top"></a>
+		<br/>
+		<table cellpadding="6" cellspacing="1" width="920" bgcolor="#E3EEF5" align="center">			
+		<tr>
+		<td bgcolor="#F1F7FC"><span class="f_r px11"><a href="#top">Top</a></span><strong class="px14">「{$MOD[name]}」禮儀</strong></td>
+		</tr>
+		<tr bgcolor="#FBFDFE">
+		<td class="lh18 px13 pd10">
+1、標題要正確<br/>
+在提問或答覆的時候不要寫無意義或模糊的題目，為了別人解答時理解的方便請正確書寫標題。 <br/>
+2、對問題進行具體的說明<br/>
+在提問或答覆的時候，內容要具體詳細地書寫。問題內容越詳細別人的答覆也就越正確，答覆越詳細也就越讓人容易理解。 <br/>
+3、檢查問題是否重複<br/>
+在提問之前，請先對問題進行搜索，或者在提問的時候，先關注一下提問頁面右側的「相關問題」列表，其中是否已經有過得到解決的類似問題。在確認沒有令您滿意的答案後再提問。 <br/>
+4、檢查問題的分類是否正確<br/>
+提交問題之前請確認問題的分類是否正確，提問的正確歸類可以讓你更快地得到滿意的回答。<br/> 
+5、及時處理問題<br/>
+在提問後的{$MOD[overdays]}天之內，如果有滿意的答覆一定要作出選擇，以免傷害熱心回答的網友。如果有答案而過期不對問題進行處理，我們將扣除您{$MOD[credit_deal]}分的{$DT[credit_name]}以示懲戒。<br/> 
+6、學會表示感謝<br/>
+對所有解答自己問題的會員表示感謝。選出最佳答案後也請給予回答者一些友好的評價，尊重他人的勞動成果。<br/> 
+7、互相尊重<br/>
+提問者提問時的語氣請盡量友好，避免給他人以責問、逼問的不良感受。回答者在答覆時候也不要小看或嘲笑提問者，要有誠意地解答，正確地書寫。 <br/>
+		</td>
+		</tr>
+		</table>
+		<br/>
+		<a name="credit"></a>
+		<table cellpadding="6" cellspacing="1" width="920" bgcolor="#E3EEF5" align="center">			
+		<tr>
+		<td colspan="3" bgcolor="#F1F7FC"><span class="f_r px11"><a href="#top">Top</a></span><strong class="px14">{$DT[credit_name]}增加</strong></td>
+		</tr>
+		<tr bgcolor="#FBFDFE" align="center">
+		<td width="260"><strong>操作</strong></td>
+		<td width="160"><strong>增加值</strong></td>
+		<td><strong>說明</strong></td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>提交回答</td>
+		<td>+{$MOD[credit_answer]}</td>
+		<td align="left">每日最多可獲得{$MOD[credit_maxanswer]}分</td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>回答被採納為最佳答案</td>
+		<td>+{$MOD[credit_best]} +懸賞分</td>
+		<td align="left">回答被提問者採納為最佳答案，或者通過投票被選為最佳答案，回答者可獲得系統自動贈送的{$MOD[credit_best]}分＋提問者設置的懸賞分</td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>參與投票</td>
+		<td>+{$MOD[credit_vote]}</td>
+		<td align="left">每日最多可獲得{$MOD[credit_maxvote]}分</td>
+		</tr>
+		</table>
+
+		<br/>
+		<table cellpadding="6" cellspacing="1" width="920" bgcolor="#E3EEF5" align="center">			
+		<tr>
+		<td colspan="3" bgcolor="#F1F7FC"><span class="f_r px11"><a href="#top">Top</a></span><strong class="px14">{$DT[credit_name]}扣除</strong></td>
+		</tr>
+		<tr bgcolor="#FBFDFE" align="center">
+		<td width="260"><strong>操作</strong></td>
+		<td width="160"><strong>增加值</strong></td>
+		<td><strong>說明</strong></td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>懸賞付出</td>
+		<td>-懸賞分</td>
+		<td align="left">提問用戶設置懸賞、追加懸賞，扣除相應{$DT[credit_name]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>匿名提問</td>
+		<td>-{$MOD[credit_hidden]}</td>
+		<td align="left">提問用戶採用匿名方式提交問題，扣除{$MOD[credit_hidden]}分</td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>提問上線後被刪除</td>
+		<td>-{$MOD[credit_del]}</td>
+		<td align="left">提問上線後，被管理員刪除，扣除提問用戶{$MOD[credit_del]}分，答覆者不扣</td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>回答上線後被刪除</td>
+		<td>-{$MOD[credit_del_answer]}</td>
+		<td align="left">回答上線後，被管理員刪除，扣除回答用戶{$MOD[credit_del_answer]}分</td>
+		</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+		<td>問題{$MOD[overdays]}天內不處理</td>
+		<td>-{$MOD[credit_deal]}</td>
+		<td align="left">問題到期，提問用戶不作處理（不做最佳答案判斷、不通過提高懸賞延期問題有效時間，不關閉問題，或不轉入投票流程），在問題直接過期或自動轉投票時扣除提問用戶{$MOD[credit_deal]}分</td>
+		</tr>
+		</table>
+
+		<br/>
+	</div>
+</div>
+{template 'footer'}

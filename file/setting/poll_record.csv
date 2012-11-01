@@ -1,0 +1,6 @@
+rid,記錄ID,
+itemid,選項ID,
+pollid,票選ID,
+username,會員名,
+ip,IP,
+polltime,投票時間,

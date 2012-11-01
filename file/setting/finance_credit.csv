@@ -1,0 +1,8 @@
+itemid,ID,
+username,會員名,
+amount,積分,
+balance,餘額,
+addtime,添加時間,
+reason,理由,
+note,備註,
+editor,編輯,

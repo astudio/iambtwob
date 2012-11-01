@@ -1,0 +1,6 @@
+itemid,ID,
+catid,分類ID,
+areaid,地區ID,
+content,關鍵詞,
+status,狀態,
+sorttime,排序,

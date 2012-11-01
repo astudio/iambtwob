@@ -1,0 +1,5 @@
+{template 'header', $template}
+{loop $HMAIN $HM $MAIN}
+{template 'main_'.$main_file[$HM], $template}
+{/loop}
+{template 'footer', $template}

@@ -1,0 +1,6 @@
+typeid,分類ID,
+listorder,排序,
+typename,分類名稱,
+style,顏色,
+item,類型,
+cache,是否緩存,

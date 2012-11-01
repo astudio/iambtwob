@@ -1,0 +1,168 @@
+{template 'header', $template}
+<h3><strong>{$MENU[$menuid][name]}</strong></h3>
+<div class="main_body">
+	<div class="lh13 px13">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+	<tr>
+	<td><img src="{$COM[thumb]}" align="left" style="margin:5px 10px 5px 0;padding:5px;border:#C0C0C0 1px solid;"/>{$content}</td>
+	</tr>
+	</table>
+	</div>
+</div>
+<div class="h10"></div>
+
+<h3><strong>Company Profile</strong></h3>
+<div class="main_body">
+	<div class="px13 lh13">
+	<table width="98%" cellpadding="3" cellspacing="1" align="center">
+	<tr>
+	<td width="90" class="f_b">Name: </td>
+	<td width="260">{$COM[company]}</td>
+	<td width="90" class="f_b">Business Type: </td>
+	<td width="260">{$COM[type]}</td>
+	</tr>
+	<tr>
+	<td class="f_b">Location: </td>
+	<td>{area_pos($COM[areaid], '/')}</td>
+	<td class="f_b">Employees Total: </td>
+	<td>{$COM[size]}</td>
+	</tr>
+	<tr>
+	<td class="f_b">Capital: </td>
+	<td>{$COM[capital]} {$COM[regunit]}</td>
+	<td class="f_b">Year Established: </td>
+	<td>{$COM[regyear]}</td>
+	</tr>
+	</table>
+	<table width="98%" cellpadding="3" cellspacing="1" align="center">
+{if $COM[validated]}  
+	<tr>
+	<td class="f_b">Validation: </td>
+	<td>
+   {template 'validate', 'chip'}	
+	</td>
+	</tr>
+{/if}  
+	{if $COM[mode]}
+	<tr>
+	<td class="f_b">Market: </td>
+	<td>{$COM[mode]}</td>
+	</tr>
+	{/if}
+	{if $COM[business]}
+	<tr>
+	<td class="f_b">Business Scope: </td>
+	<td>{$COM[business]}</td>
+	</tr>
+	{/if}
+	{if $COM[sell]}
+	<tr>
+	<td class="f_b">We Sell: </td>
+	<td>{$COM[sell]}</td>
+	</tr>
+	{/if}
+	{if $COM[buy]}
+	<tr>
+	<td class="f_b">We Buy: </td>
+	<td>{$COM[buy]}</td>
+	</tr>
+	{/if}
+	{if $COM[catid]}
+	<tr>
+	<td width="90"  class="f_b">Main Industry: </td>
+	<td>
+	{php $catids = explode(',', substr($COM['catid'], 1, -1));}
+	<table cellpadding="2" cellspacing="2" width="100%">
+	{loop $catids $i $c}
+	{if $i%3==0}<tr>{/if}
+	<td width="33%">{cat_pos($c, ' / ', '_blank')}</td>
+	{if $i%3==2}</tr>{/if}
+	{/loop}
+	</table>
+	</td>
+	</tr>
+	{/if}
+	</table>
+	</div>
+</div>
+<div class="h10"></div>
+
+{if $could_contact}
+<h3><strong>Contact Info</strong></h3>
+<div class="main_body">
+	<div class="px13 lh13">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+	<tr>
+	<td width="100">Address: </td>
+	<td>{$COM[address]}</td>
+	</tr>
+	{if $COM[postcode]}
+	<tr>
+	<td>Zip Code: </td>
+	<td>{$COM[postcode]}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>TEL: </td>
+	<td>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</td>
+	</tr>
+	{if $COM[fax]}
+	<tr>
+	<td>FAX: </td>
+	<td>{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</td>
+	</tr>
+	{/if}
+	{if $COM[mail]}
+	<tr>
+	<td>Email: </td>
+	<td>{if $domain}{$COM[mail]}{else}{anti_spam($COM[mail])}{/if}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>Website: </td>
+	<td>{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank">{$COM[homepage]}</a><br/>{/if}
+	<a href="{$COM[linkurl]}" target="_blank">{$COM[linkurl]}</a></td>
+	</tr>
+	{if $COM[truename]}
+	<tr>
+	<td>Contact: </td>
+	<td>{if $COM[gender]==1}Mr.{else}Ms.{/if} {$COM[truename]} {$COM[lastname]}</td>
+	</tr>
+	{/if}
+	{if $COM[department]}
+	<tr>
+	<td>Department (Position)：</td>
+	<td>{$COM[department]}{if $COM[career]} （{$COM[career]}）{/if}</td>
+	</tr>
+	{/if}
+	{if $COM[mobile]}
+	<tr>
+	<td>Mobile: </td>
+	<td>{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $DT[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="Send SMS" alt=""/></a>{/if}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>Instant Messaging: </td>
+	<td>
+    {template 'instant', 'chip'}
+	</td>
+	</tr>
+	<tr>
+	<td>Updated Date: </td>
+	<td>{timetodate($COM[logintime], 3)}</td>
+	</tr>
+	</table>
+	</div>
+</div>
+<div class="h10"></div>
+{/if}
+
+{if $could_comment && in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
+<div id="comment_div" style="display:;">
+	<div class="title_bar"><span class="f_r px12">共<span id="comment_count">0</span>條&nbsp;&nbsp;</span><strong><span id="message_title">相關評論</span></strong></div>
+	<div class="main_body"><iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$COM[userid]}" id="destoon_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+	</div>
+</div>
+{/if}
+
+{template 'footer', $template}

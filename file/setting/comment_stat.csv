@@ -1,0 +1,7 @@
+sid,ID,
+moduleid,模塊ID,
+itemid,信息ID,
+comment,評論ID,
+star1,差評,
+star2,中評,
+star3,好評,

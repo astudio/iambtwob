@@ -83,9 +83,10 @@ class db_mysql {
 		return $r;
 	}
 	
-	function count($table, $condition = '', $ttl = 0) {
+	function count($table, $condition = '', $ttl = 0, $group='') {
 		global $DT_TIME;
-		$sql = 'SELECT COUNT(*) as amount FROM '.$table;
+		$sql = $group ? 'SELECT COUNT(DISTINCT username) as amount FROM '.$table : 'SELECT COUNT(*) as amount FROM '.$table;		
+		//$sql = 'SELECT COUNT(*) as amount FROM '.$table;
 		if($condition) $sql .= ' WHERE '.$condition;
 		$r = $this->get_one($sql, $ttl ? 'CACHE' : '', $ttl);
 		return $r ? $r['amount'] : 0;

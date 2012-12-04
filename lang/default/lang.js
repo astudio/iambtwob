@@ -65,7 +65,7 @@ L['upload_attach']			= '插入附件';
 /* homepage.js & member.js */
 L['click_open']				= '點擊打開原圖';
 L['keyword_value']			= '輸入關鍵詞';
-L['keyword_message']		= '請輸入關鍵詞';
+L['keyword_message']		= 'Enter a keyword';
 L['Sunday']					= '星期日';
 L['Monday']					= '星期一';
 L['Tuesday']				= '星期二';

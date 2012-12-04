@@ -1,62 +1,117 @@
-<div class="m">
-	<div class="b10">&nbsp;</div>
-	<div class="foot_search">
-		<div class="foot_search_m" id="foot_search_m">
-		{loop $MODULE $m}{if $m[ismenu] && !$m[islink]}<span id="foot_search_m_{$m[moduleid]}" onclick="setFModule({$m[moduleid]})" class="{if $m[moduleid]==$searchid}f_b{else}{/if}">{$m[name]}</span> | {/if}{/loop}
+		<!-- 分隔10像素 -->
+		<div class="m b10">&nbsp;</div>
+<!-- *** footer -->
+		<footer id="footer">
+			<div class="m no_bg">
+				<div class="sitemap">
+					<div class="section">
+						<div class="sitemap_type">About</div>
+						<ul>
+							<li>
+								<a href="http://news.imb2b.com/specials/aboutimb2b/aligroup/index.html" rel="nofollow" target="_blank">Company Information</a>
+							</li>
+							<li><a href="http://www.imb2b.com/sitemap.html" target="_blank">Site Map</a></li>
+						</ul>
+					</div>
+					<div class="section">
+						<div class="sitemap_type">
+							<a href="http://www.imb2b.com/Products" class="fake-text">Buy</a>ing on ImB2B
+						</div>
+						<ul>
+							<li><a href="http://us.my.imb2b.com/rfq/request/post_buy_request.htm?tracelog=new_hpbottom_0418" rel="nofollow" target="_blank">Post Buying Requests</a></li>
+							<li><a href="http://www.imb2b.com/Products?cd=buyhome&amp;tracelog=24581_foot_browse_cate" target="_blank" rel="nofollow">Browse Categories</a></li>
+							<li><a href="http://www.imb2b.com/countrysearch/continent.html" target="_blank">Browse by Country</a></li>
+							<li><a href="http://www.aliexpress.com/" target="_blank" rel="nofollow">Buy on AliExpress</a></li>
+							<li><a href="http://www.imb2b.com/help/user-guide-new.html?tracelog=HP_quickguide_20121010" target="_blank" rel="nofollow">How to Buy</a></li>
+						</ul>
+					</div>
+					<div class="section">
+						<div class="sitemap_type">
+							<a href="http://importer.imb2b.com/" class="fake-text">Sell</a>ing on ImB2B
+						</div>
+						<ul>
+							<li><a href="http://www.imb2b.com/trade/servlet/page/static/paid_memberships/index?tracelog=24581_foot_pre_membership" rel="nofollow" target="_blank">Premium Membership</a></li>
+							<li><a href="http://www.imb2b.com/vm" rel="nofollow" target="_blank">Verified Membership</a></li>
+							<li><a href="http://us.my.imb2b.com/product/post_product.htm?tracelog=24581_foot_display_product" rel="nofollow" target="_blank">Display Products</a></li>
+							<li><a target="_blank" rel="nofollow" href="http://us.my.imb2b.com/product/manage_products.htm?tracelog=fromhpfoot#tab=all">Manage Products</a></li>
+						</ul>
+					</div>
+					<div class="section">
+						<div class="sitemap_type">Service &amp; Tools</div>
+						<ul>
+							<li><a href="http://us.my.imb2b.com/?tracelog=24581_foot_myimb2b" rel="nofollow" target="_blank">My ImB2B</a></li>
+							<li><a href="http://trademanager.imb2b.com/?tracelog=24581_foot_trade_manager" rel="nofollow" target="_blank">TradeManager</a></li>
+							<li><a href="http://ask.imb2b.com/" target="_blank">Ask It!</a></li>
+							<li><a href="http://us.my.imb2b.com/tradealert/myimb2b/sub_scription_trade_alert.htm?tracelog=24581_foot_trade_alert" rel="nofollow" target="_blank">Trade Alert</a></li>
+						</ul>
+					</div>
+					<div class="section last-section">
+						<div class="sitemap_type">Safety &amp; Support</div>
+						<ul>
+							<li><a href="http://channel.imb2b.com/complaint/home.htm?tracelog=24581_foot_report_dispute" rel="nofollow" target="_blank">Submit a Complaint</a></li>
+							<li><a href="http://www.imb2b.com/help" rel="nofollow" target="_blank">Help Center</a></li>
+							<li><a href="http://www.imb2b.com/help/contact-us.html#askquestion" rel="nofollow" target="_blank">Contact us</a></li>
+							<li><a href="http://www.imb2b.com/help/safety_security.html?tracelog=24581_foot_safety" rel="nofollow" target="_blank">Safety &amp; Security Center</a></li>
+						</ul>
+					</div>
+				</div>
+			
+				<div class="foot c_b">
+					<div id="webpage">
+						<a href="{$MODULE[1][linkurl]}">Home</a>
+						| <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="l">Login</a>
+						| <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="l">Join</a>
+						<!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder asc,itemid asc&template=list-webpage")}-->
+						| <a href="{$MODULE[1][linkurl]}sitemap/">Sitemap</a>
+						{if $EXT[gift_enable]} | <a href="{$EXT[gift_url]}">積分換禮</a>{/if}
+						{if $EXT[feed_enable]} | <a href="{$EXT[feed_url]}">RSS</a>{/if}
+						{if $DT[icpno]} | <a href="http://www.miibeian.gov.cn" target="_blank">{$DT[icpno]}</a>{/if}
+						{if $EXT[guestbook_enable]} | <a href="{$EXT[guestbook_url]}">Contact Us</a>{/if}
+						{if $EXT[ad_enable]} | <a href="{$EXT[ad_url]}">Advertise with Us</a>{/if}						
+					</div>
+					<div id="copyright">{$DT[copyright]}</div>
+					{if DT_DEBUG}<div class="px11">{debug()}</div>{/if}
+					<div id="powered"><!--DEL <a href="http://www.destoon.com/" target="_blank"><img src="{DT_PATH}file/image/powered.gif" width="136" height="10" alt="Powered by DESTOON 4.0"/></a> --></div>
+				</div>
+			</div>
+		</footer>
+		<!-- 底部固定工具列 -->
+		<div id="destoon_toolbar" class="notranslate">
+			<div class="tb_m">
+				<div class="tb_r">
+					<div>
+						<img src="{$MODULE[2][linkurl]}image/ico_newcart.gif" width="16" height="16" align="absmiddle" alt=""/>
+						<a href="{$MODULE[16][linkurl]}cart.php">購物車</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
+						<img src="{$MODULE[2][linkurl]}image/ico_message.gif" width="16" height="16" align="absmiddle" alt=""/>
+						<a href="{$MODULE[2][linkurl]}message.php">站內信</a>(<span id="destoon_message">0</span>)
+						{if $DT[im_web]}
+						&nbsp;&nbsp;&nbsp;<img src="{$MODULE[2][linkurl]}image/ico_newchat.gif" width="14" height="13" align="absmiddle" alt=""/>
+						<a href="{$MODULE[2][linkurl]}chat.php">新對話</a>(<span id="destoon_chat">0</span>)
+						{/if}
+					</div>
+				</div>
+				<div class="tb_l">
+					<div>
+						<img src="{DT_SKIN}image/vip.gif" alt="上網做生意，首選{VIP}會員" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}grade.php">會員服務</a>
+						| <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">發佈信息</a>
+						| <a href="{$MODULE[2][linkurl]}">會員中心</a>
+						| <a href="{$MODULE[1][linkurl]}">返回首頁</a>
+					</div>
+				</div>
+				<div class="tb_c" onclick="window.scrollTo(0,0);" title="返回頂部" id="tb_c"></div>
+			</div>
 		</div>
-		<div>
-		<form id="foot_search" action="{DT_PATH}search.php" onsubmit="return Fsearch();">
-		<input type="hidden" name="moduleid" value="{$searchid}" id="foot_moduleid"/>
-		<input type="text" name="kw" class="foot_search_i" id="foot_kw" value="{if $kw}{$kw}{else}請輸入關鍵詞{/if}" onfocus="if(this.value=='請輸入關鍵詞') this.value='';"/>&nbsp;&nbsp;
-		<input type="submit" class="foot_search_s" id="foot_search_s" value="搜索"/>
-		</form>
-		</div>
-	</div>
-	<div class="b10">&nbsp;</div>
-</div>
-<div class="m">
-	<div class="foot">
-		<div id="webpage">
-		<a href="{$MODULE[1][linkurl]}">網站首頁</a>
-		<!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}-->
-		| <a href="{$MODULE[1][linkurl]}sitemap/">網站地圖</a>
-		{if $EXT[guestbook_enable]} | <a href="{$EXT[guestbook_url]}">網站留言</a>{/if}
-		{if $EXT[ad_enable]} | <a href="{$EXT[ad_url]}">廣告服務</a>{/if}
-		{if $EXT[gift_enable]} | <a href="{$EXT[gift_url]}">積分換禮</a>{/if}
-		{if $EXT[feed_enable]} | <a href="{$EXT[feed_url]}">RSS訂閱</a>{/if}
-		{if $DT[icpno]} | <a href="http://www.miibeian.gov.cn" target="_blank">{$DT[icpno]}</a>{/if}
-		</div>
-		<div id="copyright">{$DT[copyright]}</div>
-		{if DT_DEBUG}<div class="px11">{debug()}</div>{/if}
-		<div id="powered"><a href="http://www.destoon.com/" target="_blank"><img src="{DT_PATH}file/image/powered.gif" width="136" height="10" alt="Powered by DESTOON 4.0"/></a></div>
-	</div>
-</div>
+		<script type="text/javascript">
+			show_task('{$destoon_task}');
+			(function($) {
+				if(!$) return false;
+				
 
-<div id="destoon_toolbar">
-	<div class="tb_m">
-		<div class="tb_r">
-			<div>
-				<img src="{$MODULE[2][linkurl]}image/ico_newcart.gif" width="16" height="16" align="absmiddle" alt=""/>
-				<a href="{$MODULE[16][linkurl]}cart.php">購物車</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
-				<img src="{$MODULE[2][linkurl]}image/ico_message.gif" width="16" height="16" align="absmiddle" alt=""/>
-				<a href="{$MODULE[2][linkurl]}message.php">站內信</a>(<span id="destoon_message">0</span>)
-				{if $DT[im_web]}
-				&nbsp;&nbsp;&nbsp;<img src="{$MODULE[2][linkurl]}image/ico_newchat.gif" width="14" height="13" align="absmiddle" alt=""/>
-				<a href="{$MODULE[2][linkurl]}chat.php">新對話</a>(<span id="destoon_chat">0</span>)
-				{/if}
-			</div>
-		</div>
-		<div class="tb_l">
-			<div>
-				<img src="{DT_SKIN}image/vip.gif" alt="上網做生意，首選{VIP}會員" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}grade.php">會員服務</a>
-				| <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">發佈信息</a>
-				| <a href="{$MODULE[2][linkurl]}">會員中心</a>
-				| <a href="{$MODULE[1][linkurl]}">返回首頁</a>
-			</div>
-		</div>
-		<div class="tb_c" onclick="window.scrollTo(0,0);" title="返回頂部" id="tb_c"></div>
-	</div>
-</div>
-<script type="text/javascript">show_task('{$destoon_task}');</script>
-</body>
+				$(function(){
+
+
+				});				
+			})(jQuery);	
+		</script>
+	</body>
 </html>

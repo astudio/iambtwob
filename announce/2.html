@@ -9,67 +9,188 @@
 <link rel="shortcut icon" type="image/x-icon" href="http://demo.imb2b.com/favicon.ico"/>
 <link rel="bookmark" type="image/x-icon" href="http://demo.imb2b.com/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/style.css"/>
-<!--[if lte IE 6]>
-<link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/ie6.css"/>
-<![endif]-->
-<script type="text/javascript">window.onerror=function(){return true;}</script><script type="text/javascript" src="http://demo.imb2b.com/lang/zh-cn/lang.js"></script>
+<link href="http://demo.imb2b.com/skin/default/index/css/www.css" rel="stylesheet" type="text/css" />
+<link href="http://demo.imb2b.com/skin/default/index/css/l_menu.css" rel="stylesheet" type="text/css" />
+<link href="http://demo.imb2b.com/skin/default/index/css/t_menu.css" rel="stylesheet" type="text/css" />
+<link href="http://demo.imb2b.com/skin/default/index/css/homeflash.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="http://demo.imb2b.com/skin/default/index/js/jquery.js"></script>
+<script language="javascript" src="http://demo.imb2b.com/skin/default/index/js/jquery.cycle.js"></script>
+<script language="javascript" src="http://demo.imb2b.com/skin/default/index/js/www.js"></script>
+<script language="javascript" src="http://demo.imb2b.com/skin/default/index/js/jQuery.textSlider.js"></script>
+<link href="http://demo.imb2b.com/skin/default/index/css/sel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://demo.imb2b.com/lang/default/lang.js"></script>
 <script type="text/javascript" src="http://demo.imb2b.com/file/script/config.js"></script>
 <script type="text/javascript" src="http://demo.imb2b.com/file/script/common.js"></script>
 <script type="text/javascript" src="http://demo.imb2b.com/file/script/page.js"></script>
+<base target="_blank" />
 </head>
 <body>
-<div class="top">
-<div class="top_div">
-<div class="f_r" id="destoon_member"></div>
-<div>
-<script type="text/javascript">addFav('收藏本頁');</script>
-| <a href="http://demo.imb2b.com/extend/shortcut.php" rel="nofollow">加入桌面</a>
- | <a href="http://demo.imb2b.com/archiver/">無圖版</a></div>
+<!--head-->
+<div id="head_bar">
+<div id="head_bar0"><table border="0" width="100%" height="36">
+<tr>
+<td><div class="Amm" id="destoon_member"></div></td>
+</tr>
+</table></div>
+<div id="head_bar1">
+<ul>
+<li onmouseover="t_menu(1,1)" onmouseout="t_menu(1,2)">
+<a href="#">商務中心</a>
+<ul id="t_cld1" class="ul_out_hover">
+<li class="t_txt"></li>
+<li><a href="/member/my.php?mid=5&action=add">發佈供應</a></li>
+<li><a href="/member/my.php?mid=6&action=add">發佈求購</a></li>
+<li><a href="/member/my.php?mid=21&action=add">發佈資訊</a></li>
+<li><a href="/member/my.php?mid=8&action=add">發佈展會</a></li>
+<li><a href="/member/my.php?mid=9&action=add">發佈招聘</a></li>
+<li><a href="/member/my.php?mid=13&action=add">發佈品牌</a></li>
+<li><a href="/member/my.php?mid=10&action=add">發佈問答</a></li>
+</ul>
+</li>
+<li onmouseover="t_menu(2,1)" onmouseout="t_menu(2,2)"><a href="#">訂閱中心</a>
+<ul id="t_cld2" class="ul_out_hover">
+<li class="t_txt"></li>
+<li><a href="/feed/">商務中心</a></li>
+<li><a href="http://bbs.maoyiba.com/forum.php?mod=rss">商界讀者</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="head_bar2">
+<span><a href="/member/grade.php">會員服務</a></span>
+<span><a href="#">客服中心</a></span>
+<span><a href="/ad/">廣告服務</a></span>
+</div>
+<div id="head_bar3"><span class="c_hand" onclick="addfavorite('http://demo.imb2b.com/','貿易吧')">收藏貿易吧</span></div>
+</div>
+<div id="head">
+<div id="add" style="display:none">
+<div class="jt"></div>
+<div class="add-con">
+<div class="add-l">尋商機，交商友，看資訊，<strong><a href="/member/register.php">立即加入貿易吧</a></strong></div>
+<div  class="add-r" id="close-add"><img alt="" src="http://demo.imb2b.com/skin/default/index/images/xx.gif" /></div>
 </div>
 </div>
-<div class="m"><div id="search_tips" style="display:none;"></div></div>
-<div class="m">
-<div class="f_l logo"><a href="http://demo.imb2b.com/"><img src="http://demo.imb2b.com/skin/default/image/logo.gif" alt="ImB2B"/></a></div>
-<script type="text/javascript">var searchid = 5;</script>
-<form id="destoon_search" action="http://demo.imb2b.com/search.php" onsubmit="return Dsearch();">
-<input type="hidden" name="moduleid" value="5" id="destoon_moduleid"/>
-<input type="hidden" name="spread" value="0" id="destoon_spread"/>
-<div class="f_l head_search">
-<ul id="search_module">
-<li class="head_search_on" onclick="setModule(5, this);"><span>供應</span></li><li onclick="setModule(6, this);"><span>求購</span></li><li onclick="setModule(4, this);"><span>公司</span></li><li onclick="setModule(21, this);"><span>資訊</span></li><li onclick="setModule(22, this);"><span>徵展活動</span></li></ul>
-<div>
-<input name="kw" id="destoon_kw" type="text" class="search_i" value="請輸入關鍵詞" onfocus="if(this.value=='請輸入關鍵詞') this.value='';" onkeyup="STip(this.value);" autocomplete="off"/>
-<input type="submit" value=" " class="search_s"/>
+<div id="head1" class="width980">
+<div id="head_logo"></div>
+<div id="head_search">
+<script language="javascript">
+$(function($){
+  $("#close-add").click(function(){
+  $("#add").hide();
+  });
+});
+</script>
+<script language="javascript">
+           function change_search_menu(id,words){
+//$("#subbtn").attr("value", words);
+$("#slist li").click(function(){
+$(this).addClass("graybg") .siblings().removeClass("graybg");  
+});
+if(id=='sell'){
+ $("#main_serach").attr("action", "sell/search.php?");
+ $("#keyword").attr("name", "kw");
+ $("#mod").attr("value", "sell");
+}else if(id=='company'){
+ $("#main_serach").attr("action", "company/search.php?");
+ $("#keyword").attr("name", "kw");
+ $("#mod").attr("value", "com");
+}else if(id=='buy'){
+ $("#main_serach").attr("action", "buy/search.php?");
+ $("#keyword").attr("name", "kw");
+ $("#mod").attr("value", "bbs");
+}else if(id=='mall'){
+$("#main_serach").attr("action", "mall/search.php?");
+$("#keyword").attr("name", "kw");
+ $("#mod").attr("value", "quan");
+}else if(id=='news'){
+ $("#main_serach").attr("action", "news/search.php?");
+ $("#keyword").attr("name", "kw");
+ $("#mod").attr("value", "news");
+} 
+     }
+</script>
+<div class="serch-tab">
+        <div class="title-tab"  id="slist">
+            <ul>
+                        <li  class="graybg"  onclick="change_search_menu('sell','找產品')">找產品</li>
+                        <li  onclick="change_search_menu('company','找公司')">找公司</li>
+                        <li  onclick="change_search_menu('buy','找帖子')">找供求</li>
+                        <li  onclick="change_search_menu('mall','找人脈')">商城</li>
+                        <li  onclick="change_search_menu('news','找資訊')">資訊</li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="serchtabs">
+                <form  name="form2" method="get" action="sell/search.php?" id="main_serach" onsubmit="return checksearch(this)">
+                    <div class="text"><input type="text" name="kw"  class="s-inupt" style="border:0px" id="keyword"/></div>
+                    <!-- 搜索類型 -->
+                    <input type="hidden" />
+                    <div class="serch">
+                        <input type="submit" value="" style=" border:0px;
+border-style:none;background-color:transparent;height:26px;line-height:26px; overflow:hidden; color:#FFF; font-weight:bold;font-size:14px;width:100px;text-align:center; margin-top:8px;padding-right:5px;" />
+                    </div>
+                </form>
+        </div>
+        <div class="clear"></div>
+    </div>
 </div>
 </div>
-</form>
-<div class="f_l head_search_adv">
-<a href="" onclick="Dsearch_adv();return false;" class="head_search_adv_1">高級搜索</a>
-<a href="" onclick="Dsearch_top();return false;" class="head_search_adv_2">標王直達</a>
+<div id="head2" class="width980">
+<div id="head_menu1" class="c_hand" onclick="sethome(this,'http://demo.imb2b.com/')">設定本站為瀏覽器首頁</div>
+<div id="head_menu2">
+<ul>
+<li class="h_menu_on"><a href="http://www.maoyiba.com/">網站首頁</a></li>
+<li class="h_menu_noton"><a href="/sell">供應產品</a></li>
+<li class="h_menu_noton"><a href="/mews/">商貿資訊</a></li>
+<li class="h_menu_noton"><a href="/brand/">商貿品牌</a></li>
+<li class="h_menu_noton"><a href="/mall/">貿易商城</a></li>
+</ul>
 </div>
-<div class="f_l btntool">
-<a href="http://demo.imb2b.com/spread/"><img src="http://demo.imb2b.com/skin/default/image/btn_word.gif" width="32" height="32" alt="排名推廣"/><br/>
-<span>排名推廣</span></a>
-</div>
-<div class="f_l btntool">
-<a href="http://demo.imb2b.com/member/my.php"><img src="http://demo.imb2b.com/skin/default/image/btn_edit.gif" width="32" height="32" alt="發佈信息"/><br/>
-<span>發佈信息</span></a>
-</div>
-<div class="f_l btntool">
-<a href="http://demo.imb2b.com/member/"><img src="http://demo.imb2b.com/skin/default/image/btn_user.gif" width="32" height="32" alt="會員中心"/><br/>
-<span>會員中心</span></a>
-</div>
-</div>
-<div class="m">
-<div class="menu_l">&nbsp;</div>
-<div class="menu_b">
-<div class="menu">
-<ul><li class="menuon"><a href="http://demo.imb2b.com/"><span>首頁</span></a></li><li><a href="http://demo.imb2b.com/sell/"><span>供應</span></a></li><li><a href="http://demo.imb2b.com/company/"><span>公司</span></a></li><li><a href="http://demo.imb2b.com/buy/"><span>求購</span></a></li><li><a href="http://demo.imb2b.com/exhibit/"><span>展會</span></a></li><li><a href="http://demo.imb2b.com/photo/"><span>圖庫</span></a></li><li><a href="http://demo.imb2b.com/video/"><span>影片</span></a></li><li><a href="http://demo.imb2b.com/down/"><span>下載</span></a></li><li><a href="http://demo.imb2b.com/news/"><span>資訊</span></a></li><li><a href="http://demo.imb2b.com/ebook/"><span>電子書</span></a></li><li><a href="http://demo.imb2b.com/recruit/"><span>徵展活動</span></a></li><li><a href="http://demo.imb2b.com/trend/"><span>產業動態</span></a></li></ul>
+<div id="head_menu3">
+<div id="hm31"><a href="http://login.maoyiba.com/"><img src="http://demo.imb2b.com/skin/default/index/images/yzsdl.gif" alt="一站式登錄" width="95" height="26" /></a></div>
+<div id="hm32">
+<div id="fwdiv">
+<div><img src="http://demo.imb2b.com/skin/default/index/images/mybfw.gif" width="95" height="26" /></div>
+<div class="fw-box">
+<div class="fw-list">
+<div><a href="/member/grade.php">VIP服務</a></div>
+<div><a href="/ad/">廣告服務</a></div>
+<div><a href="/spread/">排名推廣</a></div>
+<div><a href="#">客服中心</a></div>
+<div><a href="/extend/contact.html">聯繫我們</a></div>
 </div>
 </div>
-<div class="menu_r">&nbsp;</div>
 </div>
-<div class="m b10">&nbsp;</div><div class="m">
+</div>
+</div>
+</div>
+</div>
+<div id="head_menu4">
+<div id="head_menu41">
+<span><a href="http://demo.imb2b.com/">首頁</a></span> 
+<span><a href="http://demo.imb2b.com/sell/" >供應</a></span>
+<span><a href="http://demo.imb2b.com/company/" >公司</a></span>
+<span><a href="http://demo.imb2b.com/buy/" >求購</a></span>
+<span><a href="http://demo.imb2b.com/exhibit/" >展會</a></span>
+<span><a href="http://demo.imb2b.com/photo/" >圖庫</a></span>
+<span><a href="http://demo.imb2b.com/brand/" >品牌</a></span>
+<span><a href="http://demo.imb2b.com/video/" >影片</a></span>
+<span><a href="http://demo.imb2b.com/down/" >下載</a></span>
+<span><a href="http://demo.imb2b.com/mall/" >商城</a></span>
+<span><a href="http://demo.imb2b.com/group/" >團購</a></span>
+<span><a href="http://demo.imb2b.com/news/" >資訊</a></span>
+<span><a href="http://demo.imb2b.com/ebook/" >電子書</a></span>
+<span><a href="http://demo.imb2b.com/invest/" >徵展活動</a></span>
+<span><a href="http://demo.imb2b.com/trend/" >產業動態</a></span>
+</div>
+<div id="head-m2">
+<script language="javascript" src="http://demo.imb2b.com/skin/default/mayibaindex/js/time.js"></script>
+</div>
+<div id="head-m3"><iframe src="http://m.weather.com.cn/m/pn4/weather.htm " width="160" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+</div>
+</div>
+<!--headend--><div class="m">
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 <td valign="top" class="left_menu">
@@ -130,21 +251,6 @@ PRODUCTS SPECIAL FEATURES：</div>
 </div>
 <script type="text/javascript">try{Dd('type_45').className='left_menu_on';}catch(e){}</script>
 <div class="m">
-<div class="b10">&nbsp;</div>
-<div class="foot_search">
-<div class="foot_search_m" id="foot_search_m">
-<span id="foot_search_m_5" onclick="setFModule(5)" class="f_b">供應</span> | <span id="foot_search_m_4" onclick="setFModule(4)" class="">公司</span> | <span id="foot_search_m_6" onclick="setFModule(6)" class="">求購</span> | <span id="foot_search_m_8" onclick="setFModule(8)" class="">展會</span> | <span id="foot_search_m_12" onclick="setFModule(12)" class="">圖庫</span> | <span id="foot_search_m_14" onclick="setFModule(14)" class="">影片</span> | <span id="foot_search_m_15" onclick="setFModule(15)" class="">下載</span> | <span id="foot_search_m_21" onclick="setFModule(21)" class="">資訊</span> | <span id="foot_search_m_23" onclick="setFModule(23)" class="">電子書</span> | <span id="foot_search_m_22" onclick="setFModule(22)" class="">徵展活動</span> | <span id="foot_search_m_24" onclick="setFModule(24)" class="">產業動態</span> | </div>
-<div>
-<form id="foot_search" action="http://demo.imb2b.com/search.php" onsubmit="return Fsearch();">
-<input type="hidden" name="moduleid" value="5" id="foot_moduleid"/>
-<input type="text" name="kw" class="foot_search_i" id="foot_kw" value="請輸入關鍵詞" onfocus="if(this.value=='請輸入關鍵詞') this.value='';"/>&nbsp;&nbsp;
-<input type="submit" class="foot_search_s" id="foot_search_s" value="搜索"/>
-</form>
-</div>
-</div>
-<div class="b10">&nbsp;</div>
-</div>
-<div class="m">
 <div class="foot">
 <div id="webpage">
 <a href="http://demo.imb2b.com/">網站首頁</a>
@@ -152,32 +258,8 @@ PRODUCTS SPECIAL FEATURES：</div>
 | <a href="http://demo.imb2b.com/extend/agreement.htm">Terms of Service</a> 
 | <a href="http://demo.imb2b.com/extend/aboutus.htm">About Us</a> 
 | <a href="http://demo.imb2b.com/sitemap/">網站地圖</a>
- | <a href="http://demo.imb2b.com/guestbook/">網站留言</a> | <a href="http://demo.imb2b.com/ad/">廣告服務</a> | <a href="http://demo.imb2b.com/gift/">積分換禮</a> | <a href="http://demo.imb2b.com/feed/">RSS訂閱</a> | <a href="http://www.miibeian.gov.cn" target="_blank">备案申请中</a></div>
+ | <a href="http://demo.imb2b.com/guestbook/">網站留言</a> | <a href="http://demo.imb2b.com/ad/">廣告服務</a> | <a href="http://demo.imb2b.com/gift/">積分換禮</a> | <a href="http://demo.imb2b.com/feed/">RSS訂閱</a></div>
 <div id="copyright">©2009-2011 <strong><font style="color:#ff6600;">ImB2B.COM</font></strong> All Rights Reserved.</div>
-<div id="powered"><a href="http://www.destoon.com/" target="_blank"><img src="http://demo.imb2b.com/file/image/powered.gif" width="136" height="10" alt="Powered by DESTOON 4.0"/></a></div>
-</div>
-</div>
-<div id="destoon_toolbar">
-<div class="tb_m">
-<div class="tb_r">
-<div>
-<img src="http://demo.imb2b.com/member/image/ico_newcart.gif" width="16" height="16" align="absmiddle" alt=""/>
-<a href="cart.php">購物車</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
-<img src="http://demo.imb2b.com/member/image/ico_message.gif" width="16" height="16" align="absmiddle" alt=""/>
-<a href="http://demo.imb2b.com/member/message.php">站內信</a>(<span id="destoon_message">0</span>)
-&nbsp;&nbsp;&nbsp;<img src="http://demo.imb2b.com/member/image/ico_newchat.gif" width="14" height="13" align="absmiddle" alt=""/>
-<a href="http://demo.imb2b.com/member/chat.php">新對話</a>(<span id="destoon_chat">0</span>)
-</div>
-</div>
-<div class="tb_l">
-<div>
-<img src="http://demo.imb2b.com/skin/default/image/vip.gif" alt="上網做生意，首選VIP會員" align="absmiddle"/> <a href="http://demo.imb2b.com/member/grade.php">會員服務</a>
-| <a href="http://demo.imb2b.com/member/my.php">發佈信息</a>
-| <a href="http://demo.imb2b.com/member/">會員中心</a>
-| <a href="http://demo.imb2b.com/">返回首頁</a>
-</div>
-</div>
-<div class="tb_c" onclick="window.scrollTo(0,0);" title="返回頂部" id="tb_c"></div>
 </div>
 </div>
 <script type="text/javascript">show_task('moduleid=3&html=announce&itemid=2');</script>

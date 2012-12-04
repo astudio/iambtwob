@@ -26,7 +26,8 @@ function show_date() {
 	dt_weekday = dt_today.getDay();
 	dt_month = dt_today.getMonth()+1;
 	dt_day = dt_today.getDate();
-	document.write(lang(L['show_date'], [dt_month, dt_day, dt_week[dt_weekday]]));
+	dt_year = dt_today.getFullYear();
+	document.write(lang(L['show_date'], [dt_month, dt_day, dt_week[dt_weekday], dt_year]));
 }
 function ImgZoom(i, m) {
 	var m = m ? m : 550; var w = i.width;

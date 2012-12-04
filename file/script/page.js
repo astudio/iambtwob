@@ -45,10 +45,11 @@ function _PushNew() {
 		}
 	}
 }
-function setModule(i, o) {
+function setModule(i, o, v) {
 	Dd('destoon_moduleid').value = i;
+	Dd('select_module').value = v;
 	searchid = i;
-	var lis = Dd('search_module').getElementsByTagName('li');
+	var lis = Dd('search_module').getElementsByTagName('a');
 	for(var i=0;i<lis.length;i++) {
 		lis[i].className = lis[i] == o ? 'head_search_on' : '';
 	}

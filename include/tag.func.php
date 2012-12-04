@@ -5,7 +5,8 @@
 */
 defined('IN_DESTOON') or exit('Access Denied');
 function tag($parameter, $expires = 0) {
-	global $DT, $CFG, $MODULE, $DT_TIME, $db;
+	global $DT, $CFG, $MODULE, $CATEGORY, $DT_TIME, $db;
+	$CATBAK = $CATEGORY ? $CATEGORY : array();	
 	if($expires > 0) {
 		$tag_expires = $expires;
 	} else if($expires == -2) {
@@ -52,6 +53,7 @@ function tag($parameter, $expires = 0) {
 	isset($target) or $target = '';
 	isset($class) or $class = '';
 	isset($length) or $length = 0;
+	//isset($suffix) or $suffix = '';	
 	isset($introduce) or $introduce = 0;
 	isset($debug) or $debug = 0;
 	(isset($cols) && $cols) or $cols = 1;
@@ -92,21 +94,36 @@ function tag($parameter, $expires = 0) {
 	$offset or $offset = ($page-1)*$pagesize;
 	$percent = dround(100/$cols).'%';
 	$num = 0;
+
+    $dcount = $group ? ",COUNT($group) AS dcount" : '';	
+    $max = $group ? "MAX(itemid) AS itemid" : '';
+	$_group = $group ? " GROUP BY $group" : '';
+	
 	$order = $order ? ' ORDER BY '.$order : '';
 	$condition = stripslashes($condition);
 	$condition = str_replace('##', '%', $condition);
 	if($showpage) {
-		$num = $db->count($table, $condition, $tag_expires ? $tag_expires : $CFG['db_expires']);
-		$pages = pages($num, $page, $pagesize);
-	} else {
-		if($group) $condition .= ' GROUP BY '.$group;
+		$num = $db->count($table, $condition, $tag_expires ? $tag_expires : $CFG['db_expires'], $group);
+		
+		//if($catid) {
+			//if($page < 3 && $update) update_item($catid, $num);
+		//	$pages = listpages($catid, $num, $page, $pagesize);
+		//} else {
+			$pages = pages($num, $page, $pagesize);
+		//}
+		
+	//	$pages = pages($num, $page, $pagesize);
+	//} else {
+	//	if($group) $condition .= ' GROUP BY '.$group;
 	}
 	if($page < 2 && strpos($parameter, '&page=') !== false) {
 		$db_cache = 'CACHE';
 		$tag_expires = $CFG['tag_expires'];
 	}
 	if($template == 'null') $db_cache = 'CACHE';
-	$query = "SELECT ".$fields." FROM ".$table." WHERE ".$condition.$order." LIMIT ".$offset.",".$pagesize;
+	// $query = "SELECT ".$fields." FROM ".$table." WHERE ".$condition.$order." LIMIT ".$offset.",".$pagesize;
+	$query = $group ? "SELECT a.{$fields},b.dcount FROM {$table} a INNER JOIN (SELECT {$max}{$dcount} FROM {$table} WHERE {$condition}{$_group}) b ON a.itemid = b.itemid" : "SELECT {$fields} FROM {$table} WHERE {$condition}";
+	$query .= "{$order} LIMIT $offset,$pagesize";	
 	if($debug) echo $parameter.'<br/>'.$query.'<br/>';
 	$tags = $catids = $CATS = array();
 	$result = $db->query($query, $db_cache, $tag_expires);
@@ -139,16 +156,21 @@ function tag($parameter, $expires = 0) {
 			}
 		}
 	}
-	if($template == 'null') return $tags;
+	if($template == 'null') {
+		$CATEGORY = $CATBAK;
+		return $tags;
+	}
 	if($tag_cache) {
 		ob_start();
 		include template($template, $dir);
 		$contents = ob_get_contents();
 		ob_clean();
 		file_put($TCF, '<!--'.($DT_TIME + $tag_expires).'-->'.$contents);
+		$CATEGORY = $CATBAK;
 		echo $contents;
 	} else {
 		include template($template, $dir);
+		$CATEGORY = $CATBAK;
 	}
 }
 ?>

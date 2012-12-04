@@ -3,13 +3,30 @@ var destoon_username = '{$_username}';
 var destoon_message = {$_message};
 var destoon_chat = {$_chat};
 var destoon_stip = '';
-var destoon_member = '<img src="{DT_SKIN}image/user.gif" width="24" height="13" align="absmiddle"/>&nbsp; 歡迎，';
-{if $_userid}
-destoon_member += '<span class="f_red f_b" title="{$MG[groupname]}">{$_truename}</span> (<a href="{$MODULE[2][linkurl]}line.php" title="{if $_online}點擊隱身{else}點擊上線{/if}">{if $_online}<span class="f_green">在線</span>{else}<span class="f_gray">隱身</span>{/if}</a>) | <a href="{$MODULE[2][linkurl]}">商務中心</a> | <a href="{$MODULE[2][linkurl]}record.php">{$DT[money_name]}(<span class="px11">{$_money}</span>)</a> | <a href="{$MODULE[2][linkurl]}credit.php">{$DT[credit_name]}(<span class="px11">{$_credit}</span>)</a> | <a href="{$MODULE[2][linkurl]}logout.php">退出</a>';
+var destoon_member = '';
+var imb2b_login = '';
+{if strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0")===false}
+	destoon_member += '<div id="outside"> <ul id="navigation-1">  <li><a href="{$MODULE[6][linkurl]}" title="Buy" target="_self" class="c">Buy</a>  <ul class="navigation-2">  <li><a href="" title="Newly Added Products" target="_self" class="b1">Newly Added Products</a></li>  <li><a href="" title="How to buy" target="_self" class="b1">How to buy</a></li>  <li><a href="{$MODULE[2][linkurl]}my.php?mid=6&action=add" title="Post Buying Leads" target="_self" class="b1">Post Buying Leads</a></li>  </ul>  </li>  <li style="*z-index:1001;"><a href="{$MODULE[5][linkurl]}" title="Sell" target="_self" class="c">Sell</a>  <ul class="navigation-2" style="right:0">  <li><a href="" title="Newly Added Buying Leads" target="_self" class="b2">Newly Added Buying Leads</a></li>  <li><a href="" title="How to sell" target="_self" class="b2">How to sell</a></li>  <li><a href="{$MODULE[2][linkurl]}my.php?mid=5&action=add" title="Display New Products" target="_self" class="b2">Display New Products</a></li>  </ul>  </li>  <li><a href="{$MODULE[2][linkurl]}" title="My ImB2B" target="_self" class="c"><strong>My ImB2B</strong></a>  <ul class="navigation-2" style="right:0">  {if $_userid}<li>{if $MG[inbox_limit]>-1}<a href="{$MODULE[2][linkurl]}message.php" title="Message Center" target="_self" class="b3">{if $_message}<img src="{SKIN_PATH}member/ico_newmessage.gif" width="16" height="12" class="v_a" alt=""/> {/if}Message Center({if $_message}<span class="f_red f_b">{$_message}</span>{else}<span class="px11">0</span>{/if})</a>{/if}</li>  <li><a href="{$MODULE[2][linkurl]}record.php" title="Score" target="_self" class="b3">Score(<span class="px11">{$_money}</span>)</a></li>  <li><a href="{$MODULE[2][linkurl]}record.php?action=credit" title="Balance" target="_self" class="b3">Balance(<span class="px11">{$_credit}</span>)</a></li>{/if} <li><a href="{$MODULE[2][linkurl]}my.php?mid=5&action=add" title="Display New Products" target="_self" class="b3">Display New Products</a></li>  <li><a href="{$MODULE[2][linkurl]}my.php?mid=6&action=add" title="Post Buying Leads" target="_self" class="b3">Post Buying Leads</a></li>  <li><a href="{$MODULE[2][linkurl]}grade.php" title="Get VIP Services NOW!" target="_self" class="b3"><span class="f_red">Get VIP Service NOW!</span></a></li>  </ul>  </li>  <li><a href="{$MODULE[25][linkurl]}" title="Help" target="_self" class="c">Help</a>  <ul class="navigation-2" style="right:0">  <li><a href="{$MODULE[25][linkurl]}" title="Help Center" target="_self" class="b4">Help Center</a></li>  {if extend_setting('guestbook_enable')}<li><a href="{extendurl('guestbook')}" title="Contact Us" target="_self" class="b4">Contact Us</a></li>{/if}  </ul>  </li>  </ul> </div>';
+	{if $_userid}
+		imb2b_login += 'Welcome to ImB2B.com, <span class="f_red f_b">{$_truename}</span> | <a href="{$MODULE[2][linkurl]}logout.php">Logout</a>';
+	{else}
+		imb2b_login += 'Welcome to ImB2B.com, <a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><strong>Join Free</strong></a> | <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">Login</a>';
+	{/if}
 {else}
-destoon_member += '<span class="f_red">客人</span> | <a href="{$MODULE[2][linkurl]}{$DT[file_register]}">免費註冊</a> | <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">會員登錄</a> | <a href="{$MODULE[2][linkurl]}send.php">忘記密碼?</a>';
+	{if $_userid}
+		destoon_member += '<span class="f_red f_b">{$_truename}</span> ({$MG[engroupname]}) | <a href="{$MODULE[2][linkurl]}">My ImB2B</a> | {if $MG[inbox_limit]>-1}{if $_message}<img src="{$MODULE[2][linkurl]}image/ico_newmessage.gif" width="16" height="12" align="absmiddle" alt=""/> {/if}<a href="{$MODULE[2][linkurl]}message.php">Mailbox</a>({if $_message}<a href="{$MODULE[2][linkurl]}message.php?action=last"><span class="f_red f_b">{$_message}</span></a>{else}<span class="px11">0</span>{/if}) | {/if}<a href="{$MODULE[2][linkurl]}record.php">{$DT[money_ename]}(<span class="px11">{$_money}</span>)</a> | <a href="{$MODULE[2][linkurl]}credits.php">{$DT[credit_ename]}(<span class="px11">{$_credit}</span>)</a> | <a href="{$MODULE[2][linkurl]}logout.php">Logout</a>';
+		{if $_message}
+		destoon_member += '<embed src="{DT_PATH}file/flash/message.swf" quality="high" type="application/x-shockwave-flash" height="0" width="0"></embed>';
+		{/if}
+	{else}
+		destoon_member += '<span class="f_red">Guest</span> | <a href="{$MODULE[2][linkurl]}{$DT[file_register]}">Join Free</a> | <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">Login</a> | <a href="{$MODULE[2][linkurl]}send.php">Forgot Password?</a>';
+		imb2b_login += '<a href="{$MODULE[2][linkurl]}grade.php"><span class="f_red">{VIP}'s biz opportunities, Upgrade Now</span></a> | <script type="text/javascript">addFav('Bookmark');</script>
+		{if extend_setting('wap_enable')} | <a href="{extendurl('wap')}">WAP</a>{/if}
+		{if extend_setting('feed_enable')} | <a href="{extendurl('feed')}">RSS</a>{/if}';
+	{/if}
 {/if}
 try{Dd('destoon_member').innerHTML=destoon_member;}catch(e){}
+try{Dd('imb2b_login').innerHTML=imb2b_login;}catch(e){}
 {if $DT[city]}
 try{Dd('destoon_city').innerHTML='{$city_name}';}catch(e){}
 {/if}
@@ -25,3 +42,4 @@ var destoon_cart = substr_count(get_cookie('cart'), ',');
 if(destoon_cart > 0) Dd('destoon_cart').innerHTML='<strong class="f_red">'+destoon_cart+'</strong>';
 if(destoon_stip) Dd('tb_c').innerHTML = destoon_stip;
 {if $push && $DT[pushtime]}window.setInterval('PushNew()',{$DT[pushtime]}*1000);{/if}
+if(Dd('skiptranslate')) Dd('skiptranslate').style.top='40px';

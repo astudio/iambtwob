@@ -27,7 +27,7 @@ a.m:link,a.m:visited,a.m:active {color:#666666;text-decoration:none;}
 a.m:hover {color:#FF6600;}
 a.f:link,a.f:visited,a.f:active,a.f:hover {text-decoration:none;display:block;width:125px;color:#888888;font-size:14px;}
 
-.head {background:#FFFFFF url('head_bg.gif') repeat-x 0 bottom;padding:0 0 5px 0;}
+.head {background:#FFFFFF url('head_bg.gif') repeat-x 0 bottom;padding:0 0 5px 0;position:fixed;width:100%;}
 #top {padding:5px 8px 4px 8px;border-bottom:#F0F0F0 1px solid;color:#929393;}
 #top a {color:#555555;}
 #m_menu {z-index:1000;position:absolute;left:190px;border:#F0F0F0 1px solid;border-top:#FFFFFF 1px solid;margin-top:-1px;background:#FFFFFF;width:70px;overflow:hidden;filter:Alpha(opacity=90);-moz-opacity:0.9;}
@@ -133,3 +133,5 @@ th {border-left:#CAD1DD 1px solid;border-bottom:#CAD1DD 1px solid;background:#FA
 #Dtop .dbox{padding:8px;line-height:200%;}
 /* message box */
 #msgbox{z-index:1000;position:absolute;background:url('msgbox.gif') no-repeat;top:43px;right:1px;height:18px;overflow:hidden;color:#FFFFFF;padding:2px 15px 0 20px;line-height:15px;letter-spacing:1px;cursor:pointer;}
+/* customized style */
+.pdt84 {padding-top:84px;}

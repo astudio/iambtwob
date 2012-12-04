@@ -38,6 +38,7 @@ function cache_module($moduleid = 0) {
 		//cache_write('setting/module-'.$moduleid.'.php', $setting);
 		$setting['moduleid'] = $moduleid;
 		$setting['name'] = $r['name'];
+		$setting['ename'] = $r['ename'];
 		$setting['moduledir'] = $r['moduledir'];
 		$setting['module'] = $r['module'];
 		$setting['ismenu'] = $r['ismenu'];
@@ -62,7 +63,7 @@ function cache_module($moduleid = 0) {
 		}
 		return true;
 	} else {
-		$result = $db->query("SELECT moduleid,module,name,moduledir,domain,linkurl,style,listorder,islink,ismenu,isblank,logo FROM {$db->pre}module WHERE disabled=0 ORDER by listorder asc,moduleid desc");
+		$result = $db->query("SELECT moduleid,module,name,ename,moduledir,domain,linkurl,style,listorder,islink,ismenu,isblank,logo FROM {$db->pre}module WHERE disabled=0 ORDER by listorder asc,moduleid desc");
 		$CACHE = array();
 		$modules = array();
 		while($r = $db->fetch_array($result)) {

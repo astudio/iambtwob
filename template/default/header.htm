@@ -45,10 +45,8 @@
 		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
 		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
 		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script>
-		
-		</script>
+		<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+		<script src="https://raw.github.com/sebarmeli/JAIL/master/src/jail.js"></script>
 	</head>
 	<body>
 <!--*** header	 -->
@@ -113,19 +111,18 @@
 					<span>會員中心</span></a>
 				</div> -->
 				<div class="f_r head_join_us">
-					<a href="#">Join Us Now!</a>
+					<a href="{$MODULE[2][linkurl]}{$DT[file_register]}">Join Us Now!</a>
 				</div>
 			</div>
-		</header>		
-<!--*** navigation -->
-		<nav id="nav">
-			<div class="m">
-
+		</header>
+		<!--*** navigation -->
+		<div class="m">
+			<nav id="nav">
+				<div class="menu_category">Categories</div>
 				<div class="menu_b">
 					<div class="menu">
 						<ul><li{if $moduleid<4} class="menuon"{/if}><a href="{$MODULE[1][linkurl]}"><span>Home</span></a></li>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
 					</div>
 				</div>
-
-			</div>
-		</nav>
+			</nav>
+		</div>

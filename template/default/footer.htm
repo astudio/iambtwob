@@ -104,12 +104,30 @@
 		<script type="text/javascript">
 			show_task('{$destoon_task}');
 			(function($) {
-				if(!$) return false;
+				if(!$) return false;				
+
+				function imgMouseOver() {
+					$('img.lazy:visible').scroll();
+				}
 				
-
 				$(function(){
-
-
+					$('.side li.level1').hover(
+						function(){
+							$(this).addClass('active');
+							$(this).find('.level2').show();
+						},
+						function(){
+							$(this).removeClass('active');
+							$(this).find('.level2').hide();
+						});
+					
+					$(".scrollable").scrollable({
+						onSeek: function(){ 
+							imgMouseOver();
+						}
+					});
+					$('img.lazy').jail();
+					imgMouseOver();	
 				});				
 			})(jQuery);	
 		</script>

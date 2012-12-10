@@ -38,5 +38,94 @@
 .imgtxt em {color:#BA2636;font-style:normal;}
 .imgtxt cite {font-style:normal;font-weight:bold;font-family:Arial;color:#FF6600;font-size:16px;}
 
-.topr {width:400px;float:right;}
-.topl {width:260px;}
+.topr {width:183px;float:right;}
+.topl {width:837px;}
+
+.side .level1 {height:30px;line-height:30px;border-bottom:1px solid #CCC;}
+.side .level1:first-child {border-top:1px solid #FFF;}
+.side .level1 > h2{font-size:14px;margin:0;padding:0 0 0 10px;font-weight:normal;}
+.side .level1 > h2:first-letter {font-weight:bold;}
+.side .level1 > h2 > a {color:black;display:block;}
+.side .level1 > h2 > a > span {width:9px;height:9px;margin:0 0 0 20px;float:right;top:12px;position:relative;margin-right:10px;background:url('image/arrows.png') -8px 8px;}
+
+.side .level2 {position:relative;left:186px;}
+.side .level2 ul {position:absolute;background:#FFF;margin-top:-31px;border:1px solid #CCC;box-shadow:5px 5px 5px rgba(0,0,0,0.4);padding:6px 0;}
+.side .level2 li {padding:0 10px;white-space:nowrap;line-height:20px;}
+
+.side .active:first-child {border-top:1px solid #CCC;}
+.side .active > h2 {border-left:1px solid #CCC;}
+.side .active > h2 > a {background:#FFF;z-index:100;position:relative;height:30px;margin-left:-1px;}
+.side .active > h2 > a > span {background-image:none;}
+
+.m_ebook {width:270px;}
+.m_news {width:277px;}
+
+a.browse {
+display: block;
+width: 15px;
+height: 113px;
+float: left;
+margin: 0;
+cursor: pointer;
+font-size: 1px;
+}
+a.left {margin-right:10px;}
+a.left span,a.right span {margin:50px 7px;width:8px;height:7px;background:url('image/arrows.png') no-repeat;margin-left:4px;display:block;}
+a.right {margin-left:10px;}
+/*a.prev span {background-position:0 -14px;}*/
+a.next span {background-position:-9px 0;}
+.Scrollable a.disabled {background-color:#F2F2F2;cursor:default;}
+a.disabled span {background-position-y:-7px;}
+
+/*
+  root element for the scrollable.
+  when scrolling occurs this element stays still.
+  */
+.scrollable {
+    /* required settings */
+    position:relative;
+    overflow:hidden;
+    width: 980px;
+    height:120px;
+	float:left;
+}
+
+/*
+   root element for scrollable items. Must be absolutely positioned
+   and it should have a extremely large width to accomodate scrollable
+   items.  it's enough that you set the width and height for the root
+   element and not for this element.
+*/
+.scrollable .items {
+    /* this cannot be too large */
+    width:20000em;
+    position:absolute;
+    clear:both;
+}
+
+.items div {
+    float:left;
+    width:980px;
+	margin-left:3px;
+}
+
+/* single scrollable item */
+.scrollable img {
+    float:left;
+    margin:0 10px 0 0;
+    background-color:#FFF;
+    width:113px;
+    height:113px;
+	-webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.2);
+	border-top:1px solid #F2F2F2;
+}
+
+.scrollable img.nomargin {margin:0;}
+
+/* active item */
+.scrollable .active {
+    border:2px solid #000;
+    position:relative;
+    cursor:default;
+}

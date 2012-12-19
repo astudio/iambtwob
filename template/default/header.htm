@@ -20,6 +20,7 @@
 		{/if}
 		<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
 		<link rel="stylesheet" type="text/css" href="{DT_SKIN}menu_style.css"/>
+		<link rel="stylesheet" type="text/css" href="{DT_SKIN}tabs-slideshow.css"/>
 	<!-- 	<link rel="stylesheet" type="text/css" href="{DT_SKIN}mq.css"/>	 -->
 		{if $moduleid>4}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>{/if}
 		{if $CSS}
@@ -45,8 +46,8 @@
 		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
 		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
 		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
-		<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-		<script src="https://raw.github.com/sebarmeli/JAIL/master/src/jail.js"></script>
+		<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/jail.js"></script>
 	</head>
 	<body>
 <!--*** header	 -->
@@ -121,7 +122,7 @@
 				<div class="menu_category">Categories</div>
 				<div class="menu_b">
 					<div class="menu">
-						<ul><li{if $moduleid<4} class="menuon"{/if}><a href="{$MODULE[1][linkurl]}"><span>Home</span></a></li>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
+						<ul><li{if $moduleid<4} class="menuon"{/if}><a href="{$MODULE[1][linkurl]}"><span>Home</span></a></li>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}{if $m[moduleid]==22} class="invest"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
 					</div>
 				</div>
 			</nav>

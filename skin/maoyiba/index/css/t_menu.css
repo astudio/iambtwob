@@ -1,0 +1,83 @@
+@charset "gb2312";
+/* CSS Document */
+
+#head_bar1 {
+float: left;
+width: 170px;
+display: inline;
+height: 35px;
+overflow: hidden;
+}
+#head_bar1 ul li {
+float: left;
+height: 35px;
+width: 85px;
+line-height: 35px;
+text-align:center;
+}
+
+#head_bar1 ul li a{
+height: 35px;
+width: 85px;
+line-height: 35px;
+display:block;
+background-image: url(../images/top_m_bg.gif);
+background-repeat:no-repeat;
+background-position:right;
+color:#333;
+}
+.t_ul_hover {
+display:block;
+position:absolute;
+width:85px;
+top:0px;
+left:505px;
+z-index:2;
+border-top:#CCC 1px solid;
+}
+.t_ul_hover2 {
+display:block;
+position:absolute;
+width:85px;
+top:0px;
+left:590px;
+z-index:2;
+}
+#head_bar1 ul li ul li{
+height:25px;	
+}
+
+#head_bar1 ul li ul li a{
+height: 24px;
+width: 85px;
+line-height: 24px;
+display:block;
+background-image:none;
+background:#F7F7F7;
+color:#666;
+text-decoration:none;
+border:#e7e7e7 1px solid;
+border-top:0;
+}
+
+#head_bar1 ul li ul li a:hover{
+height: 25px;
+width:85px;
+line-height: 25px;
+display:block;
+background-image:none;
+text-decoration:none;
+color:#CC3300;
+background-color:#EEEEEE
+}
+.t_txt{
+height: 30px;
+margin-top:3px;
+width: 85px;
+border:#e7e7e7 1px solid;
+border-bottom-style:none;
+
+
+
+}
+

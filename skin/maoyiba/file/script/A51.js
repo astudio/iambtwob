@@ -1,0 +1,1 @@
+document.write('<a href="http://b2b.maoyiba.com/quote/" target="_blank"><img src="http://b2b.maoyiba.com/file/upload/201107/30/14-37-43-59-1.jpg" width="252" height="65" alt=""/></a>');

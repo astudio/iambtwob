@@ -3,7 +3,7 @@
 <!-- *** footer -->
 		<footer id="footer">
 			<div class="m no_bg">
-				<div class="sitemap">
+<!-- DEL				<div class="sitemap">
 					<div class="section">
 						<div class="sitemap_type">About</div>
 						<ul>
@@ -54,7 +54,7 @@
 							<li><a href="http://www.imb2b.com/help/safety_security.html?tracelog=24581_foot_safety" rel="nofollow" target="_blank">Safety &amp; Security Center</a></li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			
 				<div class="foot c_b">
 					<div id="webpage">
@@ -127,7 +127,37 @@
 						}
 					});
 					$('img.lazy').jail();
-					imgMouseOver();	
+					imgMouseOver();
+
+					$(".slidetabs").tabs(".images > div", {				 
+					// enable "cross-fading" effect
+					effect: 'horizontal',
+					event: 'mouseover',
+					fadeOutSpeed: 1000,				 
+					// start from the beginning after the last tab
+					rotate: true				 
+					// use the slideshow plugin. It accepts its own configuration
+					}).slideshow({
+						autoplay: true,
+						interval: 4000,
+						clickable: false
+					});
+
+					$(".slidetabs2").tabs(".images2 > div", {				 
+					// enable "cross-fading" effect
+					effect: 'slide',
+					event: 'mouseover',
+					fadeOutSpeed: 1000,				 
+					// start from the beginning after the last tab
+					rotate: true				 
+					// use the slideshow plugin. It accepts its own configuration
+					}).slideshow({
+						autoplay: true,
+						interval: 10000,
+						next: '.forward2',
+						prev: '.backward2',
+						clickable: false
+					});					
 				});				
 			})(jQuery);	
 		</script>

@@ -1,0 +1,229 @@
+
+/* container for slides */
+.images {
+    position:relative;
+    height:192px;
+    width:827px;
+    float:left;
+    cursor:pointer;
+}
+
+/* single slide */
+.images div {
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    height:192px;
+    font-size:12px;
+}
+
+/* tabs (those little circles below slides) */
+.slidetabs {
+    clear:both;
+    height:25px;
+	width:827px;
+	background:#f5f5f5;
+	border-top:1px solid #D7D7D7;
+}
+
+/* single tab */
+.slidetabs a {
+    width:25%;
+   /*  height:8px; */
+    float:left;
+    margin:4px 0;
+    display:block;
+    font-size:13px;
+	text-align:center;
+	color:#000;
+	position:relative;
+}
+
+/* mouseover state */
+.slidetabs a:hover {
+    color:#ff5a00;
+}
+
+/* active state (current page state) */
+.slidetabs a.current {
+    color:#ff5a00;
+}
+
+/* prev and next buttons */
+.forward, .backward {
+/*     float:left;
+    margin-top:140px;
+    display:block;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+    font-size:1px;
+    text-indent:-9999em; */
+}
+
+/* next */
+.forward { background-position: 0 -30px; clear:right; }
+.forward:hover { background-position:-30px -30px; }
+.forward:active	{ background-position:-60px -30px; }
+
+
+/* prev */
+.backward:hover	{ background-position:-30px 0; }
+.backward:active { background-position:-60px 0; }
+
+/*=========================================================*/
+/* container for slides */
+.images2 {
+    position:relative;
+    height:160px;
+    width:827px;
+    float:left;
+    cursor:pointer;
+}
+
+/* single slide */
+.images2 div {
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    height:160px;
+    font-size:12px;
+	padding-left:200px;
+}
+
+/* tabs (those little circles below slides) */
+.slidetabs2 {
+    clear:both;
+    height:160px;
+	width:200px;
+	background:#f5f5f5;
+	border-right:1px solid #D7D7D7;
+	position:absolute;
+}
+
+/* single tab */
+.slidetabs2 a {
+    width:200px;
+	height:21px;
+    float:left;
+    padding:5px 0;
+    display:block;
+    font-size:13px;
+	text-align:center;
+	color:#000;
+	position:relative;
+	border-bottom:1px solid #D7D7D7;
+	line-height:21px;
+	overflow-x:hidden;
+}
+
+/* mouseover state */
+.slidetabs2 a:hover {
+    color:#ff5a00;
+}
+
+/* active state (current page state) */
+.slidetabs2 a.current {
+    color:#ff5a00;
+}
+
+/* prev and next buttons */
+.forward, .backward {
+/*     float:left;
+    margin-top:140px;
+    display:block;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+    font-size:1px;
+    text-indent:-9999em; */
+}
+
+/* next */
+.forward { background-position: 0 -30px; clear:right; }
+.forward:hover { background-position:-30px -30px; }
+.forward:active	{ background-position:-60px -30px; }
+
+
+/* prev */
+.backward:hover	{ background-position:-30px 0; }
+.backward:active { background-position:-60px 0; }
+
+
+/* disabled navigational button. is not needed when tabs are
+   configured with rotate: true */
+.disabled {
+    visibility:hidden !important;
+}
+
+.arrowt {
+	position: relative;
+	background: #f5f5f5;
+	top:-21px;
+	overflow:hidden;
+}
+.arrowt:after, .arrowt:before {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position:absolute;	
+	pointer-events: none;
+}
+
+.arrowt:after {
+	border-color: rgba(245, 245, 245, 0);
+	border-bottom-color: #f5f5f5;
+	border-width: 8px;
+	left: 50%;
+	margin-left: -8px;
+}
+.arrowt:before {
+	border-color: rgba(215, 215, 215, 0);
+	border-bottom-color: #d7d7d7;
+	border-width: 9px;
+	left: 50%;
+	margin-left: -9px;
+}
+
+.slidetabs a:hover > .arrowt, .slidetabs a.current > .arrowt {
+	overflow:visible;
+}
+
+.arrowr {
+	position: relative;
+	background: #f5f5f5;
+	left:45px;
+	overflow:hidden;
+}
+.arrowr:after, .arrowr:before {
+	left: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrowr:after {
+	border-color: rgba(245, 245, 245, 0);
+	border-left-color: #f5f5f5;
+	border-width: 8px;
+	top: 50%;
+	margin-top: -8px;
+}
+.arrowr:before {
+	border-color: rgba(215, 215, 215, 0);
+	border-left-color: #d7d7d7;
+	border-width: 9px;
+	top: 50%;
+	margin-top: -9px;
+}
+
+.slidetabs2 a:hover, .slidetabs2 a.current {
+	overflow:visible;
+}

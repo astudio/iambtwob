@@ -1,0 +1,143 @@
+@charset "gb2312";
+/* CSS Document */
+#l_menu1 {
+height: 1065px;
+background-image: url(../images/w_lmbg1.gif);
+overflow: hidden;
+}
+#l_menu2 {
+background-image: url(../images/w_lmbg2.gif);
+height: 6px;
+}
+#left_menu {
+clear: both;
+float: none;
+width: 980px;
+margin-right: auto;
+margin-left: auto;
+position: relative;
+z-index:9999;
+}
+
+#left_menu ul {
+margin-left:1px;
+margin-right:1px;
+position: absolute;
+background-image: url(../images/w_lmbg3.gif);
+width:228px;
+left: 2px;
+top: 50px;
+}
+#left_menu ul li{
+width:200px;
+line-height:33px;
+height: 33px;
+font-weight: bold;
+text-align: left;
+text-indent:10px;
+position:relative;
+}
+.m1{
+margin-left:-8px;
+}
+.m1_hover{
+background-image:url(../images/w_lmbg4.gif);
+background-position:
+b
+}
+#left_menu ul li a{
+font-size:14px;
+color: #ae5207;
+
+}
+#left_menu ul li a:hover{
+font-size:14px;
+color: #fd7013;
+}
+#left_menu ul li ul{
+width:500px;
+background-image:none;
+background-color:#FFF;
+overflow:hidden;
+height:auto;
+margin:0;
+padding:0;
+position:absolute;
+z-index:99999;
+top:0px;
+border-top:2px solid #f59b26;
+border-right:2px solid #f59b26;
+left:196px;
+}
+.ul_out_hover{
+display:none;
+}
+.ul_hover {
+display:block;
+}
+.r9bg1 {
+background-image: url(../images/w_mbg3_1.gif);
+}
+
+.md1 {
+margin:0;
+padding:0;
+width:500px;
+line-height: 33px;
+height: 29px;
+clear: both;
+text-indent:20px;
+float: none;
+
+overflow:hidden;
+}
+#left_menu ul li ul ol a{
+font-size:12px;
+color:#333;
+}
+#left_menu ul li ul ol a:hover{
+font-size:12px;
+color:#990000;
+}
+.md2 {
+margin:0;
+padding:0;
+clear: none;
+float: none;
+width: 500px;
+border-bottom:2px solid #f59b26;
+border-left:2px solid #f59b26;
+height:auto;
+overflow:hidden;
+padding-bottom:20px;
+}
+
+#left_menu ul #m_d {
+text-indent:0px;
+margin: 20px;
+margin-top:10px;
+}
+#left_menu ul #m_d a{
+font-weight:normal;
+}
+#left_menu ul #m_d #m_dli {
+width: 110px;
+margin-right: 5px;
+display: inline;
+text-align: left;
+border-bottom-width: 1px;
+border-bottom-style: solid;
+border-bottom-color: #F7F7F7;
+line-height: 25px;
+height: 25px;
+overflow:hidden;
+float: left;
+display:inline;
+
+}
+.more-class{
+	
+	text-align:right;
+	color:#FF8040;
+	background-image:none;
+}

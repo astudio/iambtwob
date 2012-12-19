@@ -10,7 +10,7 @@
 				<li class="level1">
 					<!-- 第一級分類 -->
 					<h2>
-						<a href="#">{set_style($c[catname], $c[style])}<span class="arrow"></span></a>
+						<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{set_style($c[catname], $c[style])}<span class="arrow">></span></a>
 					</h2>
 					{if $c[child]}
 					{php $sub = get_maincat($c[catid], $mid, 1);}				
@@ -34,7 +34,7 @@
 		</div>
 		<div class="f_l main">
 			<div class="b10">&nbsp;</div>
-			<div class="m_l f_l" style="width:1030px;"><!--****inline-->
+			<div class="m_l f_l" style="width:1020px;"><!--****inline-->
 				<div class="topr" id="trades">		
 					<div class="tab_head">
 					<ul>
@@ -56,7 +56,38 @@
 					</div>	
 				</div>
 				<div class="topl">
-					<div>{ad(5)}</div>
+					<div>
+						<!-- "previous slide" button -->
+						<!-- <a class="backward">prev</a> -->
+						<!-- container for the slides -->
+						<div class="images">
+							<!-- first slide -->
+							<div>
+								<a href="http://www.google.com" target="_blank"><img src="http://www.utopiaadvisors.com/images/banner_3.jpg" width="827" height="192" /></a>
+							</div>
+							<!-- second slide -->
+							<div>
+								<a href="http://tw.yahoo.com" target="_blank"><img src="http://elproyectomatriz.files.wordpress.com/2011/03/malestar-org-banner.jpg?w=950" width="827" height="192" /></a>
+							</div>
+							<!-- third slide -->
+							<div>
+								<a href="http://www.google.com.tw" target="_blank"><img src="http://2.bp.blogspot.com/-izbRuuaGUqM/T29DY8CItJI/AAAAAAAAEok/qt03FxXP5Ek/s1600/rentokil+logo+small.jpg" width="827" height="192" /></a>
+							</div>
+							
+							<div>
+								<a href="http://www.cnn.com" target="_blank"><img src="http://elproyectomatriz.files.wordpress.com/2011/03/malestar-org-banner.jpg?w=950" width="827" height="192" /></a>
+							</div>
+						</div>
+						<!-- "next slide" button -->
+						<!-- <a class="forward">next</a> -->
+						<!-- the tabs -->
+						<div class="slidetabs">
+							<a href="#">Your trade partner1<div class="arrowt"></div></a>
+							<a href="#">Your trade partner2<div class="arrowt"></div></a>
+							<a href="#">Your trade partner3<div class="arrowt"></div></a>
+							<a href="#">Your trade partner4<div class="arrowt"></div></a>
+						</div>					
+					</div>
 					<!-- 公告目前在alibaba及ebay，均無使用 -->
 	<!-- 				<div class="announce"><div class="announce_l"><a href="{$EXT[announce_url]}"><strong>公告欄：</strong></a></div><div class="announce_r" id="announce"> --><!--{tag("table=announce&condition=totime=0 or totime>$today_endtime-86400&areaid=$cityid&pagesize=3&datetype=2&order=listorder desc,addtime desc&target=_blank")}--><!-- </div></div> -->
 				</div>				
@@ -68,7 +99,7 @@
 				{/if}
 			</div>			
 			<div class="m2 b10">&nbsp;</div>
-			<!-- 第二道幻燈播放 -->
+			
 		<!-- 	<div class="m">
 				<table width="100%" cellspacing="0" cellpadding="0">
 				<tr align="center">
@@ -81,7 +112,7 @@
 			<div class="b10">&nbsp;</div>
 			<div class="m_l f_l">
 				{if $DT[page_mall]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[17][linkurl]}">more</a></span><a href="{$MODULE[17][linkurl]}"><strong>Spotlight</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[17][linkurl]}">more ></a></span><a href="{$MODULE[17][linkurl]}"><strong>Spotlight</strong></a></div></div>
 				<div class="tab_head">
 				<ul>
 					<li class="tab_2" id="mall_t_1" onmouseover="Tb(1, 2, 'mall', 'tab');"><a href="{$MODULE[5][linkurl]}">推薦產品</a></li>
@@ -98,11 +129,51 @@
 				</div>
 				<div class="b10">&nbsp;</div>
 				{/if}
+				
+				<!-- 第二道幻燈播放 -->
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[17][linkurl]}">more ></a></span><a href="{$MODULE[17][linkurl]}"><strong>Spotlight</strong></a></div></div>
+				<div>
+					<!-- "previous slide" button -->
+					<!-- <a class="backward2">prev</a> -->
+					<!-- container for the slides -->
+					<div class="images2">
+						<!-- first slide -->
+						<div>
+							<a href="http://www.google.com" target="_blank"><img src="http://dev.crossovermedia.net/artists/images/800x160/Quartetto_di_Cremona6.jpg" width="627" height="160" /></a>
+						</div>
+						<!-- second slide -->
+						<div>
+							<a href="http://tw.yahoo.com" target="_blank"><img src="http://blog.bedandbreakfast.com/themes/bbcom/img/bbcomLogo2.jpg" width="627" height="160" /></a>
+						</div>
+						<!-- third slide -->
+						<div>
+							<a href="http://www.google.com.tw" target="_blank"><img src="http://dev.crossovermedia.net/artists/images/800x160/Quartetto_di_Cremona2.jpg" width="627" height="160" /></a>
+						</div>
+						
+						<div>
+							<a href="http://www.cnn.com" target="_blank"><img src="http://dev.crossovermedia.net/artists/images/800x160/Quartetto_di_Cremona6.jpg" width="627" height="160" /></a>
+						</div>
+						<div>
+							<a href="http://www.cnn3333.com" target="_blank"><img src="http://blog.bedandbreakfast.com/themes/bbcom/img/bbcomLogo2.jpg" width="627" height="160" /></a>
+						</div>						
+					</div>
+					<!-- "next slide" button -->
+					<!-- <a class="forward2">next</a> -->
+					<!-- the tabs -->
+					<div class="slidetabs2">
+						<a href="#">Your trade partner1<span class="arrowr"></span></a>
+						<a href="#">Your trade partner2<span class="arrowr"></span></a>
+						<a href="#">Your trade partner3<span class="arrowr"></span></a>
+						<a href="#">Your trade partner4<span class="arrowr"></span></a>
+						<a href="#">Your trade partner4<span class="arrowr"></span></a>						
+					</div>					
+				</div>				
+				
 			</div>
 			<div class="m_n f_l">&nbsp;</div>
 			<div class="m_r f_l">
 				{if $DT[page_news]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[21][linkurl]}">更多..</a></span><a href="{$MODULE[21][linkurl]}"><strong>行業資訊</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[21][linkurl]}">more ></a></span><a href="{$MODULE[21][linkurl]}"><strong>行業資訊</strong></a></div></div>
 				<div class="box_body" id="inews">
 				{if $DT[page_newsh]}
 				<div class="headline">
@@ -138,46 +209,20 @@
 				</div>
 				<div class="b10 c_b"></div>
 				{/if} -->
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more</a></span><a href="{$MODULE[14][linkurl]}"><strong>Professional eMagazines</strong></a></div></div>
-				<div class="box_body f_gray video">
-				<!--{tag("moduleid=14&condition=status=3 and level>0&pagesize=".$DT[page_video]."&datetype=2&order=addtime desc&target=_blank")}-->
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Magazines</strong></a></div></div>
+				<div class="box_body f_gray">
+				<!--{tag("moduleid=23&condition=status=3 and catid=533 and thumb<>''&pagesize=2&order=addtime desc&target=_blank&template=index-ebook")}-->
 				</div>
 				<div class="b10">&nbsp;</div>				
 				
 				{if $DT[page_brand]}
-				<div class="box_head"><div><span class="f_r"><a href="{$MODULE[13][linkurl]}">更多..</a></span><a href="{$MODULE[13][linkurl]}"><strong>品牌展示</strong></a></div></div>
+				<div class="box_head"><div><span class="f_r"><a href="{$MODULE[13][linkurl]}">more ></a></span><a href="{$MODULE[13][linkurl]}"><strong>品牌展示</strong></a></div></div>
 				<div class="box_body">
 				<div class="thumb"><!--{tag("moduleid=13&condition=status=3 and level>0&areaid=$cityid&pagesize=".$DT['page_brand']."&order=addtime desc&width=120&height=40&cols=4&target=_blank&template=thumb-brand")}--></div>
 				</div>
 				<div class="b10">&nbsp;</div>
-				{/if}
-				
-				{if $DT[page_exhibit]}
-				<div class="box_head"><div><span class="f_r"><a href="{$MODULE[8][linkurl]}">更多..</a></span><a href="{$MODULE[8][linkurl]}"><strong>行業展會</strong></a></div></div>
-				<div class="box_body li_dot">
-					<table cellpadding="0" cellspacing="0" width="100%">
-					<tr>
-					<td valign="top" width="495">
-						<!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&pagesize=".$DT['page_exhibit']."&order=addtime desc&template=null");}-->
-						<ul>
-						{loop $tags $t}
-						<li title="{$t[alt]}"><span class="f_r">[{$t[city]}]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{timetodate($t[fromtime], 'Y年m月d日')}</span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
-						{/loop}
-						</ul>			
-					</td>
-					<td> </td>
-					<td valign="top" width="155">
-						<div class="b5">&nbsp;</div>
-						{ad(5)}
-						<div class="b5">&nbsp;</div>
-						{ad(6)}			
-					</td>
-					</tr>
-					</table>
-				</div>
-				<div class="b10">&nbsp;</div>
-				{/if}
-				
+				{/if}				
+			
 				{if $DT[page_job]}
 				<div class="tab_head">
 				<ul>
@@ -196,7 +241,7 @@
 				<div class="b10">&nbsp;</div>
 				{/if}
 				{if $DT[page_photo]}
-				<div class="box_head"><div><span class="f_r"><a href="{$MODULE[12][linkurl]}">更多..</a></span><a href="{$MODULE[12][linkurl]}"><strong>圖片中心</strong></a></div></div>
+				<div class="box_head"><div><span class="f_r"><a href="{$MODULE[12][linkurl]}">more ></a></span><a href="{$MODULE[12][linkurl]}"><strong>圖片中心</strong></a></div></div>
 				<div class="box_body">
 				<div class="thumb"><!--{tag("moduleid=12&condition=status=3 and open=3 and level>0&pagesize=".$DT['page_photo']."&order=addtime desc&width=120&height=90&cols=4&target=_blank&template=list-photo")}--></div>
 				</div>
@@ -205,22 +250,36 @@
 			</div>
 			<div class="m_n f_l">&nbsp;</div>
 			<div class="m_ebook f_l">
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more</a></span><a href="{$MODULE[14][linkurl]}"><strong>Professional eCatalogs</strong></a></div></div>
-				<div class="box_body f_gray video">
-				<!--{tag("moduleid=14&condition=status=3 and level>0&pagesize=".$DT[page_video]."&datetype=2&order=addtime desc&target=_blank")}-->
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Catalogs</strong></a></div></div>
+				<div class="box_body f_gray">
+				<!--{tag("moduleid=23&condition=status=3 and catid=3518 and thumb<>''&pagesize=2&order=rand()&target=_blank&template=index-ebook",-1)}-->
 				</div>
 				<div class="b10">&nbsp;</div>			
 			</div>
 			<div class="m_n f_l">&nbsp;</div>
 			<div class="m_news f_l">
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more</a></span><a href="{$MODULE[14][linkurl]}"><strong>Hot News</strong></a></div></div>
-				<div class="box_body f_gray video">
-				<!--{tag("moduleid=14&condition=status=3 and level>0&pagesize=".$DT[page_video]."&datetype=2&order=addtime desc&target=_blank")}-->
+				{if $DT[page_exhibit]}
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[8][linkurl]}">more ></a></span><a href="{$MODULE[8][linkurl]}"><strong>行業展會</strong></a></div></div>
+				<div class="box_body li_dot">
+					<table cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+					<td valign="top" width="495">
+						<!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&pagesize=".$DT['page_exhibit']."&order=addtime desc&template=null");}-->
+						<ul>
+						{loop $tags $t}
+						<li title="{$t[alt]}"><span class="f_r">[{$t[city]}]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{timetodate($t[fromtime], 'Y年m月d日')}</span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+						{/loop}
+						</ul>			
+					</td>
+
+					</tr>
+					</table>
 				</div>
-				<div class="b10">&nbsp;</div>			
+				<div class="b10">&nbsp;</div>
+				{/if}			
 			</div>			
 			<div class="m_n f_l">&nbsp;</div>
-			<div class="m_r f_l">
+			<div class="m_video f_l">
 				{if $DT[page_com]}
 				<div class="tab_head">
 				<ul>
@@ -241,7 +300,7 @@
 				{/if}
 				
 				{if $DT[page_group]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[17][linkurl]}">更多..</a></span><a href="{$MODULE[17][linkurl]}"><strong>今日團批</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[17][linkurl]}">more ></a></span><a href="{$MODULE[17][linkurl]}"><strong>今日團批</strong></a></div></div>
 				<div class="box_body li_dot f_gray">
 				<!--{php $tags=tag("moduleid=17&condition=status=3 and level>0&areaid=$cityid&pagesize=".$DT[page_group]."&datetype=2&order=addtime desc&template=null");}-->
 				{loop $tags $t}
@@ -255,7 +314,7 @@
 				{/if}
 
 				{if $DT[page_special]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[11][linkurl]}">更多..</a></span><a href="{$MODULE[11][linkurl]}"><strong>推薦專題</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[11][linkurl]}">more ></a></span><a href="{$MODULE[11][linkurl]}"><strong>推薦專題</strong></a></div></div>
 				<div class="box_body li_dot f_gray">
 				<!--{php $tags=tag("moduleid=11&condition=status=3 and level>0&pagesize=".$DT[page_special]."&datetype=2&order=addtime desc&template=null");}-->
 				{loop $tags $t}
@@ -270,7 +329,7 @@
 				{/if}
 
 				{if $DT[page_quote]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[7][linkurl]}">更多..</a></span><a href="{$MODULE[7][linkurl]}"><strong>行情報價</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[7][linkurl]}">more ></a></span><a href="{$MODULE[7][linkurl]}"><strong>行情報價</strong></a></div></div>
 				<div class="box_body li_dot f_gray">
 				<!--{tag("moduleid=7&condition=status=3&areaid=$cityid&pagesize=".$DT[page_quote]."&datetype=2&order=addtime desc&target=_blank")}-->
 				</div>
@@ -278,7 +337,7 @@
 				{/if}
 
 				{if $DT[page_comnews]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[4][linkurl]}{rewrite('news.php?more=1')}">更多..</a></span><a href="{$MODULE[4][linkurl]}{rewrite('news.php?more=1')}"><strong>企業新聞</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[4][linkurl]}{rewrite('news.php?more=1')}">more ></a></span><a href="{$MODULE[4][linkurl]}{rewrite('news.php?more=1')}"><strong>企業新聞</strong></a></div></div>
 				<div class="box_body li_dot f_gray">
 				<!--{tag("table=news&condition=status=3 and level>0&pagesize=".$DT[page_comnews]."&datetype=2&order=addtime desc&target=_blank")}-->
 				</div>
@@ -286,7 +345,7 @@
 				{/if}
 
 				{if $DT[page_video]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">更多..</a></span><a href="{$MODULE[14][linkurl]}"><strong>推薦視頻</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>推薦視頻</strong></a></div></div>
 				<div class="box_body f_gray video">
 				<!--{tag("moduleid=14&condition=status=3 and level>0&pagesize=".$DT[page_video]."&datetype=2&order=addtime desc&target=_blank")}-->
 				</div>
@@ -294,7 +353,7 @@
 				{/if}
 
 				{if $DT[page_know]}		
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">更多..</a></span><a href="{$MODULE[10][linkurl]}"><strong>行業知道</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">more ></a></span><a href="{$MODULE[10][linkurl]}"><strong>行業知道</strong></a></div></div>
 				<div class="box_body li_dot f_gray">
 				<!--{php $tags=tag("moduleid=10&condition=status=3 and process>0&pagesize=".$DT[page_know]."&order=addtime desc&template=null");}-->
 				<ul>
@@ -306,7 +365,7 @@
 				<div class="b10">&nbsp;</div>
 				{/if}
 				{if $DT[page_down]}		
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[15][linkurl]}">更多..</a></span><a href="{$MODULE[15][linkurl]}"><strong>資料下載</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[15][linkurl]}">more ></a></span><a href="{$MODULE[15][linkurl]}"><strong>資料下載</strong></a></div></div>
 				<div class="box_body f_gray">
 				<!--{tag("moduleid=15&condition=status=3&pagesize=".$DT[page_down]."&length=40&target=_blank&order=addtime desc&template=list-down")}-->
 				</div>
@@ -314,38 +373,39 @@
 				{/if}
 
 				{if $DT[page_vote]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$EXT[vote_url]}">更多..</a></span><a href="{$EXT[vote_url]}"><strong>投票調查</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$EXT[vote_url]}">more ></a></span><a href="{$EXT[vote_url]}"><strong>投票調查</strong></a></div></div>
 				<div class="box_body"><!--{tag("table=vote&condition=level>0&pagesize=".$DT['page_vote']."&order=addtime desc&template=list-vote")}--></div>
 				<div class="b10">&nbsp;</div>
 				{/if}
 			</div>
 			
 			<div class="f_l main">
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">more</a></span><a href="{$MODULE[10][linkurl]}"><strong>Hot Products</strong></a></div></div>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[5][linkurl]}">more ></a></span><a href="{$MODULE[5][linkurl]}"><strong>Hot Products</strong></a></div></div>
 				<div class="Scrollable">
 					<a class="prev browse left"><span /></a>
 					<div class="scrollable" id="scrollable"> 
 						<div class="items">
-							<!-- every loop in 8 items -->
-							<!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>''&pagesize=24&order=rand()&width=113&height=113&cols=8&target=_blank&template=list-scrollable",-1)}-->
+							<!-- every loop in 7 items -->
+							<!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>''&pagesize=21&order=rand()&width=113&height=113&cols=7&target=_blank&template=index-scrollable",-1)}-->
 						</div>
 					</div>
 					<a class="next browse right"><span /></a>	
 				</div>
 			</div>
+			<div class="b10">&nbsp;</div>
 
 			{if $DT[page_logo] || $DT[page_text]}
-			<div class="f_l main">
+			<div class="f_l link">
 <!-- 				<div class="tab_head">
 				<ul>
 					<li class="tab_2"><a href="{$EXT[link_url]}">友情鏈接</a></li>
 					<li class="tab_1"><a href="{$EXT[link_url]}{rewrite('index.php?action=reg')}">申請鏈接</a></li>
 				</ul>
 				</div> -->
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">more</a></span><a href="{$MODULE[10][linkurl]}"><strong>Logo Links</strong></a></div></div>				
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">more ></a></span><a href="{$MODULE[10][linkurl]}"><strong>Featured Partner</strong></a></div></div>				
 				<div class="box_body">
 				{if $DT[page_logo]}
-				<!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=listorder desc,itemid desc&template=list-link&cols=9")}-->
+				<!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=rand()&template=list-link&cols=3&width=166&height=40")}-->
 				{/if}
 				{if $DT[page_text]}
 				<!--{tag("table=link&condition=status=3 and level>0 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}-->

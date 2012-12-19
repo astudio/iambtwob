@@ -1,0 +1,29 @@
+@charset "gb2312";
+/* CSS Document */
+
+#top_sel {
+	position: absolute;
+	top: 18px;
+	background-color: #FFEAD5;
+	height: auto;
+	overflow:hidden;	
+	width: 62px;
+	left:528px;
+	border:#d75718 1px solid;
+	border-top:none;
+	visibility:hidden;
+}
+#top_sel a{
+	border-top:#FEC489 1px solid;
+	color:#d75718;
+	display:block;
+	width:62px;
+	height:25px;
+}
+#top_sel a:hover{
+	color:#FFF;
+	display:block;
+	width:62px;
+	height:25px;
+	background:#fd7014;
+}

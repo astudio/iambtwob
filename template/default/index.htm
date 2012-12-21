@@ -259,21 +259,40 @@
 			<div class="m_n f_l">&nbsp;</div>
 			<div class="m_news f_l">
 				{if $DT[page_exhibit]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[8][linkurl]}">more ></a></span><a href="{$MODULE[8][linkurl]}"><strong>行業展會</strong></a></div></div>
-				<div class="box_body li_dot">
-					<table cellpadding="0" cellspacing="0" width="100%">
-					<tr>
-					<td valign="top" width="495">
-						<!--{php $tags=tag("moduleid=8&condition=status=3&areaid=$cityid&pagesize=".$DT['page_exhibit']."&order=addtime desc&template=null");}-->
-						<ul>
-						{loop $tags $t}
-						<li title="{$t[alt]}"><span class="f_r">[{$t[city]}]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{timetodate($t[fromtime], 'Y年m月d日')}</span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
-						{/loop}
-						</ul>			
-					</td>
-
-					</tr>
-					</table>
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[8][linkurl]}">more ></a></span><a href="{$MODULE[8][linkurl]}"><strong>Show</strong></a></div></div>
+				<div class="box_body f_gray">				
+					<!-- the tabs -->
+					<ul class="tabs">
+						<li><a href="#">Activity</a></li>
+						<li><a href="#">Proxy</a></li>						
+					</ul>					 
+					<!-- tab "panes" -->
+					<div class="panes">
+						<div>
+							<img src="http://www.imb2b.com/file/upload/201201/02/14-46-56-18-25.jpg" width="90" height="60" alt="" />
+							<div class="date">2012-11-13 ~ 2012-11-18</div>
+							<p class="organizer">Associazione Nazionale Ciclo Moto Accessori (ANCMA)</p>
+							<div class="more"></div>
+							<!--{php $tags=tag("moduleid=8&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&pagesize=4&order=fromtime asc&template=null");}-->
+							<ul class="expo">
+							{loop $tags $t}
+								<li title="{$t[alt]}"><span class="f_r">{timetodate($t[fromtime], 'm-d')}</span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+								{/loop}
+							</ul>
+						</div>
+						<div>
+							<img src="http://www.imb2b.com/file/upload/201201/02/14-46-56-18-25.jpg" width="90" height="60" alt="" />
+							<div class="date">2012-11-13 ~ 2012-11-18</div>
+							<p class="organizer">Associazione Nazionale Ciclo Moto Accessori (ANCMA)</p>
+							<div class="more"></div>
+							<!--{php $tags=tag("moduleid=8&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&pagesize=4&order=fromtime asc&template=null");}-->
+							<ul class="expo">
+							{loop $tags $t}
+								<li title="{$t[alt]}"><span class="f_r">{timetodate($t[fromtime], 'm-d')}</span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+								{/loop}
+							</ul>						
+						</div>					
+					</div>
 				</div>
 				<div class="b10">&nbsp;</div>
 				{/if}			
@@ -345,9 +364,26 @@
 				{/if}
 
 				{if $DT[page_video]}
-				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>推薦視頻</strong></a></div></div>
-				<div class="box_body f_gray video">
-				<!--{tag("moduleid=14&condition=status=3 and level>0&pagesize=".$DT[page_video]."&datetype=2&order=addtime desc&target=_blank")}-->
+				<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Video</strong></a></div></div>
+				<div class="box_body f_gray">
+				<!--{php $tags=tag("moduleid=14&condition=status=3&pagesize=".$DT[page_video]."&datetype=2&order=rand()&target=_blank&template=null");}-->
+					<div id="panes">
+						<!-- loop in 4 videos -->
+						{loop $tags $t}
+						<div>
+							<a href="{$t[linkurl]}" target="{$target}"><img src="{$t[thumb]}" width="186" height="95" alt="" /></a>
+						</div>
+						{/loop}	
+					</div>
+					<div id="tab_nav">
+						<ul>
+							{loop $tags $t}
+							<li>
+								<a href="#"><p>{$t[title]}</p></a>
+							</li>
+							{/loop}	
+						</ul>
+					</div>
 				</div>
 				<div class="b10">&nbsp;</div>
 				{/if}

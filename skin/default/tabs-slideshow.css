@@ -154,7 +154,7 @@
 
 /* disabled navigational button. is not needed when tabs are
    configured with rotate: true */
-.disabled {
+.images .disabled, .images2 .disabled {
     visibility:hidden !important;
 }
 

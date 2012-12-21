@@ -122,7 +122,7 @@
 				<div class="menu_category">Categories</div>
 				<div class="menu_b">
 					<div class="menu">
-						<ul><li{if $moduleid<4} class="menuon"{/if}><a href="{$MODULE[1][linkurl]}"><span>Home</span></a></li>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}{if $m[moduleid]==22} class="invest"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
+						<ul>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}{if $m[moduleid]==22} class="invest"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
 					</div>
 				</div>
 			</nav>

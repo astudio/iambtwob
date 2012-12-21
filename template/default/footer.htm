@@ -120,14 +120,6 @@
 							$(this).removeClass('active');
 							$(this).find('.level2').hide();
 						});
-					
-					$(".scrollable").scrollable({
-						onSeek: function(){ 
-							imgMouseOver();
-						}
-					});
-					$('img.lazy').jail();
-					imgMouseOver();
 
 					$(".slidetabs").tabs(".images > div", {				 
 					// enable "cross-fading" effect
@@ -139,7 +131,7 @@
 					// use the slideshow plugin. It accepts its own configuration
 					}).slideshow({
 						autoplay: true,
-						interval: 4000,
+						interval: 5000,
 						clickable: false
 					});
 
@@ -147,17 +139,32 @@
 					// enable "cross-fading" effect
 					effect: 'slide',
 					event: 'mouseover',
-					fadeOutSpeed: 1000,				 
+					fadeOutSpeed: 2000,				 
 					// start from the beginning after the last tab
 					rotate: true				 
 					// use the slideshow plugin. It accepts its own configuration
 					}).slideshow({
-						autoplay: true,
-						interval: 10000,
+						//autoplay: true,
+						//interval: 10000,
 						next: '.forward2',
 						prev: '.backward2',
 						clickable: false
-					});					
+					});
+
+					// perform JavaScript after the document is scriptable.
+					
+					// setup ul.tabs to work as tabs for each div directly under div.panes
+					$("ul.tabs").tabs("div.panes > div");
+
+					$("#tab_nav ul").tabs("#panes > div", {effect: 'fade', fadeOutSpeed: 400});
+
+					$(".scrollable").scrollable({
+						onSeek: function(){ 
+							imgMouseOver();
+						}
+					});
+					$('img.lazy').jail();
+					imgMouseOver();					
 				});				
 			})(jQuery);	
 		</script>

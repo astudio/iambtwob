@@ -12,6 +12,10 @@ img {border:none;}
 ul li {list-style-type:none;}
 ol li {list-style-type:decimal;}
 ul,form {margin:0px;padding:0px;}
+a {
+	outline: none; /* for Firefox */
+	hlbr:expression(this.onFocus=this.blur()); /* for IE */
+}
 a:link,a:visited,a:active {color:#003278;text-decoration:none;}
 a:hover {color:#FF6600;}
 /* links */

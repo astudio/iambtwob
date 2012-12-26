@@ -1,0 +1,26 @@
+<ul id="products_list">
+{loop $tags $k $t}
+	<li id="item_{$t[itemid]}">
+		<div class="thumb">
+			<a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="80" alt="" onmouseover="img_tip(this, this.src);" onmouseout="img_tip(this, '');" class="bd"/></a>
+		</div>
+		<div class="message">
+			<div class="f_r">
+				<a href="{$path}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry.gif" alt="Inquiry this product" style="border:none;"/></a>
+				{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+				{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+				{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+				{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+				{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}</a>&nbsp;{/if}
+			</div>		
+			<input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/>
+		</div>
+		
+		<ul class="info">
+			<li> <a href="{$t[linkurl]}" target="_blank" class="px13 f_n">{$t[title]}</a></li>
+			<li><!-- {if $t[vip]}<img src="{DT_SKIN}image/vip.gif" alt="級別：{$t[vip]}" style="border:none;" align="absmiddle"/>&nbsp;{/if} --><a href="{userurl($t[username])}" target="_blank" class="tu">→{$t[company]}</a></li>
+		</ul>		
+	</li>
+{/loop}	
+</ul>	
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

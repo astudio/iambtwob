@@ -1,4 +1,4 @@
-<input name="captcha" id="captcha" type="text" size="6" onfocus="showcaptcha();" value="點擊顯示" onkeyup="checkcaptcha(this.value);" onblur="checkcaptcha(this.value);" class="f_gray" style="margin:10px 0 10px 0;"/>&nbsp;<img src="{DT_SKIN}image/loading.gif" title="驗證碼,看不清楚?請點擊刷新&#10;字母不區分大小寫" alt="" align="absmiddle" id="captchapng" onclick="reloadcaptcha();" style="display:none;cursor:pointer;"/><span id="ccaptcha"></span>
+<input name="captcha" id="captcha" type="text" size="6" maxlength="4" onfocus="showcaptcha();" value="Click" onkeyup="checkcaptcha(this.value);" onblur="checkcaptcha(this.value);" class="f_gray" style="margin:10px 0 10px 0;" autocomplete="off"/>&nbsp;<img src="{DT_SKIN}image/loading.gif" title="驗證碼,看不清楚?請點擊刷新&#10;字母不區分大小寫" alt="" align="absmiddle" id="captchapng" onclick="reloadcaptcha();" style="display:none;cursor:pointer;"/><span id="ccaptcha"></span>
 <script type="text/javascript">
 function showcaptcha() {
 	if(Dd('captchapng').style.display=='none') {
@@ -7,7 +7,7 @@ function showcaptcha() {
 	if(Dd('captchapng').src.indexOf('loading.gif') != -1) {
 		Dd('captchapng').src='{DT_PATH}api/captcha.png.php?action=image';
 	}
-	if(Dd('captcha').value=='點擊顯示') {
+	if(Dd('captcha').value=='Click') {
 		Dd('captcha').value='';
 	}
 	Dd('captcha').className = '';

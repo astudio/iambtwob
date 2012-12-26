@@ -5,7 +5,7 @@ $MG['inquiry_limit'] > -1 or dalert(lang('message->without_permission'), 'goback
 include load('misc.lang');
 $limit_used = $limit_free = 0;
 if($MG['inquiry_limit']) {
-	if(is_array($itemid) && count($itemid) > $MG['inquiry_limit']) dalert(lang($L['inquiry_limit'], array($MG['inquiry_limit'])), 'goback');
+	if((is_array($itemid) && count($itemid) > $MG['inquiry_limit']) || (isset($fbox) && $length > $MG['inquiry_limit'])) dalert(lang($L['inquiry_limit'], array($MG['inquiry_limit'])), 'goback');
 	$today = strtotime(timetodate($DT_TIME, 3).' 00:00:00');
 	$sql = $_userid ? "fromuser='$_username'" : "ip='$DT_IP'";
 	$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}message WHERE $sql AND addtime>$today AND typeid=1 AND status=3");
@@ -89,8 +89,8 @@ if($submit) {
 	if($i == 1) $forward = $linkurl;
 	dalert(lang($L['inquiry_result'], array($i, $j)), $forward);
 } else {
-	$itemid or dheader($MOD['linkurl']);
-	$itemids = is_array($itemid) ? implode(',', $itemid) : $itemid;
+	($itemid || $fbox) or dheader($MOD['linkurl']);
+	$itemids = is_array($itemid) ? implode(',', $itemid) : (isset($fbox) && isset($itemids) ? $itemids : $itemid);
 	$list = array();
 	$result = $db->query("SELECT * FROM {$table} WHERE itemid IN ($itemids) AND status=3 LIMIT 30");
 	while($r = $db->fetch_array($result)) {
@@ -105,6 +105,11 @@ if($submit) {
 	$date = timetodate($DT_TIME + 5*86400, 3);
 	$title = $total == 1 ? lang($L['inquiry_message_title'], array($list[0]['title'])) : lang($L['inquiry_message_title_multi'], array($DT['sitename']));
 	$head_title = ($total == 1 ? $L['inquiry_head_title'].$DT['seo_delimiter'].$list[0]['title'] : $L['inquiry_head_title_multi']).$DT['seo_delimiter'].$MOD['name'];
-	include template('inquiry', $module);
+	if($fbox) {
+		include template('inquiry-fbox', $module);
+	}
+	else {
+		include template('inquiry', $module);
+	}
 }
 ?>

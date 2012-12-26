@@ -20,7 +20,7 @@
 
 /* tabs (those little circles below slides) */
 .slidetabs {
-    clear:both;
+    clear:left;
     height:25px;
 	width:827px;
 	background:#f5f5f5;
@@ -226,4 +226,48 @@
 
 .slidetabs2 a:hover, .slidetabs2 a.current {
 	overflow:visible;
+}
+
+/*======================================*/
+
+#overlay {
+background-image: url(http://jquerytools.org/media/img/overlay/transparent.png);
+color: #EFEFEF;
+height: 450px;
+}
+
+/* the overlayed element */
+.apple_overlay {
+
+    /* initially overlay is hidden */
+    display:none;
+
+    /* growing background image */
+    background-image:url(http://jquerytools.org/media/img/overlay/transparent.png);
+
+    /*
+      width after the growing animation finishes
+      height is automatically calculated
+      */
+    width:640px;
+
+    /* some padding to layout nested elements nicely  */
+    padding:35px;
+
+    /* a little styling */
+    font-size:11px;
+}
+
+/* default close button positioned on upper right corner */
+.apple_overlay .close {
+    background-image:url(http://jquerytools.org/media/img/overlay/close.png);
+    position:absolute; right:5px; top:5px;
+    cursor:pointer;
+    height:35px;
+    width:35px;
+}
+
+.apple_overlay .contentWrap {
+height: 441px;
+overflow-y: auto;
 }

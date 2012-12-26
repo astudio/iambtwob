@@ -1,30 +1,22 @@
 <script type="text/javascript">var user_auth = get_cookie('auth');</script>
-<div class="user" style="height:180px;">
+<div class="user">
 	{if defined('TOHTML')}
 	<script type="text/javascript">document.write(user_auth ? '<div>' : '<div style="display:none;">');</script>
 	{else}
 		{if $_userid}<div>{else}<div style="display:none;">{/if}
 	{/if}
-		<div class="user_wel">您好，歡迎回來</div>
+		<div class="user_wel">Welcome, you do...</div>
 		<div class="user_do">
-		<table cellpadding="0" cellspacing="0" width="100%">
-		<tr>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">發佈供求信息</a></td>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> <a href="{$EXT[spread_url]}">推廣企業產品</a></td>
-		</tr>
-		<tr>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}home.php">管理企業商舖</a></td>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}message.php">查看站內留言</a></td>
-		</tr>
-		<tr>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_trade.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}trade.php">管理買賣交易</a></td>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_record.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}record.php">查看{$DT[money_name]}流水</a></td>
-		</tr>
-		<tr>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_profile.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}edit.php?tab=2">完善企業資料</a></td>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_home.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}">進入商務中心</a></td>
-		</tr>
-		</table>
+			<ul>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">Post leads</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> <a href="{$EXT[spread_url]}">Promote by AD</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}home.php">Manage website</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}message.php">Check message</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_trade.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}trade.php">Manage orders</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_record.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}record.php">View balance</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_profile.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}edit.php?tab=2">Edit co. profile</a></li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_home.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}">Enter My ImB2B</a></li>
+			</ul>
 		</div>
 	</div>
 	{if defined('TOHTML')}
@@ -34,26 +26,22 @@
 	{/if}
 		<div class="user_login">
 			<form action="{$MODULE[2][linkurl]}{$DT[file_login]}" method="post" onsubmit="return user_login();">
-			<input type="hidden" name="submit" value="1"/>
-			<input name="username" id="user_name" type="text" value="會員名/Email" onfocus="if(this.value=='會員名/Email')this.value='';" class="user_input"/>&nbsp; 
-			<input name="password" id="user_pass" type="password" value="password" onfocus="if(this.value=='password')this.value='';" class="user_input"/>&nbsp; 
-			<input type="image" src="{DT_SKIN}image/user_login.gif" align="absmiddle"/>
+				<input type="hidden" name="submit" value="1"/>
+				<input name="username" id="user_name" type="text" value="User" onfocus="if(this.value=='User')this.value='';" class="user_input"/>&nbsp; 
+				<input name="password" id="user_pass" type="password" value="password" onfocus="if(this.value=='password')this.value='';" class="user_input" /><br/>
+				<label for="captcha">Verify code:</label>
+				{template 'captcha','chip'}	
+				<input type="submit" id="Login" value="Login" />
 			</form>
 		</div>
-		<div class="user_tip">免費註冊為會員後，您可以...</div>
+		<div class="user_tip">Join free as a memeber, you can...</div>
 		<div class="user_can">
-		<table cellpadding="0" cellspacing="0" width="100%">
-		<tr>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> 發佈供求信息</td>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> 推廣企業產品</td>
-		</tr>
-		<tr>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> 建立企業商舖</td>
-		<td><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> 在線洽談生意</td>
-		</tr>
-		</table>
+			<ul>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> Post leads</li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> Display products</li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> Create website</li>
+				<li><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> Access to buyers</li>
+			</ul>
 		</div>
-		<div class="user_reg"><a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><img src="{DT_SKIN}image/user_reg.gif" width="260" height="26" alt="還不是會員，立即免費註冊"/></a></div>
 	</div>
 </div>
-<div class="user_foot">&nbsp;</div>

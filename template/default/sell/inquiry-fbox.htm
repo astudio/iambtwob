@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+ 		<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<!-- 	{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if} -->
+		{if $itemid && $DT[anticopy]}
+		<script type="text/javascript">
+		document.oncontextmenu=function(e){return false;};
+		document.onselectstart=function(e){return false;};
+		</script>
+		{/if}
+		<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+		
+<!-- 		<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/jail.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/antiscroll.js"></script> -->
+	</head>
+	<body>
+		<div id="inquiryBox" class="fbox_body">
+			<form method="post" action="{$MOD[linkurl]}inquiry.php" id="dform" onsubmit="return check();">
+				<input type="hidden" name="forward" value="{$forward}"/>
+				<input type="hidden" name="itemids" value="{$itemids}"/>
+				<table cellpadding="1" cellspacing="6" width="100%">
+					<tr>
+					<th bgcolor="#f5f5f5" width="90">Products</th>
+					<td bgcolor="#FFFFFF">
+					{loop $list $v}
+					<div class="items">&raquo; <a href="{$MOD[linkurl]}{$v[linkurl]}" target="_blank" class="px12 f_b">{$v[title]}</a> <a href="{userurl($v[username])}" target="_blank">({$v[company]})</a></div>
+					{/loop}
+					</td>
+					</tr>
+					
+					<tr>
+					<th bgcolor="#f5f5f5" align="right"><span class="f_red">*</span>Subject</th>
+					<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title" class="pd3"/>&nbsp;&nbsp;<br /><span class="f_gray">Modify the subject to get early reply! </span><span class="f_red" id="dtitle"></span></td>
+					</tr>
+
+					<tr>
+					<th bgcolor="#f5f5f5" colspan="2">I’d like to know more about:</th>
+					</tr>
+					<tr>
+					<td bgcolor="#FFFFFF" colspan="2">
+					
+						<ul class="inquiryType">
+						{loop $itype $k $v}
+							<li><input type="checkbox" name="type[]" value="{$v}" id="type_{$k}"{if $k<5} checked{/if}/><label for="type_{$k}"> {$v}</label></li>
+						{/loop}
+						</ul>
+
+					</td>
+					</tr>
+
+					<tr>
+					<th bgcolor="#f5f5f5" colspan="2">Sample Question:</th>
+					</tr>
+					<tr>
+					<td bgcolor="#FFFFFF" colspan="2">
+						<select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
+						<option value="">Select a question</option>
+						{loop $iask $v}
+						<option value="{$v}">{$v}</option>
+						{/loop}
+						</select>
+						<span class="f_gray">(Without typing, "Quick Question" will help you.)</span>
+					</td>
+					</tr>
+
+					<tr>
+					<th bgcolor="#f5f5f5"><span class="f_red">*</span>Content</th>
+					<td bgcolor="#FFFFFF"><textarea rows="8" cols="80" name="content" id="content" class="pd3"></textarea><br/>
+					 I′d like to get reply before {dcalendar('date', $date)} <span class="f_red" id="dcontent"></span>
+					</td>
+					</tr>
+
+					<tr>
+					<th bgcolor="#f5f5f5" colspan="2">Contact Info:</th>
+					</tr>
+					<tr>
+					<td bgcolor="#f5f5f5" colspan="2">
+					{if $_userid}
+					<table cellpadding="5" cellspacing="5">
+					<tr>
+					<td>Contact</td>
+					<td>{$truename}</td>
+					<td>Co. Name</td>
+					<td>{$company}</td>
+					</tr>
+					<tr>
+					<td>Email</td>
+					<td>{$email}</td>
+					<td>TEL</td>
+					<td>{$telephone}</td>
+					</tr>
+					<tr>
+					<td>QQ</td>
+					<td>{$qq}</td>
+					<td>MSN</td>
+					<td>{$msn}</td>
+					</tr>
+				</table>
+			{else}
+				<table cellpadding="5" cellspacing="5">
+					<tr>
+					<td colspan="2">Not a member, please <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b">Join Free</a> or please leave your contact information (<span class="f_red">*</span> are required)! Already a member? Please <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b">Login</a>.</td>
+					</tr>
+					<tr>
+					<td>Co. Name</td>
+					<td><input type="text" name="company" size="30" id="company"/></td>
+					</tr>
+					<tr>
+					<td>Contact<span class="f_red">*</span></td>
+					<td><input type="text" name="truename" size="30" id="truename"/><br/><span class="f_red" id="dtruename"></span></td>
+					</tr>
+					<tr>
+					<td>TEL<span class="f_red">*</span></td>
+					<td><input type="text" name="telephone" size="30" id="telephone"/><br/><span class="f_red" id="dtelephone"></span></td>
+					</tr>
+					<tr>
+					<td>Email</td>
+					<td><input type="text" name="email" size="30" id="email"/></td>
+					</tr>
+					{if $DT[im_qq]}
+					<tr>
+					<td>QQ </td>
+					<td><input type="text" size="20" name="qq" id="qq"/></td>
+					</tr>
+					{/if}
+					{if $DT[im_ali]}
+					<tr>
+					<td>阿里旺旺 </td>
+					<td><input type="text" size="20" name="ali" id="ali"/></td>
+					</tr>
+					{/if}
+					{if $DT[im_msn]}
+					<tr>
+					<td>MSN </td>
+					<td><input type="text" size="30" name="msn" id="msn"/></td>
+					</tr>
+					{/if}
+					{if $DT[im_skype]}
+					<tr>
+					<td>Skype </td>
+					<td><input type="text" size="20" name="skype" id="skype"/></td>
+					</tr>
+					{/if}
+					</table>
+					{/if}
+					</td>
+					</tr>
+					{if $need_captcha}
+					<tr>
+					<td bgcolor="#f5f5f5" align="right">Verify Code<span class="f_red">*</span></td>
+					<td bgcolor="#FFFFFF">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
+					</tr>
+					{/if}
+					{if $need_question}
+					<tr>
+					<td bgcolor="#f5f5f5" align="right"> 驗證問題<span class="f_red">*</span></td>
+					<td bgcolor="#FFFFFF">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
+					</tr>
+					{/if}
+					{if $_userid && $DT[sms]}
+					<tr>
+					<td bgcolor="#f5f5f5" align="right">短信通知：</td>
+					<td bgcolor="#FFFFFF"><input type="checkbox" name="sendsms" value="1"/> 發送短信通知至接收人手機 (<a href="{$MODULE[2][linkurl]}sms.php" target="_blank">我的可用短信 <strong class="f_blue">{$_sms}</strong> 條</a>)</td>
+					</tr>
+					{/if}
+					<tr>
+					<td bgcolor="#f5f5f5"> </td>
+					<td bgcolor="#FFFFFF"><input type="submit" name="submit" value=" 發送{if $total==1}詢價單{else}批量詢價{/if} " class="pd3 px14 f_b c_p"/>
+
+					{if $MG[inquiry_limit]}
+					&nbsp;&nbsp;&nbsp;今日可詢價 <span class="f_b f_red">{$MG[inquiry_limit]}</span> 次
+					&nbsp;&nbsp;&nbsp;當前已詢價 <span class="f_b">{$limit_used}</span> 次
+					&nbsp;&nbsp;&nbsp;還可以詢價 <span class="f_b f_blue">{$limit_free}</span> 次
+					{/if}
+					
+					</td>
+					</tr>
+				</table>
+			</form>
+			
+			<style>
+				#inquiryBox {margin:0 5px;}
+				#inquiryBox table {white-space:nowrap;}
+				#inquiryBox table th {font-size:14px;font-weight:normal;text-align:left;padding-left:15px;height:30px;}
+				#inquiryBox select {width:300px;height:20px;vertical-align:middle;}
+				#inquiryBox textarea {width:530px;}
+				#inquiryBox .items {text-overflow:ellipsis;overflow:hidden;width:530px;}
+				#inquiryBox #date {vertical-align:middle;}
+				#inquiryBox .inquiryType {display:block;white-space:normal;padding-left:20px;}
+				#inquiryBox .inquiryType > li {display:inline-block;*display:inline;zoom:1;padding-right:12px;}
+			</style>
+			
+			<script type="text/javascript">
+				function check() {
+					var l;
+					var f;
+					f = 'title';
+					l = Dd(f).value.length;
+					if(l < 5 || l > 50) {
+						Dmsg('標題應為5-50字，當前已輸入'+l+'字', f);
+						return false;
+					}
+					f = 'content';
+					l = Dd(f).value.length;
+					if(l < 10 || l > 2000) {
+						Dmsg('內容應為10-2000字，當前已輸入'+l+'字', f);
+						return false;
+					}
+					{if !$_userid}
+					f = 'truename';
+					l = Dd(f).value.length;
+					if(l < 2) {
+						Dmsg('請填寫聯繫人', f);
+						return false;
+					}
+					f = 'telephone';
+					l = Dd(f).value.length;
+					if(l < 7) {
+						Dmsg('請填寫聯繫電話', f);
+						return false;
+					}
+					{/if}
+					{if $need_captcha}
+					f = 'captcha';
+					l = Dd(f).value;
+					if(!is_captcha(l)) {
+						Dmsg('請填寫正確的驗證碼', f);
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+					{/if}
+					{if $need_question}
+					f = 'answer';
+					l = Dd(f).value.length;
+					if(l < 1) {
+						Dmsg('請填寫驗證問題', f);
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+					{/if}
+				}
+			</script>
+		</div>
+	</body>
+</html>		

@@ -115,8 +115,8 @@ function show_message(u, i) {document.write('<iframe src="'+u+'message.php?itemi
 function show_task(s) {document.write('<script type="text/javascript" src="'+DTPath+'api/task.js.php?'+s+'&refresh='+Math.random()+'.js"></sc'+'ript>');}
 var sell_n = 0;
 function sell_tip(o, i) {
-	if(o.checked) {sell_n++; Dd('item_'+i).style.backgroundColor='#F1F6FC';} else {Dd('item_'+i).style.backgroundColor='#FFFFFF'; sell_n--;}
-	if(sell_n < 0) sell_n = 0;
+	if(o.checked) {sell_n++; $('#item_'+i+' .info').css('opacity','1');} else {$('#item_'+i+' .info').css('opacity','0.6'); sell_n--;}
+	if(sell_n < 0 || $('[name="itemid[]"]:checked').length < 1) sell_n = 0;
 	if(sell_n > 1) {
 		var aTag = o; var leftpos = toppos = 0;
 		do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
@@ -133,16 +133,16 @@ function sell_tip(o, i) {
 function img_tip(o, i) {
 	if(i) {
 		if(i.indexOf('nopic.gif') == -1) {
-			if(i.indexOf('.thumb.') != -1) {var t = i.split('.thumb.');var s = t[0];} else {var s = i;}
+			if(i.indexOf('.thumb.') != -1) {var t = i.replace('.thumb.','.middle.');var s = t;} else {var s = i;}
 			var aTag = o; var leftpos = toppos = 0;
 			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
 			} while(aTag.offsetParent != null);
-			var X = o.offsetLeft + leftpos + 90;
-			var Y = o.offsetTop + toppos - 20;
+			var X = o.offsetLeft + leftpos + 138;
+			var Y = o.offsetTop + toppos - 16;
 			Dd('img_tip').style.left = X + 'px';
 			Dd('img_tip').style.top = Y + 'px';
 			Ds('img_tip');
-			Inner('img_tip', '<img src="'+s+'" onload="if(this.width<200) {Dh(\'img_tip\');}else if(this.width>300){this.width=300;}Dd(\'img_tip\').style.width=this.width+\'px\';"/>')
+			Inner('img_tip', '<img src="'+s+'" onload="if(this.width<200) {Dh(\'img_tip\');}else if(this.width>260){this.width=260;}Dd(\'img_tip\').style.width=this.width+\'px\';"/>')
 		}
 	} else {
 		Dh('img_tip');

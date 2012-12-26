@@ -8,7 +8,7 @@
 				<input type="hidden" name="itemids" value="{$itemids}"/>
 				<table cellpadding="6" cellspacing="1" width="100%">
 				<tr>
-				<td bgcolor="#FBFCFD" width="200" align="right">產品/服務：</td>
+				<td bgcolor="#FBFCFD" width="200" align="right">Products</td>
 				<td bgcolor="#FFFFFF">
 				{loop $list $v}
 				<div>&raquo; <a href="{$MOD[linkurl]}{$v[linkurl]}" target="_blank" class="px14 f_b">{$v[title]}</a> <a href="{userurl($v[username])}" target="_blank">({$v[company]})</a>{if $v[vip]} <img src="{DT_SKIN}image/vip.gif"/>{/if}</div>
@@ -18,12 +18,12 @@
 				</tr>
 				
 				<tr>
-				<td bgcolor="#FBFCFD" align="right"><span class="f_red">*</span> 詢價標題：</td>
-				<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title" class="pd3"/>&nbsp;&nbsp;<span class="f_gray">建議您修改主題，吸引對方注意,得到優先回復!</span> <br/><span class="f_red" id="dtitle"></span></td>
+				<td bgcolor="#FBFCFD" align="right"><span class="f_red">*</span>Subject</td>
+				<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title" class="pd3"/>&nbsp;&nbsp;<span class="f_gray">Modify the subject to get early reply! </span> <br/><span class="f_red" id="dtitle"></span></td>
 				</tr>
 
 				<tr>
-				<td bgcolor="#FBFCFD" align="right">我想瞭解：</td>
+				<td bgcolor="#FBFCFD" align="right">I’d like to know more about:</td>
 				<td bgcolor="#FFFFFF">
 				
 				<table cellpadding="2" cellspacing="2">
@@ -38,46 +38,46 @@
 				</tr>
 
 				<tr>
-				<td bgcolor="#FBFCFD" align="right">快捷提問：</td>
+				<td bgcolor="#FBFCFD" align="right">Sample Question:</td>
 				<td bgcolor="#FFFFFF">
 				<select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
-				<option value="">請選擇常用問題</option>
+				<option value="">Select a question</option>
 				{loop $iask $v}
 				<option value="{$v}">{$v}</option>
 				{/loop}
 				</select>
-				<span class="f_gray">(不用打字 「快捷提問」幫您忙！) </span>
+				<span class="f_gray">(Without typing, "Quick Question" will help you.)</span>
 				</td>
 				</tr>
 
 				<tr>
-				<td bgcolor="#FBFCFD" align="right"><span class="f_red">*</span> 主要內容：</td>
+				<td bgcolor="#FBFCFD" align="right"><span class="f_red">*</span>Content</td>
 				<td bgcolor="#FFFFFF"><textarea rows="8" cols="80" name="content" id="content" class="pd3"></textarea><br/>
-				我希望在 {dcalendar('date', $date)} 日前回復 <span class="f_red" id="dcontent"></span>
+				 I′d like to get reply before {dcalendar('date', $date)} <span class="f_red" id="dcontent"></span>
 				</td>
 				</tr>
 
 				<tr>
-				<td bgcolor="#FBFCFD" align="right">我的聯繫方式：</td>
+				<td bgcolor="#FBFCFD" align="right">Contact Info</td>
 				<td bgcolor="#FBFCFD">
 				{if $_userid}
 				<table cellpadding="5" cellspacing="5">
 				<tr>
-				<td>聯繫人：</td>
+				<td>Contact</td>
 				<td>{$truename}</td>
-				<td>公司名：</td>
+				<td>Co. Name</td>
 				<td>{$company}</td>
 				</tr>
 				<tr>
-				<td>電子郵件：</td>
+				<td>Email</td>
 				<td>{$email}</td>
-				<td>聯繫電話：</td>
+				<td>TEL</td>
 				<td>{$telephone}</td>
 				</tr>
 				<tr>
-				<td>聯繫QQ：</td>
+				<td>QQ</td>
 				<td>{$qq}</td>
-				<td>聯繫MSN：</td>
+				<td>MSN</td>
 				<td>{$msn}</td>
 				</tr>
 				</table>

@@ -1,13 +1,83 @@
 {template 'header'}
 <div class="m">
+		<div class="f_l side">
+			{if $DT[page_catalog]}
+			<ul class="Category">
+				{php $mid = 5;}
+				{php $child = get_maincat(0, $mid, 1);}
+				{loop $child $c}
+				<li class="level1">
+					<!-- 第一級分類 -->
+					<h2>
+						<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{set_style($c[catname], $c[style])}<span class="arrow">></span></a>
+					</h2>
+					{if $c[child]}
+					{php $sub = get_maincat($c[catid], $mid, 1);}				
+					<!-- 第二級分類 -->
+					<div class="level2" style="display:none;">
+						<ul>
+<!-- 							<li>
+								<h3>Shop for</h3>
+							</li> -->
+							{loop $sub $j $s}
+							<li><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank" class="g">{set_style($s[catname], $s[style])}</a><span>({$s[item]})</span></li>
+							{/loop}
+							<!-- {if $j>8}<li><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank" class="g">更多</a></li>{/if} -->
+						</ul>
+					</div>
+					{/if}
+				</li>
+				{/loop}		
+			</ul>
+			{/if}
+		</div>
+
 <div class="m_l_1 f_l">
+	<div class="b10">&nbsp;</div>
+	
+					<div>
+						<!-- "previous slide" button -->
+						<!-- <a class="backward">prev</a> -->
+						<!-- container for the slides -->
+						<div class="images">
+							<!-- first slide -->
+							<div>
+								<a href="http://www.google.com" target="_blank"><img src="http://www.utopiaadvisors.com/images/banner_3.jpg" width="827" height="192" /></a>
+							</div>
+							<!-- second slide -->
+							<div>
+								<a href="http://tw.yahoo.com" target="_blank"><img src="http://elproyectomatriz.files.wordpress.com/2011/03/malestar-org-banner.jpg?w=950" width="827" height="192" /></a>
+							</div>
+							<!-- third slide -->
+							<div>
+								<a href="http://www.google.com.tw" target="_blank"><img src="http://2.bp.blogspot.com/-izbRuuaGUqM/T29DY8CItJI/AAAAAAAAEok/qt03FxXP5Ek/s1600/rentokil+logo+small.jpg" width="827" height="192" /></a>
+							</div>
+							
+							<div>
+								<a href="http://www.cnn.com" target="_blank"><img src="http://elproyectomatriz.files.wordpress.com/2011/03/malestar-org-banner.jpg?w=950" width="827" height="192" /></a>
+							</div>
+						</div>
+						<!-- "next slide" button -->
+						<!-- <a class="forward">next</a> -->
+						<!-- the tabs -->
+						<div class="slidetabs">
+							<a href="#">Your trade partner1<div class="arrowt"></div></a>
+							<a href="#">Your trade partner2<div class="arrowt"></div></a>
+							<a href="#">Your trade partner3<div class="arrowt"></div></a>
+							<a href="#">Your trade partner4<div class="arrowt"></div></a>
+						</div>					
+					</div>
+					
+	<div class="b10">&nbsp;</div>				
+
 	<div class="left_box">
-		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a>
+<!-- 		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a>
 		&raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a>
 		{if $typeid!=99}&raquo; <a href="{$MOD[linkurl]}{rewrite('index.php?typeid='.$typeid)}">{$TYPE[$typeid]}</a>{/if}
 		{if $catid}&raquo; {cat_pos($CAT, ' &raquo; ')}{/if}
-		</div>
-		<div class="category">
+		</div> -->
+		
+<!-- 		<div class="category">
 			<p><img src="{DT_SKIN}image/arrow.gif" width="17" height="12" alt=""/> <strong>按行業瀏覽</strong></p>
 			<div>
 			<table width="100%" cellpadding="3">
@@ -19,34 +89,50 @@
 			</table>
 			</div>
 		</div>
-		<div class="b10">&nbsp;</div>
-		<div class="type">
-		<a href="{$MOD[linkurl]}" class="{if $typeid==99}type_1{else}type_2{/if}">全部</a>
-		{loop $TYPE $k $v}
-		<a href="javascript:Go('{$MOD[linkurl]}{rewrite('index.php?typeid='.$k.'&catid='.$catid)}');" class="{if $typeid==$k}type_1{else}type_2{/if}">{$v}</a>
-		{/loop}
+		<div class="b10">&nbsp;</div> -->
+		
+<!-- 		<div class="type">
+			<a href="{$MOD[linkurl]}" class="{if $typeid==99}type_1{else}type_2{/if}">全部</a>
+			{loop $TYPE $k $v}
+			<a href="javascript:Go('{$MOD[linkurl]}{rewrite('index.php?typeid='.$k.'&catid='.$catid)}');" class="{if $typeid==$k}type_1{else}type_2{/if}">{$v}</a>
+			{/loop}
 		</div>
-		<div class="b10 c_b">&nbsp;</div>
-		<form method="post">
-		<div class="sell_tip" id="sell_tip" style="display:none;" title="雙擊關閉" ondblclick="Dh(this.id);">
+		<div class="b10 c_b">&nbsp;</div> -->
+		<form id="comIn" method="post">
+		<div class="sell_tip" id="sell_tip" style="display:none;" title="Double click to close" ondblclick="Dh(this.id);">
 			<div>
-				<p>您可以</p>
-				<input type="submit" value="對比選中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/> 或 
-				<input type="submit" value="批量詢價" onclick="this.form.action='{$MOD[linkurl]}inquiry.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+				<p>You can select to</p>
+<!-- 				<input type="submit" value="對比選中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/> 或 
+				<input type="submit" value="批量詢價" onclick="this.form.action='{$MOD[linkurl]}inquiry.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/> -->
+				<a href="javascript:;" rel="compare" class="btn_1 fb" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'">Compare</a> or 
+				<a href="javascript:;" rel="inquiry" class="btn_1 fb" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'">Inquiry</a>
 			</div>
 		</div>
 		<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
 		<div class="tool">
+		
+			<div>
+				<div class="f_r">
+					<img src="{DT_SKIN}image/list_img_on.gif" width="16" height="16" alt="圖片列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=1');"/>&nbsp;	
+					<img src="{DT_SKIN}image/list_mix.gif" width="16" height="16" alt="圖文列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=0');"/>&nbsp;			
+					<img src="{DT_SKIN}image/list_txt.gif" width="16" height="16" alt="文字列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=2');"/>&nbsp;
+				</div>
+				<ul class="menu">
+					<li><a href="#">Products</a></li>
+					<li><a href="#">Company</a></li>
+				</ul>
+			</div>	
+			Select All
 			<table>
 			<tr height="30">
-			<td width="25" align="center" title="全選/反選">&nbsp;<input type="checkbox" onclick="checkall(this.form);"/></td>
+			<td width="25" align="center" title="Select All/Select None">&nbsp;<input id="checkAll" type="checkbox"/></td>
 			<td>
-				<input type="submit" value="對比選中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>&nbsp;
-				<input type="submit" value="批量詢價" onclick="this.form.action='{$MOD[linkurl]}inquiry.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+				<a href="javascript:;" rel="compare" class="btn_1 fb" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'">Compare</a>&nbsp; 
+				<a href="javascript:;" rel="inquiry" class="btn_1 fb" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'">Inquiry</a>
 			</td>
 			<td align="right">
-			<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}{if $typeid>-1}&typeid={$typeid}{/if}';</script>
-			<input type="checkbox" onclick="Go(sh+'&price=1');"/>標價&nbsp;
+ 			<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}{if $typeid>-1}&typeid={$typeid}{/if}';</script>
+<!--			<input type="checkbox" onclick="Go(sh+'&price=1');"/>標價&nbsp;
 			<input type="checkbox" onclick="Go(sh+'&thumb=1');"/>圖片&nbsp;
 			<input type="checkbox" onclick="Go(sh+'&vip=1');"/>{VIP}&nbsp;
 			<select onchange="Go(sh+'&day='+this.value)">
@@ -67,16 +153,18 @@
 			<option value="7">供貨量由低到高</option>
 			<option value="8">起訂量由高到低</option>
 			<option value="9">起訂量由低到高</option>
-			</select>&nbsp;	
-			<img src="{DT_SKIN}image/list_txt.gif" width="16" height="16" alt="文字列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=2');"/>&nbsp;
-			<img src="{DT_SKIN}image/list_img.gif" width="16" height="16" alt="圖片列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=1');"/>&nbsp;
-			<img src="{DT_SKIN}image/list_mix_on.gif" width="16" height="16" alt="圖文列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=0');"/>&nbsp;
+			</select>&nbsp;	 -->
+			{if $MOD[group]}
+				<div class="result">
+					<span class="resultSpan"><span class="f_r px11">(<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $items<$pagesize*$page ? $items : $pagesize*$page;}?> out of <?php echo $group ? $total : $items;?>)</span><strong>Result{if $items>1}s{/if}{if $catid} for <span class="f_red">{$CATEGORY[$catid][catname]}</span>{/if}:</strong></span> {$items} product{if $items>1}s{/if}{if $MOD[group]} from {$total} {if $total>1}companies{else}company{/if}{/if}
+				</div>
+			{/if}
 			</td>
 			</tr>
 			</table>
 		</div>
-		{if $page == 1}{ad($moduleid,0,'',6)}{/if}	<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell")}-->
-		<div class="tool">
+		{if $page == 1}{ad($moduleid,0,'',6)}{/if}	<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-img")}-->
+<!-- DEL		<div class="tool">
 			<table>
 			<tr height="30">
 			<td width="25" align="center"></td>
@@ -86,7 +174,7 @@
 			</td>
 			</tr>
 			</table>
-		</div>
+		</div> -->
 		</form>
 	<br/>
 	</div>
@@ -101,17 +189,28 @@
 		</div>		
 	</div>
 	<div class="b10">&nbsp;</div>
-	<div class="box_head_1"><div><strong>按地區瀏覽</strong></div></div>
-	<div class="box_body">
-			<table width="100%" cellpadding="3">
-			{php $mainarea = get_mainarea(0)}
-			{loop $mainarea $k $v}
-			{if $k%2==0}<tr>{/if}
-			<td><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'].'&typeid='.$typeid)}">{$v[areaname]}</a></td>
-			{if $k%2==1}</tr>{/if}
-			{/loop}
-			</table>
-	</div>
 </div>
 </div>
+
+<style>
+a.btn_1, a.btn_2 {display:inline-block;*display:inline;zoom:1;}
+
+#products_list {width:845px;margin-top:16px;}
+#products_list > li {display:inline-block;*display:inline;zoom:1;margin:0 19px 10px 0;float:left;position:relative;}
+#products_list .thumb {}
+#products_list .thumb img {border:none;padding:0;width:150px;height:150px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
+#products_list .message {position: absolute;top: 7px;width: 150px;}
+#products_list .info {border: none;padding: 4px 8px 0 8px;margin: 0;position: absolute;bottom: 8px;height: 36px;background: #000;opacity: 0.6;width:134px;}
+#products_list .info > li {height:16px;line-height:16px;overflow:hidden;}
+#products_list .info > li > a {color:#FFF;}
+#products_list .info > li > a.tu {text-decoration:underline;}
+#products_list .info:hover {opacity:1 !important;}
+.pages {clear:both;}
+
+/*fbox*/
+#fancybox-outer {top:20px;}
+#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
+#fancybox-title-float-main {font-size:20px;line-height:45px;}
+#fancybox-close {top:-37px;right:7px;} /*inquiry fbox close position*/
+</style>
 {template 'footer'}

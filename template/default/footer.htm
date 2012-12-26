@@ -101,8 +101,13 @@
 				<div class="tb_c" onclick="window.scrollTo(0,0);" title="返回頂部" id="tb_c"></div>
 			</div>
 		</div>
+		
+		<div style="display:none">
+			<div id="data"></div>			
+		</div>
+		
 		<script type="text/javascript">
-			show_task('{$destoon_task}');
+			
 			(function($) {
 				if(!$) return false;				
 
@@ -137,7 +142,7 @@
 
 					$(".slidetabs2").tabs(".images2 > div", {				 
 					// enable "cross-fading" effect
-					effect: 'slide',
+					effect: 'horizontal',
 					event: 'mouseover',
 					fadeOutSpeed: 2000,				 
 					// start from the beginning after the last tab
@@ -164,9 +169,91 @@
 						}
 					});
 					$('img.lazy').jail();
-					imgMouseOver();					
+					imgMouseOver();	
+
+					/*$("a.l").delegate(this, 'click', function(e){
+						e.preventDefault();
+						$(this).fancybox({
+							'transitionIn'	:	'elastic',
+							'transitionOut'	:	'elastic',
+							'speedIn'		:	600, 
+							'speedOut'		:	200, 
+							'overlayShow'	:	false
+						});	
+					});	*/
+
+					$("a.Inquiry").fancybox({
+							width			: 680,
+							height			: '90%',
+							title			: 'Select To Inquiry',
+							padding			: 0,
+							autoDimensions	: false,
+							centerOnScroll	: true,
+							scrolling		: 'yes',
+							transitionIn	: 'elastic',
+							transitionOut	: 'elastic',
+							speedIn			: 600,
+							speedOut		: 200,
+							type			: 'iframe'
+					});
+
+					$("a.fb").click(function(){
+						
+						var checked = $("[name='itemid[]']:checked");
+						//itemid
+						var itemid = [];
+						checked.each(function(){
+							itemid.push($(this).val());
+						});
+						//href
+						var href = $(this).attr('rel');
+						//length (only for Compare)
+						var len = checked.length;
+						//title
+						var title = href == 'compare' ? 'Compare' : 'Inquiry';
+						//var v = href == 'compare' ? 'itemid' : 'itemids';
+						
+						$.fancybox({
+							width			: 680,
+							height			: '90%',
+							title			: 'Select To '+title,
+							padding			: 0,
+							autoDimensions	: false,
+							centerOnScroll	: true,
+							scrolling		: 'yes',
+							transitionIn	: 'elastic',
+							transitionOut	: 'elastic',
+							speedIn			: 600,
+							speedOut		: 200,
+							type			: 'iframe',
+							href			: href+'.php?fbox=1&length='+len+'&itemids='+itemid,
+							onComplete		: function(){
+								Dh('sell_tip');
+								$(":checkbox:checked").each(function () {
+									this.click();
+								});
+							}				
+						});	
+					});
+					
+	$('#checkAll').toggle(
+		function(){
+			//$(this).attr('checked',true);
+			$(':checkbox').attr('checked',true).parent().parent().find('.info').css({'opacity':1});
+		},
+		function(){
+			//$(this).attr('checked',false);
+			$(':checkbox').attr('checked',false).parent().parent().find('.info').css({'opacity':0.6});	
+		});					
+					
+					
+					
+					//If fbox was closed, check if the checked element have added the checked style.
+					//if($('[name="itemid[]"]:checked').length) {$('[name="itemid[]"]:checked').parent().parent().find('.info').css({'opacity':1});}	
 				});				
-			})(jQuery);	
+			})(jQuery);
+			
+			show_task('{$destoon_task}');	
 		</script>
 	</body>
 </html>

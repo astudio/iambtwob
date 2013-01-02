@@ -6,7 +6,7 @@
 		</div>
 		<div class="message">
 			<div class="f_r">
-				<a href="{$path}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry.gif" alt="Inquiry this product" style="border:none;"/></a>
+				<a href="{$path}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img class="trigger" src="{DT_SKIN}image/inquiry.png" title="Inquiry this product"/></a>
 				{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
 				{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
 				{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}

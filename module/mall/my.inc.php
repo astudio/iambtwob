@@ -91,8 +91,8 @@ switch($action) {
 					credit_record($_username, -$MOD['credit_elite'], 'system', lang($L['credit_record_elite'], array($MOD['name'])), $post['title']);
 				}
 
-				if($could_color && $style && $_credit > $MOD['credit_color']) {
-					$post['style'] = $style;
+				if($could_color && $color && $_credit > $MOD['credit_color']) {
+					$post['style'] = $color;
 					credit_add($_username, -$MOD['credit_color']);
 					credit_record($_username, -$MOD['credit_color'], 'system', $L['title_color'], '['.$MOD['name'].']'.$post['title']);
 				}

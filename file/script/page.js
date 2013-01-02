@@ -116,7 +116,23 @@ function show_task(s) {document.write('<script type="text/javascript" src="'+DTP
 var sell_n = 0;
 function sell_tip(o, i) {
 	if(o.checked) {sell_n++; $('#item_'+i+' .info').css('opacity','1');} else {$('#item_'+i+' .info').css('opacity','0.6'); sell_n--;}
-	if(sell_n < 0 || $('[name="itemid[]"]:checked').length < 1) sell_n = 0;
+	if(sell_n < 0) sell_n = 0;
+	if(sell_n > 1) {
+		var aTag = o; var leftpos = toppos = 0;
+		do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
+		} while(aTag.offsetParent != null);
+		var X = o.offsetLeft + leftpos - 10;
+		var Y = o.offsetTop + toppos - 70;
+		Dd('sell_tip').style.left = X + 'px';
+		Dd('sell_tip').style.top = Y + 'px';
+		o.checked ? Ds('sell_tip') : Dh('sell_tip');
+	} else {
+		Dh('sell_tip');
+	}
+}
+function sell_tip_list(o, i) {
+	if(o.checked) {sell_n++; Dd('item_'+i).style.backgroundColor='#f5f5f5';} else {Dd('item_'+i).style.backgroundColor='#FFFFFF'; sell_n--;}
+	if(sell_n < 0) sell_n = 0;
 	if(sell_n > 1) {
 		var aTag = o; var leftpos = toppos = 0;
 		do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
@@ -139,6 +155,24 @@ function img_tip(o, i) {
 			} while(aTag.offsetParent != null);
 			var X = o.offsetLeft + leftpos + 138;
 			var Y = o.offsetTop + toppos - 16;
+			Dd('img_tip').style.left = X + 'px';
+			Dd('img_tip').style.top = Y + 'px';
+			Ds('img_tip');
+			Inner('img_tip', '<img src="'+s+'" onload="if(this.width<200) {Dh(\'img_tip\');}else if(this.width>260){this.width=260;}Dd(\'img_tip\').style.width=this.width+\'px\';"/>')
+		}
+	} else {
+		Dh('img_tip');
+	}
+}
+function img_tip_list(o, i) {
+	if(i) {
+		if(i.indexOf('nopic.gif') == -1) {
+			if(i.indexOf('.thumb.') != -1) {var t = i.replace('.thumb.','.middle.');var s = t;} else {var s = i;}
+			var aTag = o; var leftpos = toppos = 0;
+			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
+			} while(aTag.offsetParent != null);
+			var X = o.offsetLeft + leftpos + 90;
+			var Y = o.offsetTop + toppos - 20;
 			Dd('img_tip').style.left = X + 'px';
 			Dd('img_tip').style.top = Y + 'px';
 			Ds('img_tip');

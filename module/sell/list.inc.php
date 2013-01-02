@@ -18,6 +18,7 @@ if(!check_group($_groupid, $MOD['group_list']) || !check_group($_groupid, $CAT['
 	exit(include template('noright', 'message'));
 }
 $CP = $MOD['cat_property'] && $CAT['property'];
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0; // 0:gallery 1:list 2:text
 if($MOD['cat_property'] && $CAT['property']) {
 	require DT_ROOT.'/include/property.func.php';
 	$PPT = property_condition($catid);

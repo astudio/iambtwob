@@ -1,4 +1,4 @@
-<?php exit;?>2012-12-16 23:15:17GUMONDER Industrial Corp. is one of the leading exporters of tires in Taiwan, and has enjoyed an excellent reputation through our 20 years in business. The company carries all types of forklift tires, solid tires, press-on tires, motorcycles tires and a variety of other rubber-based products to meet wide range of industrial needs.<br />
+<?php exit;?>2013-01-01 22:48:52GUMONDER Industrial Corp. is one of the leading exporters of tires in Taiwan, and has enjoyed an excellent reputation through our 20 years in business. The company carries all types of forklift tires, solid tires, press-on tires, motorcycles tires and a variety of other rubber-based products to meet wide range of industrial needs.<br />
 <br />
 GUMONDER Industrial Corp. is recognized internationally for its dedication to quality. All of our products meet ISO9001:2000 standards. We have achieved this mainly via the following efforts:<br />
 ．Integrated quality assurance system, which starts from raw materials acquisition to product quality control, from our innovated R&amp;D to inputs from our customers.<br />

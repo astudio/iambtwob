@@ -1,0 +1,44 @@
+<style>
+	.list {height:46px;}
+	.list > ul {margin-left:30px;margin-right:2px;}
+	.list > ul > .title {max-height:18px;height:18px;padding-top:0;}
+	.list > ul > .title > a {width:660px;}
+	.list > ul > li {padding:3px 0;}
+</style>
+<div class="Lists">
+	{loop $tags $k $t}
+	<div class="list" id="item_{$t[itemid]}">
+		<input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip_list(this, {$t[itemid]});"/>
+
+		<ul>
+			<li class="title">{if $t[vip]}<span class="f_r"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry_btn.png" alt="詢價" class="iq_btn" /></a></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
+			<li>
+				<span class="f_r">
+					<img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/>
+					<span>
+					{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+					{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+					{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+					{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+					{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}&nbsp;{/if}
+					&nbsp;&nbsp;</span>					
+				</span>
+				<a href="{userurl($t[username])}" class="com" target="_blank">{$t[company]}</a>&nbsp;
+				<span class="f_gray">
+				{if $t[validated]}<span class="f_green">[Verified]</span>{else}[Unverified]{/if}
+				{if !$t[username]} [Unregistered]{/if}
+				</span>				
+				<span> - [{area_pos($t[areaid], '')}]</span>
+				<span class="f_gray">{timetodate($t[edittime], $datetype)}</span>
+				{if $t[unit] && $t[price]>0}
+					<!-- <span class="f_red"><strong class="px14">{$t[price]}</strong>/{$t[unit]}</span><br/>
+					{$t[minamount]}{$t[unit]}起訂<br/> -->
+				{else}
+				<!-- <span class="f_gray">面議</span><br/> -->
+				{/if}				
+			</li>			
+		</ul>
+	</div>
+	{/loop}
+</div>	
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

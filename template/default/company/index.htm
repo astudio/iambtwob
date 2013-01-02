@@ -1,60 +1,44 @@
-{php $CSS = array('catalog');}
+{php $CSS = array('sell');}
 {template 'header'}
 <div class="m">
-<div class="m_l f_l">
-	<div class="left_box">		
-		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
-		<div class="category">
-			<p><img src="{DT_SKIN}image/arrow.gif" width="17" height="12" alt=""/> <strong>按地區瀏覽</strong></p>
-			<div>
-			<table width="100%" cellpadding="3">
-			{php $mainarea = get_mainarea(0)}
-			{loop $mainarea $k $v}
-			{if $k%10==0}<tr>{/if}
-			<td><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a></td>
-			{if $k%10==9}</tr>{/if}
-			{/loop}
-			</table>
-			</div>
-		</div>
-		{if $page == 1}{ad($moduleid,$catid,$kw,6)}{/if}
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog','chip'}
+		{/if}
+	</div>
 
-		<div style="padding:12px 10px 10px 15px;background:#F1F7FC;"><img src="{DT_SKIN}image/arrow.gif" width="17" height="12" alt=""/> <strong>按行業瀏覽</strong></div>
-		<div class="catalog" style="border:none;padding:0;">
-			{php $mid = 4;}
-			{template 'catalog', 'chip'}
+	<div class="m_l_1 f_l">
+		<div class="b10">&nbsp;</div>		
+		<!-- 1st slideshow (AD) -->
+		{template 'tmp-slideshow','tag'}					
+		<div class="b15">&nbsp;</div>				
+
+		<div class="left_box">
+			<form id="fsearch" method="POST">
+				{template 'tip_tool','chip'}
+				
+				{if $page == 1}{ad($moduleid,0,'',6)}{/if}				
+
+				<!--{tag("moduleid=$moduleid&areaid=$cityid&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-company")}-->				
+			</form><br/>
 		</div>
 	</div>
-</div>
-<div class="m_n f_l">&nbsp;</div>
-<div class="m_r f_l">
-	{if $MOD[page_irec]}
-	<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?vip=1')}">更多..</a></span><strong>名企推薦</strong></div></div>
-	<div class="box_body li_dot f_gray">
-	<!--{tag("moduleid=$moduleid&condition=level>0 and catids<>''&areaid=$cityid&pagesize=".$MOD[page_irec]."&order=vip desc&template=list-com")}-->
+	
+	<div class="m_n f_l">&nbsp;</div>
+	
+	<div class="m_r_1 f_l">
+		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
+		
+		<div class="b10">&nbsp;</div>
+		
+		<div class="box_head_3"><div><strong>Top 10 of Week</strong></div></div>
+		<div class="box_body">
+			<div class="rank_list">
+				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
+			</div>		
+		</div>
+		<div class="b10">&nbsp;</div>
 	</div>
-	<div class="b10"> </div>
-	{/if}
-	{if $MOD[page_ivip]}
-	<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?vip=1')}">更多..</a></span><strong>最新{VIP}</strong></div></div>
-	<div class="box_body li_dot f_gray">
-	<!--{tag("moduleid=$moduleid&condition=vip>0 and catids<>''&areaid=$cityid&pagesize=".$MOD[page_ivip]."&order=fromtime desc&template=list-com")}-->
-	</div>
-	<div class="b10"> </div>
-	{/if}
-	{if $MOD[page_inews]}
-	<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('news.php?more=1')}">更多..</a></span><strong>企業新聞</strong></div></div>
-	<div class="box_body li_dot f_gray">
-	<!--{tag("table=news&condition=status=3 and level>0&pagesize=".$MOD[page_inews]."&datetype=2&order=addtime desc&target=_blank")}-->
-	</div>
-	<div class="b10"> </div>
-	{/if}
-	{if $MOD[page_inew]}
-	<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?new=1')}">更多..</a></span><strong>最新加入</strong></div></div>
-	<div class="box_body li_dot f_gray">
-	<!--{tag("moduleid=$moduleid&condition=groupid>5 and catids<>''&areaid=$cityid&pagesize=".$MOD[page_inew]."&order=userid desc&template=list-com")}-->
-	</div>
-	{/if}
-</div>
 </div>
 {template 'footer'}

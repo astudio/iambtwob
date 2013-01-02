@@ -1,61 +1,7 @@
-		<!-- 分隔10像素 -->
 		<div class="m b10">&nbsp;</div>
-<!-- *** footer -->
+		<!-- *** footer -->
 		<footer id="footer">
 			<div class="m no_bg">
-<!-- DEL				<div class="sitemap">
-					<div class="section">
-						<div class="sitemap_type">About</div>
-						<ul>
-							<li>
-								<a href="http://news.imb2b.com/specials/aboutimb2b/aligroup/index.html" rel="nofollow" target="_blank">Company Information</a>
-							</li>
-							<li><a href="http://www.imb2b.com/sitemap.html" target="_blank">Site Map</a></li>
-						</ul>
-					</div>
-					<div class="section">
-						<div class="sitemap_type">
-							<a href="http://www.imb2b.com/Products" class="fake-text">Buy</a>ing on ImB2B
-						</div>
-						<ul>
-							<li><a href="http://us.my.imb2b.com/rfq/request/post_buy_request.htm?tracelog=new_hpbottom_0418" rel="nofollow" target="_blank">Post Buying Requests</a></li>
-							<li><a href="http://www.imb2b.com/Products?cd=buyhome&amp;tracelog=24581_foot_browse_cate" target="_blank" rel="nofollow">Browse Categories</a></li>
-							<li><a href="http://www.imb2b.com/countrysearch/continent.html" target="_blank">Browse by Country</a></li>
-							<li><a href="http://www.aliexpress.com/" target="_blank" rel="nofollow">Buy on AliExpress</a></li>
-							<li><a href="http://www.imb2b.com/help/user-guide-new.html?tracelog=HP_quickguide_20121010" target="_blank" rel="nofollow">How to Buy</a></li>
-						</ul>
-					</div>
-					<div class="section">
-						<div class="sitemap_type">
-							<a href="http://importer.imb2b.com/" class="fake-text">Sell</a>ing on ImB2B
-						</div>
-						<ul>
-							<li><a href="http://www.imb2b.com/trade/servlet/page/static/paid_memberships/index?tracelog=24581_foot_pre_membership" rel="nofollow" target="_blank">Premium Membership</a></li>
-							<li><a href="http://www.imb2b.com/vm" rel="nofollow" target="_blank">Verified Membership</a></li>
-							<li><a href="http://us.my.imb2b.com/product/post_product.htm?tracelog=24581_foot_display_product" rel="nofollow" target="_blank">Display Products</a></li>
-							<li><a target="_blank" rel="nofollow" href="http://us.my.imb2b.com/product/manage_products.htm?tracelog=fromhpfoot#tab=all">Manage Products</a></li>
-						</ul>
-					</div>
-					<div class="section">
-						<div class="sitemap_type">Service &amp; Tools</div>
-						<ul>
-							<li><a href="http://us.my.imb2b.com/?tracelog=24581_foot_myimb2b" rel="nofollow" target="_blank">My ImB2B</a></li>
-							<li><a href="http://trademanager.imb2b.com/?tracelog=24581_foot_trade_manager" rel="nofollow" target="_blank">TradeManager</a></li>
-							<li><a href="http://ask.imb2b.com/" target="_blank">Ask It!</a></li>
-							<li><a href="http://us.my.imb2b.com/tradealert/myimb2b/sub_scription_trade_alert.htm?tracelog=24581_foot_trade_alert" rel="nofollow" target="_blank">Trade Alert</a></li>
-						</ul>
-					</div>
-					<div class="section last-section">
-						<div class="sitemap_type">Safety &amp; Support</div>
-						<ul>
-							<li><a href="http://channel.imb2b.com/complaint/home.htm?tracelog=24581_foot_report_dispute" rel="nofollow" target="_blank">Submit a Complaint</a></li>
-							<li><a href="http://www.imb2b.com/help" rel="nofollow" target="_blank">Help Center</a></li>
-							<li><a href="http://www.imb2b.com/help/contact-us.html#askquestion" rel="nofollow" target="_blank">Contact us</a></li>
-							<li><a href="http://www.imb2b.com/help/safety_security.html?tracelog=24581_foot_safety" rel="nofollow" target="_blank">Safety &amp; Security Center</a></li>
-						</ul>
-					</div>
-				</div> -->
-			
 				<div class="foot c_b">
 					<div id="webpage">
 						<a href="{$MODULE[1][linkurl]}">Home</a>
@@ -71,11 +17,11 @@
 					</div>
 					<div id="copyright">{$DT[copyright]}</div>
 					{if DT_DEBUG}<div class="px11">{debug()}</div>{/if}
-					<div id="powered"><!--DEL <a href="http://www.destoon.com/" target="_blank"><img src="{DT_PATH}file/image/powered.gif" width="136" height="10" alt="Powered by DESTOON 4.0"/></a> --></div>
+					<div id="powered"></div>
 				</div>
 			</div>
 		</footer>
-		<!-- 底部固定工具列 -->
+		<!-- bottom fixed bar -->
 		<div id="destoon_toolbar" class="notranslate">
 			<div class="tb_m">
 				<div class="tb_r">
@@ -85,7 +31,7 @@
 						<img src="{$MODULE[2][linkurl]}image/ico_message.gif" width="16" height="16" align="absmiddle" alt=""/>
 						<a href="{$MODULE[2][linkurl]}message.php">站內信</a>(<span id="destoon_message">0</span>)
 						{if $DT[im_web]}
-						&nbsp;&nbsp;&nbsp;<img src="{$MODULE[2][linkurl]}image/ico_newchat.gif" width="14" height="13" align="absmiddle" alt=""/>
+						&nbsp;&nbsp;&nbsp;<img src="{$MODULE[2][linkurl]}image/ico_newchat.png" width="16" height="16" align="absmiddle" alt=""/>
 						<a href="{$MODULE[2][linkurl]}chat.php">新對話</a>(<span id="destoon_chat">0</span>)
 						{/if}
 					</div>
@@ -102,158 +48,9 @@
 			</div>
 		</div>
 		
-		<div style="display:none">
-			<div id="data"></div>			
-		</div>
-		
-		<script type="text/javascript">
-			
-			(function($) {
-				if(!$) return false;				
-
-				function imgMouseOver() {
-					$('img.lazy:visible').scroll();
-				}
-				
-				$(function(){
-					$('.side li.level1').hover(
-						function(){
-							$(this).addClass('active');
-							$(this).find('.level2').show();
-						},
-						function(){
-							$(this).removeClass('active');
-							$(this).find('.level2').hide();
-						});
-
-					$(".slidetabs").tabs(".images > div", {				 
-					// enable "cross-fading" effect
-					effect: 'horizontal',
-					event: 'mouseover',
-					fadeOutSpeed: 1000,				 
-					// start from the beginning after the last tab
-					rotate: true				 
-					// use the slideshow plugin. It accepts its own configuration
-					}).slideshow({
-						autoplay: true,
-						interval: 5000,
-						clickable: false
-					});
-
-					$(".slidetabs2").tabs(".images2 > div", {				 
-					// enable "cross-fading" effect
-					effect: 'horizontal',
-					event: 'mouseover',
-					fadeOutSpeed: 2000,				 
-					// start from the beginning after the last tab
-					rotate: true				 
-					// use the slideshow plugin. It accepts its own configuration
-					}).slideshow({
-						//autoplay: true,
-						//interval: 10000,
-						next: '.forward2',
-						prev: '.backward2',
-						clickable: false
-					});
-
-					// perform JavaScript after the document is scriptable.
-					
-					// setup ul.tabs to work as tabs for each div directly under div.panes
-					$("ul.tabs").tabs("div.panes > div");
-
-					$("#tab_nav ul").tabs("#panes > div", {effect: 'fade', fadeOutSpeed: 400});
-
-					$(".scrollable").scrollable({
-						onSeek: function(){ 
-							imgMouseOver();
-						}
-					});
-					$('img.lazy').jail();
-					imgMouseOver();	
-
-					/*$("a.l").delegate(this, 'click', function(e){
-						e.preventDefault();
-						$(this).fancybox({
-							'transitionIn'	:	'elastic',
-							'transitionOut'	:	'elastic',
-							'speedIn'		:	600, 
-							'speedOut'		:	200, 
-							'overlayShow'	:	false
-						});	
-					});	*/
-
-					$("a.Inquiry").fancybox({
-							width			: 680,
-							height			: '90%',
-							title			: 'Select To Inquiry',
-							padding			: 0,
-							autoDimensions	: false,
-							centerOnScroll	: true,
-							scrolling		: 'yes',
-							transitionIn	: 'elastic',
-							transitionOut	: 'elastic',
-							speedIn			: 600,
-							speedOut		: 200,
-							type			: 'iframe'
-					});
-
-					$("a.fb").click(function(){
-						
-						var checked = $("[name='itemid[]']:checked");
-						//itemid
-						var itemid = [];
-						checked.each(function(){
-							itemid.push($(this).val());
-						});
-						//href
-						var href = $(this).attr('rel');
-						//length (only for Compare)
-						var len = checked.length;
-						//title
-						var title = href == 'compare' ? 'Compare' : 'Inquiry';
-						//var v = href == 'compare' ? 'itemid' : 'itemids';
-						
-						$.fancybox({
-							width			: 680,
-							height			: '90%',
-							title			: 'Select To '+title,
-							padding			: 0,
-							autoDimensions	: false,
-							centerOnScroll	: true,
-							scrolling		: 'yes',
-							transitionIn	: 'elastic',
-							transitionOut	: 'elastic',
-							speedIn			: 600,
-							speedOut		: 200,
-							type			: 'iframe',
-							href			: href+'.php?fbox=1&length='+len+'&itemids='+itemid,
-							onComplete		: function(){
-								Dh('sell_tip');
-								$(":checkbox:checked").each(function () {
-									this.click();
-								});
-							}				
-						});	
-					});
-					
-	$('#checkAll').toggle(
-		function(){
-			//$(this).attr('checked',true);
-			$(':checkbox').attr('checked',true).parent().parent().find('.info').css({'opacity':1});
-		},
-		function(){
-			//$(this).attr('checked',false);
-			$(':checkbox').attr('checked',false).parent().parent().find('.info').css({'opacity':0.6});	
-		});					
-					
-					
-					
-					//If fbox was closed, check if the checked element have added the checked style.
-					//if($('[name="itemid[]"]:checked').length) {$('[name="itemid[]"]:checked').parent().parent().find('.info').css({'opacity':1});}	
-				});				
-			})(jQuery);
-			
-			show_task('{$destoon_task}');	
-		</script>
+		<script type="text/javascript">show_task('{$destoon_task}');</script>
+		<script type="text/javascript" src="{DT_PATH}file/script/global.js"></script>
+		{if $JS}{loop $JS $js}<script type="text/javascript" src="{DT_PATH}file/script/{$js}.js"></script>{/loop}{/if}
+		{if $moduleid>4}<script type="text/javascript" src="{DT_PATH}file/script/{$module}.js"></script>{/if}	
 	</body>
 </html>

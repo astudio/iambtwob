@@ -4,7 +4,8 @@ include tpl('header');
 $menus = array (
     array('基本設置'),
     array('SEO優化'),
-    array('服務器優化'),
+    array('網站分析'),	
+    array('伺服器優化'),
     array('安全中心'),
     array('圖片處理'),
     array('郵件發送'),
@@ -32,7 +33,7 @@ show_menu($menus);
 <a href="<?php echo DT_PATH;?>" target="_blank"><img src="<?php echo $logo ? $logo : DT_SKIN.'image/logo.gif';?>" style="margin:2px;" id="showlogo"/></a></td>
 </tr>
 <tr>
-<td class="tl">版權信息</td>
+<td class="tl">版權訊息</td>
 <td><textarea name="setting[copyright]" id="copyright" style="width:500px;height:50px;"><?php echo $copyright;?></textarea><br/>支持HTML語法，常用代碼：版權&copy; &amp;copy; 空格 &amp;nbsp; 換行  &lt;br/&gt;
 </td> 
 </tr>
@@ -71,7 +72,7 @@ show_menu($menus);
 </td>
 </tr>
 <tr>
-<td class="tl">網站默認語言</td>
+<td class="tl">網站預設語言</td>
 <td>
 <?php
 $select = '';
@@ -87,7 +88,7 @@ echo $select;
 </tr>
 
 <tr>
-<td class="tl">網站默認風格</td>
+<td class="tl">網站預設風格</td>
 <td>
 <?php
 $select = '';
@@ -103,7 +104,7 @@ tips('位於./skin/目錄,一個目錄即為一套風格');
 </td> 
 </tr>
 <tr>
-<td class="tl">網站默認模板</td>
+<td class="tl">網站預設模板</td>
 <td>
 <?php
 $select = '';
@@ -272,12 +273,12 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td class="tl">URL Rewrite(偽靜態)</td>
 <td>
 <input type="radio" name="setting[rewrite]" value="1"  <?php if($rewrite){ ?>checked <?php } ?>/> 開啟&nbsp;&nbsp;
-<input type="radio" name="setting[rewrite]" value="0"  <?php if(!$rewrite){ ?>checked <?php } ?>/> 關閉 <?php tips('請確認服務器已做過規則配置，否則請勿開啟<br/>ReWrite規則見幫助文檔<br/>請點擊下面的地址，如果可以正常顯示，說明規則配置成功<br/><a href=index-htm-url-rule.html target=_blank>index-htm-url-rule.html</a>');?>
+<input type="radio" name="setting[rewrite]" value="0"  <?php if(!$rewrite){ ?>checked <?php } ?>/> 關閉 <?php tips('請確認伺服器已做過規則配置，否則請勿開啟<br/>ReWrite規則見幫助文檔<br/>請點擊下面的地址，如果可以正常顯示，說明規則配置成功<br/><a href=index-htm-url-rule.html target=_blank>index-htm-url-rule.html</a>');?>
 </td>
 </tr>
 <tr>
 <td class="tl">公司主頁綁定二級域名</td>
-<td><input name="config[com_domain]" type="text" value="<?php echo $com_domain;?>" size="30"/> <?php tips('如果填寫 .destoon.com 同時需要將域名泛解析 *.destoon.com 指向服務器IP，並且在服務器端綁定泛域名至 網站根目錄 或者 網站根目錄/company 目錄，生成的主頁形式為username.destoon.com<br/>如果填寫 i.destoon.com 同時需要將域名泛解析 i.destoon.com 指向服務器IP，並且在服務器端綁定域名至網站根目錄/company 目錄，生成的主頁形式為i.destoon.com/username/(註：此方式必須支持偽靜態)');?></td>
+<td><input name="config[com_domain]" type="text" value="<?php echo $com_domain;?>" size="30"/> <?php tips('如果填寫 .destoon.com 同時需要將域名泛解析 *.destoon.com 指向伺服器IP，並且在伺服器端綁定泛域名至 網站根目錄 或者 網站根目錄/company 目錄，生成的主頁形式為username.destoon.com<br/>如果填寫 i.destoon.com 同時需要將域名泛解析 i.destoon.com 指向伺服器IP，並且在伺服器端綁定域名至網站根目錄/company 目錄，生成的主頁形式為i.destoon.com/username/(註：此方式必須支持偽靜態)');?></td>
 </tr>
 <tr>
 <td class="tl">泛解析綁定目錄</td>
@@ -286,7 +287,7 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <option value="0"<?php echo $com_dir == 0 ? ' selected' : '';?>>根目錄</option>
 <option value="1"<?php echo $com_dir == 1 ? ' selected' : '';?>>company目錄</option>
 </select>&nbsp;
-<?php tips('如果服務器支持，推薦綁定至company目錄');?>
+<?php tips('如果伺服器支持，推薦綁定至company目錄');?>
 </td>
 </tr>
 <tr>
@@ -300,12 +301,12 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td class="tl">會員頂級域名Rewrite</td>
 <td>
 <input type="radio" name="config[com_rewrite]" value="1"  <?php if($com_rewrite){ ?>checked <?php } ?>/> 開啟&nbsp;&nbsp;
-<input type="radio" name="config[com_rewrite]" value="0"  <?php if(!$com_rewrite){ ?>checked <?php } ?>/> 關閉 <?php tips('部分服務器可能無法開啟會員綁定的頂級域名Rewrite，如果無法開啟，可在此關閉，以免出現打不開頁面的情況，此項僅針對會員頂級域名，不影響其他頁面Rewrite');?>
+<input type="radio" name="config[com_rewrite]" value="0"  <?php if(!$com_rewrite){ ?>checked <?php } ?>/> 關閉 <?php tips('部分伺服器可能無法開啟會員綁定的頂級域名Rewrite，如果無法開啟，可在此關閉，以免出現打不開頁面的情況，此項僅針對會員頂級域名，不影響其他頁面Rewrite');?>
 </td>
 </tr>
 
 <tr>
-<td class="tl">服務器中文路徑編碼</td>
+<td class="tl">伺服器中文路徑編碼</td>
 <td>
 <input type="radio" name="setting[pcharset]" value="0"  <?php if(!$pcharset){ ?>checked <?php } ?>/> 未用&nbsp;&nbsp;
 <input type="radio" name="setting[pcharset]" value="gbk"  <?php if($pcharset == 'gbk'){ ?>checked <?php } ?>/> GBK&nbsp;&nbsp;
@@ -325,7 +326,49 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 </div>
 
 <div id="Tabs2" style="display:none">
-<div class="tt">服務器優化</div>
+<div class="tt">網站分析</div>
+<table cellpadding="2" cellspacing="1" class="tb">
+<tr>
+<td class="tl">Google Analytics(分析)</td>
+<td>
+<input type="radio" name="setting[google]" value="1"  <?php if($google){ ?>checked <?php } ?> onclick="Ds('dgoogle');"/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[google]" value="0"  <?php if(!$google){ ?>checked <?php } ?> onclick="Dh('dgoogle');"/> 關閉
+</td>
+</tr>
+<tr id="dgoogle" style="display:<?php if(!$google) echo 'none';?>">
+<td class="tl">追蹤程式碼請貼於此處</td>
+<td><textarea name="setting[google_analytics]" id="google_analytics" style="width:600px;height:100px;overflow:visible;"><?php echo $google_analytics;?></textarea><br/><a href="http://www.google.com/analytics/">取得追蹤程式碼</a>
+</td> 
+</tr>
+<tr>
+<td class="tl">Yahoo站長工具</td>
+<td>
+<input type="radio" name="setting[yahoo]" value="1"  <?php if($yahoo){ ?>checked <?php } ?> onclick="Ds('dyahoo');"/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[yahoo]" value="0"  <?php if(!$yahoo){ ?>checked <?php } ?> onclick="Dh('dyahoo');"/> 關閉
+</td>
+</tr>
+<tr id="dyahoo" style="display:<?php if(!$yahoo) echo 'none';?>">
+<td class="tl">統計工具原始碼請貼於此處</td>
+<td><textarea name="setting[yahoo_webmaster]" id="yahoo_webmaster" style="width:600px;height:100px;overflow:visible;"><?php echo $yahoo_webmaster;?></textarea><br/><a href="http://tw.webmaster.yahoo.com/">取得原始碼</a>
+</td> 
+</tr>
+<tr>
+<td class="tl">其他追蹤工具(免驗證)</td>
+<td>
+<input type="radio" name="setting[other]" value="1"  <?php if($other){ ?>checked <?php } ?> onclick="Ds('dother');"/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[other]" value="0"  <?php if(!$other){ ?>checked <?php } ?> onclick="Dh('dother');"/> 關閉
+</td>
+</tr>
+<tr id="dother" style="display:<?php if(!$other) echo 'none';?>">
+<td class="tl">追蹤程式碼請貼於此處</td>
+<td><textarea name="setting[other_tracingtool]" id="other_tracingtool" style="width:600px;height:100px;overflow:visible;"><?php echo $other_tracingtool;?></textarea>
+</td> 
+</tr>
+</table>
+</div>
+
+<div id="Tabs3" style="display:none">
+<div class="tt">伺服器優化</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td class="tl">首頁自動更新頻率</td>
@@ -347,19 +390,19 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 </tr>
 <tr>
 <td class="tl">TAG(標籤)緩存更新週期</td>
-<td><input type="text" name="config[tag_expires]" value="<?php echo $tag_expires;?>" size="5"/> 秒<?php tips('此項可明顯減輕標籤數據調用對服務器的壓力');?></td>
+<td><input type="text" name="config[tag_expires]" value="<?php echo $tag_expires;?>" size="5"/> 秒<?php tips('此項可明顯減輕標籤數據調用對伺服器的壓力');?></td>
 </tr>
 <tr>
 <td class="tl">SQL查詢緩存更新週期</td>
-<td><input type="text" name="config[db_expires]" value="<?php echo $db_expires;?>" size="5"/> 秒<?php tips('此項可明顯減輕數據庫查詢對服務器的壓力<br/>但是會在一定程度上增加緩存目錄的體積');?></td>
+<td><input type="text" name="config[db_expires]" value="<?php echo $db_expires;?>" size="5"/> 秒<?php tips('此項可明顯減輕資料庫查詢對伺服器的壓力<br/>但是會在一定程度上增加緩存目錄的體積');?></td>
 </tr>
 <tr>
 <td class="tl">搜索結果緩存更新週期</td>
-<td><input type="text" name="setting[cache_search]" value="<?php echo $cache_search;?>" size="5"/> 秒<?php tips('此項可減輕搜索等大量耗費資源的操作對服務器的壓力<br/>但是會在一定程度上增加緩存目錄的體積');?></td>
+<td><input type="text" name="setting[cache_search]" value="<?php echo $cache_search;?>" size="5"/> 秒<?php tips('此項可減輕搜索等大量耗費資源的操作對伺服器的壓力<br/>但是會在一定程度上增加緩存目錄的體積');?></td>
 </tr>
 <tr>
 <td class="tl">點擊次數緩存更新週期</td>
-<td><input type="text" name="setting[cache_hits]" value="<?php echo $cache_hits;?>" size="5"/> 秒<?php tips('此項可明顯減輕數據庫服務壓力，但是會造成瀏覽次數的延遲顯示');?></td>
+<td><input type="text" name="setting[cache_hits]" value="<?php echo $cache_hits;?>" size="5"/> 秒<?php tips('此項可明顯減輕資料庫服務壓力，但是會造成瀏覽次數的延遲顯示');?></td>
 </tr>
 <tr>
 <td class="tl">公司首頁緩存更新週期</td>
@@ -376,13 +419,13 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <option value="shmop"<?php echo $cache == 'shmop' ? ' selected' : '';?>>shmop (<?php echo (function_exists('shmop_open') && function_exists('ftok')) ? '支持' : '不支持'?>)</option>
 <option value="apc"<?php echo $cache == 'apc' ? ' selected' : '';?>>apc (<?php echo function_exists('apc_fetch') ? '支持' : '不支持'?>)</option>
 </select>
-<?php tips('除了文件緩存，其他緩存方式需要服務器端支持，具體請查看phpinfo信息。<br/>請在確認服務器環境支持的情況下開啟，否則可能導致未知的錯誤<br/>如果需要開啟Memcache緩存，請先配置file/config/memcache.inc.php連接參數');?>&nbsp;&nbsp;
+<?php tips('除了文件緩存，其他緩存方式需要伺服器端支持，具體請查看phpinfo信息。<br/>請在確認伺服器環境支持的情況下開啟，否則可能導致未知的錯誤<br/>如果需要開啟Memcache緩存，請先配置file/config/memcache.inc.php連接參數');?>&nbsp;&nbsp;
 <a href="?action=phpinfo" target="_blank" class="t">[查看phpinfo]</a>&nbsp;&nbsp;
 <a href="?action=cacheclear" target="_blank" class="t">[清空緩存]</a>
 </td>
 </tr>
 <tr>
-<td class="tl">數據庫/連接方式</td>
+<td class="tl">資料庫/連接方式</td>
 <td>
 <select name="config[database]">
 <option value="mysql"<?php echo $database == 'mysql' ? ' selected' : '';?>>mysql</option>
@@ -390,7 +433,7 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <option value="mysqlrw"<?php echo $database == 'mysqlrw' ? ' selected' : '';?>>mysqlrw</option>
 <option value="mysqlirw"<?php echo $database == 'mysqlirw' ? ' selected' : '';?>>mysqlirw</option>
 </select>
-<?php tips('mysqli是PHP對mysql新特性的一個擴展支持，如果已加載此擴展，請選擇mysqli，具體請查看phpinfo信息<br/>mysqlrw/mysqlirw指多台mysql服務器實現讀寫分離，開啟之前需要配置file/config/mysqlrw.inc.php只讀數據庫連接參數');?>
+<?php tips('mysqli是PHP對mysql新特性的一個擴展支持，如果已加載此擴展，請選擇mysqli，具體請查看phpinfo信息<br/>mysqlrw/mysqlirw指多台mysql伺服器實現讀寫分離，開啟之前需要配置file/config/mysqlrw.inc.php只讀資料庫連接參數');?>
 </td>
 </tr>
 <tr>
@@ -409,13 +452,13 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td class="tl">頁面Gzip壓縮</td>
 <td>
 <input type="radio" name="setting[gzip_enable]" value="1" <?php if($gzip_enable){ ?>checked <?php } ?>/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[gzip_enable]" value="0" <?php if(!$gzip_enable){ ?>checked <?php } ?>/> 關閉 <?php tips(function_exists('ob_gzhandler') ? '當前服務器支持Gzip，建議開啟' : '當前服務器不支持Gzip，請關閉');?>
+<input type="radio" name="setting[gzip_enable]" value="0" <?php if(!$gzip_enable){ ?>checked <?php } ?>/> 關閉 <?php tips(function_exists('ob_gzhandler') ? '當前伺服器支持Gzip，建議開啟' : '當前伺服器不支持Gzip，請關閉');?>
 </td>
 </tr>
 <tr>
 <td class="tl">分頁顯示方式</td>
 <td>
-<input type="radio" name="setting[pages_mode]" value="0" <?php if(!$pages_mode){ ?>checked <?php } ?>/> 默認&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[pages_mode]" value="0" <?php if(!$pages_mode){ ?>checked <?php } ?>/> 預設&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[pages_mode]" value="1" <?php if($pages_mode){ ?>checked <?php } ?>/> 簡潔
 </td>
 </tr>
@@ -444,7 +487,7 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td>
 <input type="radio" name="setting[save_draft]" value="1" <?php if($save_draft == 1){ ?>checked <?php } ?>/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[save_draft]" value="0" <?php if($save_draft == 0){ ?>checked <?php } ?>/> 關閉&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[save_draft]" value="2" <?php if($save_draft == 2){ ?>checked <?php } ?>/> 後台開啟 <?php tips('後台開啟指僅在後台開啟，前台將不開啟<br/>注意：開啟此功能會佔用一定的服務器空間');?></td>
+<input type="radio" name="setting[save_draft]" value="2" <?php if($save_draft == 2){ ?>checked <?php } ?>/> 後台開啟 <?php tips('後台開啟指僅在後台開啟，前台將不開啟<br/>注意：開啟此功能會佔用一定的伺服器空間');?></td>
 </tr>
 <tr>
 <td class="tl">搜索關鍵詞自動記錄</td>
@@ -477,11 +520,11 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 
 <tr>
 <td class="tl">定時更新會員新消息</td>
-<td><input type="text" name="setting[pushtime]" value="<?php echo $pushtime;?>" size="5"/> 秒<?php tips('當會員停留在前台頁面時，每隔一段時間，系統自動發送一次服務器請求，以更新會員站內信、新對話、購物車數量，以便會員及時收到新消息，填0為關閉，此項會增加服務器壓力，建議設置30秒以上');?></td>
+<td><input type="text" name="setting[pushtime]" value="<?php echo $pushtime;?>" size="5"/> 秒<?php tips('當會員停留在前台頁面時，每隔一段時間，系統自動發送一次伺服器請求，以更新會員站內信、新對話、購物車數量，以便會員及時收到新消息，填0為關閉，此項會增加伺服器壓力，建議設置30秒以上');?></td>
 </tr>
 
 <tr>
-<td class="tl">列表每頁默認信息條數</td>
+<td class="tl">列表每頁預設信息條數</td>
 <td><input name="setting[pagesize]" type="text" value="<?php echo $pagesize;?>" size="3"/> 條</td>
 </tr>
 <tr>
@@ -492,7 +535,7 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td class="tl">遠程FTP文件上傳</td>
 <td>
 <input type="radio" name="setting[ftp_remote]" value="1"  <?php if($ftp_remote){ ?>checked <?php } ?> onclick="Ds('ftp');"/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[ftp_remote]" value="0"  <?php if(!$ftp_remote){ ?>checked <?php } ?> onclick="Dh('ftp');"/> 關閉<?php tips('開啟遠程文件上傳後，所有上傳文件將被FTP移動到遠程服務器上，可以極大的緩解主站流量壓力');?></td>
+<input type="radio" name="setting[ftp_remote]" value="0"  <?php if(!$ftp_remote){ ?>checked <?php } ?> onclick="Dh('ftp');"/> 關閉<?php tips('開啟遠程文件上傳後，所有上傳文件將被FTP移動到遠程伺服器上，可以極大的緩解主站流量壓力');?></td>
 </tr>
 <tbody id="ftp" style="display:<?php echo $ftp_remote ? '' : 'none';?>">
 <?php if(!extension_loaded("ftp")){ ?>
@@ -503,11 +546,11 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <?php }?>
 <tr> 
 <td class="tl">FTP主機</td>
-<td><input name="setting[ftp_host]" id="ftp_host" type="text" size="30" value="<?php echo $ftp_host;?>"/><?php tips('可以是 FTP 服務器的 IP 地址或域名');?></td>
+<td><input name="setting[ftp_host]" id="ftp_host" type="text" size="30" value="<?php echo $ftp_host;?>"/><?php tips('可以是 FTP 伺服器的 IP 地址或域名');?></td>
 </tr>
 <tr> 
 <td class="tl">FTP端口</td>
-<td><input name="setting[ftp_port]" id="ftp_port" type="text" size="30" value="<?php echo $ftp_port;?>"/><?php tips('默認為 21');?></td>
+<td><input name="setting[ftp_port]" id="ftp_port" type="text" size="30" value="<?php echo $ftp_port;?>"/><?php tips('預設為 21');?></td>
 </tr>
 <tr> 
 <td class="tl">FTP帳號</td>
@@ -521,7 +564,7 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td class="tl">SSL連接</td>
 <td>
 <input type="radio" name="setting[ftp_ssl]" value="1"  <?php if($ftp_ssl){ ?>checked <?php } ?> id="ftp_ssl"/> 是&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[ftp_ssl]" value="0"  <?php if(!$ftp_ssl){ ?>checked <?php } ?>/> 否<?php tips('FTP 服務器必需開啟了 SSL 才可以啟用');?></td>
+<input type="radio" name="setting[ftp_ssl]" value="0"  <?php if(!$ftp_ssl){ ?>checked <?php } ?>/> 否<?php tips('FTP 伺服器必需開啟了 SSL 才可以啟用');?></td>
 </tr>
 <tr>
 <td class="tl">被動模式(PASV)連接</td>
@@ -557,7 +600,7 @@ function TestFTP() {
 }
 </script>
 </div>
-<div id="Tabs3" style="display:none">
+<div id="Tabs4" style="display:none">
 <div class="tt">安全中心</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
@@ -666,7 +709,7 @@ function TestFTP() {
 </tr>
 <tr>
 <td class="tl">允許上傳大小限制</td>
-<td><input name="setting[uploadsize]" type="text" value="<?php echo $uploadsize;?>" size="10"/> Kb (1024Kb=1M) <?php tips('當前服務器最大支持'.ini_get('upload_max_filesize').'文件上傳<br/>如果需要修改最大值，可以修改php.ini的upload_max_filesize參數');?></td>
+<td><input name="setting[uploadsize]" type="text" value="<?php echo $uploadsize;?>" size="10"/> Kb (1024Kb=1M) <?php tips('當前伺服器最大支持'.ini_get('upload_max_filesize').'文件上傳<br/>如果需要修改最大值，可以修改php.ini的upload_max_filesize參數');?></td>
 </tr>
 <tr>
 <td class="tl">文件保存目錄</td>
@@ -705,7 +748,7 @@ function TestFTP() {
 
 <tr>
 <td class="tl">信任域名</td>
-<td><input name="setting[safe_domain]" type="text" value="<?php echo $safe_domain;?>" size="60"/><?php tips('不填寫則默認為當前域名<br/>多個域名請用|分開 例如destoon.com|destoon.cn');?></td>
+<td><input name="setting[safe_domain]" type="text" value="<?php echo $safe_domain;?>" size="60"/><?php tips('不填寫則預設為當前域名<br/>多個域名請用|分開 例如destoon.com|destoon.cn');?></td>
 </tr>
 <tr>
 <td class="tl">系統負載係數</td>
@@ -720,7 +763,7 @@ function TestFTP() {
 <td class="tl">限制代理訪問</td>
 <td>
 <input type="radio" name="setting[defend_proxy]" value="1"  <?php if($defend_proxy){ ?>checked <?php } ?>/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[defend_proxy]" value="0"  <?php if(!$defend_proxy){ ?>checked <?php } ?>/> 關閉<?php tips('限制用戶使用代理服務器連接網站');?>
+<input type="radio" name="setting[defend_proxy]" value="0"  <?php if(!$defend_proxy){ ?>checked <?php } ?>/> 關閉<?php tips('限制用戶使用代理伺服器連接網站');?>
 </td>
 </tr>
 <tr>
@@ -746,7 +789,7 @@ function TestFTP() {
 </table>
 </div>
 
-<div id="Tabs4" style="display:none">
+<div id="Tabs5" style="display:none">
 <div class="tt">圖片水印</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
@@ -880,14 +923,14 @@ function TestFTP() {
 </table>
 </div>
 
-<div id="Tabs5" style="display:none">
+<div id="Tabs6" style="display:none">
 <div class="tt">郵件發送</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td class="tl">發送方式</td>
 <td>
 <input type="radio" name="setting[mail_type]" value="close" <?php if($mail_type=="close"){ ?>checked <?php } ?> id="mailtype_close"/> <label for="mailtype_close">關閉郵件發送</label><br/>
-<input type="radio" name="setting[mail_type]" value="smtp" <?php if($mail_type=="smtp"){ ?>checked <?php } ?> onclick="Ds('dsmtp');Ds('demail');Dd('l_rn').checked=true;" id="mailtype_smtp"/> <label for="mailtype_smtp">通過SMTP SOCKET 連接 SMTP 服務器發送(支持ESMTP驗證)</label><br/>
+<input type="radio" name="setting[mail_type]" value="smtp" <?php if($mail_type=="smtp"){ ?>checked <?php } ?> onclick="Ds('dsmtp');Ds('demail');Dd('l_rn').checked=true;" id="mailtype_smtp"/> <label for="mailtype_smtp">通過SMTP SOCKET 連接 SMTP 伺服器發送(支持ESMTP驗證)</label><br/>
 <input type="radio" name="setting[mail_type]" value="mail"  <?php if($mail_type=="mail"){ ?>checked <?php } ?> onclick="Dh('dsmtp');Dh('demail');Dd('l_n').checked=true;" id="mailtype_mail"/> <label for="mailtype_mail">通過PHP mail 函數發送(通常為Unix/Linux 主機)</label><br/>
 <input type="radio" name="setting[mail_type]" value="psmtp"  <?php if($mail_type=="psmtp"){ ?>checked <?php } ?> onclick="Ds('dsmtp');Dh('demail');Dd('l_rn').checked=true;" id="mailtype_psmtp"/> <label for="mailtype_psmtp">通過PHP mail 函數SMTP發送(通常為WIN主機)</label>
 </td>
@@ -901,8 +944,8 @@ function TestFTP() {
 </tr>
 <tbody id="dsmtp" style="display:<?php if($mail_type == "mail") echo 'none';?>">
 <tr> 
-<td class="tl">SMTP服務器</td>
-<td><input name="setting[smtp_host]" id="smtp_host" type="text" size="40" value="<?php echo $smtp_host;?>"/><?php tips('SMTP服務器,例如smtp.xxx.com<br/>提示:目前大部分新申請的免費郵箱並不支持smtp發信');?></td>
+<td class="tl">SMTP伺服器</td>
+<td><input name="setting[smtp_host]" id="smtp_host" type="text" size="40" value="<?php echo $smtp_host;?>"/><?php tips('SMTP伺服器,例如smtp.xxx.com<br/>提示:目前大部分新申請的免費郵箱並不支持smtp發信');?></td>
 </tr>
 <tr> 
 <td class="tl">SMTP端口</td>
@@ -911,14 +954,14 @@ function TestFTP() {
 </tbody>
 <tbody id="demail" style="display:<?php if($mail_type != "smtp") echo 'none';?>">
 <tr> 
-<td class="tl">SMTP服務器是否驗證</td>
+<td class="tl">SMTP伺服器是否驗證</td>
 <td>
 <input type="radio" name="setting[smtp_auth]" value="1"  <?php if($smtp_auth==1){ ?>checked <?php } ?> id="smtp_auth" onclick="Ds('dsmtp_user');Ds('dsmtp_pass');"/> 是&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[smtp_auth]" value="0" <?php if($smtp_auth==0){ ?>checked <?php } ?> onclick="Dh('dsmtp_user');Dh('dsmtp_pass');"/> 否
 </tr>
 <tr id="dsmtp_user" style="display:<?php if(!$smtp_auth) echo 'none';?>">
 <td class="tl">郵箱帳號</td>
-<td><input name="setting[smtp_user]" id="smtp_user" type="text" size="40" value="<?php echo $smtp_user;?>"/><?php tips('SMTP服務器的用戶帳號,一般為郵件地址');?></td>
+<td><input name="setting[smtp_user]" id="smtp_user" type="text" size="40" value="<?php echo $smtp_user;?>"/><?php tips('SMTP伺服器的用戶帳號,一般為郵件地址');?></td>
 </tr>
 <tr id="dsmtp_pass" style="display:<?php if(!$smtp_auth) echo 'none';?>"> 
 <td class="tl">郵箱密碼</td>
@@ -980,7 +1023,7 @@ foreach($NAME as $k=>$v) {
 </table>
 </div>
 
-<div id="Tabs6" style="display:none">
+<div id="Tabs7" style="display:none">
 <div class="tt">頁面細節</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 

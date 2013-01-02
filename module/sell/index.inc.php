@@ -8,6 +8,7 @@ if(!check_group($_groupid, $MOD['group_index'])) {
 }
 $typeid = isset($typeid) ? intval($typeid) : 99;
 isset($TYPE[$typeid]) or $typeid = 99;
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0; // 0:gallery 1:list 2:text
 $dtype = $typeid != 99 ? " AND typeid=$typeid" : '';
 $maincat = get_maincat($catid ? $CAT['parentid'] : 0, $moduleid);
 $seo_file = 'index';

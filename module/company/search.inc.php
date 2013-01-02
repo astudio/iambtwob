@@ -8,6 +8,7 @@ if(!check_group($_groupid, $MOD['group_search'])) {
 }
 require DT_ROOT.'/include/post.func.php';
 include load('search.lang');
+$maincat = get_maincat($catid, $moduleid);
 $MS = cache_read('module-2.php');
 $modes = explode('|', $L['choose'].'|'.$MS['com_mode']);
 $types = explode('|', $L['choose'].'|'.$MS['com_type']);

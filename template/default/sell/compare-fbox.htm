@@ -17,117 +17,125 @@
 		
 		<style type="text/css">
 		.compare {margin:8px;}
-		.compare table {background:#FFFFFF;}
-		.compare table tr {background:#F1F7FC;text-align:center;}
-		.compare table td {width:120px;padding:5px;border-bottom:#AACCEE 1px solid;line-height:180%;}
-		.compare div {font-weight:bold;color:#FF6600;letter-spacing:2px;}
+		.compare table {background:#FFFFFF;border-collapse:collapse;}
+		.compare table tr {text-align:center;border:1px solid #408cc6;}
+		.compare table td {width:100px;padding:5px;border:#408cc6 1px solid;line-height:120%;}
+		.compare table td img.thumb {
+		-webkit-box-shadow:  0px 0px 1px 1px rgba(0, 0, 0, 0.1);box-shadow:  0px 0px 1px 1px rgba(0, 0, 0, 0.1);*border:1px solid #CCC;
+		}
+		a:link, a:visited, a:active {color:#0569b4;}
+		a:hover {color:#f60;}
+		.compare div {font-weight:bold;color:#00aeef;white-space:nowrap;}
 		</style>
 	</head>
 	<body>
-		<div class="left_box">		
-			<div class="pos">
-			<span class="f_r">
-			<form method="post" action="{$MOD[linkurl]}compare.php">
-			輸入信息ID <input type="text" name="itemid[]" id="newid" size="10"/>{loop $tags $k $v}<input type="hidden" name="itemid[]" id="itemid_{$v[itemid]}" value="{$v[itemid]}"/>{/loop}
-			<input type="submit" value="添加至對比欄" class="btn_4" onclick="if(Dd('newid').value==''){confirm('請輸入信息ID');Dd('newid').focus();return false;}"/>&nbsp;
-			</form>
-			</span><!-- 當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; 信息對比 --></div>
+		<div class="left_box">	
+		<!-- 將以ajax輸入 -->
+		
+			<div class="pos" style="display:none;">
+				<span class="f_r">
+					<form method="post" action="{$MOD[linkurl]}compare.php?fbox=1&addid=1">
+						輸入信息ID <input type="text" name="itemid[]" id="newid" size="10"/>{loop $tags $k $v}<input type="hidden" name="itemid[]" id="itemid_{$v[itemid]}" value="{$v[itemid]}"/>{/loop}
+						<input type="submit" value="添加至對比欄" class="btn_4" onclick="if(Dd('newid').value==''){confirm('請輸入信息ID');Dd('newid').focus();return false;}"/>&nbsp;
+					</form>
+				</span>
+			</div>
 			<div class="compare">
 			<table cellspacing="1">
 			<tr>
-			<td><div>Kick Out</div></td>
+			<td bgcolor="#f5f5f5"><div>Kick Out</div></td>
 			{loop $tags $k $v}
-			<td id="del_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});">X</span></td>
+			<td id="del_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="移除" alt=""/></span></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>Thumbnail</div></td>
+			<td bgcolor="#f5f5f5"><div>Thumbnail</div></td>
 			{loop $tags $k $v}
-			<td id="pic_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt=""/></a></td>
+			<td id="pic_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt="" class="thumb" /></a></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>Product</div></td>
+			<td bgcolor="#f5f5f5"><div>Product</div></td>
 			{loop $tags $k $v}
 			<td id="title_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank" title="{$v[title]}">{$v[stitle]}</a></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>品 名</div></td>
+			<td bgcolor="#f5f5f5"><div>Keyword</div></td>
 			{loop $tags $k $v}
 			<td id="tag_{$v[itemid]}_{$k}">{$v[tag]}&nbsp;</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>型 號</div></td>
+			<td bgcolor="#f5f5f5"><div>Model</div></td>
 			{loop $tags $k $v}
 			<td id="model_{$v[itemid]}_{$k}">{$v[model]}&nbsp;</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>規 格</div></td>
+			<td bgcolor="#f5f5f5"><div>Specification</div></td>
 			{loop $tags $k $v}
 			<td id="standard_{$v[itemid]}_{$k}">{$v[standard]}&nbsp;</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>品 牌</div></td>
+			<td bgcolor="#f5f5f5"><div>Brand</div></td>
 			{loop $tags $k $v}
 			<td id="brand_{$v[itemid]}_{$k}">{$v[brand]}&nbsp;</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>日 期</div></td>
+			<td bgcolor="#f5f5f5"><div>Released Date</div></td>
 			{loop $tags $k $v}
 			<td id="date_{$v[itemid]}_{$k}">{$v[editdate]}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>公 司</div></td>
+			<td bgcolor="#f5f5f5"><div>Co. Name</div></td>
 			{loop $tags $k $v}
 			<td id="com_{$v[itemid]}_{$k}"><a href="{$v[userurl]}" target="_blank">{$v[company]}</a></td>
 			{/loop}
 			</tr>
-			<tr>
-			<td><div>會 員</div></td>
+ 			<tr>
+			<td bgcolor="#f5f5f5"><div>會 員</div></td>
 			{loop $tags $k $v}
 			<td id="vip_{$v[itemid]}_{$k}">
-			{if $v[vip]} <img src="{DT_SKIN}image/vip.gif"/> <img src="{DT_SKIN}image/vip_{$v[vip]}.gif"/>{/if}&nbsp;
+			{if $v[vip]} <img src="{DT_SKIN}image/vip_{$v[vip]}.gif"/>{/if}&nbsp;
 			</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>地 區</div></td>
+			<td bgcolor="#f5f5f5"><div>Co. Location</div></td>
 			{loop $tags $k $v}
 			<td id="area_{$v[itemid]}_{$k}">{area_pos($v[areaid], ' ', 2)}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>價 格</div></td>
+			<td bgcolor="#f5f5f5"><div>Price</div></td>
 			{loop $tags $k $v}
 			<td id="price_{$v[itemid]}_{$k}">{if $v[price]>0}<strong class="f_red">{$v[price]}</strong>{$DT[money_unit]}/{$v[unit]}{else}面議{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>起 訂</div></td>
+			<td bgcolor="#f5f5f5"><div>MOQ.</div></td>
 			{loop $tags $k $v}
 			<td id="min_{$v[itemid]}_{$k}">{if $v[minamount]}{$v[minamount]} {$v[unit]}{else}未填寫{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>總 量</div></td>
+			<td bgcolor="#f5f5f5"><div>Supply Ability</div></td>
 			{loop $tags $k $v}
 			<td id="amount_{$v[itemid]}_{$k}">{if $v[amount]}{$v[amount]} {$v[unit]}{else}未填寫{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>發 貨</div></td>
+			<td bgcolor="#f5f5f5"><div>Processing Time</div></td>
 			{loop $tags $k $v}
 			<td id="days_{$v[itemid]}_{$k}">{if $v[days]}{$v[days]}天內{else}未填寫{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>聯 系</div></td>
+			<td bgcolor="#f5f5f5"><div>Live Chat</div></td>
 			{loop $tags $k $v}
 			<td id="im_{$v[itemid]}_{$k}">&nbsp;
 				{if $v[username] && $DT[im_web]}{im_web($v[username].'&mid='.$moduleid.'&itemid='.$v[itemid])}&nbsp;{/if}
@@ -139,15 +147,15 @@
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>詢 價</div></td>
+			<td bgcolor="#f5f5f5"><div>Inquiry</div></td>
 			{loop $tags $k $v}
-			<td id="inq_{$v[itemid]}_{$k}"><a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$v['itemid'])}" target="_blank"><img src="{DT_SKIN}image/inquiry.gif" title="詢價" alt=""/></a></td>
+			<td id="inq_{$v[itemid]}_{$k}"><a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$v['itemid'])}" target="_blank"><img src="{DT_SKIN}image/inquiry_btn.gif" title="Inquiry this product" alt=""/></a></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td><div>移 除</div></td>
+			<td bgcolor="#f5f5f5"><div>Kick Out</div></td>
 			{loop $tags $k $v}
-			<td id="move_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});">移除</span></td>
+			<td id="move_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="移除" alt=""/></span></td>
 			{/loop}
 			</tr>
 			</table>

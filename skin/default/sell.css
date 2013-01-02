@@ -2,11 +2,61 @@
 	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
 	This is NOT a freeware, use is subject to license.txt
 */
-.sell_tip {width:180px;height:70px;background:url('image/sell_tip.gif') no-repeat;overflow:hidden;z-index:1000;position:absolute;}
+.sell_tip {width:180px;height:70px;background:url('image/sell_tip.gif') no-repeat;overflow:hidden;z-index:1000;position:absolute;font-size:13px;}
 .sell_tip p {margin:0 0 4px 2px;font-weight:bold;}
 .sell_tip div {padding:8px 0 0 10px;}
-.tool {margin:0 10px 0 10px;border-bottom:#CCCCCC 1px dotted;}
-.tool table {width:100%;}
+.tool {}
+.tool .box_head_1 {height:33px;margin-bottom:15px;}
+.tool .tabs {height:33px;line-height:33px;overflow: hidden;}
+.tool .tabs > li {width: 92px;background:#f5f5f5;font-size:14px;color:#404041;text-align:center;float:left;}
+.tool .tabs > li > a {display:block;}
+.tool .tabs > li > a.current {background:#00aeef;color:#FFF;}
+.tool .buttons {margin:7px -3px 0 0;}
+.tool label {font-size:13px;color:#404041;}
+.tool .result {line-height:24px;}
 .img_list li {height:22px;line-height:22px;overflow:hidden;}
 .product_option {padding:10px 20px 10px 20px;}
-.iq_btn {margin-top:10px;cursor:pointer;}
+.iq_btn {cursor:pointer;}
+/*customized by A-studio*/
+	a.btn_1, a.btn_2 {display:inline-block;*display:inline;zoom:1;}
+/*List 0*/
+	#products_list {width:845px;margin-top:16px;}
+	#products_list > li {display:inline-block;*display:inline;zoom:1;margin:0 19px 7px 0;float:left;position:relative;*margin-right:17px;}
+	#products_list .thumb {}
+	#products_list .thumb img {border:none;padding:0;width:150px;height:150px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);*border:1px solid #CCC;}
+	#products_list .message {position: absolute;top: 7px;width: 150px;}
+	#products_list .info {border: none;padding: 4px 8px 0 8px;margin: 0;position: absolute;bottom: 8px;height: 36px;background: #000;opacity: 0.6;width:134px;}
+	#products_list .info > li {height:16px;line-height:16px;overflow:hidden;*height:15px;*line-height:15px;}
+	#products_list .info > li > a {color:#FFF;display:block;}
+	#products_list .info > li > a.tu {text-decoration:underline;}
+	#products_list .info:hover {opacity:1 !important;}
+
+	/*fbox*/
+/* 	#fancybox-outer {top:20px;} */
+	#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
+	#fancybox-title-float-main {font-size:20px;line-height:45px;}
+	#fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
+	
+.tool .btn_1 {width:88px;height:18px;border:1px solid #00aeef;line-height:18px;background:url('image/astudio.png') no-repeat -8px -72px;cursor:pointer;color:#404041;}
+.tool .btn_2 {width:88px;height:18px;border:1px solid #00aeef;line-height:18px;background:#0569b4;cursor:pointer;color:#FFF;}
+.btn_1 span {margin:0 8px 0 14px;color:#0569b4;}
+.btn_2 span {margin:0 8px 0 14px;color:#FFF;}
+.btn_1:hover, .btn_2:hover, .btn_1:hover span, .btn_2:hover span {color:#F60;}
+.sell_tip .btn_1,.sell_tip .btn_2 {width:66px;height:18px;border:1px solid #8d8d8f;line-height:18px;background:url('image/astudio.png') no-repeat -8px -72px;cursor:pointer;text-align:center;-webkit-border-radius: 2px;border-radius: 2px;}
+.sell_tip .btn_1 {margin-right:2px;}
+.sell_tip .btn_2 {margin-left:2px;}
+
+/*List1*/
+.Lists {margin-top:18px;border-bottom:1px solid #f5f5f5;}
+.list .thumb {padding:0;}
+.list > ul {margin-top:3px;font-size:13px;margin-right:14px;}
+.list > ul > li {line-height:18px;}
+.list > ul > .title {max-height:36px;overflow:hidden;text-align:left;}
+.list > ul > .title > a {width:620px;display:block;}
+.list > ul > li .com {color:#F60;}
+.list > ul > li .trigger {vertical-align:middle;}
+/* search */
+#fsearch label {padding-right:5px;}
+#fsearch input {padding:1px 3px;}
+#fsearch select {width:170px;height:21px;overflow:hidden;}
+#fsearch #kw {width:90px;}

@@ -9,13 +9,14 @@ if(!check_group($_groupid, $MOD['group_search'])) {
 require DT_ROOT.'/include/post.func.php';
 include load('search.lang');
 $CP = $MOD['cat_property'] && $catid && $CAT['property'];
-$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0;
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0; // 0:gallery 1:list 2:text
 $category_select = ajax_category_select('catid', $L['all_category'], $catid, $moduleid);
 if(!$areaid && $cityid && strpos($DT_URL, 'areaid') === false) {
 	$areaid = $cityid;
 	$ARE = $AREA[$cityid];
 }
 $area_select = ajax_area_select('areaid', $L['all_area'], $areaid);
+$maincat = get_maincat($catid, $moduleid);
 
 if($MOD['sphinx']) exit(include MD_ROOT.'/sphinx.inc.php');
 
@@ -95,7 +96,7 @@ if($DT_QST) {
 		if($pptsql) $condition .= $pptsql;//PPT
 		$condition = "status=3".$condition;
 	}
-	$pagesize = $MOD['pagesize'];
+	$pagesize = $list ? ($list == 1 ? 6 : 10) : 20;//$MOD['pagesize']
 	$offset = ($page-1)*$pagesize;
 	$items = $db->count($table, $condition, $DT['cache_search']);
 	$pages = pages($items, $page, $pagesize);

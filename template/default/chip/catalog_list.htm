@@ -1,0 +1,8 @@
+<div class="cat_pos px14">{cat_pos($CAT, ' &raquo; ')}</div>
+<ul class="list_category">
+	{loop $maincat $k $v}
+	<li{if $v[catid]==$catid} class="f_b"{/if}>
+		<a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a> <span>({$v[item]})</span>
+	</li>
+	{/loop}
+</ul>

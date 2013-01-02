@@ -42,7 +42,7 @@ switch($action) {
 	break;
 	case 'show':
 		$itemid or msg();
-		$u = $db->get_one("SELECT username FROM {$DT_PRE}company ORDER BY vip DESC");
+		$u = $db->get_one("SELECT username FROM {$DT_PRE}company WHERE username = 'abcde_test'");
 		dheader(DT_PATH.'index.php?homepage='.$u['username'].'&preview='.$itemid);
 	break;
 	case 'order':

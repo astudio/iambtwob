@@ -3,12 +3,12 @@ defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 check_group($_groupid, $MOD['group_compare']) or dalert(lang('message->without_permission'), 'goback');
 $DT_URL = $DT_REF;
-(($itemid && is_array($itemid)) || ($fbox && $length)) or dalert($L['compare_choose'], 'goback');
-$itemid = $fbox ? $itemids : array_unique(array_map('intval', $itemid));
+(($itemid && is_array($itemid)) || ($fbox && $length) || ($fbox && $addid)) or dalert($L['compare_choose'], 'goback');
+$itemid = $fbox ? ($addid ? array_unique(array_map('intval', $itemid)) : $itemids) : array_unique(array_map('intval', $itemid));
 $item_nums = $length ? $length : count($itemid);
 $item_nums < 9 or dalert($L['compare_max'], 'goback');
 $item_nums > 1 or dalert($L['compare_min'], 'goback');
-$itemid = $fbox ? $itemid : implode(',', $itemid);
+$itemid = ($fbox && $length) ? $itemid : implode(',', $itemid);
 $tags = array();
 $result = $db->query("SELECT * FROM {$table} WHERE itemid IN ($itemid) ORDER BY addtime DESC");
 while($r = $db->fetch_array($result)) {

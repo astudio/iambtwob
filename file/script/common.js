@@ -36,28 +36,15 @@ function Tab(ID) {
 	var tTab = Dd('Tab'+tID); var tTabs = Dd('Tabs'+tID); var Tab = Dd('Tab'+ID); var Tabs = Dd('Tabs'+ID);
 	if(ID!=tID)	{tTab.className='tab'; Tab.className='tab_on'; tTabs.style.display='none'; Tabs.style.display=''; tID = ID; try{Dd('tab').value=ID;}catch(e){}}
 }
-function checkall() {
-/* 	var t = t ? t : 1;
+function checkall(f, t) {
+	var t = t ? t : 1;
 	for(var i = 0; i < f.elements.length; i++) {
 		var e = f.elements[i];
 		if(e.type != 'checkbox') continue;
 		if(t == 1) e.checked = e.checked ? false : true;
 		if(t == 2) e.checked = true;
 		if(t == 3) e.checked = false;	
-	} */
-	$('#checkAll').toggle(
-		function(){
-			$(':checkbox').each(function () {
-				this.attr('checked',true).parent().parent().find('.info').css({'opacity':1});
-			});
-		},
-		function(){
-			$(':checkbox').each(function () {
-				this.attr('checked',false).parent().parent().find('.info').css({'opacity':0.6});
-			});		
-		});
-	//$('[type="checkbox"]').parent().parent().find('.info').css({'opacity':0.6});	
-	//$('[type="checkbox"]:checked').parent().parent().find('.info').css({'opacity':1});
+	}
 }
 function stoinp(s, i, p) {
 	if(Dd(i).value) {

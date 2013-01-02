@@ -1,6 +1,11 @@
 {php isset($file) or $file='search';}
 <ul>
-{loop $tags $i $t}
-<li title="搜索{$t[$key]}次 約{$t[items]}條結果"><span class="f_r px11 f_gray">&nbsp;{$t[items]}條</span><a href="{$MODULE[$moduleid][linkurl]}{rewrite($file.'.php?kw='.urlencode($t['word']))}"{if $target} target="{$target}"{/if}>{$t[word]}</a></li>
-{/loop}
+	{loop $tags $i $t}
+	{php $num = $i+1;}
+	<li>
+		<span class="rank{if $i<3} winner{/if}">{if $i<9}0{/if}{$num}</span>
+		<span>►</span>
+		<a class="trigger" title="關鍵字[{$t[word]}] 搜索{$t[$key]}次 約{$t[items]}條結果" href="{$MODULE[$moduleid][linkurl]}{rewrite($file.'.php?kw='.urlencode($t['word']))}"{if $target} target="{$target}"{/if}>{$t[word]}</a>
+	</li>
+	{/loop}
 </ul>

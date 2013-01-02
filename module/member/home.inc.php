@@ -161,6 +161,7 @@ if($submit) {
 	isset($HOME['logo']) or $logo = '';
 	isset($HOME['video']) or $video = '';
 	isset($HOME['css']) or $css = '';
+	isset($HOME['lang_chinese']) or $lang_chinese = 0;	
 	isset($HOME['announce']) or $announce = '';
 	isset($HOME['seo_title']) or $seo_title = '';
 	isset($HOME['seo_keywords']) or $seo_keywords = '';

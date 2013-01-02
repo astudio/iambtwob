@@ -18,7 +18,7 @@ show_menu($menus);
 <div class="tt">基本設置</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
-<td class="tl">默認縮略圖[寬X高]</td>
+<td class="tl">預設縮略圖[寬X高]</td>
 <td>
 <input type="text" size="3" name="setting[thumb_width]" value="<?php echo $thumb_width;?>"/>
 X
@@ -41,7 +41,7 @@ X
 </td>
 </tr>
 <tr>
-<td class="tl">信息排序方式</td>
+<td class="tl">訊息排序方式</td>
 <td>
 <input type="text" size="50" name="setting[order]" value="<?php echo $order;?>" id="order"/>
 <select onchange="if(this.value) Dd('order').value=this.value;">
@@ -51,7 +51,7 @@ X
 <option value="edittime desc"<?php if($order == 'edittime desc') echo ' selected';?>>更新時間</option>
 <option value="addtime desc"<?php if($order == 'addtime desc') echo ' selected';?>>添加時間</option>
 <option value="vip desc"<?php if($order == 'vip desc') echo ' selected';?>><?php echo VIP;?>級別</option>
-<option value="itemid desc"<?php if($order == 'itemid desc') echo ' selected';?>>信息ID</option>
+<option value="itemid desc"<?php if($order == 'itemid desc') echo ' selected';?>>訊息ID</option>
 </select>
 </td>
 </tr>
@@ -64,7 +64,14 @@ X
 <td><input type="text" size="80" name="setting[type]" value="<?php echo $type;?>"/><?php tips('不同類別用 | 分隔，設置好後，請勿頻繁改動');?></td>
 </tr>
 <tr>
-<td class="tl">詢價產品信息</td>
+<td class="tl"><?php echo $MOD['name'];?>單位</td>
+<td>
+<textarea name="setting[unit]" style="width:98%;height:50px;overflow:visible;"><?php echo $unit;?></textarea>
+<br/>不同單位用 | 分隔
+</td>
+</tr>
+<tr>
+<td class="tl">詢價產品訊息</td>
 <td><input type="text" size="80" name="setting[inquiry_type]" value="<?php echo $inquiry_type;?>"/></td>
 </tr>
 <tr>
@@ -72,6 +79,15 @@ X
 <td>
 <textarea name="setting[inquiry_ask]" style="width:98%;height:50px;overflow:visible;"><?php echo $inquiry_ask;?></textarea>
 <br/>不同問題用 | 分隔
+</td>
+</tr>
+<tr>
+<td class="tl">列表不重複公司訊息</td>
+<td>
+<input type="radio" name="setting[group]" value="username" <?php if($group == 'username') echo 'checked';?>/> 按公司&nbsp;
+<input type="radio" name="setting[group]" value="ip" <?php if($group == 'ip') echo 'checked';?>/> 按IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[group]" value=""  <?php if($group == '') echo 'checked';?>/> 關閉
+<?php tips('開啟此項可以在列表時一個公司僅顯示一條訊息<br/>開啟按公司將導致遊客訊息無法顯示<br/>開啟按IP會略微增加伺服器負載');?>
 </td>
 </tr>
 <tr>
@@ -131,11 +147,11 @@ X
 <tbody id="sphinx" style="display:<?php echo $sphinx ? '' : 'none';?>">
 <tr>
 <td class="tl">Sphinx主機地址</td>
-<td><input name="setting[sphinx_host]" type="text" size="20" value="<?php echo $sphinx_host;?>"/><?php tips('默認為localhost或者127.0.0.1，可留空');?></td>
+<td><input name="setting[sphinx_host]" type="text" size="20" value="<?php echo $sphinx_host;?>"/><?php tips('預設為localhost或者127.0.0.1，可留空');?></td>
 </tr>
 <tr>
 <td class="tl">Sphinx主機端口</td>
-<td><input name="setting[sphinx_port]" type="text" size="5" value="<?php echo $sphinx_port;?>"/><?php tips('默認為9312，可留空');?></td>
+<td><input name="setting[sphinx_port]" type="text" size="5" value="<?php echo $sphinx_port;?>"/><?php tips('預設為9312，可留空');?></td>
 </tr>
 <tr>
 <td class="tl">Sphinx索引名稱</td>
@@ -171,12 +187,12 @@ X
 <td>
 <input type="radio" name="setting[upload_thumb]" value="1"  <?php if($upload_thumb) echo 'checked';?>/> 開啟&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[upload_thumb]" value="0"  <?php if(!$upload_thumb) echo 'checked';?>/> 關閉
-<?php tips('此項可在一定程度提高信息質量，防範垃圾信息');?>
+<?php tips('此項可在一定程度提高訊息質量，防範垃圾訊息');?>
 </td>
 </tr>
 
 <tr>
-<td class="tl">列表信息分頁數量</td>
+<td class="tl">列表訊息分頁數量</td>
 <td><input type="text" size="3" name="setting[pagesize]" value="<?php echo $pagesize;?>"/></td>
 </tr>
 
@@ -334,7 +350,7 @@ X
 <td><?php echo group_checkbox('setting[group_list][]', $group_list);?></td>
 </tr>
 <tr>
-<td class="tl">允許瀏覽信息內容</td>
+<td class="tl">允許瀏覽訊息內容</td>
 <td><?php echo group_checkbox('setting[group_show][]', $group_show);?></td>
 </tr>
 <tr>
@@ -342,7 +358,7 @@ X
 <td><?php echo group_checkbox('setting[group_contact][]', $group_contact);?></td>
 </tr>
 <tr>
-<td class="tl">允許搜索信息</td>
+<td class="tl">允許搜索訊息</td>
 <td><?php echo group_checkbox('setting[group_search][]', $group_search);?></td>
 </tr>
 <tr>
@@ -350,11 +366,11 @@ X
 <td><?php echo group_checkbox('setting[group_color][]', $group_color);?></td>
 </tr>
 <tr>
-<td class="tl">刷新信息不扣積分</td>
+<td class="tl">刷新訊息不扣積分</td>
 <td><?php echo group_checkbox('setting[group_refresh][]', $group_refresh);?></td>
 </tr>
 <tr>
-<td class="tl">允許對比信息</td>
+<td class="tl">允許對比訊息</td>
 <td><?php echo group_checkbox('setting[group_compare][]', $group_compare);?></td>
 </tr>
 <tr>
@@ -378,7 +394,7 @@ X
 </td>
 </tr>
 <tr>
-<td class="tl">審核發佈信息</td>
+<td class="tl">審核發佈訊息</td>
 <td>
 <input type="radio" name="setting[check_add]" value="2"  <?php if($check_add == 2) echo 'checked';?>> 繼承會員組設置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[check_add]" value="1"  <?php if($check_add == 1) echo 'checked';?>> 全部啟用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -386,7 +402,7 @@ X
 </td>
 </tr>
 <tr>
-<td class="tl">發佈信息啟用驗證碼</td>
+<td class="tl">發佈訊息啟用驗證碼</td>
 <td>
 <input type="radio" name="setting[captcha_add]" value="2"  <?php if($captcha_add == 2) echo 'checked';?>> 繼承會員組設置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[captcha_add]" value="1"  <?php if($captcha_add == 1) echo 'checked';?>> 全部啟用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -394,7 +410,7 @@ X
 </td>
 </tr>
 <tr>
-<td class="tl">發佈信息啟用驗問題</td>
+<td class="tl">發佈訊息啟用驗問題</td>
 <td>
 <input type="radio" name="setting[question_add]" value="2"  <?php if($question_add == 2) echo 'checked';?>> 繼承會員組設置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[question_add]" value="1"  <?php if($question_add == 1) echo 'checked';?>> 全部啟用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -416,11 +432,11 @@ X
 </td>
 </tr>
 <tr>
-<td class="tl">發佈信息收費</td>
+<td class="tl">發佈訊息收費</td>
 <td><input type="text" size="5" name="setting[fee_add]" value="<?php echo $fee_add;?>"/> <?php echo $fee_currency == 'money' ? $DT['money_unit'] : $DT['credit_unit'];?>/條</td>
 </tr>
 <tr>
-<td class="tl">查看信息收費</td>
+<td class="tl">查看訊息收費</td>
 <td><input type="text" size="5" name="setting[fee_view]" value="<?php echo $fee_view;?>"/> <?php echo $fee_currency == 'money' ? $DT['money_unit'] : $DT['credit_unit'];?>/條</td>
 </tr>
 <tr>
@@ -431,19 +447,19 @@ X
 <div class="tt"><?php echo $DT['credit_name'];?>規則</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
-<td class="tl">發佈信息獎勵</td>
+<td class="tl">發佈訊息獎勵</td>
 <td>
 <input type="text" size="5" name="setting[credit_add]" value="<?php echo $credit_add;?>"/>
 </td>
 </tr>
 <tr>
-<td class="tl">信息被刪除扣除</td>
+<td class="tl">訊息被刪除扣除</td>
 <td>
 <input type="text" size="5" name="setting[credit_del]" value="<?php echo $credit_del;?>"/>
 </td>
 </tr>
 <tr>
-<td class="tl">信息設置顏色扣除</td>
+<td class="tl">訊息設置顏色扣除</td>
 <td>
 <input type="text" size="5" name="setting[credit_color]" value="<?php echo $credit_color;?>"/>
 </td>
@@ -455,7 +471,7 @@ X
 </td>
 </tr>
 <tr>
-<td class="tl">刷新一條信息一次扣除</td>
+<td class="tl">刷新一條訊息一次扣除</td>
 <td>
 <input type="text" size="5" name="setting[credit_refresh]" value="<?php echo $credit_refresh;?>"/>
 </td>

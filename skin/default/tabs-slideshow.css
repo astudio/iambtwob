@@ -22,7 +22,7 @@
 .slidetabs {
     clear:left;
     height:25px;
-	width:827px;
+	width:827px;*width:828px;
 	background:#f5f5f5;
 	border-top:1px solid #D7D7D7;
 }
@@ -88,6 +88,7 @@
     position:absolute;
     top:0;
     left:0;
+	width:627px !important; 
     height:160px;
     font-size:12px;
 	padding-left:200px;
@@ -101,6 +102,8 @@
 	background:#f5f5f5;
 	border-right:1px solid #D7D7D7;
 	position:absolute;
+	top:0;
+	left:0;
 }
 
 /* single tab */
@@ -159,9 +162,10 @@
 }
 
 .arrowt {
-	position: relative;
+	position: relative;*position:absolute;
 	background: #f5f5f5;
 	top:-21px;
+	top:-20px\9;
 	overflow:hidden;
 }
 .arrowt:after, .arrowt:before {
@@ -197,6 +201,7 @@
 	position: relative;
 	background: #f5f5f5;
 	left:45px;
+	left:46px\9;
 	overflow:hidden;
 }
 .arrowr:after, .arrowr:before {

@@ -1,0 +1,173 @@
+{template 'header'}
+<div class="m">
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog','chip'}
+		{/if}
+	</div>
+	
+	<div class="m_l_1 f_l">
+		<div class="b10">&nbsp;</div>		
+		<!-- 1st slideshow (AD) -->
+		{template 'tmp-slideshow','tag'}					
+		<div class="b15">&nbsp;</div>	
+	
+		<div class="left_box">		
+			<div class="b10 c_b"></div>
+			<table width="100%">
+			<tr>
+			<td width="10"> </td>
+			<td>
+				<table width="100%">
+				<tr>
+				<td colspan="3"><h1 class="title_trade">{$title}</h1></td>
+				</tr>
+				<tr>
+				<td width="250" valign="top">
+					<div class="album">
+						<table width="100%" cellpadding="0" cellspacing="0">
+						<tr align="center">
+						<td width="250" valign="top"><div><span id="abm" title="點擊查看大圖"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+						</tr>
+						<tr>
+						<td>
+						{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+						</tr>
+						<tr align="center">
+						<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 點擊圖片查看原圖</td>
+						</tr>
+						</table>
+					</div>
+				</td>
+				<td width="15"> </td>
+				<td valign="top">
+					<div id="imgshow" style="display:none;"></div>
+					<table width="100%" cellpadding="5" cellspacing="5">
+					{if $brand}
+					<tr>
+					<td class="f_dblue">品 牌：</td>
+					<td>{$brand}&nbsp;</td>
+					</tr>
+					{/if}
+					{if $model}
+					<tr>
+					<td class="f_dblue">型 號：</td>
+					<td>{$model}&nbsp;</td>
+					</tr>
+					{/if}
+					{if $standard}
+					<tr>
+					<td class="f_dblue">規 格：</td>
+					<td>{$standard}&nbsp;</td>
+					</tr>
+					{/if}
+					<tr>
+					<td class="f_dblue">單 價：</td>
+					<td class="f_b f_orange">{if $price>0}{$price}{$DT[money_unit]}/{$unit}{else}面議{/if}&nbsp;</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">起 訂：</td>
+					<td class="f_b f_orange">{if $minamount}{$minamount} {$unit}{/if}&nbsp;</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">供貨總量：</td>
+					<td class="f_b f_orange">{if $amount}{$amount} {$unit}{/if}</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">發貨期限：</td>
+					<td>自買家付款之日起  <span class="f_b f_orange">{if $days}{$days}{/if}</span> 天內發貨</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">所在地：</td>
+					<td>{area_pos($areaid, ' ')}</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">有效期至：</td>
+					<td>{if $todate}{$todate}{else}長期有效{/if}{if $expired} <span class="f_red">[已過期]</span>{/if}</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">最後更新：</td>
+					<td>{$editdate}</td>
+					</tr>
+					<tr>
+					<td width="80" class="f_dblue">瀏覽次數：</td>
+					<td><span id="hits">{$hits}</span></td>
+					</tr>
+					{if $username && !$expired}
+					<tr>
+					<td colspan="2"><img src="{DT_SKIN}image/btn_inquiry.gif" alt="詢價" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}');"/></td>
+					</tr>
+					{/if}
+					</table>
+				</td>
+				</tr>
+			</table>
+			</td>
+			<td width="10"> </td>
+			<td width="300" valign="top">		
+				<div class="contact_head">公司基本資料信息</div>
+				<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+				{if !$username}
+				<br/>
+				&nbsp;<strong class="f_red">注意</strong>:發佈人未在本站註冊，建議優先選擇<a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP}會員</strong></a>
+				{/if}
+			</td>
+			<td width="10"> </td>
+			</tr>
+			</table>
+			<div class="b10">&nbsp;</div>
+		</div>
+	</div>	
+</div>
+
+<div class="m">
+<div class="b10">&nbsp;</div>
+<div class="box_head_2">
+<div>
+<span class="f_r">
+<form method="post" action="{$MODULE[2][linkurl]}favorite.php">
+<input type="hidden" name="action" value="add"/>
+<input type="hidden" name="title" value="{$title}"/>
+<input type="hidden" name="url" value="{$linkurl}"/>
+<input type="image" src="{DT_SKIN}image/btn_fav.gif" class="c_p" style="margin-top:5px;"/>
+</form>
+</span>
+<strong>產品詳細說明</strong>
+</div>
+</div>
+<div class="box_body" style="padding:0;">
+{if $CP}{template 'property', 'chip'}{/if}
+<div class="content c_b" id="content">{$content}</div>
+{template 'comment', 'chip'}
+</div>
+</div>
+{if $username}
+<div class="m">
+	<div class="b10">&nbsp;</div>
+	<div class="box_head_2"><div><span class="f_r"><a href="{userurl($username, 'file=sell')}">更多..</a></span><strong>本企業其它產品</strong></div></div>
+	<div class="box_body">
+	<div class="thumb" style="padding:10px;">
+	<!--{tag("moduleid=$moduleid&length=20&condition=status=3 and thumb<>'' and username='$username'&pagesize=8&order=edittime desc&width=80&height=80&cols=8&template=thumb-table", -2)}-->
+	</div>
+	</div>
+</div>
+{/if}
+<div class="m">
+	<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
+	<input type="hidden" name="itemid" value="{$itemid}"/> 
+	<input type="hidden" name="title" value="{$title}"/>
+	<input type="hidden" name="linkurl" value="{$linkurl}"/>
+	</form>
+	<br/>
+	<center>
+	[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]}搜索</a> ]&nbsp;
+	[ <script type="text/javascript">addFav('加入收藏');</script> ]&nbsp;
+	[ <a href="javascript:Dd('sendmail').submit();void(0);">告訴好友</a> ]&nbsp;
+	[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
+	[ <a href="javascript:window.close()">關閉窗口</a> ]
+	</center>
+	<br/>
+</div>
+{template 'zoom', 'chip'}
+{template 'footer'}

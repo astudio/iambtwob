@@ -2,14 +2,14 @@
 	{loop $tags $k $t}
 	<div class="list" id="item_{$t[itemid]}">
 		<input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip_list(this, {$t[itemid]});"/>
-		<div class="thumb"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="80" alt="{$t[alt]}" onmouseover="img_tip_list(this, this.src);" onmouseout="img_tip_list(this, '');"/></a></div>
+		<div class="thumb"><a href="{$t[linkurl]}" target="_blank"><img class="lazy" data-src="{imgurl($t[thumb], 1)}" src="{DT_SKIN}image/blank.gif" alt="{$t[alt]}" onmouseover="img_tip_list(this, this.src);" onmouseout="img_tip_list(this, '');"/></a></div>
 
 		<ul>
 			<li class="title">{if $t[vip]}<span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
 			<li class="f_gray">{$t[introduce]}</li>
 			<li><span class="f_r"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry_btn.png" alt="詢價" class="iq_btn" /></a></span>[{area_pos($t[areaid], '')}]</li>
 			<li>
-				<a href="{userurl($t[username])}" class="com" target="_blank">{$t[company]}</a>&nbsp;
+				<a href="{userurl($t[username])}" class="com trigger" target="_blank" title="{if $t[dcount]>1}All Items({$t[dcount]}){/if}">{$t[company]}</a>&nbsp;
 				<span class="f_gray">
 				{if $t[validated]}<span class="f_green">[Verified]</span>{else}[Unverified]{/if}
 				{if !$t[username]} [Unregistered]{/if}

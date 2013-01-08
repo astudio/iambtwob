@@ -6,4 +6,5 @@ require MD_ROOT.'/global.func.php';
 $table = $DT_PRE.$module;
 $table_data = $DT_PRE.$module.'_data';
 $TYPE = explode('|', trim($MOD['type']));
+$UNIT = explode('|', trim($MOD['unit']));
 ?>

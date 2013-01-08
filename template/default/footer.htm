@@ -4,16 +4,16 @@
 			<div class="m no_bg">
 				<div class="foot c_b">
 					<div id="webpage">
-						<a href="{$MODULE[1][linkurl]}">Home</a>
+						<a href="{$MODULE[1][linkurl]}">Homepage</a>
 						| <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="l">Login</a>
 						| <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="l">Join</a>
 						<!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder asc,itemid asc&template=list-webpage")}-->
 						| <a href="{$MODULE[1][linkurl]}sitemap/">Sitemap</a>
-						{if $EXT[gift_enable]} | <a href="{$EXT[gift_url]}">積分換禮</a>{/if}
+						{if $EXT[gift_enable]} | <a href="{$EXT[gift_url]}">Earn Gift</a>{/if}
 						{if $EXT[feed_enable]} | <a href="{$EXT[feed_url]}">RSS</a>{/if}
 						{if $DT[icpno]} | <a href="http://www.miibeian.gov.cn" target="_blank">{$DT[icpno]}</a>{/if}
-						{if $EXT[guestbook_enable]} | <a href="{$EXT[guestbook_url]}">Contact Us</a>{/if}
-						{if $EXT[ad_enable]} | <a href="{$EXT[ad_url]}">Advertise with Us</a>{/if}						
+						{if $EXT[guestbook_enable]} | <a href="{$EXT[guestbook_url]}">Tell us what you think</a>{/if}
+						{if $EXT[ad_enable]} | <a href="{$EXT[ad_url]}">Advertising Services</a>{/if}						
 					</div>
 					<div id="copyright">{$DT[copyright]}</div>
 					{if DT_DEBUG}<div class="px11">{debug()}</div>{/if}
@@ -27,24 +27,24 @@
 				<div class="tb_r">
 					<div>
 						<img src="{$MODULE[2][linkurl]}image/ico_newcart.gif" width="16" height="16" align="absmiddle" alt=""/>
-						<a href="{$MODULE[16][linkurl]}cart.php">購物車</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
+						<a href="{$MODULE[16][linkurl]}cart.php">Cart</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
 						<img src="{$MODULE[2][linkurl]}image/ico_message.gif" width="16" height="16" align="absmiddle" alt=""/>
-						<a href="{$MODULE[2][linkurl]}message.php">站內信</a>(<span id="destoon_message">0</span>)
+						<a href="{$MODULE[2][linkurl]}message.php">Message</a>(<span id="destoon_message">0</span>)
 						{if $DT[im_web]}
 						&nbsp;&nbsp;&nbsp;<img src="{$MODULE[2][linkurl]}image/ico_newchat.png" width="16" height="16" align="absmiddle" alt=""/>
-						<a href="{$MODULE[2][linkurl]}chat.php">新對話</a>(<span id="destoon_chat">0</span>)
+						<a href="{$MODULE[2][linkurl]}chat.php">Chat</a>(<span id="destoon_chat">0</span>)
 						{/if}
 					</div>
 				</div>
 				<div class="tb_l">
 					<div>
-						<img src="{DT_SKIN}image/vip.gif" alt="上網做生意，首選{VIP}會員" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}grade.php">會員服務</a>
-						| <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">發佈信息</a>
-						| <a href="{$MODULE[2][linkurl]}">會員中心</a>
-						| <a href="{$MODULE[1][linkurl]}">返回首頁</a>
+						<!-- <img src="{DT_SKIN}image/vip.gif" alt="上網做生意，首選{VIP}會員" align="absmiddle"/>  --><a href="{$MODULE[2][linkurl]}grade.php">Member Services</a>
+						| <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">Buy/Sell a product</a>
+						| <a href="{$MODULE[2][linkurl]}">My ImB2B</a>
+						| <a href="{$MODULE[1][linkurl]}">Back to top</a>
 					</div>
 				</div>
-				<div class="tb_c" onclick="window.scrollTo(0,0);" title="返回頂部" id="tb_c"></div>
+				<div class="tb_c" onclick="window.scrollTo(0,0);" title="Back to top" id="tb_c"></div>
 			</div>
 		</div>
 		

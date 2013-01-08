@@ -15,6 +15,7 @@
 	
 		<div class="left_box">		
 			<div class="b10 c_b"></div>
+			
 			<table width="100%">
 			<tr>
 			<td width="10"> </td>
@@ -117,57 +118,51 @@
 			</tr>
 			</table>
 			<div class="b10">&nbsp;</div>
+			
+			<div class="box_head_2">
+				<div>
+				<span class="f_r">
+				<form method="post" action="{$MODULE[2][linkurl]}favorite.php">
+				<input type="hidden" name="action" value="add"/>
+				<input type="hidden" name="title" value="{$title}"/>
+				<input type="hidden" name="url" value="{$linkurl}"/>
+				<input type="image" src="{DT_SKIN}image/btn_fav.gif" class="c_p" style="margin-top:5px;"/>
+				</form>
+				</span>
+				<strong>產品詳細說明</strong>
+				</div>
+			</div>
+			<div class="box_body" style="padding:0;">
+				{if $CP}{template 'property', 'chip'}{/if}
+				<div class="content c_b" id="content">{$content}</div>
+				{template 'comment', 'chip'}
+			</div>
+
+			{if $username}
+				<div class="b10">&nbsp;</div>
+				<div class="box_head_2"><div><span class="f_r"><a href="{userurl($username, 'file=sell')}">更多..</a></span><strong>本企業其它產品</strong></div></div>
+				<div class="box_body">
+				<div class="thumb" style="padding:10px;">
+				<!--{tag("moduleid=$moduleid&length=20&condition=status=3 and thumb<>'' and username='$username'&pagesize=8&order=edittime desc&width=80&height=80&cols=8&template=thumb-table", -2)}-->
+				</div>
+				</div>
+			{/if}
+			<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
+				<input type="hidden" name="itemid" value="{$itemid}"/> 
+				<input type="hidden" name="title" value="{$title}"/>
+				<input type="hidden" name="linkurl" value="{$linkurl}"/>
+			</form>
+			<br/>
+			<center>
+			[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]}搜索</a> ]&nbsp;
+			[ <script type="text/javascript">addFav('加入收藏');</script> ]&nbsp;
+			[ <a href="javascript:Dd('sendmail').submit();void(0);">告訴好友</a> ]&nbsp;
+			[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
+			[ <a href="javascript:window.close()">關閉窗口</a> ]
+			</center>
+			<br/>			
 		</div>
 	</div>	
-</div>
-
-<div class="m">
-<div class="b10">&nbsp;</div>
-<div class="box_head_2">
-<div>
-<span class="f_r">
-<form method="post" action="{$MODULE[2][linkurl]}favorite.php">
-<input type="hidden" name="action" value="add"/>
-<input type="hidden" name="title" value="{$title}"/>
-<input type="hidden" name="url" value="{$linkurl}"/>
-<input type="image" src="{DT_SKIN}image/btn_fav.gif" class="c_p" style="margin-top:5px;"/>
-</form>
-</span>
-<strong>產品詳細說明</strong>
-</div>
-</div>
-<div class="box_body" style="padding:0;">
-{if $CP}{template 'property', 'chip'}{/if}
-<div class="content c_b" id="content">{$content}</div>
-{template 'comment', 'chip'}
-</div>
-</div>
-{if $username}
-<div class="m">
-	<div class="b10">&nbsp;</div>
-	<div class="box_head_2"><div><span class="f_r"><a href="{userurl($username, 'file=sell')}">更多..</a></span><strong>本企業其它產品</strong></div></div>
-	<div class="box_body">
-	<div class="thumb" style="padding:10px;">
-	<!--{tag("moduleid=$moduleid&length=20&condition=status=3 and thumb<>'' and username='$username'&pagesize=8&order=edittime desc&width=80&height=80&cols=8&template=thumb-table", -2)}-->
-	</div>
-	</div>
-</div>
-{/if}
-<div class="m">
-	<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
-	<input type="hidden" name="itemid" value="{$itemid}"/> 
-	<input type="hidden" name="title" value="{$title}"/>
-	<input type="hidden" name="linkurl" value="{$linkurl}"/>
-	</form>
-	<br/>
-	<center>
-	[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]}搜索</a> ]&nbsp;
-	[ <script type="text/javascript">addFav('加入收藏');</script> ]&nbsp;
-	[ <a href="javascript:Dd('sendmail').submit();void(0);">告訴好友</a> ]&nbsp;
-	[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
-	[ <a href="javascript:window.close()">關閉窗口</a> ]
-	</center>
-	<br/>
 </div>
 {template 'zoom', 'chip'}
 {template 'footer'}

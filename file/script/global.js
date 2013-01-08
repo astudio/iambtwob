@@ -40,8 +40,8 @@
 				// start from the beginning after the last tab
 				rotate: true
 			}).slideshow({
-				//autoplay: true,
-				//interval: 10000,
+				autoplay: true,
+				interval: 10000,
 				next: '.forward2',
 				prev: '.backward2',
 				clickable: false
@@ -54,6 +54,10 @@
 		});		
 		// images lazy load
 		$('img.lazy').jail();
+		$('img.lazy2').jail({
+			loadHiddenImages : true,
+			timeout : 9000
+		});
 		imgMouseOver();
 		//checkall or uncheckall
 		$('#checkAll').toggle(

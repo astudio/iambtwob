@@ -1,21 +1,21 @@
 <script type="text/javascript">var user_auth = get_cookie('auth');</script>
 <div class="user">
 	{if defined('TOHTML')}
-	<script type="text/javascript">document.write(user_auth ? '<div>' : '<div style="display:none;">');</script>
+	<script type="text/javascript">document.write(user_auth ? '<div class="logged">' : '<div style="display:none;">');</script>
 	{else}
-		{if $_userid}<div>{else}<div style="display:none;">{/if}
+		{if $_userid}<div class="logged">{else}<div style="display:none;">{/if}
 	{/if}
-		<div class="user_wel">Welcome, you do...</div>
+		<div class="user_wel">Hello, welcome!</div>
 		<div class="user_do">
 			<ul>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">Post leads</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> <a href="{$EXT[spread_url]}">Promote by AD</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}home.php">Manage website</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}message.php">Check message</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_trade.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}trade.php">Manage orders</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_record.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}record.php">View balance</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_profile.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}edit.php?tab=2">Edit co. profile</a></li>
-				<li><img src="{$MODULE[2][linkurl]}image/ico_home.gif" align="absmiddle"/> <a href="{$MODULE[2][linkurl]}">Enter My ImB2B</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}{$DT[file_my]}">Post leads</a></li>
+				<li> <a href="{$EXT[spread_url]}">Promote by AD</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}home.php">Manage website</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}message.php">Check message</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}trade.php">Manage orders</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}record.php">View balance</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}edit.php?tab=2">Edit co. profile</a></li>
+				<li> <a href="{$MODULE[2][linkurl]}">Enter My Office</a></li>
 			</ul>
 		</div>
 	</div>

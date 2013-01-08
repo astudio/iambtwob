@@ -15,7 +15,7 @@
 	<div class="m_l_1 f_l">
 		<div class="b10">&nbsp;</div>		
 		<!-- 1st slideshow (AD) -->
-		{template 'tmp-slideshow','tag'}					
+		<!--{tag("table=ad&condition=status=3 and pid=15 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=15&template=ad-slideshow",-1)}-->					
 		<div class="b15">&nbsp;</div>				
 
 		<div class="left_box">
@@ -25,11 +25,11 @@
 				{if $page == 1}{ad($moduleid,0,'',6)}{/if}				
 				
 				{if $list==0}
-				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=20&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-img")}-->
+				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=20&page=$page&showpage=1&datetype=3&group=".$MOD[group]."&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-img")}-->
 				{elseif $list==1}
-				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=6&page=$page&showpage=1&datetype=3&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-mix")}-->
+				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=6&page=$page&showpage=1&datetype=3&group=".$MOD[group]."&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-mix")}-->
 				{elseif $list==2}
-				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=3&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-txt")}-->								
+				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=3&group=".$MOD[group]."&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-txt")}-->								
 				{/if}				
 			</form><br/>
 		</div>

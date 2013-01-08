@@ -75,7 +75,7 @@ show_menu($menus);
 function sh(id) {
 	if(id == 6 || id == 7) {
 		Ds('md');Dh('wh');
-	} else if(id == 3 || id == 4 || id == 5) {
+	} else if(id == 3 || id == 4 || id == 5 || id == 8 || id == 9) {
 		Dh('md');Ds('wh');
 	} else {
 		Dh('md');Dh('wh');
@@ -90,7 +90,7 @@ function check() {
 		Dmsg('請填寫廣告位名稱', f);
 		return false;
 	}
-	if(Dd('p3').checked || Dd('p4').checked || Dd('p5').checked) {
+	if(Dd('p3').checked || Dd('p4').checked || Dd('p5').checked || Dd('p8').checked || Dd('p9').checked) {
 		if(Dd('width').value.length < 2 || Dd('height').value.length < 2) {
 			Dmsg('請填寫廣告位大小', 'size');
 			return false;

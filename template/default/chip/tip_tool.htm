@@ -26,7 +26,7 @@
 	</div>
 	{if $MOD[group]}
 		<div class="result f_r">
-			<span class="resultSpan"><span class="f_r px11">(<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $items<$pagesize*$page ? $items : $pagesize*$page;}?> out of <?php echo $group ? $total : $items;?>)</span><strong>Result{if $items>1}s{/if}{if $catid} for <span class="f_red">{$CATEGORY[$catid][catname]}</span>{/if}:</strong></span> {$items} product{if $items>1}s{/if}{if $MOD[group]} from {$total} {if $total>1}companies{else}company{/if}{/if}
+			<span class="resultSpan"><span class="f_r px11">(<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $items<$pagesize*$page ? $items : $pagesize*$page;}?> out of <?php echo $group ? $total : $items;?>)</span><strong>Result{if $items>1}s{/if}{if $catid} for <span class="f_red">{$CAT[$catid]}</span>{/if}:</strong></span> {$items} product{if $items>1}s{/if}{if $MOD[group]} from {$total} {if $total>1}companies{else}company{/if}{/if}
 		</div>
 	{/if}
 	{if $moduleid==5}					

@@ -44,8 +44,12 @@ if($cityid) {
 	} else {
 		$items = $CAT['item'];
 	}
+	if($MOD['group']){
+	  $group = $MOD['group'];
+	  $total = $db->count($table, $condition, $DT['cache_search'], $group);
+	}	
 }
-$pagesize = $MOD['pagesize'];
+$pagesize = $list==0 ? $MOD['pagesize'] : ($list==2 ? 10 : 6);
 $offset = ($page-1)*$pagesize;
 $pages = listpages($CAT, $items, $page, $pagesize);
 $tags = array();

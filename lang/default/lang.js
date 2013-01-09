@@ -81,7 +81,7 @@ L['last_page']				= '已至最後一頁';
 
 /* page.js */
 L['popular_search_terms']	= '熱門搜索：';
-L['search_tips_close']		= '關閉';
+L['search_tips_close']		= 'Close';
 
 /* profile.js */
 L['max_mode']				= '最多可選{V0}種經營模式';

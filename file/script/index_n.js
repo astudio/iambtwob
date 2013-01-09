@@ -1,7 +1,10 @@
 (function($) {
 	if(!$) return false;				
 
-	$(function(){				
+	$(function(){	
+		if( $.browser.safari ) {
+			$('span.arrowr').css({left: '200px'}).show();
+		}
 		// exhibit tabs
 		$("ul.tabs").tabs("div.panes > div");
 		// movie tabs

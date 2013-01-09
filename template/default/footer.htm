@@ -47,6 +47,8 @@
 				<div class="tb_c" onclick="window.scrollTo(0,0);" title="Back to top" id="tb_c"></div>
 			</div>
 		</div>
+		<!-- contact us (fixed right position) -->
+		{if $EXT[guestbook_enable]}<a href="{$EXT[guestbook_url]}" target="_blank"><div id="contactUs"></div></a>{/if}
 		
 		<script type="text/javascript">show_task('{$destoon_task}');</script>
 		<script type="text/javascript" src="{DT_PATH}file/script/global.js"></script>

@@ -1,0 +1,8 @@
+{if $tags}
+	{loop $tags $k $t}
+		{if $t[url]}<a href="{DT_PATH}extend/redirect.php?aid={$t[aid]}" target="_blank">{/if}<img class="lazy" data-src="{$t[image_src]}" src="{DT_SKIN}image/blank.gif" alt="{$t[image_alt]}" title="{$t[image_alt]}" />{if $t[url]}</a>{/if}
+		{if !$nob10}<div class="b10">&nbsp;</div>{/if}
+	{/loop}
+{else}
+	<a href="{DT_PATH}ad" target="_blank"><img src="{DT_SKIN}image/ad/ad_{$id}.gif" width="{$width}" height="{$height}" alt="購買廣告請聯絡貿易眼" title="購買廣告請聯絡貿易眼" border="0"/></a>
+{/if}

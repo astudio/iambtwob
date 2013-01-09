@@ -3,9 +3,19 @@
 
 	function imgMouseOver() {
 		$('img.lazy:visible').scroll();
-	}
+	}	
+	$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));
 	
 	$(function(){
+		//fix safari browser left position		
+		if ( $.browser.safari ) {
+			$('span.arrowr').hide();
+		}	
+		//fix google translate seperator color
+		if ( $.browser.msie && parseInt($.browser.version) < 9 ) {
+			$('a.goog-te-menu-value > span:last-child').addClass('fy');
+		}
+		
 		/* global */
 		// menu
 		$('.side li.level1').hover(

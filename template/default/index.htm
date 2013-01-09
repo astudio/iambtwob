@@ -6,6 +6,14 @@
 			{php $mid = 5;}
 			{template 'catalog','chip'}
 		{/if}
+		
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
 	</div>
 	<div class="f_l main">
 		<div class="b10">&nbsp;</div>
@@ -17,7 +25,7 @@
 			</div>
 			<div class="topl">
 				<!-- 1st slideshow (AD) -->
-				<!--{tag("table=ad&condition=status=3 and pid=15 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=15&template=ad-slideshow",-1)}-->
+				<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=16&template=ad-slideshow",-1)}-->
 			</div>				
 		</div>
 					
@@ -26,17 +34,20 @@
 		<div class="m_l f_l">
 			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[17][linkurl]}">more ></a></span><a href="{$MODULE[17][linkurl]}"><strong>Spotlight</strong></a></div></div>
 			<!-- 2nd slideshow (AD) -->
-			<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=5&id=16&no=2&template=ad-slideshow",-1)}-->			
+			<!--{tag("table=ad&condition=status=3 and pid=17 and totime>".$DT_TIME."&order=rand()&pagesize=5&id=17&no=2&template=ad-slideshow",-1)}-->			
 			<div class="b10">&nbsp;</div>
 		</div>
 		<div class="m_n f_l">&nbsp;</div>
 		<div class="m_r f_l">
-			<!-- 廣告 -->
+			<!-- right sidebar ad -->
+			<!--{tag("table=ad&condition=status=3 and pid=18 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=18&template=ad-single",-1)}-->
+			
+			<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=19&template=ad-single",-1)}-->
 		</div>
 		<div class="m_ebook f_l">
 			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Magazines</strong></a></div></div>
 			<div class="box_body f_gray">
-				<!--{tag("moduleid=23&condition=status=3 and catid=533 and thumb<>''&pagesize=2&order=addtime desc&target=_blank&template=index-ebook",-1)}-->
+				<!--{tag("moduleid=23&condition=status=3 and catid=533 and thumb<>'' and totime>".$DT_TIME."&pagesize=2&order=rand()&target=_blank&template=index-ebook",-1)}-->
 			</div>
 			<div class="b10">&nbsp;</div>				
 		</div>
@@ -44,7 +55,7 @@
 		<div class="m_ebook f_l">
 			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Catalogs</strong></a></div></div>
 			<div class="box_body f_gray">
-				<!--{tag("moduleid=23&condition=status=3 and catid=3518 and thumb<>''&pagesize=2&order=rand()&target=_blank&template=index-ebook",-1)}-->
+				<!--{tag("moduleid=23&condition=status=3 and catid=3518 and thumb<>'' and addtime>".$DT_TIME."-60*60*24*30*2&pagesize=2&order=rand()&target=_blank&template=index-ebook",-1)}-->
 			</div>
 			<div class="b10">&nbsp;</div>			
 		</div>
@@ -121,14 +132,18 @@
 			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">more ></a></span><a href="{$MODULE[10][linkurl]}"><strong>Featured Partner</strong></a></div></div>				
 			<div class="box_body">
 			{if $DT[page_logo]}
-			<!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=rand()&template=list-link&cols=3&width=166&height=40")}-->
+			<!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=rand()&template=list-link&width=166&height=40")}-->
 			{/if}
 			{if $DT[page_text]}
 			<!--{tag("table=link&condition=status=3 and level>0 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}-->
 			{/if}
 			</div>
 		</div>
-		{/if}			
+		{/if}
+		
+		<div class="m_n f_l">&nbsp;</div>
+		
+		<!--{tag("table=ad&condition=status=3 and pid=22 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=22&template=ad-single",-1)}-->
 	</div>
 </div>
 {template 'footer'}

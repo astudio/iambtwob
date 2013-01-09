@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 		<!-- disable iPhone inital scale -->
-		<meta name="viewport" content="width=1024,initial-scale=1.0"/>
+		<meta name="viewport" content="width=1221"/>
 		<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
 		{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
 		{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
@@ -55,10 +55,10 @@
 					<a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{DT_SKIN}image/logo_{$moduleid}.gif{elseif $DT[logo]}{$DT[logo]}{else}{DT_SKIN}image/logo.gif{/if}" alt="{$DT[sitename]}"/></a>
 				</h1>
 				
-				{php $searchid = ($moduleid > 3 && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}
-				{php $searchids = array(5,4,6,16,21,22);}
-				{if !in_array($searchid, $searchids)}
-					{php $searchids[] = $searchid;}
+				{if $moduleid>3 && !$MODULE[$moduleid][islink]}
+					{php $searchid = $moduleid;}
+				{else}
+					{php $searchid = 5;}
 				{/if}				
 				<script type="text/javascript">var searchid = {$searchid};</script>
 				<form id="destoon_search" action="{DT_PATH}search.php" onsubmit="return Dsearch();">
@@ -66,8 +66,8 @@
 					<input type="hidden" name="spread" value="0" id="destoon_spread"/>
 					<div class="f_l head_search">
  						<div id="search_module" onmouseout="Dh('search_module');" onmouseover="Ds('search_module');" style="display:none;">
-							{loop $searchids $s}
-								{if isset($MODULE[$s])}<a{if $searchid == $s} class="head_search_on"{/if} href="javascript:void(0);" onclick="setModule({$s}, this, '{$MODULE[$s][ename]}');">{$MODULE[$s][ename]}</a>{/if}
+							{loop $MODULE $m}
+								{if $m[ismenu] && !$m[islink] || $m[moduleid] == 5 || $m[moduleid] == 4}<a{if $searchid == $m[moduleid]} class="head_search_on"{/if} href="javascript:void(0);" onclick="setModule({$m}, this, '{$m[ename]}');">{$m[ename]}</a>{/if}
 							{/loop}
 						</div>
 						<div class="f_l head_search_cmn">

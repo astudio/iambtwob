@@ -286,6 +286,10 @@ a.disabled span {background-position-y:-61px;}
 }
 
 /*==========================================*/
+.link ul {margin-top:15px;text-align:center;width:521px}
+.link li {display:inline-block;margin:0 3px 10px 3px;height:40px;*display:inline;zoom:1;}
+
+/*==========================================*/
   /* navigation */
   #tab_nav {
   height:84px;

@@ -2,3 +2,31 @@
 	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
 	This is NOT a freeware, use is subject to license.txt
 */
+a:link, a:visited, a:active {color:#0569b4;}
+a:hover {color:#F60;}
+/* .type {height:28px;line-height:29px;overflow:hidden;border-top:#AACCEE 1px solid;background:#D7E9FF url('image/type_bg.gif') repeat-x;padding-left:35px;} */
+a.type_1:link,a.type_1:visited,a.type_1:active,a.type_1:hover {float:left;display:block;color:#404041;font-weight:bold;}
+a.type_2:link,a.type_2:visited,a.type_2:active {float:left;display:block;color:#404041;}
+
+.type {margin:0;padding-left:67.7%;overflow:hidden;border-bottom:2px solid #00aeef;}
+.type > a {width:54px;height:24px;text-align:center;padding:0 18px 0 10px;line-height:24px;font-size:14px;background-image:url('image/buy_type.png');background-repeat:no-repeat;background-position-x:64px;}
+.type a.type_1 {background-color:#00aeef;}
+.type a.type_2 {background-color:#f5f5f5;}
+.type a.type_2:hover {background-color:#00aeef;color:#FFF;}
+
+.list {height:165px;border-top:none;border-bottom:1px solid #d7d7d7;}
+.list > ul {margin-top:15px;}
+.list > div img {width:150px;height:150px;}
+.list .order {float:right;width:96px;height:25px;margin:30px 28px 110px 114px}
+
+	/*fbox*/
+/* 	#fancybox-outer {top:20px;} */
+	#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
+	#fancybox-title-float-main {font-size:20px;line-height:45px;}
+	#fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
+	
+/* search */
+#fsearch label {padding-right:5px;}
+#fsearch input {padding:1px 3px;}
+#fsearch select {width:170px;height:21px;overflow:hidden;}
+#fsearch #kw {width:90px;}

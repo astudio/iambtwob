@@ -1,9 +1,10 @@
 (function($) {
-	if(!$) return false;				
+	if(!$) return false;
 
-	function imgMouseOver() {
+/* 	function imgScroll() {
 		$('img.lazy:visible').scroll();
-	}	
+	} 
+ */
 	$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));
 	
 	$(function(){
@@ -11,12 +12,9 @@
 		if ( $.browser.safari ) {
 			$('span.arrowr').hide();
 		}	
-		//fix google translate seperator color
-		if ( $.browser.msie && parseInt($.browser.version) < 9 ) {
-			$('a.goog-te-menu-value > span:last-child').addClass('fy');
-		}
-		
+	
 		/* global */
+		//imgScroll();
 		// menu
 		$('.side li.level1').hover(
 			function(){
@@ -28,56 +26,22 @@
 				$(this).find('.level2').hide();
 			});
 
-			// 1st slideshow
-			$(".slidetabs").tabs(".images > div", {		
-				// enable "cross-fading" effect
-				effect: 'horizontal',
-				event: 'mouseover',
-				fadeOutSpeed: 1000,				 
-				// start from the beginning after the last tab
-				rotate: true				 
-			}).slideshow({
-				autoplay: true,
-				interval: 5000,
-				clickable: false
-			});
-			// 2nd slideshow
-			$(".slidetabs2").tabs(".images2 > div", {				 
-				// enable "cross-fading" effect
-				effect: 'horizontal',
-				event: 'mouseover',
-				fadeOutSpeed: 2000,				 
-				// start from the beginning after the last tab
-				rotate: true
-			}).slideshow({
-				autoplay: true,
-				interval: 10000,
-				next: '.forward2',
-				prev: '.backward2',
-				clickable: false
-			});		
-		// products list scrollable
-		$(".scrollable").scrollable({
-			onSeek: function(){ 
-				imgMouseOver();
-			}
-		});		
+		// 1st slideshow
+		$(".slidetabs").tabs(".images > div", {		
+			// enable "cross-fading" effect
+			effect: 'horizontal',
+			event: 'mouseover',
+			fadeOutSpeed: 1000,				 
+			// start from the beginning after the last tab
+			rotate: true				 
+		}).slideshow({
+			autoplay: true,
+			interval: 5000,
+			clickable: false
+		});
+
 		// images lazy load
 		$('img.lazy').jail();
-		$('img.lazy2').jail({
-			loadHiddenImages : true,
-			timeout : 9000
-		});
-		imgMouseOver();
-		//checkall or uncheckall
-		$('#checkAll').toggle(
-			function(){
-				$(':checkbox').attr('checked',true).parent().parent().find('.info').css({'opacity':1});
-			},
-			function(){
-				Dh('sell_tip');
-				$(':checkbox').attr('checked',false).parent().parent().find('.info').css({'opacity':0.6});
-			});
 		
 		// tooltip
 		$('.trigger').tooltip({

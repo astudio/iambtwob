@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+ 		<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<!-- 	{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if} -->
+		{if $itemid && $DT[anticopy]}
+		<script type="text/javascript">
+		document.oncontextmenu=function(e){return false;};
+		document.onselectstart=function(e){return false;};
+		</script>
+		{/if}
+		<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+		
+		<style>
+			/* show */
+			.album div span {width:320px;height:320px;}
+			.album div span > img {width:320px;}
+			.title_trade {display:inline-block;*display:inline;zoom:1;}
+			#content {border-bottom:1px solid #00aeef;padding:0 6px 10px 6px;}
+			.box_body {padding:10px;}
+			.tools {height:30px;}
+		
+			#quoteBox {margin:0 5px;}
+			#quoteBox table {}
+			#quoteBox table th {white-space:nowrap;font-size:14px;font-weight:normal;text-align:left;padding-left:15px;height:30px;}
+			#quoteBox #title {width:98%;}
+			#quoteBox select {width:300px;height:20px;vertical-align:middle;}
+			#quoteBox textarea {width:515px;}
+			#quoteBox .items {text-overflow:ellipsis;overflow:hidden;width:530px;}
+			#quoteBox #date {vertical-align:middle;}
+			#quoteBox #captcha {width:84px;margin:0 0 0 2px;}
+			#quoteBox #ccaptcha img {top:4px;left:2px;}
+			#quoteBox #Submit {background: url('/skin/default/image/inquiry_fb_btn.png') no-repeat;border: 0;text-indent: -9999px;width: 162px;height: 42px;}
+		</style>
+	</head>
+	<body>
+		<div id="quoteBox" class="fbox_body">
+			<div class="b10 c_b"></div>
+			<table width="100%">
+			<tr>
+			<td>
+				<table width="100%">
+				<tr>
+				<td width="250" valign="top">
+					<div class="album">
+						<table width="100%" cellpadding="0" cellspacing="0">
+						<tr align="center">
+						<td width="250" valign="top"><div><span id="abm" title="点击查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+						</tr>
+<!-- 						<tr align="center">
+						<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> See Original Image</td>
+						</tr> -->
+						</table>
+					</div>
+				</td>
+				<td width="15"> </td>
+				<td valign="top">
+					<div id="imgshow" style="display:none;"></div>
+				</td>
+				</tr>
+			</table>
+			</td>
+			<td width="10"> </td>
+			<td width="300" valign="top">		
+				<div class="contact_head">Company Profile</div>
+				<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>				
+				
+				{if !$username}
+				<br/>
+				&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} member with the best services</strong></a>
+				{/if}
+				
+				{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}				
+			</td>
+			</tr>
+			</table>
+			<div class="b10">&nbsp;</div>
+			<div class="box_head_2">
+				<div>
+					<span class="f_r">
+						<form method="post" action="{$MODULE[2][linkurl]}favorite.php">
+							<input type="hidden" name="action" value="add"/>
+							<input type="hidden" name="title" value="{$title}"/>
+							<input type="hidden" name="url" value="{$linkurl}"/>
+							<input type="image" src="{DT_SKIN}image/btn_fav.gif" class="c_p" style="margin-top:5px;"/>
+						</form>
+					</span>
+					<strong>Product: </strong>
+					<h1 class="title_trade">{$title}</h1>
+				</div>
+			</div>
+			<div class="box_body">		
+				<table width="100%" cellpadding="5" cellspacing="0">
+				<tr>
+				<td class="f_dblue">Quantity：</td>
+				<td class="f_b f_orange">{$amount}&nbsp;</td>
+				</tr>
+				<tr>
+				<td class="f_dblue">Price：</td>
+				<td class="f_b f_orange">{$price}</td>
+				</tr>
+				<tr>
+				<td class="f_dblue">specification：</td>
+				<td class="f_b f_orange">{$standard}</td>
+				</tr>
+				<tr>
+				<td class="f_dblue">Package：</td>
+				<td class="f_b f_orange">{$pack}</td>
+				</tr>
+				<tr>
+				<td class="f_dblue">Location：</td>
+				<td>{area_pos($areaid, '')}</td>
+				</tr>
+				<tr>
+				<td class="f_dblue">Valid Date：</td>
+				<td>{if $todate}{$todate}{else}permanent{/if}{if $expired} <span class="f_red">[expired]</span>{/if}</td>
+				</tr>
+				<tr>
+				<td class="f_dblue">Updated：</td>
+				<td colspan="2">{$editdate}</td>
+				</tr>
+				<tr>
+				<td width="80" class="f_dblue">Views：</td>
+				<td><span id="hits">{$hits}</span></td>
+				</tr>
+				{if $username && !$expired}
+				<tr>
+				<td colspan="2"><img src="{DT_SKIN}image/btn_price.gif" alt="Make Offer" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('price.php?itemid='.$itemid)}');"/></td>
+				</tr>
+				{/if}
+				</table>				
+			</div>
+
+			<div class="b10">&nbsp;</div>
+			<div class="box_head_2"><div><strong>Description: </strong></div></div>			
+			<div class="box_body">
+			{if $CP}{template 'property', 'chip'}{/if}
+			<div class="content c_b" id="content">{$content}</div>
+			{template 'comment', 'chip'}
+			</div>
+
+
+			<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
+			<input type="hidden" name="itemid" value="{$itemid}"/> 
+			<input type="hidden" name="title" value="{$title}"/>
+			<input type="hidden" name="linkurl" value="{$linkurl}"/>
+			</form>
+			<div class="tools f_r">
+				[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]} search</a> ]&nbsp;
+				[ <script type="text/javascript">addFav('+ Favorite');</script> ]&nbsp;
+				[ <a href="javascript:Dd('sendmail').submit();void(0);">share</a> ]&nbsp;
+				[ <a href="javascript:Print();">print</a> ]&nbsp;
+				[ <a href="javascript:window.close()">close</a> ]
+			</div>
+		</div>
+	{template 'zoom', 'chip'}
+	</body>
+</html>

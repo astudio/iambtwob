@@ -106,7 +106,7 @@ if($DT_QST) {
 	}
 }
 $showpage = 1;
-$datetype = 5;
+$datetype = 3;
 $seo_file = 'search';
 include DT_ROOT.'/include/seo.inc.php';
 include template('search', $module);

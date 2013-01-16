@@ -24,9 +24,12 @@ if($MOD['cat_property'] && $CAT['property']) {
 }
 unset($CAT['moduleid']);
 extract($CAT);
+$typeid = isset($typeid) ? intval($typeid) : 99;
+isset($TYPE[$typeid]) or $typeid = 99;
+$dtype = $typeid != 99 ? " AND typeid=$typeid" : '';
 $maincat = get_maincat($child ? $catid : $parentid, $moduleid);
 
-$condition = 'status=3';
+$condition = 'status=3'.$dtype;
 $condition .= ($CAT['child']) ? " AND catid IN (".$CAT['arrchildid'].")" : " AND catid=$catid";
 if($cityid) {
 	$areaid = $cityid;
@@ -61,7 +64,7 @@ if($items) {
 	$db->free_result($result);
 }
 $showpage = 1;
-$datetype = 5;
+$datetype = 3;
 
 $seo_file = 'list';
 include DT_ROOT.'/include/seo.inc.php';

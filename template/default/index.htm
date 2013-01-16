@@ -45,7 +45,7 @@
 			<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=19&template=ad-single",-1)}-->
 		</div>
 		<div class="m_ebook f_l">
-			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Magazines</strong></a></div></div>
+			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[23][linkurl]}">more ></a></span><a href="{$MODULE[23][linkurl]}"><strong>Magazines</strong></a></div></div>
 			<div class="box_body f_gray">
 				<!--{tag("moduleid=23&condition=status=3 and catid=533 and thumb<>'' and totime>".$DT_TIME."&pagesize=2&order=rand()&target=_blank&template=index-ebook",-1)}-->
 			</div>
@@ -53,7 +53,7 @@
 		</div>
 		<div class="m_n f_l">&nbsp;</div>
 		<div class="m_ebook f_l">
-			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Catalogs</strong></a></div></div>
+			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[23][linkurl]}">more ></a></span><a href="{$MODULE[23][linkurl]}"><strong>Catalogs</strong></a></div></div>
 			<div class="box_body f_gray">
 				<!--{tag("moduleid=23&condition=status=3 and catid=3518 and thumb<>'' and addtime>".$DT_TIME."-60*60*24*30*2&pagesize=2&order=rand()&target=_blank&template=index-ebook",-1)}-->
 			</div>
@@ -72,11 +72,9 @@
 				<!-- tab "panes" -->
 				<div class="panes">
 					<div>
-						<img src="http://www.imb2b.com/file/upload/201201/02/14-46-56-18-25.jpg" width="90" height="60" alt="" />
-						<div class="date">2012-11-13 ~ 2012-11-18</div>
-						<p class="organizer">Associazione Nazionale Ciclo Moto Accessori (ANCMA)</p>
+						<!--{tag("moduleid=8&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&pagesize=1&order=fromtime asc&target=_blank&template=index-show",-1)}-->
 						<div class="more"></div>
-						<!--{php $tags=tag("moduleid=8&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&pagesize=4&order=fromtime asc&template=null");}-->
+						<!--{php $tags=tag("moduleid=8&condition=status=3 and totime>".$DT_TIME."&pagesize=4&order=fromtime asc&template=null");}-->
 						<ul class="expo">
 						{loop $tags $t}
 							<li title="{$t[alt]}"><span class="f_r">{timetodate($t[fromtime], 'm-d')}</span><span class="arrow"></span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
@@ -84,14 +82,12 @@
 						</ul>
 					</div>
 					<div>
-						<img src="http://www.imb2b.com/file/upload/201201/02/14-46-56-18-25.jpg" width="90" height="60" alt="" />
-						<div class="date">2012-11-13 ~ 2012-11-18</div>
-						<p class="organizer">Associazione Nazionale Ciclo Moto Accessori (ANCMA)</p>
+						<!--{tag("moduleid=22&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&pagesize=1&order=rand()&target=_blank&invest=1&template=index-show",-1)}-->
 						<div class="more"></div>
-						<!--{php $tags=tag("moduleid=8&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&pagesize=4&order=fromtime asc&template=null");}-->
+						<!--{php $tags=tag("moduleid=22&condition=status=3 and totime>".$DT_TIME."&pagesize=4&order=addtime asc&template=null");}-->
 						<ul class="expo">
 						{loop $tags $t}
-							<li title="{$t[alt]}"><span class="f_r">{timetodate($t[fromtime], 'm-d')}</span><span class="arrow"></span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+							<li title="{$t[alt]}"><span class="f_r">{timetodate($t[addtime], 'm-d')}</span><span class="arrow"></span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
 							{/loop}
 						</ul>						
 					</div>					
@@ -105,7 +101,7 @@
 			{if $DT[page_video]}
 			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[14][linkurl]}">more ></a></span><a href="{$MODULE[14][linkurl]}"><strong>Video</strong></a></div></div>
 			<div class="box_body f_gray">
-				<!--{tag("moduleid=14&condition=status=3&pagesize=".$DT[page_video]."&datetype=2&order=rand()&target=_blank&template=index-video",-1)}-->
+				<!--{tag("moduleid=14&condition=status=3&pagesize=".$DT[page_video]."&datetype=2&order=addtime desc&target=_blank&template=index-video",-1)}-->
 			</div>
 			<div class="b10">&nbsp;</div>
 			{/if}
@@ -119,7 +115,7 @@
 				<div class="scrollable" id="scrollable"> 
 					<div class="items">
 						<!-- every loop in 7 items -->
-						<!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>''&pagesize=21&order=rand()&width=113&height=113&cols=7&target=_blank&template=index-scrollable",-1)}-->
+						<!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>''&pagesize=21&order=addtime desc&width=113&height=113&cols=7&target=_blank&template=index-scrollable",-1)}-->
 					</div>
 				</div>
 				<a class="next browse right"><span></span></a>	
@@ -129,7 +125,7 @@
 
 		{if $DT[page_logo] || $DT[page_text]}
 		<div class="f_l link">
-			<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[10][linkurl]}">more ></a></span><a href="{$MODULE[10][linkurl]}"><strong>Featured Partner</strong></a></div></div>				
+			<div class="box_head_1"><div><span class="f_r"><a href="{extendurl('link')}">more ></a></span><a href="{extendurl('link')}"><strong>Featured Partner</strong></a></div></div>				
 			<div class="box_body">
 			{if $DT[page_logo]}
 			<!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=rand()&template=list-link&width=166&height=40")}-->

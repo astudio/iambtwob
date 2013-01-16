@@ -30,7 +30,7 @@
 	{if $member[mobile]}<li><span>手機</span>{anti_spam($member[mobile])}{if $DT[sms] && $member[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($member[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="發送短信" alt=""/></a>{/if}</li>{/if}
 	<li><span>地區</span>{area_pos($member[areaid], '-')}</li>
 	{if $member[address]}<li title="{$member[address]}"><span>地址</span>{$member[address]}</li>{/if}
-	<li class="t_c" style="border:none;padding:8px 0 0 0;"><a href="{$member[linkurl]}" target="_blank" class="t"><img src="{DT_SKIN}image/btn_homepage.gif" title="進入企業網站"/></a> </li>
+	<!-- <li class="t_c" style="border:none;padding:8px 0 0 0;"><a href="{$member[linkurl]}" target="_blank" class="t"><img src="{DT_SKIN}image/btn_homepage.gif" title="進入企業網站"/></a> </li> -->
 {else}
 	<li class="f_b t_c" style="font-size:14px;"><a href="{userurl('')}" target="_blank">{$item[company]}</a></li>
 	<li style="padding-top:3px;">

@@ -131,10 +131,12 @@ ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
 	height:143px;
 	overflow:hidden;
 }
-.panes > div > img {
+.panes > div img {
 	border:1px solid #d7d7d7;
 	float:left;
 	margin-right:5px;
+	width:90px;
+	height:60px;
 }
 .panes .date {
 	color:#ff5a00;

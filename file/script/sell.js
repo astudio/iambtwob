@@ -2,9 +2,6 @@
 	if(!$) return false;				
 
 	$(function(){
-/* 		$('img.lazy').jail();
-		imgMouseOver();	 */
-		
 		// fix IE8- opacity
 		if( $.browser.msie && parseInt($.browser.version) < 9 ) {
 			$('#products_list .info').css({opacity: '0.6'});
@@ -17,6 +14,16 @@
 					$(this).css({opacity: '0.6'});				
 				});
 		}
+		
+		//checkall or uncheckall
+		$('#checkAll').toggle(
+			function(){
+				$(':checkbox').attr('checked',true).parent().parent().find('.info').css({'opacity':1});
+			},
+			function(){
+				Dh('sell_tip');
+				$(':checkbox').attr('checked',false).parent().parent().find('.info').css({'opacity':0.6});
+			});		
 		
 		// pre-Set the checkbox style of checked
 		if( $(':checkbox:checked').length > 0 ) {

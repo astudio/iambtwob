@@ -1,0 +1,7 @@
+{loop $tags $i $t}
+	<a href="{$t[linkurl]}" target="{$target}">
+		<img src="{$t[thumb]}" alt="{$t[keyword]}" />
+	</a>
+	<div class="date">{if $invest}{timetodate($t[addtime], 'y-m-d')}{else}{timetodate($t[fromtime], 'y-m-d')}{/if} ~ {timetodate($t[totime], 'y-m-d')}</div>
+	<p class="organizer">{if $invest}{$t[introduce]}{else}{$t[sponsor]}{/if}</p>
+{/loop}

@@ -80,9 +80,10 @@
 	padding: 0;
 	outline: none;
 	position: relative;
-	overflow: hidden;
+/* 	overflow: scroll; */
 	z-index: 1102;
 	border: 0px solid #fff;
+	-webkit-overflow-scrolling: touch;
 }
 
 #fancybox-hide-sel-frame {
@@ -130,6 +131,8 @@
 	height: 100%;
 	border: none;
 	display: block;
+/* 	overflow:scroll; */
+	-webkit-overflow-scrolling: touch;
 }
 
 #fancybox-left, #fancybox-right {
@@ -305,6 +308,9 @@
 #fancybox-title-float-wrap td {
 	border: none;
 	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	max-width:600px;
 }
 
 #fancybox-title-float-left {

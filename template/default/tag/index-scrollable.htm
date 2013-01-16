@@ -1,7 +1,7 @@
 {loop $tags $i $t}
 {if $i%$cols==0}<div>{/if}	
 	<a href="{$t[linkurl]}"{if $i%$cols==($cols-1)} class="nomargin"{/if} target="{$target}" title="{$t[title]}">
-		<img class="lazy" data-src="{$t[thumb]}" src="{DT_SKIN}image/blank.gif" width="{$width}" height="{$height}" alt="{$t[title]}" />
+		<img class="lazy" data-src="{$t[thumb]}" src="{DT_SKIN}image/blank.gif" alt="{$t[title]}" />
 		<noscript><img class="nolazy{if $i%$cols==($cols-1)} nomargin{/if}" src="{$t[thumb]}" width="{$width}" height="{$height}"/></noscript>
 		<span>{$t[title]}</span>
 	</a>

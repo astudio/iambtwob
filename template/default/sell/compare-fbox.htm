@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
  		<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
-<!-- 	{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if} -->
+		{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
 		{if $itemid && $DT[anticopy]}
 		<script type="text/javascript">
 		document.oncontextmenu=function(e){return false;};
@@ -43,25 +43,25 @@
 			<div class="compare">
 			<table cellspacing="1">
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Kick Out</div></td>
+			<td bgcolor="#f5f5f5"><div>Remove</div></td>
 			{loop $tags $k $v}
-			<td id="del_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="移除" alt=""/></span></td>
+			<td id="del_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="Remove" alt=""/></span></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Thumbnail</div></td>
+			<td bgcolor="#f5f5f5"><div>Image</div></td>
 			{loop $tags $k $v}
 			<td id="pic_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt="" class="thumb" /></a></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Product</div></td>
+			<td bgcolor="#f5f5f5"><div>Subject</div></td>
 			{loop $tags $k $v}
 			<td id="title_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank" title="{$v[title]}">{$v[stitle]}</a></td>
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Keyword</div></td>
+			<td bgcolor="#f5f5f5"><div>Product</div></td>
 			{loop $tags $k $v}
 			<td id="tag_{$v[itemid]}_{$k}">{$v[tag]}&nbsp;</td>
 			{/loop}
@@ -85,19 +85,19 @@
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Released Date</div></td>
+			<td bgcolor="#f5f5f5"><div>Date</div></td>
 			{loop $tags $k $v}
 			<td id="date_{$v[itemid]}_{$k}">{$v[editdate]}</td>
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Co. Name</div></td>
+			<td bgcolor="#f5f5f5"><div>Company</div></td>
 			{loop $tags $k $v}
 			<td id="com_{$v[itemid]}_{$k}"><a href="{$v[userurl]}" target="_blank">{$v[company]}</a></td>
 			{/loop}
 			</tr>
  			<tr>
-			<td bgcolor="#f5f5f5"><div>會 員</div></td>
+			<td bgcolor="#f5f5f5"><div>Member</div></td>
 			{loop $tags $k $v}
 			<td id="vip_{$v[itemid]}_{$k}">
 			{if $v[vip]} <img src="{DT_SKIN}image/vip_{$v[vip]}.gif"/>{/if}&nbsp;
@@ -105,7 +105,7 @@
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Co. Location</div></td>
+			<td bgcolor="#f5f5f5"><div>Location</div></td>
 			{loop $tags $k $v}
 			<td id="area_{$v[itemid]}_{$k}">{area_pos($v[areaid], ' ', 2)}</td>
 			{/loop}
@@ -131,7 +131,7 @@
 			<tr>
 			<td bgcolor="#f5f5f5"><div>Processing Time</div></td>
 			{loop $tags $k $v}
-			<td id="days_{$v[itemid]}_{$k}">{if $v[days]}{$v[days]}天內{else}未填寫{/if}</td>
+			<td id="days_{$v[itemid]}_{$k}">{if $v[days]}{$v[days]} days {else}未填寫{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
@@ -153,9 +153,9 @@
 			{/loop}
 			</tr>
 			<tr>
-			<td bgcolor="#f5f5f5"><div>Kick Out</div></td>
+			<td bgcolor="#f5f5f5"><div>Remove</div></td>
 			{loop $tags $k $v}
-			<td id="move_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="移除" alt=""/></span></td>
+			<td id="move_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="Remove" alt=""/></span></td>
 			{/loop}
 			</tr>
 			</table>
@@ -165,7 +165,7 @@
 		<script type="text/javascript">
 			var n = {$item_nums};
 			function del(id, k) {
-				if(n < 3) {confirm('最少需要保留兩條信息');return;}
+				if(n < 3) {confirm('You have to select 2 products at least.');return;}
 				var d = ['del','pic','title','tag','model','standard','brand','date','com','vip','area','price','min','amount','days','im','inq','move'];
 				var l = d.length;
 				for(var i=0;i<l;i++){

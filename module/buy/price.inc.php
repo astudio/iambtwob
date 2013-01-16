@@ -95,6 +95,9 @@ if($submit) {
 	$date = timetodate($DT_TIME + 5*86400, 3);
 	$title = lang($L['price_message_title'], array($item['title']));
 	$head_title = $L['price_head_title'].$DT['seo_delimiter'].$item['title'].$DT['seo_delimiter'].$MOD['name'];
-	include template('price', $module);
+	if($fbox)
+		include template('price-fbox', $module);
+	else
+		include template('price', $module);
 }
 ?>

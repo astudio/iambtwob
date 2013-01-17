@@ -42,7 +42,10 @@
 
 		// images lazy load
 		$('img.lazy').jail();
-		
+/* 		$('img.lazyAD').jail({
+			loadHiddenImages : true,
+			timeout : 1500
+		});	 */		
 		// tooltip
 		$('.trigger').tooltip({
 			position	: 'top center',

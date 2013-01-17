@@ -6,7 +6,7 @@
 		<div class="images{$no}">
 			{loop $tags $i $t}
 				<div>
-					{if $t[url]}<a href="{DT_PATH}extend/redirect.php?aid={$t[aid]}" target="_blank">{/if}{if $no && $i>1}<img class="lazy{$no}" data-src="{$t[image_src]}" src="{DT_SKIN}image/blank.gif" alt="{$t[image_alt]}" />{else}<img src="{$t[image_src]}" alt="{$t[image_alt]}" />{/if}{if $t[url]}</a>{/if}
+					{if $t[url]}<a href="{DT_PATH}extend/redirect.php?aid={$t[aid]}" target="_blank">{/if}{if $no && $i>1}<img src="{$t[image_src]}" alt="{$t[image_alt]}" />{else}<img src="{$t[image_src]}" alt="{$t[image_alt]}" />{/if}{if $t[url]}</a>{/if}
 				</div>
 			{/loop}
 		</div>

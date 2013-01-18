@@ -2,7 +2,7 @@
 defined('IN_DESTOON') or exit('Access Denied');
 $OAUTH = cache_read('oauth.php');
 $site = 'baidu';
-$OAUTH[$site]['enable'] or dheader($MODULE[1]['linkurl']);
+$OAUTH[$site]['enable'] or dheader($MODULE[2]['linkurl'].$DT['file_login']);
 $session = new dsession();
 
 define('BD_ID', $OAUTH[$site]['id']);

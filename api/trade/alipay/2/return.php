@@ -10,50 +10,50 @@ if($_GET['seller_email']) $aliapy_config['seller_email'] = $_GET['seller_email']
 #cache_write('ali/'.$api.'-return-post-'.date('Ymdhis').'.php', $_POST);
 #cache_write('ali/'.$api.'-return-get-'.date('Ymdhis').'.php', $_GET);
 /* * 
- * 功能：支付寶頁面跳轉同步通知頁面
+ * 功能：支付宝页面跳转同步通知页面
  * 版本：3.2
  * 日期：2011-03-25
- * 說明：
- * 以下代碼只是為了方便商戶測試而提供的樣例代碼，商戶可以根據自己網站的需要，按照技術文檔編寫,並非一定要使用該代碼。
- * 該代碼僅供學習和研究支付寶接口使用，只是提供一個參考。
+ * 说明：
+ * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
+ * 该代码仅供学习和研究支付宝接口使用，只是提供一个参考。
 
- *************************頁面功能說明*************************
- * 該頁面可在本機電腦測試
- * 可放入HTML等美化頁面的代碼、商戶業務邏輯程序代碼
- * 該頁面可以使用PHP開發工具調試，也可以使用寫文本函數logResult，該函數已被默認關閉，見alipay_notify_class.php中的函數verifyReturn
+ *************************页面功能说明*************************
+ * 该页面可在本机电脑测试
+ * 可放入HTML等美化页面的代码、商户业务逻辑程序代码
+ * 该页面可以使用PHP开发工具调试，也可以使用写文本函数logResult，该函数已被默认关闭，见alipay_notify_class.php中的函数verifyReturn
  
- * WAIT_SELLER_SEND_GOODS(表示買家已在支付寶交易管理中產生了交易記錄且付款成功，但賣家沒有發貨);
- * TRADE_FINISHED(表示買家已經確認收貨，這筆交易完成);
+ * WAIT_SELLER_SEND_GOODS(表示买家已在支付宝交易管理中产生了交易记录且付款成功，但卖家没有发货);
+ * TRADE_FINISHED(表示买家已经确认收货，这笔交易完成);
  
- * 如何判斷該筆交易是通過即時到帳方式付款還是通過擔保交易方式付款？
+ * 如何判断该笔交易是通过即时到帐方式付款还是通过担保交易方式付款？
  * 
- * 擔保交易的交易狀態變化順序是：等待買家付款→買家已付款，等待賣家發貨→賣家已發貨，等待買家收貨→買家已收貨，交易完成
- * 即時到帳的交易狀態變化順序是：等待買家付款→交易完成
+ * 担保交易的交易状态变化顺序是：等待买家付款→买家已付款，等待卖家发货→卖家已发货，等待买家收货→买家已收货，交易完成
+ * 即时到帐的交易状态变化顺序是：等待买家付款→交易完成
  * 
- * 每當收到支付寶發來通知時，就可以獲取到這筆交易的交易狀態，並且商戶需要利用商戶訂單號查詢商戶網站的訂單數據，
- * 得到這筆訂單在商戶網站中的狀態是什麼，把商戶網站中的訂單狀態與從支付寶通知中獲取到的狀態來做對比。
- * 如果商戶網站中目前的狀態是等待買家付款，而從支付寶通知獲取來的狀態是買家已付款，等待賣家發貨，那麼這筆交易買家是用擔保交易方式付款的
- * 如果商戶網站中目前的狀態是等待買家付款，而從支付寶通知獲取來的狀態是交易完成，那麼這筆交易買家是用即時到帳方式付款的
+ * 每当收到支付宝发来通知时，就可以获取到这笔交易的交易状态，并且商户需要利用商户订单号查询商户网站的订单数据，
+ * 得到这笔订单在商户网站中的状态是什么，把商户网站中的订单状态与从支付宝通知中获取到的状态来做对比。
+ * 如果商户网站中目前的状态是等待买家付款，而从支付宝通知获取来的状态是买家已付款，等待卖家发货，那么这笔交易买家是用担保交易方式付款的
+ * 如果商户网站中目前的状态是等待买家付款，而从支付宝通知获取来的状态是交易完成，那么这笔交易买家是用即时到帐方式付款的
  */
 require_once DT_ROOT.'/api/trade/alipay/2/pay/alipay_notify.class.php';
 
-//計算得出通知驗證結果
+//计算得出通知验证结果
 $alipayNotify = new AlipayNotify($aliapy_config);
 $verify_result = $alipayNotify->verifyReturn();
-if($verify_result) {//驗證成功
+if($verify_result) {//验证成功
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//請在這裡加上商戶的業務邏輯程序代碼
+	//请在这里加上商户的业务逻辑程序代码
 	
-	//－－請根據您的業務邏輯來編寫程序（以下代碼僅作參考）－－
-    //獲取支付寶的通知返回參數，可參考技術文檔中頁面跳轉同步通知參數列表
-    $out_trade_no	= $_GET['out_trade_no'];	//獲取訂單號
-    $trade_no		= $_GET['trade_no'];		//獲取支付寶交易號
-    $total_fee		= $_GET['price'];			//獲取總價格
+	//――请根据您的业务逻辑来编写程序（以下代码仅作参考）――
+    //获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表
+    $out_trade_no	= $_GET['out_trade_no'];	//获取订单号
+    $trade_no		= $_GET['trade_no'];		//获取支付宝交易号
+    $total_fee		= $_GET['price'];			//获取总价格
 
 	$itemid = $out_trade_no;
 	$td = $db->get_one("SELECT * FROM {$DT_PRE}mall_order WHERE itemid=$itemid");
 	$money = $td['amount'] + $td['fee'];
-	if(!$td || $total_fee != $money) message('金額不符(Code:002)', $MODULE[2]['linkurl'].'trade.php?error=2');
+	if(!$td || $total_fee != $money) message('金额不符(Code:002)', $MODULE[2]['linkurl'].'trade.php?error=2');
 	$seller = $td['seller'];
 	$seller_email = $_GET['seller_email'];
 	$buyer = $td['buyer'];
@@ -64,9 +64,9 @@ if($verify_result) {//驗證成功
 	include load('member.lang');
 
     if($_GET['trade_status'] == 'WAIT_SELLER_SEND_GOODS') {
-		//判斷該筆訂單是否在商戶網站中已經做過處理（可參考「集成教程」中「3.4返回數據處理」）
-			//如果沒有做過處理，根據訂單號（out_trade_no）在商戶網站的訂單系統中查到該筆訂單的詳細，並執行商戶的業務程序
-			//如果有做過處理，不執行商戶的業務程序
+		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
+			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+			//如果有做过处理，不执行商户的业务程序
 		if($td['status'] == 1) {
 			$db->query("UPDATE {$DT_PRE}mall_order SET trade_no='$trade_no',status=2,updatetime=$DT_TIME WHERE itemid=$itemid");
 			$db->query("UPDATE {$DT_PRE}member SET trade='$seller_email',vtrade=1 WHERE username='$seller' AND vtrade=0");
@@ -82,10 +82,16 @@ if($verify_result) {//驗證成功
 			$content = ob_template('messager', 'mail');
 			send_message($touser, $title, $content);
 
-			message('訂單付款成功，請等待賣家發貨', $MODULE[2]['linkurl'].'trade.php?action=order&itemid='.$itemid);
+			message('订单付款成功，请等待卖家发货', $MODULE[2]['linkurl'].'trade.php?action=order&itemid='.$itemid);
 		}
     } else if($_GET['trade_status'] == 'WAIT_BUYER_CONFIRM_GOODS') {
-		//賣家發貨
+		if(isset($_GET['refund_status'])) {
+			if($_GET['refund_status'] == 'WAIT_SELLER_AGREE' && $td['status'] == 3) {//买家申请退款 等待卖家同意
+				$db->query("UPDATE {$DT_PRE}mall_order SET status=5,updatetime=$DT_TIME WHERE itemid=$itemid");
+				message('申请退款成功，请等待卖家响应', $MODULE[2]['linkurl'].'trade.php?itemid='.$itemid);
+			}
+		}
+		//卖家发货
 		if($td['status'] == 2) {
 			$db->query("UPDATE {$DT_PRE}mall_order SET status=3,updatetime=$DT_TIME WHERE itemid=$itemid");
 
@@ -99,15 +105,15 @@ if($verify_result) {//驗證成功
 			$content = ob_template('messager', 'mail');
 			send_message($touser, $title, $content);
 
-			message('發貨成功，請等待買家確認收貨', $MODULE[2]['linkurl'].'trade.php?itemid='.$itemid);
+			message('发货成功，请等待买家确认收货', $MODULE[2]['linkurl'].'trade.php?itemid='.$itemid);
 		}
     } else if($_GET['trade_status'] == 'TRADE_FINISHED') {
-		//判斷該筆訂單是否在商戶網站中已經做過處理（可參考「集成教程」中「3.4返回數據處理」）
-			//如果沒有做過處理，根據訂單號（out_trade_no）在商戶網站的訂單系統中查到該筆訂單的詳細，並執行商戶的業務程序
-			//如果有做過處理，不執行商戶的業務程序
+		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
+			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+			//如果有做过处理，不执行商户的业务程序
 		if($td['status'] == 3) {
 			$db->query("UPDATE {$DT_PRE}mall_order SET status=4,updatetime=$DT_TIME WHERE itemid=$itemid");
-			//更新商品數據
+			//更新商品数据
 			$db->query("UPDATE {$DT_PRE}mall SET orders=orders+1,sales=sales+$td[number],amount=amount-$td[number] WHERE itemid=$mallid");
 
 			$myurl = userurl($td['buyer']);
@@ -122,22 +128,22 @@ if($verify_result) {//驗證成功
 
 			message('交易成功', $MODULE[2]['linkurl'].'trade.php?action=order&itemid='.$itemid);
 		}
-	} else if($_POST['trade_status'] == 'WAIT_BUYER_PAY') {
-		message('訂單創建成功，請盡快通過支付寶付款', $MODULE[2]['linkurl'].'trade.php?action=order&itemid='.$itemid);
+	} else if($_GET['trade_status'] == 'WAIT_BUYER_PAY') {
+		message('订单创建成功，请尽快通过支付宝付款', $MODULE[2]['linkurl'].'trade.php?action=order&itemid='.$itemid);
     } else {
       //echo "trade_status=".$_GET['trade_status'];
     }
 	  
-	 message('驗證成功(Code:000)', $MODULE[2]['linkurl'].'trade.php?error=0');
-	//echo "驗證成功<br />";
+	 message('验证成功(Code:000)', $MODULE[2]['linkurl'].'trade.php?error=0');
+	//echo "验证成功<br />";
 	//echo "trade_no=".$trade_no;
 
-	//－－請根據您的業務邏輯來編寫程序（以上代碼僅作參考）－－
+	//――请根据您的业务逻辑来编写程序（以上代码仅作参考）――
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 } else {
-    //驗證失敗
-    //如要調試，請看alipay_notify.php頁面的verifyReturn函數，比對sign和mysign的值是否相等，或者檢查$responseTxt有沒有返回true
-	message('驗證失敗(Code:001)', $MODULE[2]['linkurl'].'trade.php?error=1');
+    //验证失败
+    //如要调试，请看alipay_notify.php页面的verifyReturn函数，比对sign和mysign的值是否相等，或者检查$responseTxt有没有返回true
+	message('验证失败(Code:001)', $MODULE[2]['linkurl'].'trade.php?error=1');
 }
 ?>

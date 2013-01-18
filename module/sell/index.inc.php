@@ -5,14 +5,14 @@ if(!check_group($_groupid, $MOD['group_index'])) {
 	$head_title = lang('message->without_permission');
 	include template('noright', 'message');
 	exit;
-}
+} //var_dump($CFG['cookie_pre']);die;
 $typeid = isset($typeid) ? intval($typeid) : 99;
 isset($TYPE[$typeid]) or $typeid = 99;
-$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0; // 0:gallery 1:list 2:text
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : (isset($_COOKIE[$CFG['cookie_pre'].'im_slt']) ? $_COOKIE[$CFG['cookie_pre'].'im_slt'] : 0); // 0:gallery 1:list 2:text
 $dtype = $typeid != 99 ? " AND typeid=$typeid" : '';
 
 $condition = "status=3".$dtype;
-$pagesize = $list==0 ? $MOD['pagesize'] : ($list==2 ? 10 : 6);
+$pagesize = $MOD['pagesize'];
 $condition .= ($CAT['child']) ? " AND catid IN (".$CAT['arrchildid'].")" : "";
 $items = $db->count($table, $condition, $DT['cache_search']);
 if($MOD['group']){

@@ -1,6 +1,6 @@
 <?php
 /*
-	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	[Destoon B2B System] Copyright (c) 2008-2013 Destoon.COM
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
@@ -8,7 +8,6 @@ function del_token($arr) {
 	if($arr) {
 		foreach($arr as $v) {
 			$_SESSION[$v] = '';
-			//if(isset($_SESSION[$v])) @unset($_SESSION[$v]);
 		}
 	}
 }
@@ -54,20 +53,24 @@ if($success) {
 			include DT_ROOT.'/module/member/member.class.php';
 			$do = new member;
 			$user = $do->login($U['username'], '', 0, true);
-			$forward = get_cookie('forward_url');
-			if($forward) set_cookie('forward_url', '');
-			if(strpos($forward, 'api/oauth') !== false) $forward = '';
-			$forward or $forward = $MODULE[2]['linkurl'];
-			del_token($DS);
-			$api_msg = '';
-			if($MOD['passport'] == 'uc') {				
-				$action = 'oauth';
-				$passport = $user['passport'];
-				include DT_ROOT.'/api/'.$MOD['passport'].'.inc.php';
+			if($user) {
+				$forward = get_cookie('forward_url');
+				if($forward) set_cookie('forward_url', '');
+				if(strpos($forward, 'api/oauth') !== false) $forward = '';
+				$forward or $forward = $MODULE[2]['linkurl'];
+				del_token($DS);
+				$api_msg = '';
+				if($MOD['passport'] == 'uc') {				
+					$action = 'oauth';
+					$passport = $user['passport'];
+					include DT_ROOT.'/api/'.$MOD['passport'].'.inc.php';
+				}
+				if($MOD['sso']) include DT_ROOT.'/api/sso.inc.php';
+				if($api_msg) message($api_msg, $forward, -1);
+				dheader($forward);
+			} else {
+				message($do->errmsg, $MODULE[2]['linkurl'].$DT['file_login']);
 			}
-			if($MOD['sso']) include DT_ROOT.'/api/sso.inc.php';
-			if($api_msg) message($api_msg, $forward, -1);
-			dheader($forward);
 		} else {
 			$MOD = cache_read('module-2.php');
 			$forward = DT_PATH.'api/oauth/'.$site.'/';
@@ -76,6 +79,6 @@ if($success) {
 	}
 } else {
 	del_token($DS);
-	dheader($MODULE[1]['linkurl']);
+	dheader($MODULE[2]['linkurl'].$DT['file_login'].'?error=oauth&step=userinfo&site='.$site);
 }
 ?>

@@ -1,8 +1,8 @@
 <div class="Lists">
 	{loop $tags $k $t}
 	<div class="list" id="item_{$t[itemid]}">
-		<a href="{$MOD[linkurl]}{rewrite('price.php?fbox=1&itemid='.$t[itemid])}" class="Quote"><div class="order"><img src="{DT_SKIN}image/quote_btn.png" alt="Quote button" /></div></a>
-		<div class="thumb"><a href="{$t[linkurl]}&fbox=1" class="Detail" data-title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" onmouseover="img_tip(this, this.src);" onmouseout="img_tip(this, '');"/></a></div>
+		<div class="order"><a href="{$MOD[linkurl]}{rewrite('price.php?fbox=1&itemid='.$t[itemid])}" class="Quote"><img src="{DT_SKIN}image/quote_btn.png" alt="Quote button" /></a></div>
+		<div class="thumb"><a href="{$t[linkurl]}&fbox=1" class="Detail" data-title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" onmouseover="img_tip_buy(this, this.src);" onmouseout="img_tip_buy(this, '');"/></a></div>
 
 		<ul>
 			<li>{if $t[vip]}<span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}<a href="{$t[linkurl]}&fbox=1" class="Detail" data-title="{$t[title]}"><strong class="px14">{$t[title]}</strong></a></li>

@@ -3,22 +3,42 @@ require '../../../common.inc.php';
 require 'init.inc.php';
 $success = 0;
 $DS = array();
-if($_SESSION['token']) {
-	function get_user_info($appid, $appkey, $access_token, $access_token_secret, $openid) {
-		$url    = "http://openapi.qzone.qq.com/user/get_user_info";
-		$info   = do_get($url, $appid, $appkey, $access_token, $access_token_secret, $openid);
-		$arr = array();
-		$arr = json_decode($info, true);
-		return $arr;
+if($_SESSION['qq_access_token']) {
+	$par = 'access_token='.$_SESSION['qq_access_token'];
+	$cur = curl_init(QQ_ME_URL);
+	curl_setopt($cur, CURLOPT_POST, 1);
+	curl_setopt($cur, CURLOPT_POSTFIELDS, $par);
+	curl_setopt($cur, CURLOPT_FOLLOWLOCATION, 1);
+	curl_setopt($cur, CURLOPT_HEADER, 0);
+	curl_setopt($cur, CURLOPT_SSL_VERIFYPEER, 0);
+	curl_setopt($cur, CURLOPT_RETURNTRANSFER, 1);
+	$rec = curl_exec($cur);
+	curl_close($cur);
+	if(strpos($rec, 'client_id') !== false) {
+		$rec = str_replace('callback(', '', $rec);
+		$rec = str_replace(');', '', $rec);
+		$rec = trim($rec);
+		$arr = json_decode($rec, true);
+		$openid = $arr['openid'];
+		$par = 'access_token='.$_SESSION['qq_access_token'].'&oauth_consumer_key='.QQ_ID.'&openid='.$openid;
+		$cur = curl_init(QQ_USERINFO_URL);
+		curl_setopt($cur, CURLOPT_POST, 1);
+		curl_setopt($cur, CURLOPT_POSTFIELDS, $par);
+		curl_setopt($cur, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($cur, CURLOPT_HEADER, 0);
+		curl_setopt($cur, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($cur, CURLOPT_RETURNTRANSFER, 1);
+		$rec = curl_exec($cur);
+		curl_close($cur);
+		if(strpos($rec, 'nickname') !== false) {
+			$success = 1;
+			$arr = json_decode($rec, true);
+			$nickname = convert($arr['nickname'], 'utf-8', DT_CHARSET);
+			$avatar = $arr['figureurl_2'];
+			$url = '';
+			$DS = array('qq_access_token', 'state');
+		}
 	}
-	$arr = get_user_info(QQ_APPID, QQ_APPKEY, $_SESSION["token"], $_SESSION["secret"], $_SESSION["openid"]);
-	$arr or dalert('Error calling API. Please try later.', $MODULE[1]['linkurl']);
-	$success = 1;
-	$openid = $_SESSION['openid'];
-	$nickname = convert($arr['nickname'], 'utf-8', DT_CHARSET);
-	$avatar = $arr['figureurl_1'];
-	$url = '';
-	$DS = array('token', 'secret', 'openid');
 }
 require '../destoon.inc.php';
 ?>

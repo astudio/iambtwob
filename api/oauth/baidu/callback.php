@@ -1,7 +1,7 @@
 <?php
 require '../../../common.inc.php';
 require 'init.inc.php';
-$_REQUEST['code'] or exit;
+$_REQUEST['code'] or dalert('Error Request.', $MODULE[2]['linkurl'].$DT['file_login'].'?step=callback&site='.$site);
 $par = 'grant_type=authorization_code'
 	 . '&code='.$_REQUEST['code']
 	 . '&client_id='.BD_ID
@@ -21,6 +21,6 @@ if(strpos($rec, 'access_token') !== false) {
 	$_SESSION['bd_access_token'] = $arr['access_token'];
 	dheader('./');
 } else {
-	dalert('Error Request.', $MODULE[1]['linkurl']);
+	dalert('Error Token.', $MODULE[2]['linkurl'].$DT['file_login'].'?step=token&site='.$site);
 }
 ?>

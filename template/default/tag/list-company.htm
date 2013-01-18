@@ -1,16 +1,15 @@
 <div class="Lists">
 	{loop $tags $k $t}
 	<div class="list">
-		<div class="thumb"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="80" alt=""/></a></div>
+		<div class="thumb"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" alt="{$t[company]}"/></a></div>
 
 		<ul>
-			<li>{if $t[vip]}<span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[company]}</strong></a></li>
-			<li class="f_gray">主營：{$t[business]}</li>
+			<li class="title">{if $t[vip]}<span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[company]}</strong></a></li>
+			<li class="f_gray"><span class="f_r"><a href="{$t[linkurl]}&file=contact" target="_blank"><img src="{DT_SKIN}image/inquiry_btn.png" alt="Contact Now" class="iq_btn" /></a></span>{if $length}{trim(dsubstr($t[introduce], $length))}{if strlen($t[introduce])>=$length}&hellip;&nbsp;{/if}{else}{$t[introduce]}{/if}</li>
 			<li class="f_gray">
-			{if $t[mode]}({$t[mode]})&nbsp;&nbsp;{/if}
-			{if $t[validated]}[已核實]{else}[未核實]{/if}
+			{if $t[mode]}({$t[mode]})&nbsp;&nbsp;{/if}			
 			</li>
-			<li><span class="f_gray">[{area_pos($t[areaid], '/', 2)}]</span></li>
+			<li><span class="f_green">{if $t[type]}[{$t[type]}]&nbsp;{/if}</span><span class="f_gray">[{area_pos($t[areaid], '/', 1)}]</span>&nbsp;{if $t[validated]}[Verified]{else}[Unverified]{/if}</li>
 		</ul>
 	</div>
 	{/loop}	

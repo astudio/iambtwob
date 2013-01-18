@@ -9,7 +9,7 @@ if(!check_group($_groupid, $MOD['group_search'])) {
 require DT_ROOT.'/include/post.func.php';
 include load('search.lang');
 $CP = $MOD['cat_property'] && $catid && $CAT['property'];
-$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0; // 0:gallery 1:list 2:text
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : (isset($_COOKIE[$CFG['cookie_pre'].'im_slt']) ? $_COOKIE[$CFG['cookie_pre'].'im_slt'] : 0); // 0:gallery 1:list 2:text
 $category_select = ajax_category_select('catid', $L['all_category'], $catid, $moduleid);
 if(!$areaid && $cityid && strpos($DT_URL, 'areaid') === false) {
 	$areaid = $cityid;
@@ -96,7 +96,7 @@ if($DT_QST) {
 		if($pptsql) $condition .= $pptsql;//PPT
 		$condition = "status=3".$condition;
 	}
-	$pagesize = $list ? ($list == 1 ? 6 : 10) : 20;//$MOD['pagesize']
+	$pagesize = $MOD['pagesize'];
 	$offset = ($page-1)*$pagesize;
 	$items = $db->count($table, $condition, $DT['cache_search']);
 	$pages = pages($items, $page, $pagesize);
@@ -122,7 +122,7 @@ if($DT_QST) {
 	}
 }
 $showpage = 1;
-$datetype = 5;
+$datetype = 3;
 $seo_file = 'search';
 include DT_ROOT.'/include/seo.inc.php';
 include template('search', $module);

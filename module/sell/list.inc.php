@@ -18,7 +18,7 @@ if(!check_group($_groupid, $MOD['group_list']) || !check_group($_groupid, $CAT['
 	exit(include template('noright', 'message'));
 }
 $CP = $MOD['cat_property'] && $CAT['property'];
-$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : 0; // 0:gallery 1:list 2:text
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : (isset($_COOKIE[$CFG['cookie_pre'].'im_slt']) ? $_COOKIE[$CFG['cookie_pre'].'im_slt'] : 0); // 0:gallery 1:list 2:text
 if($MOD['cat_property'] && $CAT['property']) {
 	require DT_ROOT.'/include/property.func.php';
 	$PPT = property_condition($catid);
@@ -49,7 +49,7 @@ if($cityid) {
 	  $total = $db->count($table, $condition, $DT['cache_search'], $group);
 	}	
 }
-$pagesize = $list==0 ? $MOD['pagesize'] : ($list==2 ? 10 : 6);
+$pagesize = $MOD['pagesize'];
 $offset = ($page-1)*$pagesize;
 $pages = listpages($CAT, $items, $page, $pagesize);
 $tags = array();

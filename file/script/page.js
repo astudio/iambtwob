@@ -153,8 +153,8 @@ function img_tip(o, i) {
 			var aTag = o; var leftpos = toppos = 0;
 			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
 			} while(aTag.offsetParent != null);
-			var X = o.offsetLeft + leftpos + 138;
-			var Y = o.offsetTop + toppos - 16;
+			var X = o.offsetLeft + leftpos + 150;
+			var Y = o.offsetTop + toppos + 25;
 			Dd('img_tip').style.left = X + 'px';
 			Dd('img_tip').style.top = Y + 'px';
 			Ds('img_tip');
@@ -171,8 +171,26 @@ function img_tip_list(o, i) {
 			var aTag = o; var leftpos = toppos = 0;
 			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
 			} while(aTag.offsetParent != null);
-			var X = o.offsetLeft + leftpos + 90;
-			var Y = o.offsetTop + toppos - 20;
+			var X = o.offsetLeft + leftpos + 106;
+			var Y = o.offsetTop + toppos + 25;
+			Dd('img_tip').style.left = X + 'px';
+			Dd('img_tip').style.top = Y + 'px';
+			Ds('img_tip');
+			Inner('img_tip', '<img src="'+s+'" onload="if(this.width<200) {Dh(\'img_tip\');}else if(this.width>260){this.width=260;}Dd(\'img_tip\').style.width=this.width+\'px\';"/>')
+		}
+	} else {
+		Dh('img_tip');
+	}
+}
+function img_tip_buy(o, i) {
+	if(i) {
+		if(i.indexOf('nopic.gif') == -1) {
+			if(i.indexOf('.thumb.') != -1) {var t = i.replace('.thumb.','.middle.');var s = t;} else {var s = i;}
+			var aTag = o; var leftpos = toppos = 0;
+			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
+			} while(aTag.offsetParent != null);
+			var X = o.offsetLeft + leftpos + 156;
+			var Y = o.offsetTop + toppos + 30;
 			Dd('img_tip').style.left = X + 'px';
 			Dd('img_tip').style.top = Y + 'px';
 			Ds('img_tip');

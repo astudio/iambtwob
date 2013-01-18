@@ -10,52 +10,52 @@ if($_POST['seller_email']) $aliapy_config['seller_email'] = $_POST['seller_email
 #cache_write('ali/'.$api.'-notify-post-'.date('Ymdhis').'.php', $_POST);
 #cache_write('ali/'.$api.'-notify-get-'.date('Ymdhis').'.php', $_GET);
 /* *
- * 功能：支付寶服務器異步通知頁面
+ * 功能：支付宝服务器异步通知页面
  * 版本：3.2
  * 日期：2011-03-25
- * 說明：
- * 以下代碼只是為了方便商戶測試而提供的樣例代碼，商戶可以根據自己網站的需要，按照技術文檔編寫,並非一定要使用該代碼。
- * 該代碼僅供學習和研究支付寶接口使用，只是提供一個參考。
+ * 说明：
+ * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
+ * 该代码仅供学习和研究支付宝接口使用，只是提供一个参考。
 
 
- *************************頁面功能說明*************************
- * 創建該頁面文件時，請留心該頁面文件中無任何HTML代碼及空格。
- * 該頁面不能在本機電腦測試，請到服務器上做測試。請確保外部可以訪問該頁面。
- * 該頁面調試工具請使用寫文本函數logResult，該函數已被默認關閉，見alipay_notify_class.php中的函數verifyNotify
- * 如果沒有收到該頁面返回的 success 信息，支付寶會在24小時內按一定的時間策略重發通知
+ *************************页面功能说明*************************
+ * 创建该页面文件时，请留心该页面文件中无任何HTML代码及空格。
+ * 该页面不能在本机电脑测试，请到服务器上做测试。请确保外部可以访问该页面。
+ * 该页面调试工具请使用写文本函数logResult，该函数已被默认关闭，见alipay_notify_class.php中的函数verifyNotify
+ * 如果没有收到该页面返回的 success 信息，支付宝会在24小时内按一定的时间策略重发通知
  
- * WAIT_BUYER_PAY(表示買家已在支付寶交易管理中產生了交易記錄，但沒有付款);
- * WAIT_SELLER_SEND_GOODS(表示買家已在支付寶交易管理中產生了交易記錄且付款成功，但賣家沒有發貨);
- * WAIT_BUYER_CONFIRM_GOODS(表示賣家已經發了貨，但買家還沒有做確認收貨的操作);
- * TRADE_FINISHED(表示買家已經確認收貨，這筆交易完成);
+ * WAIT_BUYER_PAY(表示买家已在支付宝交易管理中产生了交易记录，但没有付款);
+ * WAIT_SELLER_SEND_GOODS(表示买家已在支付宝交易管理中产生了交易记录且付款成功，但卖家没有发货);
+ * WAIT_BUYER_CONFIRM_GOODS(表示卖家已经发了货，但买家还没有做确认收货的操作);
+ * TRADE_FINISHED(表示买家已经确认收货，这笔交易完成);
  
- * 如何判斷該筆交易是通過即時到帳方式付款還是通過擔保交易方式付款？
+ * 如何判断该笔交易是通过即时到帐方式付款还是通过担保交易方式付款？
  * 
- * 擔保交易的交易狀態變化順序是：等待買家付款→買家已付款，等待賣家發貨→賣家已發貨，等待買家收貨→買家已收貨，交易完成
- * 即時到帳的交易狀態變化順序是：等待買家付款→交易完成
+ * 担保交易的交易状态变化顺序是：等待买家付款→买家已付款，等待卖家发货→卖家已发货，等待买家收货→买家已收货，交易完成
+ * 即时到帐的交易状态变化顺序是：等待买家付款→交易完成
  * 
- * 每當收到支付寶發來通知時，就可以獲取到這筆交易的交易狀態，並且商戶需要利用商戶訂單號查詢商戶網站的訂單數據，
- * 得到這筆訂單在商戶網站中的狀態是什麼，把商戶網站中的訂單狀態與從支付寶通知中獲取到的狀態來做對比。
- * 如果商戶網站中目前的狀態是等待買家付款，而從支付寶通知獲取來的狀態是買家已付款，等待賣家發貨，那麼這筆交易買家是用擔保交易方式付款的
- * 如果商戶網站中目前的狀態是等待買家付款，而從支付寶通知獲取來的狀態是交易完成，那麼這筆交易買家是用即時到帳方式付款的
+ * 每当收到支付宝发来通知时，就可以获取到这笔交易的交易状态，并且商户需要利用商户订单号查询商户网站的订单数据，
+ * 得到这笔订单在商户网站中的状态是什么，把商户网站中的订单状态与从支付宝通知中获取到的状态来做对比。
+ * 如果商户网站中目前的状态是等待买家付款，而从支付宝通知获取来的状态是买家已付款，等待卖家发货，那么这笔交易买家是用担保交易方式付款的
+ * 如果商户网站中目前的状态是等待买家付款，而从支付宝通知获取来的状态是交易完成，那么这笔交易买家是用即时到帐方式付款的
  */
 
 //require_once("alipay.config.php");
 require_once DT_ROOT.'/api/trade/alipay/2/pay/alipay_notify.class.php';
 
-//計算得出通知驗證結果
+//计算得出通知验证结果
 $alipayNotify = new AlipayNotify($aliapy_config);
 $verify_result = $alipayNotify->verifyNotify();
 
-if($verify_result) {//驗證成功
+if($verify_result) {//验证成功
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//請在這裡加上商戶的業務邏輯程序代
+	//请在这里加上商户的业务逻辑程序代
 	
-	//－－請根據您的業務邏輯來編寫程序（以下代碼僅作參考）－－
-    //獲取支付寶的通知返回參數，可參考技術文檔中服務器異步通知參數列表
-    $out_trade_no	= $_POST['out_trade_no'];	    //獲取訂單號
-    $trade_no		= $_POST['trade_no'];	    	//獲取支付寶交易號
-    $total			= $_POST['price'];				//獲取總價格
+	//――请根据您的业务逻辑来编写程序（以下代码仅作参考）――
+    //获取支付宝的通知返回参数，可参考技术文档中服务器异步通知参数列表
+    $out_trade_no	= $_POST['out_trade_no'];	    //获取订单号
+    $trade_no		= $_POST['trade_no'];	    	//获取支付宝交易号
+    $total			= $_POST['price'];				//获取总价格
 
 	$itemid = $out_trade_no;
 	$td = $db->get_one("SELECT * FROM {$DT_PRE}mall_order WHERE itemid=$itemid");
@@ -71,24 +71,24 @@ if($verify_result) {//驗證成功
 	include load('member.lang');
 
 	if($_POST['trade_status'] == 'WAIT_BUYER_PAY') {
-	//該判斷表示買家已在支付寶交易管理中產生了交易記錄，但沒有付款
+	//该判断表示买家已在支付宝交易管理中产生了交易记录，但没有付款
 	
-		//判斷該筆訂單是否在商戶網站中已經做過處理（可參考「集成教程」中「3.4返回數據處理」）
-			//如果沒有做過處理，根據訂單號（out_trade_no）在商戶網站的訂單系統中查到該筆訂單的詳細，並執行商戶的業務程序
-			//如果有做過處理，不執行商戶的業務程序
+		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
+			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+			//如果有做过处理，不执行商户的业务程序
 		
 			
-        echo "success"; //請不要修改或刪除
+        echo "success"; //请不要修改或删除
 
-        //調試用，寫文本函數記錄程序運行情況是否正常
-        //logResult("這裡寫入想要調試的代碼變量值，或其他運行的結果記錄");
+        //调试用，写文本函数记录程序运行情况是否正常
+        //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
     }
 	else if($_POST['trade_status'] == 'WAIT_SELLER_SEND_GOODS') {
-	//該判斷表示買家已在支付寶交易管理中產生了交易記錄且付款成功，但賣家沒有發貨
+	//该判断表示买家已在支付宝交易管理中产生了交易记录且付款成功，但卖家没有发货
 	
-		//判斷該筆訂單是否在商戶網站中已經做過處理（可參考「集成教程」中「3.4返回數據處理」）
-			//如果沒有做過處理，根據訂單號（out_trade_no）在商戶網站的訂單系統中查到該筆訂單的詳細，並執行商戶的業務程序
-			//如果有做過處理，不執行商戶的業務程序
+		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
+			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+			//如果有做过处理，不执行商户的业务程序
 		if($td['status'] == 1) {
 			$db->query("UPDATE {$DT_PRE}mall_order SET trade_no='$trade_no',status=2,updatetime=$DT_TIME WHERE itemid=$itemid");
 			$db->query("UPDATE {$DT_PRE}member SET trade='$seller_email',vtrade=1 WHERE username='$seller' AND vtrade=0");
@@ -107,17 +107,24 @@ if($verify_result) {//驗證成功
 			echo "success";
 		}
 			
-        		//請不要修改或刪除
+        		//请不要修改或删除
 
-        //調試用，寫文本函數記錄程序運行情況是否正常
-        //logResult("這裡寫入想要調試的代碼變量值，或其他運行的結果記錄");
+        //调试用，写文本函数记录程序运行情况是否正常
+        //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
     }
 	else if($_POST['trade_status'] == 'WAIT_BUYER_CONFIRM_GOODS') {
-	//該判斷表示賣家已經發了貨，但買家還沒有做確認收貨的操作
+	//该判断表示卖家已经发了货，但买家还没有做确认收货的操作
 	
-		//判斷該筆訂單是否在商戶網站中已經做過處理（可參考「集成教程」中「3.4返回數據處理」）
-			//如果沒有做過處理，根據訂單號（out_trade_no）在商戶網站的訂單系統中查到該筆訂單的詳細，並執行商戶的業務程序
-			//如果有做過處理，不執行商戶的業務程序
+		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
+			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+			//如果有做过处理，不执行商户的业务程序
+
+		if(isset($_POST['refund_status'])) {
+			if($_POST['refund_status'] == 'WAIT_SELLER_AGREE' && $td['status'] == 3) {//买家申请退款 等待卖家同意
+				$db->query("UPDATE {$DT_PRE}mall_order SET status=5,updatetime=$DT_TIME WHERE itemid=$itemid");
+				exit('success');
+			}
+		}
 		if($td['status'] == 2) {
 			$db->query("UPDATE {$DT_PRE}mall_order SET status=3,updatetime=$DT_TIME WHERE itemid=$itemid");
 
@@ -130,24 +137,23 @@ if($verify_result) {//驗證成功
 			$content = lang($L['trade_message_c3'], array($myurl, $_username, $timenow, $url));
 			$content = ob_template('messager', 'mail');
 			send_message($touser, $title, $content);
-
 			echo "success";
 		}
 			
-        //請不要修改或刪除
+        //请不要修改或删除
 
-        //調試用，寫文本函數記錄程序運行情況是否正常
-        //logResult("這裡寫入想要調試的代碼變量值，或其他運行的結果記錄");
+        //调试用，写文本函数记录程序运行情况是否正常
+        //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
     }
 	else if($_POST['trade_status'] == 'TRADE_FINISHED') {
-	//該判斷表示買家已經確認收貨，這筆交易完成
+	//该判断表示买家已经确认收货，这笔交易完成
 	
-		//判斷該筆訂單是否在商戶網站中已經做過處理（可參考「集成教程」中「3.4返回數據處理」）
-			//如果沒有做過處理，根據訂單號（out_trade_no）在商戶網站的訂單系統中查到該筆訂單的詳細，並執行商戶的業務程序
-			//如果有做過處理，不執行商戶的業務程序
+		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
+			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+			//如果有做过处理，不执行商户的业务程序
 		if($td['status'] == 3) {
 			$db->query("UPDATE {$DT_PRE}mall_order SET status=4,updatetime=$DT_TIME WHERE itemid=$itemid");
-			//更新商品數據
+			//更新商品数据
 			$db->query("UPDATE {$DT_PRE}mall SET orders=orders+1,sales=sales+$td[number],amount=amount-$td[number] WHERE itemid=$mallid");
 
 			$myurl = userurl($td['buyer']);
@@ -163,28 +169,38 @@ if($verify_result) {//驗證成功
 			echo "success";
 		}
 			
-        		//請不要修改或刪除
+        		//请不要修改或删除
 
-        //調試用，寫文本函數記錄程序運行情況是否正常
-        //logResult("這裡寫入想要調試的代碼變量值，或其他運行的結果記錄");
-    }
-    else {
-		//其他狀態判斷
+        //调试用，写文本函数记录程序运行情况是否正常
+        //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+	} else if($_POST['trade_status'] == 'TRADE_CLOSED') {
+		if(isset($_POST['refund_status'])) {
+			if($_POST['refund_status'] == 'REFUND_SUCCESS' && $td['status'] == 5) {//退款成功
+				$db->query("UPDATE {$DT_PRE}mall_order SET status=6,updatetime=$DT_TIME WHERE itemid=$itemid");
+				exit('success');
+			}
+			if($_POST['refund_status'] == 'REFUND_CLOSED' && $td['status'] == 5) {//退款关闭
+				$db->query("UPDATE {$DT_PRE}mall_order SET status=7,updatetime=$DT_TIME WHERE itemid=$itemid");
+				exit('success');
+			}
+		}
+    }  else {
+		//其他状态判断
         echo "success";
 
-        //調試用，寫文本函數記錄程序運行情況是否正常
-        //logResult ("這裡寫入想要調試的代碼變量值，或其他運行的結果記錄");
+        //调试用，写文本函数记录程序运行情况是否正常
+        //logResult ("这里写入想要调试的代码变量值，或其他运行的结果记录");
     }
 
-	//－－請根據您的業務邏輯來編寫程序（以上代碼僅作參考）－－
+	//――请根据您的业务逻辑来编写程序（以上代码仅作参考）――
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 else {
-    //驗證失敗
+    //验证失败
     echo "fail";
 
-    //調試用，寫文本函數記錄程序運行情況是否正常
-    //logResult("這裡寫入想要調試的代碼變量值，或其他運行的結果記錄");
+    //调试用，写文本函数记录程序运行情况是否正常
+    //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
 }
 ?>

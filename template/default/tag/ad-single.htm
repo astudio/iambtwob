@@ -1,6 +1,6 @@
 {if $tags}
 	{loop $tags $k $t}
-		{if $t[url]}<a href="{DT_PATH}extend/redirect.php?aid={$t[aid]}" target="_blank">{/if}<img class="lazy" data-src="{$t[image_src]}" src="{DT_SKIN}image/blank.gif" alt="{$t[image_alt]}" title="{$t[image_alt]}" />{if $t[url]}</a>{/if}
+		{if $t[url]}<a href="{DT_PATH}extend/redirect.php?aid={$t[aid]}" target="_blank">{/if}<img class="lazy{if $class} {$class}{/if}" data-src="{$t[image_src]}" src="{DT_SKIN}image/blank.gif" alt="{$t[image_alt]}" title="{$t[image_alt]}" />{if $t[url]}</a>{/if}
 		{if !$nob10}<div class="b10">&nbsp;</div>{/if}
 	{/loop}
 {else}

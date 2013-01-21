@@ -1,0 +1,19 @@
+<div class="slideshow">	
+	<div id="tab_nav">
+		<ul>
+			{loop $tags $i $t}
+				<li {if $i==$pagesize-1} class="nobb"{/if}>
+					<a href="javascript:;">{$t[title]}&nbsp;<span class="f_orange px13">{timetodate($t[fromtime], 3)} > {timetodate($t[totime], 3)}</span><span class="f_gray px13">&nbsp;[{$t[city]}]</span></a>
+				</li>
+			{/loop}	
+		</ul>
+	</div>
+	
+	<div id="panes">
+		<!-- loop in 5 exhibits -->
+		{loop $tags $i $t}
+		<div><a href="{$t[linkurl]}" target="{$target}"><img src="{$t[thumb]}" alt="{$t[title]}" /></a></div>
+		{/loop}
+	</div>
+	<span class="tag">Hot Show</span>
+</div>

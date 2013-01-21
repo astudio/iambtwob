@@ -15,7 +15,6 @@ a.type_2:link,a.type_2:visited,a.type_2:active {float:left;display:block;color:#
 .type a.type_2:hover {background-color:#00aeef;color:#FFF;}
 
 .list {height:165px;border-top:none;border-bottom:1px solid #d7d7d7;}
-.list > ul {margin-top:15px;}
 .list > div img {width:150px;height:150px;}
 .list .order {float:right;width:96px;height:25px;margin:30px 28px 110px 114px}
 .list .order img {width:96px;height:25px;-webkit-box-shadow: none;box-shadow: none;}

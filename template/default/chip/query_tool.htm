@@ -1,0 +1,5 @@
+<ul class="month">
+	{php for($i=1;$i<13;$i++){ $j = $i<10 ? '0'.$i : $i;switch($i){case 1: $k='Jan';break;case 2: $k='Feb';break;case 3: $k='Mar';break;case 4: $k='Apr';break;case 5: $k='May';break;case 6: $k='Jun';break;case 7: $k='Jul';break;case 8: $k='Aug';break;case 9: $k='Sep';break;case 10: $k='Oct';break;case 11: $k='Nov';break;case 12: $k='Dec';break;}}
+	<li{if $j==date('m')} class="current"{/if}><a href="{$MOD[linkurl]}{rewrite('search.php?month='.$i)}">{$k}</a></li>
+	{php } }
+</ul>

@@ -6,20 +6,25 @@
 			{php $mid = $moduleid;$stat = 1;}
 			{template 'catalog','chip'}
 		{/if}
+		
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
 	</div>
 
 	<div class="m_l_1 f_l">
 		<div class="b10">&nbsp;</div>		
 		<!-- 1st slideshow (AD) -->
-		{template 'tmp-slideshow','tag'}					
+		<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=15&template=ad-slideshow",-1)}-->						
 		<div class="b15">&nbsp;</div>				
 
 		<div class="left_box">
 			<form id="fsearch" method="POST">
 				{template 'tip_tool','chip'}
 				
-				{if $page == 1}{ad($moduleid,0,'',6)}{/if}				
-
+				{if $page == 1}{ad($moduleid,0,'',6)}{/if}
 				<!--{tag("moduleid=$moduleid&areaid=$cityid&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=5&length=200&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-company")}-->				
 			</form><br/>
 		</div>
@@ -30,6 +35,18 @@
 	<div class="m_r_1 f_l">
 		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
 		
+		<div class="b10">&nbsp;</div>
+		<!-- right sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
+		
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->			
+
+		<div class="box_head_3"><span class="f_r px12"><a href="#">more</a></span><div><strong>Catalogs</strong></div></div>
+		<div class="box_body">
+			<div class="rank_list">
+				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
+			</div>		
+		</div>
 		<div class="b10">&nbsp;</div>
 		
 		<div class="box_head_3"><div><strong>Top 10 of Week</strong></div></div>

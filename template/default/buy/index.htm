@@ -5,15 +5,22 @@
 		{if $DT[page_catalog]}
 			{php $mid = $moduleid;$stat = 1;}
 			{template 'catalog','chip'}
-		{/if}	
+		{/if}
+
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
 	</div>
 
 	<div class="m_l_0 f_l">
 		<div class="left_box">		
 			<div class="b10">&nbsp;</div>
-			<!-- 廣告 -->
-			<!-- <img src="http://emailpanel.in/wp-content/uploads/2012/06/features8.jpg" width="1020" height="200" alt="" /> -->
-			<div class="b10">&nbsp;</div>
+			<!-- top AD -->
+			<!--{tag("table=ad&condition=status=3 and pid=23 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=23&class=h200&template=ad-single",-1)}-->
 			
 			<div class="type">
 			<a href="{$MOD[linkurl]}" class="{if $typeid==99}type_1{else}type_2{/if}">All</a>

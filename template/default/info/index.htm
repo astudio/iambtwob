@@ -2,7 +2,7 @@
 <div class="m">
 	<div class="m_l f_l">
 		{if $MOD[page_irec]}
-		<div class="box_head_2"><strong class="px13">&raquo; 推薦{$MOD[name]}</strong></div>
+		<div class="box_head_2"><strong class="px13">&raquo; Featured {$MOD[name]}</strong></div>
 		<div class="box_body">
 			<div class="thumb">
 			<!--{tag("moduleid=$moduleid&length=20&condition=status=3 and thumb<>'' and level>0&areaid=$cityid&pagesize=".$MOD[page_irec]."&order=".$MOD[order]."&width=100&height=100&cols=4&template=thumb-table&target=_blank")}-->
@@ -15,7 +15,7 @@
 		{if $i%2==0}<tr>{/if}
 		<td valign="top" width="330">
 			<div class="b10"></div>
-			<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">更多..</a></span><strong>{$c[catname]}</strong></div>
+			<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">more..</a></span><strong>{$c[catname]}</strong></div>
 			<div class="box_body li_dot f_gray"><!--{tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&catid=".$c[catid]."&order=".$MOD[order]."&pagesize=".$MOD[page_icat]."&datetype=2&target=_blank")}--></div>			
 		</td>
 		{if $i%2==0}<td>&nbsp;</td>{/if}
@@ -27,7 +27,7 @@
 	<div class="m_n f_l">&nbsp;</div>
 	<div class="m_r f_l">
 		{if $MOD[show_icat]}
-		<div class="box_head_1"><div><strong>按分類瀏覽</strong></div></div>
+		<div class="box_head_1"><div><strong>All Categories</strong></div></div>
 		<div class="box_body">
 		<table width="100%" cellpadding="3">
 		{loop $maincat $k $v}
@@ -40,7 +40,7 @@
 		<div class="b10">&nbsp;</div>
 		{/if}
 		{if $MOD[show_iarea]}
-		<div class="box_head_1"><div><strong>按地區瀏覽</strong></div></div>
+		<div class="box_head_1"><div><strong>Location</strong></div></div>
 		<div class="box_body">
 		{php $mainarea = get_mainarea(0)}
 		<table width="100%" cellpadding="3">
@@ -54,7 +54,7 @@
 		<div class="b10"> </div>
 		{/if}
 		{if $MOD[page_ihits]}
-		<div class="box_head_1"><div><strong>最熱{$MOD[name]}</strong></div></div>
+		<div class="box_head_1"><div><strong>Hot {$MOD[name]}</strong></div></div>
 		<div class="box_body">
 		<div class="rank_list"><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$today_endtime-180*86400&areaid=$cityid&order=hits desc&pagesize=".$MOD[page_ihits], -2)}--></div>
 		</div>

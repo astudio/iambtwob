@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <!-- disable iPhone inital scale -->
-<meta name="viewport" content="width=device-width; initial-scale=1.0"/>
+<meta name="viewport" content="width=1221"/>
 <title>2011 MAGIC-FLOAT eCatalog Online_公告中心_ImB2B</title>
-<meta name="keywords" content="2011 MAGIC-FLOAT eCatalog Online_公告中心"/>
-<meta name="description" content="2011 MAGIC-FLOAT eCatalog Online_公告中心"/>
-<meta name="generator" content="www.imb2b.com"/>
+<meta name="keywords" content="2011 MAGIC-FLOAT eCatalog Online_公告中心"/><meta name="description" content="2011 MAGIC-FLOAT eCatalog Online_公告中心"/><meta name="generator" content="www.imb2b.com"/>
 <meta name="author" content="A Studio" />
 <link rel="shortcut icon" type="image/x-icon" href="http://demo.imb2b.com/favicon.ico"/>
 <link rel="bookmark" type="image/x-icon" href="http://demo.imb2b.com/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/style.css"/>
-<link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/menu_style.css"/>
+<link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/menu.css"/>
+<link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/catalog.css"/>
+<link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/tabs-slideshow.css"/>
 <!-- <link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/mq.css"/> -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,68 +21,57 @@
 <!--[if lte IE 6]>
 <link rel="stylesheet" type="text/css" href="http://demo.imb2b.com/skin/default/ie6.css"/>
 <![endif]-->
-<!-- <script type="text/javascript">window.onerror=function(){return true;}</script> -->
-<script type="text/javascript" src="http://demo.imb2b.com/lang/default/lang.js"></script>
+
+<script type="text/javascript">window.onerror=function(){return true;}</script><script type="text/javascript" src="http://demo.imb2b.com/lang/default/lang.js"></script>
 <script type="text/javascript" src="http://demo.imb2b.com/file/script/config.js"></script>
 <script type="text/javascript" src="http://demo.imb2b.com/file/script/common.js"></script>
 <script type="text/javascript" src="http://demo.imb2b.com/file/script/page.js"></script>
-<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-<script src="https://raw.github.com/sebarmeli/JAIL/master/src/jail.js"></script>
+<script type="text/javascript" src="http://demo.imb2b.com/file/script/jquery.min.js"></script>
+<script type="text/javascript" src="http://demo.imb2b.com/file/script/jail.js"></script>
 </head>
 <body>
 <!--*** header -->
 <header id="header">
-<!-- 資訊列 -->
+<!-- top fixed bar -->
 <div class="top">
 <div class="top_div">
-<div id="destoon_member" class="f_r"></div>
+<div id="destoon_member" class="imb2b_top f_r"></div>
 <div id="google_translate_element" class="f_r"></div>
 <script type="text/javascript">
 function googleTranslateElementInit() {
 new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script>
-<div id="imb2b_login"></div>
+<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script><div id="imb2b_login"></div>
 </div>
 </div>
-<!-- 搜尋提示 -->
+<!-- search tips -->
 <div class="m"><div id="search_tips" style="display:none;"></div></div>
-<!-- logo 搜尋列 -->
+<!-- logo, search bar -->
 <div class="m pdt30">
 <h1 class="f_l logo m0">
 <a href="http://demo.imb2b.com/"><img src="http://demo.imb2b.com/file/upload/201212/16/11-39-25-94-1.png" alt="ImB2B"/></a>
 </h1>
+
 <script type="text/javascript">var searchid = 5;</script>
 <form id="destoon_search" action="http://demo.imb2b.com/search.php" onsubmit="return Dsearch();">
 <input type="hidden" name="moduleid" value="5" id="destoon_moduleid"/>
 <input type="hidden" name="spread" value="0" id="destoon_spread"/>
 <div class="f_l head_search">
  <div id="search_module" onmouseout="Dh('search_module');" onmouseover="Ds('search_module');" style="display:none;">
-<a class="head_search_on" href="javascript:void(0);" onclick="setModule(5, this, 'Product');">Product</a><a href="javascript:void(0);" onclick="setModule(6, this, 'Buy');">Buy</a><a href="javascript:void(0);" onclick="setModule(4, this, 'Company');">Company</a><a href="javascript:void(0);" onclick="setModule(21, this, 'News');">News</a><a href="javascript:void(0);" onclick="setModule(22, this, '徵展活動');">徵展活動</a></div>
+<a class="head_search_on" href="javascript:void(0);" onclick="setModule(Array, this, 'Product');">Product</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Company');">Company</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Buy');">Buy</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Show');">Show</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Photo');">Photo</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Video');">Video</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Download');">Download</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'Mall');">Mall</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'News');">News</a><a href="javascript:void(0);" onclick="setModule(Array, this, 'eBook');">eBook</a></div>
 <div class="f_l head_search_cmn">
 <input name="kw" id="destoon_kw" type="text" class="search_i" value="Enter a keyword" onfocus="if(this.value=='Enter a keyword') this.value='';" onblur="if(this.value=='') this.value='Enter a keyword'" onkeyup="STip(this.value);" autocomplete="off"/>
 <input type="text" id="select_module" class="search_i" value="Product" readonly="" onfocus="this.blur();" onclick="Ds('search_module');"/>
+<span class="seperator" onclick="Ds('search_module');"><span class="arrow">▼</span></span>
 <input type="submit" value="Search" class="search_s"/>
 </div>
 <div class="f_l head_search_adv">
 <a href="" onclick="Dsearch_adv();return false;" class="head_search_adv_1">Advanced</a>
-<!--del <a href="" onclick="Dsearch_top();return false;" class="head_search_adv_2">標王直達</a> -->
 </div>
+<div class="f_l head_search_shadow"></div>
 </div>
 </form>
-<!--del <div class="f_l btntool">
-<a href="http://demo.imb2b.com/spread/"><img src="http://demo.imb2b.com/skin/default/image/btn_word.gif" width="32" height="32" alt="排名推廣"/><br/>
-<span>排名推廣</span></a>
-</div>
-<div class="f_l btntool">
-<a href="http://demo.imb2b.com/member/my.php"><img src="http://demo.imb2b.com/skin/default/image/btn_edit.gif" width="32" height="32" alt="發佈信息"/><br/>
-<span>發佈信息</span></a>
-</div>
-<div class="f_l btntool">
-<a href="http://demo.imb2b.com/member/"><img src="http://demo.imb2b.com/skin/default/image/btn_user.gif" width="32" height="32" alt="會員中心"/><br/>
-<span>會員中心</span></a>
-</div> -->
 <div class="f_r head_join_us">
 <a href="http://demo.imb2b.com/member/register.php">Join Us Now!</a>
 </div>
@@ -94,7 +83,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
 <div class="menu_category">Categories</div>
 <div class="menu_b">
 <div class="menu">
-<ul><li class="menuon"><a href="http://demo.imb2b.com/"><span>Home</span></a></li><li><a href="http://demo.imb2b.com/sell/"><span>Product</span></a></li><li><a href="http://demo.imb2b.com/company/"><span>Company</span></a></li><li><a href="http://demo.imb2b.com/buy/"><span>Buy</span></a></li><li><a href="http://demo.imb2b.com/exhibit/"><span>Show</span></a></li><li><a href="http://demo.imb2b.com/photo/"><span></span></a></li><li><a href="http://demo.imb2b.com/video/"><span></span></a></li><li><a href="http://demo.imb2b.com/down/"><span></span></a></li><li><a href="http://demo.imb2b.com/news/"><span>News</span></a></li><li><a href="http://demo.imb2b.com/ebook/"><span>eBook</span></a></li><li class="invest"><a href="http://demo.imb2b.com/invest/"><span>徵展活動</span></a></li></ul>
+<ul><li><a href="http://demo.imb2b.com/buy/"><span>Buy</span></a></li><li><a href="http://demo.imb2b.com/exhibit/"><span>Show</span></a></li><li><a href="http://demo.imb2b.com/photo/"><span>Photo</span></a></li><li><a href="http://demo.imb2b.com/video/"><span>Video</span></a></li><li><a href="http://demo.imb2b.com/down/"><span>Download</span></a></li><li><a href="http://demo.imb2b.com/mall/"><span>Mall</span></a></li><li><a href="http://demo.imb2b.com/news/"><span>News</span></a></li><li><a href="http://demo.imb2b.com/ebook/"><span>eBook</span></a></li></ul>
 </div>
 </div>
 </nav>
@@ -158,131 +147,52 @@ PRODUCTS SPECIAL FEATURES：</div>
 </table>
 </div>
 <script type="text/javascript">try{Dd('type_45').className='left_menu_on';}catch(e){}</script>
-<!-- 分隔10像素 -->
 <div class="m b10">&nbsp;</div>
 <!-- *** footer -->
 <footer id="footer">
 <div class="m no_bg">
-<div class="sitemap">
-<div class="section">
-<div class="sitemap_type">About</div>
-<ul>
-<li>
-<a href="http://news.imb2b.com/specials/aboutimb2b/aligroup/index.html" rel="nofollow" target="_blank">Company Information</a>
-</li>
-<li><a href="http://www.imb2b.com/sitemap.html" target="_blank">Site Map</a></li>
-</ul>
-</div>
-<div class="section">
-<div class="sitemap_type">
-<a href="http://www.imb2b.com/Products" class="fake-text">Buy</a>ing on ImB2B
-</div>
-<ul>
-<li><a href="http://us.my.imb2b.com/rfq/request/post_buy_request.htm?tracelog=new_hpbottom_0418" rel="nofollow" target="_blank">Post Buying Requests</a></li>
-<li><a href="http://www.imb2b.com/Products?cd=buyhome&amp;tracelog=24581_foot_browse_cate" target="_blank" rel="nofollow">Browse Categories</a></li>
-<li><a href="http://www.imb2b.com/countrysearch/continent.html" target="_blank">Browse by Country</a></li>
-<li><a href="http://www.aliexpress.com/" target="_blank" rel="nofollow">Buy on AliExpress</a></li>
-<li><a href="http://www.imb2b.com/help/user-guide-new.html?tracelog=HP_quickguide_20121010" target="_blank" rel="nofollow">How to Buy</a></li>
-</ul>
-</div>
-<div class="section">
-<div class="sitemap_type">
-<a href="http://importer.imb2b.com/" class="fake-text">Sell</a>ing on ImB2B
-</div>
-<ul>
-<li><a href="http://www.imb2b.com/trade/servlet/page/static/paid_memberships/index?tracelog=24581_foot_pre_membership" rel="nofollow" target="_blank">Premium Membership</a></li>
-<li><a href="http://www.imb2b.com/vm" rel="nofollow" target="_blank">Verified Membership</a></li>
-<li><a href="http://us.my.imb2b.com/product/post_product.htm?tracelog=24581_foot_display_product" rel="nofollow" target="_blank">Display Products</a></li>
-<li><a target="_blank" rel="nofollow" href="http://us.my.imb2b.com/product/manage_products.htm?tracelog=fromhpfoot#tab=all">Manage Products</a></li>
-</ul>
-</div>
-<div class="section">
-<div class="sitemap_type">Service &amp; Tools</div>
-<ul>
-<li><a href="http://us.my.imb2b.com/?tracelog=24581_foot_myimb2b" rel="nofollow" target="_blank">My ImB2B</a></li>
-<li><a href="http://trademanager.imb2b.com/?tracelog=24581_foot_trade_manager" rel="nofollow" target="_blank">TradeManager</a></li>
-<li><a href="http://ask.imb2b.com/" target="_blank">Ask It!</a></li>
-<li><a href="http://us.my.imb2b.com/tradealert/myimb2b/sub_scription_trade_alert.htm?tracelog=24581_foot_trade_alert" rel="nofollow" target="_blank">Trade Alert</a></li>
-</ul>
-</div>
-<div class="section last-section">
-<div class="sitemap_type">Safety &amp; Support</div>
-<ul>
-<li><a href="http://channel.imb2b.com/complaint/home.htm?tracelog=24581_foot_report_dispute" rel="nofollow" target="_blank">Submit a Complaint</a></li>
-<li><a href="http://www.imb2b.com/help" rel="nofollow" target="_blank">Help Center</a></li>
-<li><a href="http://www.imb2b.com/help/contact-us.html#askquestion" rel="nofollow" target="_blank">Contact us</a></li>
-<li><a href="http://www.imb2b.com/help/safety_security.html?tracelog=24581_foot_safety" rel="nofollow" target="_blank">Safety &amp; Security Center</a></li>
-</ul>
-</div>
-</div>
-
 <div class="foot c_b">
 <div id="webpage">
-<a href="http://demo.imb2b.com/">Home</a>
+<a href="http://demo.imb2b.com/">Homepage</a>
 | <a href="http://demo.imb2b.com/member/login.php" class="l">Login</a>
 | <a href="http://demo.imb2b.com/member/register.php" class="l">Join</a>
 | <a href="http://demo.imb2b.com/extend/aboutus.htm">About Us</a> 
 | <a href="http://demo.imb2b.com/extend/agreement.htm">Terms of Service</a> 
 | <a href="http://demo.imb2b.com/extend/account.htm">Payment Method</a> 
 | <a href="http://demo.imb2b.com/sitemap/">Sitemap</a>
- | <a href="http://demo.imb2b.com/gift/">積分換禮</a> | <a href="http://demo.imb2b.com/feed/">RSS</a> | <a href="http://demo.imb2b.com/guestbook/">Contact Us</a> | <a href="http://demo.imb2b.com/ad/">Advertise with Us</a></div>
-<div id="copyright">©2009-2011 <strong><font style="color:#ff6600;">ImB2B.COM</font></strong> All Rights Reserved.</div>
-<div id="powered"><!--DEL <a href="http://www.destoon.com/" target="_blank"><img src="http://demo.imb2b.com/file/image/powered.gif" width="136" height="10" alt="Powered by DESTOON 4.0"/></a> --></div>
+ | <a href="http://demo.imb2b.com/gift/">Earn Gift</a> | <a href="http://demo.imb2b.com/feed/">RSS</a> | <a href="http://demo.imb2b.com/guestbook/">Tell us what you think</a> | <a href="http://demo.imb2b.com/ad/">Advertising Services</a></div>
+<div id="copyright">©2009-2013 <strong><font style="color:#ff6600;">ImB2B.COM</font></strong> All Rights Reserved.</div>
+<div id="powered"></div>
 </div>
 </div>
 </footer>
-<!-- 底部固定工具列 -->
+<!-- bottom fixed bar -->
 <div id="destoon_toolbar" class="notranslate">
 <div class="tb_m">
 <div class="tb_r">
 <div>
 <img src="http://demo.imb2b.com/member/image/ico_newcart.gif" width="16" height="16" align="absmiddle" alt=""/>
-<a href="cart.php">購物車</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
+<a href="http://demo.imb2b.com/mall/cart.php">Cart</a>(<span id="destoon_cart">0</span>)&nbsp;&nbsp;&nbsp;
 <img src="http://demo.imb2b.com/member/image/ico_message.gif" width="16" height="16" align="absmiddle" alt=""/>
-<a href="http://demo.imb2b.com/member/message.php">站內信</a>(<span id="destoon_message">0</span>)
-&nbsp;&nbsp;&nbsp;<img src="http://demo.imb2b.com/member/image/ico_newchat.gif" width="14" height="13" align="absmiddle" alt=""/>
-<a href="http://demo.imb2b.com/member/chat.php">新對話</a>(<span id="destoon_chat">0</span>)
+<a href="http://demo.imb2b.com/member/message.php">Message</a>(<span id="destoon_message">0</span>)
+&nbsp;&nbsp;&nbsp;<img src="http://demo.imb2b.com/member/image/ico_newchat.png" width="16" height="16" align="absmiddle" alt=""/>
+<a href="http://demo.imb2b.com/member/chat.php">Chat</a>(<span id="destoon_chat">0</span>)
 </div>
 </div>
 <div class="tb_l">
 <div>
-<img src="http://demo.imb2b.com/skin/default/image/vip.gif" alt="上網做生意，首選VIP會員" align="absmiddle"/> <a href="http://demo.imb2b.com/member/grade.php">會員服務</a>
-| <a href="http://demo.imb2b.com/member/my.php">發佈信息</a>
-| <a href="http://demo.imb2b.com/member/">會員中心</a>
-| <a href="http://demo.imb2b.com/">返回首頁</a>
+<!-- <img src="http://demo.imb2b.com/skin/default/image/vip.gif" alt="上網做生意，首選VIP會員" align="absmiddle"/>  --><a href="http://demo.imb2b.com/member/grade.php">Member Services</a>
+| <a href="http://demo.imb2b.com/member/my.php">Buy/Sell a product</a>
+| <a href="http://demo.imb2b.com/member/">My ImB2B</a>
+| <a href="http://demo.imb2b.com/">Back to top</a>
 </div>
 </div>
-<div class="tb_c" onclick="window.scrollTo(0,0);" title="返回頂部" id="tb_c"></div>
+<div class="tb_c" onclick="window.scrollTo(0,0);" title="Back to top" id="tb_c"></div>
 </div>
 </div>
-<script type="text/javascript">
-show_task('moduleid=3&html=announce&itemid=2');
-(function($) {
-if(!$) return false;
-function imgMouseOver() {
-$('img.lazy:visible').scroll();
-}
-
-$(function(){
-$('.side li.level1').hover(
-function(){
-$(this).addClass('active');
-$(this).find('.level2').show();
-},
-function(){
-$(this).removeClass('active');
-$(this).find('.level2').hide();
-});
-
-$(".scrollable").scrollable({
-onSeek: function(){ 
-imgMouseOver();
-}
-});
-$('img.lazy').jail();
-imgMouseOver();
-});
-})(jQuery);
-</script>
+<!-- contact us (fixed right position) -->
+<a href="http://demo.imb2b.com/guestbook/" target="_blank"><div id="contactUs"></div></a>
+<script type="text/javascript">show_task('moduleid=3&html=announce&itemid=2');</script>
+<script type="text/javascript" src="http://demo.imb2b.com/file/script/global.js"></script>
 </body>
 </html>

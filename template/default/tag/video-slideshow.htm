@@ -1,0 +1,26 @@
+<script type="text/javascript">
+	function Pl(u, p, a, i) {
+		Inner('panes', player(u,400,200,p,a));
+		//Inner('v_title', Dd('v_title_'+i).innerHTML);
+	}
+</script>
+<div class="slideshow">	
+	<div id="tab_nav">
+		<ul>
+			{loop $tags $i $t}		
+				<li {if $i==$pagesize-1} class="nobb"{/if}>
+					<a href="javascript:;" onclick="Pl('{$t[video]}',{$t[player]},1,{$i});">{$t[title]}&nbsp;<span class="f_orange px13">{$cat[catname]}</span><span class="f_gray px13">&nbsp;[{$t[company]}]</span></a>
+				</li>
+			{/loop}	
+		</ul>
+	</div>
+	
+	<div id="panes">
+		<!-- loop in 5 exhibits -->
+		{loop $tags $i $t}
+			<div><a href="{$t[linkurl]}" target="{$target}"><img src="{$t[thumb]}" alt="{$t[title]}" /></a></div>
+			{if $i==0}<script type="text/javascript">$(function(){Pl('{$t[video]}',{$t[player]},0,{$i});});</script>{/if}			
+		{/loop}
+	</div>
+	<span class="tag">New Video</span>
+</div>

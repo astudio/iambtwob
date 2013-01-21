@@ -1,0 +1,15 @@
+{loop $tags $k $t}
+	<div class="mainlist">
+		<a href="{$t[linkurl]}" target="_blank"><img class="lazy" data-src="{imgurl($t[thumb], 1)}" src="{DT_SKIN}image/blank.gif" alt="{$t[alt]}"/></a>
+	
+	
+		<ul>
+			<li><a href="{$t[linkurl]}" target="_blank"><strong class="px15">{$t[title]}</strong></a></li>
+			<li><span class="f_orange">Date: </span>{timetodate($t[fromtime], 3)} > {timetodate($t[totime], 3)}</li>
+			<li><span class="f_orange">City: </span>{$t[city]}</li>		
+			<li><span class="f_orange">Address: </span>{$t[address]}</li>
+			<li><span class="f_orange">Sponsor: </span>{$t[sponsor]}</li>	
+		</ul>
+	</div>
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

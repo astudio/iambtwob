@@ -1,13 +1,13 @@
 <div id="panes">
 	<!-- loop in 4 videos -->
 	{loop $tags $k $t}
-	<div><a href="{$t[linkurl]}" target="{$target}"><img src="{$t[thumb]}" width="186" height="95" alt="" /><span class="arrow"></span></a></div>
+	<div><a href="{$t[linkurl]}" target="{$target}"><img src="{$t[thumb]}" alt="{$t[title]}" /><span class="arrow"></span></a></div>
 	{/loop}
 </div>
 <div id="tab_nav">
 	<ul>
 		{loop $tags $k $t}
-		<li><a href="#"><span class="arrow"></span><p>{$t[title]}</p></a></li>
+		<li><a href="javascript:;"><span class="arrow"></span><p>{$t[title]}</p></a></li>
 		{/loop}	
 	</ul>
 </div>

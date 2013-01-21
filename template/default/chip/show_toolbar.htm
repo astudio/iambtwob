@@ -1,0 +1,22 @@
+<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
+<input type="hidden" name="itemid" value="{$itemid}"/> 
+<input type="hidden" name="title" value="{$title}"/>
+<input type="hidden" name="linkurl" value="{$linkurl}"/>
+</form>
+{if $MOD[show_np]} <!-- wail to Delete -->
+	<div class="np">
+	<ul>
+		<li><strong>Previous: </strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&pagesize=1&catid=$catid&order=addtime asc&template=list-np", -1)}--></li>
+		<li><strong>Next: </strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&pagesize=1&catid=$catid&order=addtime desc&template=list-np", -1)}--></li>
+	</div>
+	<div class="b10">&nbsp;</div>
+{/if}
+<div class="share f_r">
+	<a href="{$MOD[linkurl]}search.php"><img class="trigger" src="{SKIN_PATH}image/isearch.gif" title="Advanced Search" alt="Advanced Search" /></a>
+	<script type="text/javascript">addFav('<img class="trigger" src="{SKIN_PATH}image/ifavorite_add.gif" title="Add to Favorites <br/>(In Chrome browser, please click `Ctrl` + `D` Key)" alt="Add to Favorites" />');</script>
+	<a href="javascript:Dd('sendmail').submit();void(0);"><img class="trigger" src="{SKIN_PATH}image/ishare_friends.gif" title="Share to Friends" alt="Share to Friends" /></a> 
+	<a href="{DT_PATH}feed/"><img class="trigger" src="{SKIN_PATH}image/rss.gif" title="Subscribe RSS" alt="Subscribe RSS"/></a>
+	<a href="javascript: void(window.open( 'http://www.facebook.com/share.php?u='.concat(encodeURIComponent(location.href)) ));"><img class="trigger" src="{SKIN_PATH}image/ifacebook.gif" title="Share to Facebook" alt="Share to Facebook" /></a>
+	<a href="javascript: void(window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href))));"><img class="trigger" src="{SKIN_PATH}image/itwitter.gif" title="Share to Twitter" alt="Share to Twitter" /></a>
+	<a href="javascript:Print();"><img class="trigger" src="{SKIN_PATH}image/iprint.gif" title="Print this!" alt="Print this!" /></a>
+</div>

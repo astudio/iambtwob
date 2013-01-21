@@ -5,11 +5,6 @@
 		if( $.browser.safari ) {
 			$('span.arrowr').css({left: '200px'}).show();
 		}
-		// images lazy load
-/* 		$('img.lazy2').jail({
-			loadHiddenImages : true,
-			timeout : 3000
-		});	 */
 		// 2nd slideshow
 		$(".slidetabs2").tabs(".images2 > div", {				 
 			// enable "cross-fading" effect

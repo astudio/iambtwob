@@ -1,0 +1,48 @@
+{php $CSS = array('tabs');}
+{template 'header'}
+<div class="m">
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog','chip'}
+		{/if}
+
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
+	</div>
+
+	<div class="m_l_0 f_l">
+		<div class="b10">&nbsp;</div>
+		<!-- top slideshow AD -->
+		<!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>''&order=rand()&pagesize=5&template=ebook-slideshow",-1)}-->
+		<div class="b15"> </div>
+		
+		{if $MOD[page_icat]}
+			{loop $maincat $i $c}
+				<h2 class="title"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">more >></a></span>{$c[catname]}</h2>
+				<div class="box_body f_gray">					
+					{if $c[child]}
+					{php $sub = get_maincat($c[catid], $mid, 1);}				
+						<ul class="tabs">
+							{loop $sub $j $s}
+								<li><a href="javascript:;">{set_style($s[catname], $s[style])}</a></li>								
+							{/loop}
+						</ul>
+						
+						<div class="panes">
+							{loop $sub $j $s}
+								<div><!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>'' and catid=".$s[catid]."&order=rand()&pagesize=6&template=list-info",-1)}--></div>
+							{/loop}	
+						</div>
+					{/if}		
+				</div>
+			{/loop}
+		{/if}
+	</div>
+</div>
+{template 'footer'}

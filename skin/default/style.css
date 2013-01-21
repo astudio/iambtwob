@@ -215,7 +215,7 @@ a.g:hover {color:#FF6600;}
 .content p {text-indent:2em;}
 .property {border:#E6E6E6 1px solid;background:#F6F6F6;padding:10px;margin:0 10px 0 10px;}
 .property li {float:left;width:30%;height:22px;line-height:22px;overflow:hidden;}
-.detail {background:url('image/arrow.gif') no-repeat 0 9px;border-bottom:#C0C0C0 1px dotted;padding:8px 0 8px 20px;margin:0 15px 0 15px;}
+.detail {/* background:url('image/arrow.gif') no-repeat 0 9px;border-bottom:#C0C0C0 1px dotted;padding:8px 0 8px 20px;margin:0 15px 0 15px; */}
 .related {padding:5px 15px 5px 15px;line-height:22px;}
 /* layout */
 .m_l {width:827px;}
@@ -253,9 +253,10 @@ a.g:hover {color:#FF6600;}
 .category {padding:10px 20px 5px 15px;}
 .category p {padding:5px 0 5px 0;margin:0;}
 .category div {padding:0 20px 0 20px;}
-.list {position:relative;margin:1px 6px;clear:both;padding:10px 0;border-top:1px solid #f5f5f5;height:104px;background:#FFF;}
+.list {position:relative;margin:1px 6px;clear:both;padding:10px 0;border-top:1px solid #d7d7d7;height:104px;background:#FFF;}
 .list:hover {background:#f5f5f5;}
 .list > input {position:absolute;top:12px;left:2px;}
+.list > ul {margin-top:15px;}
 .list > div {float:left;margin-right:18px;}
 .list > div img {width:100px;height:100px;border:0;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
 .list h3 {font-size:14px;margin:0px;height:22px;overflow:hidden;}
@@ -379,3 +380,11 @@ text-align: left;
 }
 
 .pr10 {padding-right:10px;}
+
+/* AD image height global setting */
+.h110 {height:110px;}
+.h65 {height:65px;}
+.h196 {height:196px;}
+.h398 {height:398px;}
+.h134 {height:134px;}
+.h200 {height:200px;}

@@ -1,81 +1,62 @@
 {template 'header'}
 <div class="m">
-<div class="m_l f_l">
-	<div class="left_box">		
-		<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo; </div>
-		<div class="info_main">		
-			<table width="100%">
-			<td width="250" valign="top">
-				<div class="album">
-					<table width="100%" cellpadding="0" cellspacing="0">
-					<tr align="center">
-					<td width="250" valign="top"><div><span id="abm" title="点击查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
-					</tr>
-					<tr>
-					<td>
-					{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
-					</tr>
-					<tr align="center">
-					<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> See Original Image</td>
-					</tr>
-					</table>
-				</div>
-			</td>
-			<td width="15"> </td>
-			<td valign="top">
-			<h1 class="title_trade">{$title}</h1>
-			<ul>
-			<li><strong>Updated</strong>：{$editdate}</li>
-			<li><strong>Valid Date</strong>：{if $todate}{$todate}{else}permanent{/if}{if $expired} <span class="f_red">[expired]</span>{/if}</li>
-			<li><strong>Views</strong>：<span id="hits">{$hits}</span></li>
-			</ul>
-			</td>
-			</tr>
-			</table>
-		</div>
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog','chip'}
+		{/if}
 
-		{if $CP}{template 'property', 'chip'}{/if}
-		<div class="content" id="content">{$content}</div>
 		<div class="b10">&nbsp;</div>
-		<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
-		<input type="hidden" name="itemid" value="{$itemid}"/> 
-		<input type="hidden" name="title" value="{$title}"/>
-		<input type="hidden" name="linkurl" value="{$linkurl}"/>
-		</form>
-		<center>
-		[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]} search</a> ]&nbsp;
-		[ <script type="text/javascript">addFav('+ Favorite');</script> ]&nbsp;
-		[ <a href="javascript:Dd('sendmail').submit();void(0);">share</a> ]&nbsp;
-		[ <a href="javascript:Print();">print</a> ]&nbsp;
-		[ <a href="javascript:window.close()">close</a> ]
-		</center>
-		<br/>
-		{if $MOD[show_message]}
-		<div class="left_head">leave a message<a name="join"></a></div>
-		<div class="pd10"><script type="text/javascript">show_message('{$MOD[linkurl]}', {$itemid});</script></div>
-		{/if}
-		{template 'comment', 'chip'}
-		<br/>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
 	</div>
-</div>
-<div class="m_n f_l">&nbsp;</div>
-	<div class="m_r f_l">
-		<div class="contact_head">Contact Info</div>		
-		<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
-		<div class="b10 c_b">&nbsp;</div>		
-		{if $MOD[page_srelate]}
-		{if $username}
-		<div class="box_head_1"><div><strong>Other New {$MOD[name]}</strong></div></div>
-		<div class="box_body f_gray li_dot">
-		<!--{tag("moduleid=$moduleid&condition=status=3 and username='$username'&pagesize=".$MOD[page_srelate]."&order=addtime desc", -2)}-->
+
+	<div class="m_l_0 f_l">
+		<div class="b10">&nbsp;</div>
+		<!-- top slideshow AD -->
+		<!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>''&order=rand()&pagesize=5&template=ebook-slideshow",-1)}-->		
+	
+		<div class="b15"> </div>		
+		<h1 class="title">{$title}</h1>	
+	
+		<div class="m_l_1">
+			
+			<div class="info px13"><!-- <span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字体" class="c_p" onclick="fontZoom('+');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="缩小字体" class="c_p" onclick="fontZoom('-');"/></span> -->
+			Updated:{$adddate}
+			&nbsp;&nbsp;Views:&nbsp;<span id="hits">{$hits}</span>
+			</div>
+			<div class="contact f_r">
+				<div class="contact_head">Company Profile</div>
+				<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+				<div class="b10 c_b">&nbsp;</div>
+				<br/>
+				<img src="#" width="100" height="50" title="按鈕" />
+			</div>		
+			<span class="banner"><img src="{$thumb}" alt="{$title}"/></span>
+			<div class="detail">		
+				<div class="box_head_2">
+					<div>
+						<strong>Description</strong>
+					</div>
+				</div>
+				<div class="box_body">
+					<div id="content">{template 'content', 'chip'}</div>
+				</div>
+				<div class="b10">&nbsp;</div>
+				{if $CP}{template 'property', 'chip'}{/if}
+				{template 'show_toolbar','chip'}
+				<div class="b10">&nbsp;</div>
+				{if $MOD[show_message]}
+				<div class="left_head">leave a message<a name="join"></a></div>
+				<div class="pd10"><script type="text/javascript">show_message('{$MOD[linkurl]}', {$itemid});</script></div>
+				{/if}
+				{template 'comment', 'chip'}				
+			</div>
 		</div>
-		{else}
-		<div class="box_head_1"><div><strong>Related {$MOD[name]}</strong></div></div>
-		<div class="box_body f_gray li_dot">
-		<!--{tag("moduleid=$moduleid&condition=status=3&catid=$catid&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=addtime desc", -2)}-->
-		</div>
-		{/if}
-		{/if}
 	</div>
 </div>
 {template 'zoom', 'chip'}

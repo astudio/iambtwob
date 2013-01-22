@@ -1,42 +1,58 @@
-/*==========Home, Collections page==========*/
-#tab_nav {position:absolute;left:534px;top:251px;}
-#tab_nav .more {position:relative;left:289px;top:16px;width:110px;}
+.title {border:none !important;font-size:15px;}
+.box_body {border:none !important;}
 /* root element for tabs  */
-ul.playlist {list-style:none;margin:0 !important;padding:0;}
-/* single tab */
-ul.playlist li {float:left;text-indent:0;padding:0;margin:0 !important;   list-style-image:none !important;}
-/* link inside the tab. uses a background image */
-ul.playlist a {display:block;width: 134px;text-align:center;text-decoration:none; position:relative;top:1px;}
-ul.playlist a:active {outline:none;}
-/* when mouse enters the tab move the background image */
-ul.playlist a:hover {
+ul.tabs {
+    list-style:none;
+    margin:0 !important;
+    padding:0;
+    border-bottom:3px solid #00aeef;
+    height:24px;
 }
-/* active tab uses a class name "current". its highlight is also done by moving the background image. */
-ul.playlist a.current, ul.playlist a.current:hover, ul.playlist li.current a {	cursor:default;}
-#panes {	width: 940px;height: 339px;position: relative;}
-#panes > div {display:none;position:absolute;width:940px;}
-#panes > div > aside {float:right;padding-left:8px;}
-/*==============Videos=================*/
-/* root element for tabs  */
-ul.tabs {list-style:none;margin:0 5px 0 8px !important;padding:0;border-bottom:1px solid #666;height:30px;}
+
 /* single tab */
-ul.tabs li {float:left;text-indent:0;padding:0;margin:0 !important;list-style-image:none !important;width: 50%;*width:49.9%;}
+ul.tabs li {
+	width:120px;
+	height:24px;
+    float:left;
+    text-indent:0;
+    padding:0;
+    margin:0 !important;
+    list-style-image:none !important;
+}
+
 /* link inside the tab. uses a background image */
-ul.tabs a {font-size:11px;display:block;height: 30px;line-height:30px;text-align:center;
-text-decoration:none;color:#FFF;padding:0px;margin:0px;position:relative;top:1px;font-size:14px;background:#ffa400;}
-ul.tabs a:active {outline:none;}
+ul.tabs a {
+   /*  background: url(/media/img/tabs/blue.png) no-repeat -420px 0; */
+    display:block;
+    height: 24px;
+    line-height:24px;
+    text-align:center;
+    text-decoration:none;
+    color:#FFF;
+	padding:0 20px 0 10px;
+    margin:0px;
+    position:relative;
+    top:1px;
+	background:#d7d7d7 url('image/buy_type.png') no-repeat 102px 0;
+}
+
+ul.tabs a:active {
+    outline:none;
+}
+
 /* when mouse enters the tab move the background image */
-ul.tabs a:hover {color:#fff;}
+ul.tabs a:hover {
+	background:#00AEEF url('image/buy_type.png') no-repeat 102px 0;
+}
+
 /* active tab uses a class name "current". its highlight is also done by moving the background image. */
-ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {cursor:default !important;color:#000 !important;	background:#FFF;}
-ul.tabs a:not(.current):hover {background:#ec6941;}
-/* right sidebar common css */
-.panes {margin:0 5px 0 8px;}
-.panes > div {background:#FFF;padding:6px 0;height:384px;}
-.panes > div li {height:74px;padding:3px 15px;}
-.panes > div li > a {text-decoration:none;*cursor:pointer;}
-.panes > div li .thumbnail {float:left;width:100px;height:68px;border:1px solid #999999;margin-right:14px;padding:3px;background:#FFF;}
-.panes > div li  .title {margin-top:3px;font-size:14px;color:#00a0ff;text-decoration:none;width:214px;display:block;text-decoration:none;*width:207px;}
-.panes > div li  .date {float:left;color:#727171;font-size:10px;font-family:Arial;line-height:10px;}
-.panes > div li  .abstract {float:left;font-size:13px;height:32px;width:214px;overflow:hidden;line-height:16px;color:#000;}
-.panes > div li:hover {background:#fff4b2;}
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+/*     background-position: -420px -62px; */
+    cursor:default !important;
+	background:#00AEEF url('image/buy_type.png') no-repeat 93px 0;
+}
+
+/* initially all panes are hidden */
+.panes .pane {
+    display:none;
+}

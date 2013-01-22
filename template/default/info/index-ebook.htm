@@ -24,7 +24,7 @@
 		
 		{if $MOD[page_icat]}
 			{loop $maincat $i $c}
-				<h2 class="title"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">more >></a></span>{$c[catname]}</h2>
+				<h2 class="title">{$c[catname]}</h2>
 				<div class="box_body f_gray">					
 					{if $c[child]}
 					{php $sub = get_maincat($c[catid], $mid, 1);}				
@@ -35,8 +35,10 @@
 						</ul>
 						
 						<div class="panes">
-							{loop $sub $j $s}
-								<div><!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>'' and catid=".$s[catid]."&order=rand()&pagesize=6&template=list-info",-1)}--></div>
+							{loop $sub $j $s} 
+								<div><!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>'' and catid=".$s[catid]."&order=rand()&pagesize=6&template=ebook-index-tabs",-1)}-->
+								<div class="more"><a href="{$MOD[linkurl]}{$s[linkurl]}">More >></a></div>
+								</div>
 							{/loop}	
 						</div>
 					{/if}		

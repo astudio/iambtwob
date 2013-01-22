@@ -1,0 +1,17 @@
+<ul class="booklist">
+	{loop $tags $k $t}
+	<li>
+		<div>
+			<a href="{$t[linkurl]}" target="_blank"><img class="f_l" src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
+		</div>
+		
+		<ul>
+			<li><a class="publisher px14" href="{userurl($t[username])}" target="_blank">{$t[company]}</a></li>
+			<li><span class="f_gray px13">{timetodate($t[edittime], $datetype)}&nbsp;&nbsp;</span>
+			</li>			
+			<li class="intro f_gray px13">Description:<br/>{$t[introduce]}</li>
+		</ul>
+	</li>
+	{/loop}
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

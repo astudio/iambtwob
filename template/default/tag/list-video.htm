@@ -1,13 +1,17 @@
-<table width="100%">
-{loop $tags $i $t}
-{if $i%$cols==0}<tr align="center">{/if}
-<td width="{$percent}" valign="top"><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}><img src="{$t[thumb]}" width="{$width}" height="{$height}" alt="{$t[alt]} ({$t[hits]}播放)"/></a>
-<ul>
-<li><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}>{$t[title]}</a></li>
-{if $datetype}<li class="px11 f_gray">{timetodate($t[addtime], $datetype)}</li>{/if}
-</ul>
-</td>
-{if $i%$cols==($cols-1)}</tr>{/if}
-{/loop}
-</table>
+<div class="Lists">
+	{loop $tags $i $t}
+		<div class="list" id="item_{$t[itemid]}">
+			<div><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]} (Views:{$t[hits]})"/></a></div>
+		
+			<ul>
+				<li><a class="videoTitle px14" href="{$t[linkurl]}"{if $target} target="{$target}"{/if}>{$t[title]}</a></li>
+				{if $datetype}<li class="px13 f_gray">{timetodate($t[addtime], $datetype)}</li>{/if}
+				<li>
+				<span class="f_orange px13">Description:</span><br/>
+				<div class="px13">{$t[keyword]}</div>
+				</li>
+			</ul>
+		</div>
+	{/loop}
+</div>
 {if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

@@ -1,7 +1,7 @@
 <div class="Lists">
 	{loop $tags $k $t}
 		<div class="list" id="item_{$t[itemid]}">
-			<div><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="80" alt="{$t[alt]}"/></a></div>
+			<div><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a></div>
 			
 			<ul>
 				<li>{if $t[vip]}<!-- <span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span> -->{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>

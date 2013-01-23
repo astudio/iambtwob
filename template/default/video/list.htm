@@ -1,42 +1,55 @@
+{php $CSS = array('tabs');$JS = array('player');}
 {template 'header'}
 <script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
 <div class="m">
-	<table cellpadding="0" cellspacing="0" width="100%">
-	<tr>
-	<td valign="top" class="left_menu">
-		<ul>
-		<li class="{if $CAT[child]}left_menu_on{else}left_menu_li{/if}"><a href="{$MOD[linkurl]}">All Categories</a></li>
-		{loop $maincat $k $v}
-		<li class="{if $v[catid]==$catid}left_menu_on{else}left_menu_li{/if}"><a href="{$MOD[linkurl]}{$v[linkurl]}">{if $v[child]}+{else}-{/if}{set_style($v[catname],$v[style])}({$v[item]})</a></li>
-		{/loop}
-		</ul>
-	</td>
-	<td valign="top">
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog','chip'}
+		{/if}
+
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
+	</div>
+	
+	<div class="m_l_0 f_l">
+		<div class="b10">&nbsp;</div>
+		<!-- top slideshow AD -->
+		<!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3&order=rand()&pagesize=5&template=video-slideshow",-1)}-->
+	
+		<div class="b15"> </div>	
+	
 		<div class="left_box">
-			<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
 			{if $CP}
-			<div class="b10">&nbsp;</div>
-			{loop $PPT $p}
-			<div class="ppt">
-				<table cellpadding="0" cellspacing="0" width="100%">
-				<tr>
-				<td class="ppt_l" valign="top">by{$p[name]}</td>
-				<td class="ppt_r" valign="top">
-				{loop $p[options] $o}
-				<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
+				{loop $PPT $p}
+				<div class="ppt">
+					<table cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+					<td class="ppt_l" valign="top">by{$p[name]}</td>
+					<td class="ppt_r" valign="top">
+					{loop $p[options] $o}
+					<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
+					{/loop}
+					</td>
+					</tr>
+					</table>
+				</div>
 				{/loop}
-				</td>
-				</tr>
-				</table>
-			</div>
-			{/loop}
 			{/if}
-			<div class="pd10">
-				<div class="thumb">{if $tags}{template 'list-'.$module, 'tag'}{/if}</div>
+			<div class="box_head_1">
+				<div>
+					<span class="px14">{$CAT['catname']}</span>
+				</div>
 			</div>
+			
+			<div class="b10">&nbsp;</div>
+			<!--{tag("moduleid=$moduleid&condition=status=3&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=3&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-video")}-->
 		</div>
-	</td>
-	</tr>
-	</table>
+	</div>
 </div>
 {template 'footer'}

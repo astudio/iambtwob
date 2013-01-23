@@ -2,12 +2,12 @@
 <div class="m">
 <div class="m_l_1 f_l">
 	<div class="left_box">		
-		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; <a href="{$MOD[linkurl]}search.php">搜索</a></div>
+		<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; <a href="{$MOD[linkurl]}search.php">search</a></div>
 		<div class="fsearch">
 			<form action="{$MOD[linkurl]}search.php" id="fsearch">
 			<table cellpadding="5" cellspacing="3">
 			<tr>
-			<td width="80" align="right">關 鍵 詞：</td>
+			<td width="80" align="right">keywords：</td>
 			<td>
 			<input type="text" size="60" name="kw" value="{$kw}" class="pd3"/>
 			</td>
@@ -21,20 +21,20 @@
 			</td>
 			</tr>
 			<tr>
-			<td align="right">所屬分類：</td>
+			<td align="right">In this category：</td>
 			<td>
 			{$category_select}&nbsp;&nbsp;
-			所在地區：{$area_select}
+			Location：{$area_select}
 			</td>
 			</tr>
 			<tr>
-			<td align="right">更新日期：</td>
+			<td align="right">Date：</td>
 			<td>
-			{dcalendar('fromdate', $fromdate, '')} 至 {dcalendar('todate', $todate, '')}
+			from{dcalendar('fromdate', $fromdate, '')} to {dcalendar('todate', $todate, '')}
 			</td>
 			</tr>
 			<tr>
-			<td align="right">排序方式：</td>
+			<td align="right">Sort by：</td>
 			<td>
 			{$order_select}
 			</td>
@@ -52,10 +52,10 @@
 		<div class="ppt">
 			<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-			<td class="ppt_l" valign="top">按{$p[name]}</td>
+			<td class="ppt_l" valign="top">by{$p[name]}</td>
 			<td class="ppt_r" valign="top">
 			<input type="hidden" name="ppt_{$p[oid]}" id="ppt_{$p[oid]}" value="{$p[select]}"/>
-			<a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>全部</span>{else}全部{/if}</a>
+			<a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>all</span>{else}all{/if}</a>
 			{loop $p[options] $o}
 			&nbsp;|&nbsp;<a href="###" onclick="Dd('ppt_{$p[oid]}').value='{$o}';Dd('fsearch').submit();">{if $p[select]==$o}<span>{$o}</span>{else}{$o}{/if}</a>
 			{/loop}
@@ -81,7 +81,7 @@
 <div class="m_n f_l">&nbsp;</div>
 <div class="m_r_1 f_l">
 	{if $kw}
-	<div class="box_head_1"><div><strong>相關搜索</strong></div></div>
+	<div class="box_head_1"><div><strong>Related Searches</strong></div></div>
 	<div class="box_body">
 		<div class="sch_site">
 			<ul>
@@ -93,21 +93,21 @@
 	<div class="b10">&nbsp;</div>
 	{/if}
 	<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
-	<div class="box_head_1"><div><strong>今日搜索排行</strong></div></div>
+	<div class="box_head_1"><div><strong>Hot Search</strong></div></div>
 	<div class="box_body">
 		<div class="rank_list">
 			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400&pagesize=10&order=today_search desc&key=today_search&template=list-search_rank", -2)}-->
 		</div>		
 	</div>
 	<div class="b10">&nbsp;</div>
-	<div class="box_head_1"><div><strong>本周搜索排行</strong></div></div>
+	<div class="box_head_1"><div><strong>Hot Search of Week</strong></div></div>
 	<div class="box_body">
 		<div class="rank_list">
 			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
 		</div>		
 	</div>
 	<div class="b10">&nbsp;</div>
-	<div class="box_head_1"><div><strong>本月搜索排行</strong></div></div>
+	<div class="box_head_1"><div><strong>Hot Search of Month</strong></div></div>
 	<div class="box_body">
 		<div class="rank_list">
 			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=list-search_rank", -2)}-->

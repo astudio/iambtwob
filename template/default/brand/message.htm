@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
 <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}{/if}</title>
 <link rel="stylesheet" type="text/css" href="{DT_SKIN}message.css"/>
 <link rel="shortcut icon" href="{DT_PATH}favicon.ico"/>
@@ -23,51 +23,51 @@ if(parent.location == window.location) window.location='{$linkurl}';
 <table width="100%" cellpadding="8" cellspacing="1" bgcolor="#C5D7ED">
 {if $error}
 <tr>
-<td bgcolor="#FFFEBF" align="right"><strong>提示信息</strong>：</td>
+<td bgcolor="#FFFEBF" align="right"><strong>Tips</strong>：</td>
 <td bgcolor="#FFFEBF">{$error}</td>
 </tr>
 {/if}
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> 留言主題：</td>
-<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title"/><br/><span class="f_gray">建議您修改主題，吸引對方注意,得到優先回復!</span> <br/><span class="f_red" id="dtitle"></span></td>
+<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Subject：</td>
+<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title"/><br/><span class="f_gray">Tell The Supplier What You Want!</span> <br/><span class="f_red" id="dtitle"></span></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">快捷提問：</td>
+<td bgcolor="#F1F7FC" align="right">Question：</td>
 <td bgcolor="#FFFFFF">
 <select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
-<option value="">請選擇常用問題</option>
+<option value="">Select a topic</option>
 {loop $iask $v}
 <option value="{$v}">{$v}</option>
 {/loop}
 </select>
-<span class="f_gray">(不用打字 「快捷提問」幫您忙！) </span>
+<span class="f_gray">(Simple way to tell your needs！) </span>
 </td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> 主要內容：</td>
+<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Content：</td>
 <td bgcolor="#FFFFFF"><textarea rows="6" cols="70" name="content" id="content" onfocus="H();">{$content}</textarea><br/>
-我希望在 {dcalendar('date', $date)} 日前回復 <span class="f_red" id="dcontent"></span>
+Contact me before  {dcalendar('date', $date)} <span class="f_red" id="dcontent"></span>
 </td>
 </tr>
 {if $_userid}
 <tr>
-<td bgcolor="#F1F7FC" align="right"><strong>聯繫方式：</strong></td>
+<td bgcolor="#F1F7FC" align="right"><strong>Contact Info：</strong></td>
 <td bgcolor="#F1F7FC">&nbsp; </td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">公司：</td>
+<td bgcolor="#F1F7FC" align="right">Company：</td>
 <td bgcolor="#FFFFFF">{$company}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">姓名：</td>
+<td bgcolor="#F1F7FC" align="right">Name：</td>
 <td bgcolor="#FFFFFF">{$truename}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">電話：</td>
+<td bgcolor="#F1F7FC" align="right">Tel：</td>
 <td bgcolor="#FFFFFF">{$telephone}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">郵件：</td>
+<td bgcolor="#F1F7FC" align="right">E-mail：</td>
 <td bgcolor="#FFFFFF">{$email}</td>
 </tr>
 <tr>
@@ -80,23 +80,22 @@ if(parent.location == window.location) window.location='{$linkurl}';
 </tr>
 {else}
 <tr>
-<td bgcolor="#F1F7FC" align="right"><strong>聯繫方式：</strong></td>
-<td bgcolor="#F1F7FC">還不是會員？請 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">註冊</a> 或 請留下您的聯繫方式&nbsp;&nbsp;已經是會員？請 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">登錄</a></td>
-</tr>
+<td bgcolor="#F1F7FC" align="right"><strong>Contact Info：</strong></td>
+<td bgcolor="#F1F7FC"> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">Sign Up Now!</a> or Leave your Message&nbsp;&nbsp;I am member! <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">Log in</a></td></tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">公司</td>
+<td bgcolor="#F1F7FC" align="right">Company</td>
 <td bgcolor="#FFFFFF"><input type="text" name="company" size="30" id="company"/></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> 姓名</td>
+<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Name</td>
 <td bgcolor="#FFFFFF"><input type="text" name="truename" size="30" id="truename"/> <span class="f_red" id="dtruename"></span></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> 電話</td>
+<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Tel</td>
 <td bgcolor="#FFFFFF"><input type="text" name="telephone" size="30" id="telephone"/> <span class="f_red" id="dtelephone"></span></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">郵箱</td>
+<td bgcolor="#F1F7FC" align="right">E-mail</td>
 <td bgcolor="#FFFFFF"><input type="text" name="email" size="30" id="email"/> <span class="f_red" id="demail"></span></td>
 </tr>
 {if $DT[im_qq]}
@@ -126,31 +125,31 @@ if(parent.location == window.location) window.location='{$linkurl}';
 {/if}
 {if $need_question}
 <tr onmouseout="H();">
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> 驗證問題：</td>
+<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Security Question：</td>
 <td bgcolor="#FFFFFF">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
 </tr>
 {/if}
 {if $need_captcha}
 <tr onmouseout="H();">
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> 驗證碼：</td>
+<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Security Code：</td>
 <td bgcolor="#FFFFFF">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 {/if}
 {if $_userid && $DT[sms]}
 <tr>
 <td bgcolor="#F1F7FC" align="right">短信通知：</td>
-<td bgcolor="#FFFFFF"><input type="checkbox" name="sendsms" value="1"/> 發送短信通知至接收人手機 (<a href="{$MODULE[2][linkurl]}sms.php" target="_blank">我的可用短信 <strong class="f_blue">{$_sms}</strong> 條</a>)</td>
+<td bgcolor="#FFFFFF"><input type="checkbox" name="sendsms" value="1"/> 发送短信通知至接收人手机 (<a href="{$MODULE[2][linkurl]}sms.php" target="_blank">My 可用短信 <strong class="f_blue">{$_sms}</strong> 条</a>)</td>
 </tr>
 {/if}
 <tr>
 <td bgcolor="#F1F7FC"> </td>
 <td bgcolor="#FFFFFF">
-<input type="submit" name="submit" value=" 提交 "{if $error} disabled{/if}/>&nbsp;
-<input type="reset" name="reset" value=" 重寫 "/>
+<input type="submit" name="submit" value=" Submit "{if $error} disabled{/if}/>&nbsp;
+<input type="reset" name="reset" value=" Reset "/>
 {if $MG[message_limit]}
-&nbsp;&nbsp;今日可發 <span class="f_b f_red">{$MG[message_limit]}</span> 次
-&nbsp;&nbsp;當前已發 <span class="f_b">{$limit_used}</span> 次
-&nbsp;&nbsp;還可以發 <span class="f_b f_blue">{$limit_free}</span> 次
+&nbsp;&nbsp;You can send <span class="f_b f_red">{$MG[message_limit]}</span> today
+&nbsp;&nbsp;You`ve sent <span class="f_b">{$limit_used}</span> 
+&nbsp;&nbsp;<span class="f_b f_blue">{$limit_free}</span> available
 {/if}
 </td>
 </tr>
@@ -167,27 +166,27 @@ function check() {
 	var f;
 	f = 'title';
 	l = Dd(f).value.length;
-	if(l < 5 || l > 50) {
-		Dmsg('主題應為5-50字，當前已輸入'+l+'字', f);
+	if(l < 30 || l > 50) {
+		Dmsg('Min.30/Max.50， Current'+l+'', f);
 		return false;
 	}
 	f = 'content';
 	l = Dd(f).value.length;
-	if(l < 10 || l > 2000) {
-		Dmsg('內容應為10-2000字，當前已輸入'+l+'字', f);
+	if(l < 100 || l > 2000) {
+		Dmsg('Min.100/Max.2000， Current'+l+'', f);
 		return false;
 	}
 	{if !$_userid}
 	f = 'truename';
 	l = Dd(f).value.length;
 	if(l < 2) {
-		Dmsg('請填寫聯繫人', f);
+		Dmsg('Enter Name', f);
 		return false;
 	}
 	f = 'telephone';
 	l = Dd(f).value.length;
 	if(l < 7) {
-		Dmsg('請填寫聯繫電話', f);
+		Dmsg('Enter Tel', f);
 		return false;
 	}
 	{/if}
@@ -195,7 +194,7 @@ function check() {
 	f = 'captcha';
 	l = Dd(f).value;
 	if(!is_captcha(l)) {
-		Dmsg('請填寫正確的驗證碼', f);
+		Dmsg('Enter Security Code', f);
 		return false;
 	}
 	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
@@ -207,7 +206,7 @@ function check() {
 	f = 'answer';
 	l = Dd(f).value.length;
 	if(l < 1) {
-		Dmsg('請填寫驗證問題', f);
+		Dmsg('Answer The Question', f);
 		return false;
 	}
 	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {

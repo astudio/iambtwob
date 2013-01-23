@@ -3,9 +3,9 @@
 <div class="m">
 	<div class="m_l_1 f_l">
 	<div class="left_box">		
-		<div class="pos">&nbsp;當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
+		<div class="pos">&nbsp;You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
 		<div class="category">
-			<p><img src="{DT_SKIN}image/arrow.gif" width="17" height="12" alt=""/> <strong>按分類瀏覽</strong></p>
+			<p><img src="{DT_SKIN}image/arrow.gif" width="17" height="12" alt=""/> <strong>All Categories</strong></p>
 			<div>
 			<table width="100%" cellpadding="3">
 			{loop $maincat $k $v}
@@ -21,7 +21,7 @@
 		<div class="ppt">
 			<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-			<td class="ppt_l" valign="top">按{$p[name]}</td>
+			<td class="ppt_l" valign="top">by{$p[name]}</td>
 			<td class="ppt_r" valign="top">
 			{loop $p[options] $o}
 			<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
@@ -40,14 +40,14 @@
 	<div class="m_n f_l">&nbsp;</div>
 	<div class="m_r_1 f_l">
 		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
-		<div class="box_head_1"><div><strong>本周搜索排行</strong></div></div>
+		<div class="box_head_1"><div><strong>Hot Search of Week</strong></div></div>
 		<div class="box_body">
 			<div class="rank_list">
 				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
 			</div>		
 		</div>
 		<div class="b10">&nbsp;</div>
-		<div class="box_head_1"><div><strong>按地區瀏覽</strong></div></div>
+		<div class="box_head_1"><div><strong>Location</strong></div></div>
 		<div class="box_body">
 		{php $mainarea = get_mainarea(0)}
 		<table width="100%" cellpadding="3">

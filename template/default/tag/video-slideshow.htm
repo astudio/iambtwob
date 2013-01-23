@@ -7,9 +7,10 @@
 <div class="slideshow">	
 	<div id="tab_nav">
 		<ul>
-			{loop $tags $i $t}		
+			{loop $tags $i $t}
+				{php $cat = get_cat($t[catid]);$company = get_user($t['username'],'username','company');}
 				<li {if $i==$pagesize-1} class="nobb"{/if}>
-					<a href="javascript:;" onclick="Pl('{$t[video]}',{$t[player]},1,{$i});">{$t[title]}&nbsp;<span class="f_orange px13">{$cat[catname]}</span><span class="f_gray px13">&nbsp;[{$t[company]}]</span></a>
+					<a href="javascript:;" onclick="Pl('{$t[video]}',{$t[player]},1,{$i});">{$t[title]}&nbsp;<span class="f_orange px13">{$cat[catname]}</span><span class="f_gray px13">&nbsp;[{$company}]</span></a>
 				</li>
 			{/loop}	
 		</ul>

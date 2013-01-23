@@ -58,12 +58,20 @@ a:hover {color:#F60;}
 /* crossfading effect needs absolute positioning from the elements */
 #panes div {  display:none;  position:absolute;  top:0;  left:0;  }
 #panes img {  width:400px;  height:200px;  float:left;  }
+/*===================category=======================*/
+ul.tabs {border:0;height:25px;}
+.panes {border:1px solid #d7d7d7;}
 
 /* list */
-.Lists {margin:0 0 0 10px;}
-.list {height:100px;padding:10px 46px 10px 25px;border-top:none;border-bottom:1px solid #d7d7d7;}
-.list > div img {width:150px;}
+.Lists {margin:20px 0 20px 20px;}
+.list {width:48%;height:140px;padding:10px 10px 10px 5px;border-top:none;float:left;margin:0;clear:none;}
+.list > div {margin-right:13px;}
+.list > ul {margin-top:0;}
+.list > ul > li {height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.list > div img {width:250px;height:140px;}
+.list .videoTitle {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .box_head_1 span {padding:5px 15px;background:#00aeef;line-height:25px;color:#FFF;}
+.more {clear:both;text-align:right;padding:20px;text-decoration:underline;}
 
 /* show */
 .banner img {width:300px;height:200px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}

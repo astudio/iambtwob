@@ -5,6 +5,7 @@
 		<noscript><img class="nolazy{if $i%$cols==($cols-1)} nomargin{/if}" src="{$t[thumb]}" width="{$width}" height="{$height}"/></noscript>
 		<span>{$t[title]}</span>
 	</a>
+{if $i%$cols==6}<div class="b10"> </div>{/if}	
 {if $i%$cols==($cols-1)}</div>{/if}
 {/loop}
 {if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

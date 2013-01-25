@@ -7,7 +7,22 @@
 .brand_logo {border:#EEEEEE 1px solid;padding:5px;margin:0 0 10px 0;}
 .brand_video {text-align:center;padding:15px 0 15px 0;}
 .brand_pdt {border-top:#AACCEE 1px dotted;height:10px;font-size:1px;} */
-
+a:link, a:visited, a:active {color:#0569b4;}
+a:hover {color:#F60;}
+/*==============Slideshow=========================*/
+.images img {width:827px;height:218px;}
+.slidetabs {height:100%;border-top:none;margin:0;background:none;position:relative;left:738px;bottom:5px;}
+.slidetabs a {width:auto;margin:2px;padding:0 4px;border:1px solid #4a4a4b;background:#a4a4a4;color:#4a4a4b;}
+.slidetabs a.current {border:1px solid #666666;background:#666;color:#FFF;}
+/*==============Alphabet=====================*/
+.Alphabet {margin:5px 0;}
+.alphabet {font-size:14px;margin-left:15px;display:inline-block;*display:inline;zoom:1;}
+.alphabet li {display:inline-block;*display:inline;zoom:1;padding:0 2px;}
+.alphabet li a.f_gray {color:#666;}
+.sep {margin-left:25px;}
+/*==============Category======================*/
+ul.tabs {height:25px;}
+ul.tabs li {background:transparent;}
 /*==============Scrollable====================*/
 .Scrollable, .scrollable, a.browse {height:320px;}
 .scrollable .items .b10 {margin:0;}

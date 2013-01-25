@@ -10,7 +10,7 @@
 	<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
 {/if}
 
-<div class="tool">		
+<div class="tool{if $moduleid==4} company{/if}">		
 	<div class="box_head_1">
 		{if $moduleid==5}
 			<div class="buttons f_r">
@@ -24,7 +24,7 @@
 			<li><a href="{$MODULE[4][linkurl]}"{if $moduleid==4} class="current"{/if}>Company</a></li>	
 		</ul>
 	</div>
-	{if $MOD[group]}
+	{if $MOD[group] || $moduleid==4}
 		<div class="result f_r">
 			<span class="resultSpan"><span class="f_r px11">(<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $items<$pagesize*$page ? $items : $pagesize*$page;}?> out of <?php echo $group ? $total : $items;?>)</span><strong>Result{if $items>1}s{/if}{if $catid} for <span class="f_red">{$CAT[$catid]}</span>{/if}:</strong></span> {$items} product{if $items>1}s{/if}{if $MOD[group]} from {$total} {if $total>1}companies{else}company{/if}{/if}
 		</div>

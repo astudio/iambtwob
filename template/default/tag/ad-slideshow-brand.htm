@@ -1,0 +1,25 @@
+{if $tags}
+	{if $no}<div style="position:relative;">{else}<div>{/if}
+		<!-- "previous slide" button -->
+		<!-- <a class="backward">prev</a> -->
+		<!-- container for the slides -->
+		<div class="images{$no}">
+			{loop $tags $i $t}
+				<div>
+					{if $t[url]}<a href="{DT_PATH}extend/redirect.php?aid={$t[aid]}" target="_blank">{/if}{if $no && $i>1}<img src="{$t[image_src]}" alt="{$t[image_alt]}" />{else}<img src="{$t[image_src]}" alt="{$t[image_alt]}" />{/if}{if $t[url]}</a>{/if}
+				</div>
+			{/loop}
+		</div>
+		<!-- "next slide" button -->
+		<!-- <a class="forward">next</a> -->
+		<!-- the tabs -->
+		<div class="slidetabs{$no}">
+			{loop $tags $i $t}
+				{php $j = $i+1;}
+				<a href="javascript:;"><div class="ad_title">{$j}</div></a>
+			{/loop}
+		</div>
+	</div>
+{else}
+	<a href="{DT_PATH}ad" target="_blank"><img src="{DT_SKIN}image/ad/ad_{$id}.gif" width="{$width}" height="{$height}" alt="購買廣告請聯絡貿易眼" title="購買廣告請聯絡貿易眼" border="0"/></a>
+{/if}	

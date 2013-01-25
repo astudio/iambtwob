@@ -1,4 +1,4 @@
-{php $CSS = array('index');$JS = array('index_n');}
+{php $CSS = array('index','tabs');$JS = array('index_n');}
 {template 'header'}
 <div class="m">
 	<div class="f_l side">
@@ -25,28 +25,56 @@
 			</div>
 			<div class="topl">
 				<!-- 1st slideshow (AD) -->
-				<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=16&template=ad-slideshow",-1)}-->
+				<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=16&template=ad-slideshow-brand",-1)}-->
 			</div>				
 		</div>
 					
 		<div class="b10">&nbsp;</div>
 		
+		<div class="f_l main">
+			<div class="box_head_1"><div><a href="http://demo.imb2b.com/sell/"><strong>Search the parts directory</strong></a></div></div>			
+			
+			<div class="Alphabet">
+				<span class="f_gray f_l px14">Brands: </span>			
+				<ul class="alphabet">
+					<li><a class="f_gray" href="{$MOD[linkurl]}search.php?letter=0" target="_blank">0-9</a></li>
+					{loop $LETTER $c}
+					<li><a href="{$MOD[linkurl]}search.php?letter={$c}" target="_blank">{strtoupper($c)}</a></li>
+					{/loop}
+				</ul>
+
+				<span class="f_gray px14 sep">Suppliers: </span>
+				
+				<ul class="alphabet">
+					<li><a class="f_gray" href="{$MOD[linkurl]}search.php?letter=0" target="_blank">0-9</a></li>
+					{loop $LETTER $c}
+					<li><a href="{$MOD[linkurl]}search.php?letter={$c}" target="_blank">{strtoupper($c)}</a></li>
+					{/loop}
+				</ul>
+			</div>
+			<div class="bSearch">
+				<label class="f_gray f_l px14" for="bsearch">Search: </label>
+				<form action="{$MOD[linkurl]}search.php">
+					<input type="text" id="bsearch" name="kw" />
+					<input type="submit" value="Search" />
+				</form>
+			</div>	
+		</div>
+		
 		<div class="m_l f_l">
-			{if $MOD[page_icat]}
-			<table cellpadding="0" cellspacing="0" width="100%">
-			{loop $maincat $i $c}
-			{if $i%2==0}<tr>{/if}
-			<td valign="top" width="330">
-				<div class="b10"></div>
-				<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">more..</a></span><strong>{$c[catname]}</strong></div>	
-				<div class="box_body thumb">			<!--{tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&catid=".$c[catid]."&pagesize=".$MOD[page_icat]."&order=".$MOD[order]."&width=120&height=40&cols=2&template=thumb-brand&target=_blank")}-->
-				</div>
-			</td>
-			{if $i%2==0}<td>&nbsp;</td>{/if}
-			{if $i%2==1}</tr>{/if}
-			{/loop}
-			</table>
-			{/if}
+			<ul class="tabs">
+				{loop $maincat $i $c}
+					<li><a href="javascript:;">{$c[catname]}</a></li>								
+				{/loop}
+			</ul>
+			
+			<div class="panes">
+				{loop $maincat $i $c} 
+					<div><!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>'' and catid=".$c[catid]."&order=rand()&pagesize=12&template=thumb-brand",-1)}-->
+					<div class="more"><a href="{$MOD[linkurl]}{$s[linkurl]}">More >></a></div>
+					</div>
+				{/loop}	
+			</div>
 		</div>
 		<div class="f_l main">
 			<!-- Products scrollable -->

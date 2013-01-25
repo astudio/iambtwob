@@ -70,6 +70,12 @@ if($DT_QST) {
 		$fds = 'i.'.str_replace(',', ',i.', $fds);
 	} else {
 		if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
+		// query by alphebet or number
+		if($letter && in_array(strtolower($letter), $LETTER)) {
+			$condition .= " AND title LIKE '$letter%'";
+		} else {
+			$condition .= " AND title REGEXP '^[0-9]+'";
+		}
 		if($pptsql) $condition .= $pptsql;//PPT
 		$condition = "status=3".$condition;
 	}

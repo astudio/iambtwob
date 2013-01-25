@@ -41,10 +41,10 @@
 		
 		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->			
 
-		<div class="box_head_3"><span class="f_r px12"><a href="#">more</a></span><div><strong>Catalogs</strong></div></div>
+		<div class="box_head_3"><span class="f_r px12"><a class="more" href="{$MODULE[23][linkurl]}">more</a></span><div><strong>Catalogs</strong></div></div>
 		<div class="box_body">
-			<div class="rank_list">
-				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
+			<div class="cata_list">
+				<!--{tag("moduleid=23&condition=status=3 and thumb<>'' and catid=3518&pagesize=1&order=rand()&template=right-side-column", -1)}-->
 			</div>		
 		</div>
 		<div class="b10">&nbsp;</div>

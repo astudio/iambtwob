@@ -1,0 +1,6 @@
+{loop $tags $i $t}
+<a href="{$t[linkurl]}" target="_blank"><img class="lazy" data-src="{$t[thumb]}" src="{DT_SKIN}image/blank.gif" alt="$t[title]" /></a>
+<div class="title"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></div>
+<div class="intro">{$t[introduce]}</div>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

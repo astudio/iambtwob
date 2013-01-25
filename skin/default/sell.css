@@ -61,3 +61,10 @@
 #fsearch input {padding:1px 3px;}
 #fsearch select {width:170px;height:21px;overflow:hidden;}
 #fsearch #kw {width:90px;}
+
+/* company only */
+.box_head_3 .more {color:#FFF;text-decoration:underline;}
+.cata_list {background:#f5f5f5;padding:4px 10px;}
+.cata_list img {width:163px;}
+.cata_list .title {font-size:13px;height:18px;line-height:16px;overflow:hidden;text-align:left;}
+.cata_list .intro {line-height:16px;}

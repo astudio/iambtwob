@@ -22,15 +22,15 @@
 			<form id="fsearch" method="POST">
 				{template 'tip_tool','chip'}
 				
-				{if $page == 1}{ad($moduleid,0,'',6)}{/if}				
+				{if $page == 1}{ad($moduleid,0,'',6)}{/if}
 				
 				{if $list==0}
-				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=3&group=".$MOD[group]."&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-img")}-->
+					{if $tags}{template 'list-sell-img', 'tag'}{/if}
 				{elseif $list==1}
-				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=3&group=".$MOD[group]."&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-mix")}-->
+					{if $tags}{template 'list-sell-mix', 'tag'}{/if}
 				{elseif $list==2}
-				<!--{tag("moduleid=$moduleid&condition=status=3$dtype&areaid=$cityid&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=3&group=".$MOD[group]."&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-sell-txt")}-->								
-				{/if}				
+					{if $tags}{template 'list-sell-txt', 'tag'}{/if}
+				{/if}			
 			</form><br/>
 		</div>
 	</div>

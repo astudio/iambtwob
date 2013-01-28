@@ -54,13 +54,9 @@ if($username) {
 		exit(include($html_file));
 	}
 	
-$condition = 'groupid>5';
-$condition .= ($CAT['child']) ? " AND catid IN (".$CAT['arrchildid'].")" : "";
-$items = $db->count($table, $condition, $DT['cache_search']);
-$pagesize = $MOD['pagesize'];
-$pages = listpages("", $items, $page, $pagesize);	
-$showpage = 1;
-	
+	$condition = 'groupid>5';
+	$item = $db->count($table, $condition, $DT['cache_search']);
+
 	$seo_file = 'index';
 	include DT_ROOT.'/include/seo.inc.php';
 	if($page == 1) $head_canonical = $MOD['linkurl'];

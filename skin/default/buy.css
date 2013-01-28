@@ -8,8 +8,9 @@ a:hover {color:#F60;}
 a.type_1:link,a.type_1:visited,a.type_1:active,a.type_1:hover {float:left;display:block;color:#404041;font-weight:bold;}
 a.type_2:link,a.type_2:visited,a.type_2:active {float:left;display:block;color:#404041;}
 
-.type {margin:0;padding-left:67.7%;overflow:hidden;border-bottom:2px solid #00aeef;}
-.type > a {width:54px;height:24px;text-align:center;padding:0 18px 0 10px;line-height:24px;font-size:14px;background-image:url('image/buy_type.png');background-repeat:no-repeat;background-position-x:64px;}
+.type {margin:0;overflow:hidden;border-bottom:2px solid #00aeef;padding-top:30px;}
+.type img {width:340px;height:50px;margin-top:-30px;}
+.type > div > a {width:54px;height:24px;text-align:center;padding:0 18px 0 10px;line-height:24px;font-size:14px;background-image:url('image/buy_type.png');background-repeat:no-repeat;background-position-x:64px;}
 .type a.type_1 {background-color:#00aeef;}
 .type a.type_2 {background-color:#f5f5f5;}
 .type a.type_2:hover {background-color:#00aeef;color:#FFF;}

@@ -2,7 +2,7 @@
 defined('IN_DESTOON') or exit('Access Denied');
 function im_web($id, $style = 0) {
 	global $MODULE;
-	return $id ? '<a href="'.$MODULE[2]['linkurl'].'chat.php?touser='.$id.'" target="_blank" rel="nofollow"><img class="trigger" src="'.DT_PATH.'file/image/web.png" width="16" height="16" title="點擊線上交談" align="absmiddle" /></a>' : '';
+	return $id ? '<a href="'.$MODULE[2]['linkurl'].'chat.php?touser='.$id.'" target="_blank" rel="nofollow"><img class="trigger" src="'.DT_PATH.'file/image/web.png" width="16" height="16" title="點擊線上交談" /></a>' : '';
 }
 
 function im_qq($id, $style = 0) {

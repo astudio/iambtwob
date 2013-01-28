@@ -1,11 +1,11 @@
 {if $user_status == 3}
 <ul>
 {if $member}
-	<li class="f_b t_c" style="padding:3px 0 5px 0;font-size:14px;"><a href="{$member[linkurl]}" target="_blank" title="{$member[company]}&#10;{$member[mode]}">{$member[company]}</a></li>
+	<li class="f_b" style="font-size:14px;">{if $member[groupid]>5}<a class="contact" href="{$member[linkurl]}" target="_blank" title="{$member[company]}&#10;{$member[mode]}">{/if}<span class="contact">{$member[company]}</span>{if $member[groupid]>5}</a>{/if}</li>
 	{if $member[vip]}
-	<li class="f_orange" style="padding:5px 0 0 12px;"><img src="{DT_SKIN}image/vip.gif"/> <img src="{DT_SKIN}image/vip_{$member[vip]}.gif"/> [第{vip_year($member[fromtime])}年] 指數:{$member[vip]}</li>
+	<li class="f_orange" style="padding:5px 0 0 12px;"><img src="{DT_SKIN}image/vip_{$member[vip]}.gif"/> [第{vip_year($member[fromtime])}年] 指數:{$member[vip]}</li>
 	{/if}
-	{if $member[validated] || $member[vcompany] || $member[vtruename] || $member[vbank] || $member[vmobile] || $member[vemail]}
+	{if $member[validated] || $member[vcompany] || $member[vtruename] || $member[vbank] || $member[vmobile] || $member[vemail]}{if $astudio}
 	<li class="f_green" style="padding-top:6px;padding-bottom:6px;">
 	{if $member[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="通過工商認證"/>{/if}
 	{if $member[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="通過實名認證"/>{/if}
@@ -13,24 +13,24 @@
 	{if $member[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通過手機認證"/>{/if}
 	{if $member[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="通過郵件認證"/>{/if}
 	{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/> 通過{$member[validator]}認證{/if}
-	&nbsp;<a href="{userurl($member[username], 'file=credit')}">[誠信檔案]</a>
-	</li>
+	&nbsp;
+	<a href="{userurl($member[username], 'file=credit')}">[誠信檔案]</a>
+	</li>{/if}
 	{/if}
-	<li style="padding-top:6px;padding-bottom:6px;">
-	<span>聯繫人</span>{$member[truename]}({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
+	<li>
+	<span>聯繫人</span>{$member[truename]}&nbsp;({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
 	{if $member[username] && $DT[im_web]}{im_web($member[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
 	{if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
 	{if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
 	{if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
 	{if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}
 	</li>
-	<li><span>會員</span> [{if online($member[userid])==1}<font class="f_red">當前在線</font>{else}<font class="f_gray">當前離線</font>{/if}] <a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$member[username]}">[加為商友]</a> <a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}">[發送信件]</a></li>
+	<li><span>會員</span> [{if online($member[userid])==1}<font class="f_red">當前在線</font>{else}<font class="f_gray">當前離線</font>{/if}] <a class="addGroup" href="{$MODULE[2][linkurl]}friend.php?action=add&username={$member[username]}" target="_blank">[加為商友]</a> <a class="sendMail" href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}" target="_blank">[發送信件]</a></li>
 	{if $member[mail]}<li><span>郵件</span>{anti_spam($member[mail])}</li>{/if}
 	{if $member[telephone]}<li><span>電話</span>{anti_spam($member[telephone])}</li>{/if}
 	{if $member[mobile]}<li><span>手機</span>{anti_spam($member[mobile])}{if $DT[sms] && $member[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($member[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="發送短信" alt=""/></a>{/if}</li>{/if}
 	<li><span>地區</span>{area_pos($member[areaid], '-')}</li>
 	{if $member[address]}<li title="{$member[address]}"><span>地址</span>{$member[address]}</li>{/if}
-	<!-- <li class="t_c" style="border:none;padding:8px 0 0 0;"><a href="{$member[linkurl]}" target="_blank" class="t"><img src="{DT_SKIN}image/btn_homepage.gif" title="進入企業網站"/></a> </li> -->
 {else}
 	<li class="f_b t_c" style="font-size:14px;"><a href="{userurl('')}" target="_blank">{$item[company]}</a></li>
 	<li style="padding-top:3px;">
@@ -99,29 +99,26 @@
 </table>
 </div>
 {elseif $user_status == 0}
-<div class="user_warn"><img src="{DT_SKIN}image/no.gif" align="absmiddle"/> 您還沒有登錄，請登錄後查看聯繫方式</div>
+<div class="user_warn"><img src="{DT_SKIN}image/no.gif" align="absmiddle"/> Please login first for viewing contact information</div>
 <div class="user_login">
 	<form action="{$MODULE[2][linkurl]}{$DT[file_login]}" method="post" onsubmit="return user_login();">
-	<input type="hidden" name="submit" value="1"/>
-	<input name="username" id="user_name" type="text" value="會員名/Email" onfocus="if(this.value=='會員名/Email')this.value='';" class="user_input"/>&nbsp; 
-	<input name="password" id="user_pass" type="password" value="password" onfocus="if(this.value=='password')this.value='';" class="user_input"/>&nbsp; 
-	<input type="image" src="{DT_SKIN}image/user_login.gif" align="absmiddle"/>
+		<input type="hidden" name="submit" value="1"/>
+		<input name="username" id="user_name" type="text" value="Username" onfocus="if(this.value=='Username')this.value='';" class="user_input"/>&nbsp; 
+		<input name="password" id="user_pass" type="password" value="password" onfocus="if(this.value=='password')this.value='';" class="user_input" /><br/>
+		<label for="captcha">Verify code:</label>
+		{template 'captcha','chip'}	
+		<input type="submit" id="Login" value="Login" />
 	</form>
 </div>
-<div class="user_tip">免費註冊為會員後，您可以...</div>
+<div class="user_tip">Join free as a memeber, you can...</div>
 <div class="user_can">
-<table cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> 發佈供求信息</td>
-<td><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> 推廣企業產品</td>
-</tr>
-<tr>
-<td><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> 建立企業商舖</td>
-<td><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> 在線洽談生意</td>
-</tr>
-</table>
+	<ul>
+		<li>Post leads</li>
+		<li>Display products</li>
+		<li>Create website</li>
+		<li>Access to buyers</li>
+	</ul>
 </div>
-<div class="user_reg_c"><a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><img src="{DT_SKIN}image/user_reg.gif" width="260" height="26" alt="還不是會員，立即免費註冊"/></a></div>
 {else}
 <br/><br/><br/>
 <center><img src="{DT_SKIN}image/load.gif"/></center>

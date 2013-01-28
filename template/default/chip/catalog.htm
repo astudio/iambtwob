@@ -4,20 +4,26 @@
 	<li class="level1">
 		<!-- first level category -->
 		<h2>
-			<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{set_style($c[catname], $c[style])}<span class="arrow">></span></a>
+			<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{$c[catname]}{if $c[child]}<span class="arrow">></span>{/if}</a>
 		</h2>
 		{if $c[child]}
 		{php $sub = get_maincat($c[catid], $mid, 1);}				
 		<!-- second level category -->
-		<div class="level2" style="display:none;">
-			<ul>
-<!-- 							<li>
-					<h3>Shop for</h3>
-				</li> -->
-				{loop $sub $j $s}
-					<li><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" class="g">{set_style($s[catname], $s[style])}</a>{if $stat}<span>({$s[item]})</span>{/if}</li>
-				{/loop}
-			</ul>
+		<div class="level2 big" style="display:none;">
+			<div>
+				<ul>
+					<li>
+						<h3>{$c[catname]}</h3>
+					</li>
+					{loop $sub $j $s}
+						<li><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" class="g">{$s[catname]}</a>{if $stat}<span>({$s[item]})</span>{/if}</li>
+					{/loop}
+				</ul>
+				<!-- AD here (200X250) -->
+				<a href="javascript:;">
+					<img src="http://i02.i.aliimg.com/images/cms/upload/wholesale/home_banner/2013/01/big_discount/banner/200x250.jpg" />
+				</a>
+			</div>
 		</div>
 		{/if}
 	</li>

@@ -6,7 +6,6 @@
 defined('IN_DESTOON') or exit('Access Denied');
 function tag($parameter, $expires = 0) {
 	global $DT, $CFG, $MODULE, $CATEGORY, $DT_TIME, $db;
-	$CATBAK = $CATEGORY ? $CATEGORY : array();	
 	if($expires > 0) {
 		$tag_expires = $expires;
 	} else if($expires == -2) {
@@ -53,7 +52,6 @@ function tag($parameter, $expires = 0) {
 	isset($target) or $target = '';
 	isset($class) or $class = '';
 	isset($length) or $length = 0;
-	//isset($suffix) or $suffix = '';	
 	isset($introduce) or $introduce = 0;
 	isset($debug) or $debug = 0;
 	(isset($cols) && $cols) or $cols = 1;
@@ -104,17 +102,8 @@ function tag($parameter, $expires = 0) {
 	$condition = str_replace('##', '%', $condition);
 	if($showpage) {
 		$num = $db->count($table, $condition, $tag_expires ? $tag_expires : $CFG['db_expires'], $group);
-		
-		//if($catid) {
-			//if($page < 3 && $update) update_item($catid, $num);
-		//	$pages = listpages($catid, $num, $page, $pagesize);
-		//} else {
-			$pages = pages($num, $page, $pagesize);
-		//}
-		
-	//	$pages = pages($num, $page, $pagesize);
-	//} else {
-	//	if($group) $condition .= ' GROUP BY '.$group;
+
+		$pages = pages($num, $page, $pagesize);
 	}
 	if($page < 2 && strpos($parameter, '&page=') !== false) {
 		$db_cache = 'CACHE';
@@ -156,21 +145,16 @@ function tag($parameter, $expires = 0) {
 			}
 		}
 	}
-	if($template == 'null') {
-		$CATEGORY = $CATBAK;
-		return $tags;
-	}
+	if($template == 'null') return $tags;
 	if($tag_cache) {
 		ob_start();
 		include template($template, $dir);
 		$contents = ob_get_contents();
 		ob_clean();
 		file_put($TCF, '<!--'.($DT_TIME + $tag_expires).'-->'.$contents);
-		$CATEGORY = $CATBAK;
 		echo $contents;
 	} else {
 		include template($template, $dir);
-		$CATEGORY = $CATBAK;
 	}
 }
 ?>

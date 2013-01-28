@@ -1,0 +1,52 @@
+<table width="100%" cellpadding="5" cellspacing="0">
+	{if $brand}
+		<tr>
+			<td class="f_dblue">Brand:</td>
+			<td>{$brand}&nbsp;</td>
+		</tr>
+	{/if}
+	{if $model}
+		<tr>
+			<td class="f_dblue">Model:</td>
+			<td>{$model}&nbsp;</td>
+		</tr>
+	{/if}
+	{if $standard}
+		<tr>
+			<td class="f_dblue">Specification:</td>
+			<td>{$standard}&nbsp;</td>
+		</tr>
+	{/if}
+	<tr>
+		<td class="f_dblue">Price</td>
+		<td class="f_b f_orange">{if $price>0}{$price}{$DT[money_unit]}/{$unit}{else}面議{/if}&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="f_dblue">MOQ:</td>
+		<td class="f_b f_orange">{if $minamount}{$minamount} {$unit}{/if}&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="f_dblue">Supply Ability:</td>
+		<td class="f_b f_orange">{if $amount}{$amount} {$unit}{/if}</td>
+	</tr>
+	<tr>
+		<td class="f_dblue">Handling time:</td>
+		<td><span class="f_b f_orange">{if $days}{$days} days after receiving cleared payment{/if}</span></td>
+	</tr>
+	<tr>
+		<td class="f_dblue">Location:</td>
+		<td>{area_pos($areaid, '-')}</td>
+	</tr>
+	<tr>
+		<td class="f_dblue">Valid Date:</td>
+		<td>{if $todate}{$todate}{else}Permanent{/if}{if $expired} <span class="f_red">[Expired]</span>{/if}</td>
+	</tr>
+	<tr>
+		<td class="f_dblue">Updated:</td>
+		<td>{$editdate}</td>
+	</tr>
+	<tr>
+		<td width="80" class="f_dblue">Views:</td>
+		<td><span id="hits">{$hits}</span></td>
+	</tr>
+</table>

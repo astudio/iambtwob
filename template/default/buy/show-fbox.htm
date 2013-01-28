@@ -17,24 +17,31 @@
 		
 		<style>
 			/* show */
+			.user_warn > img {margin-right:8px;float:left;}
+			.user_login {margin:0;position:relative;}
+			.user_login .user_input {width:43%;border:1px solid #d7d7d7;margin-left:4px;}
+			.user_login label {margin-left:4px;margin-right:6px;}
+			.user_login #captcha {width:130px;border:1px solid #d7d7d7;}
+			.user_login #captchapng {width:145px;height:20px;}
+			#ccaptcha img {left:0;}
+			.user_login #Login {margin:4px 10px 4px 20px;}
+			.user_tip {margin:20px 8px 0 4px;}
+			.user_can {padding:0;}
+			.user_can > ul {padding:5px 0 5px 15px;}
+			.user_can > ul > li {padding:0 0 0 20px;display:inline-block;*display:inline;zoom:1;width:41%;border-bottom:1px solid #ffa675;margin-left:-3px;}
+			.user_can > ul > li:last-child {border-bottom:1px solid #ffa675;}
 			.album div span {width:320px;height:320px;}
 			.album div span > img {width:320px;}
+			#contact .contact {color:#F60;}
+			.contact_body li:last-child {border:none;}	
 			.title_trade {display:inline-block;*display:inline;zoom:1;}
-			#content {border-bottom:1px solid #00aeef;padding:0 6px 10px 6px;}
+			.box_head_2 strong {color:#0569b4;}
 			.box_body {padding:10px;}
-			.tools {height:30px;}
-		
-			#quoteBox {margin:0 5px;}
-			#quoteBox table {}
-			#quoteBox table th {white-space:nowrap;font-size:14px;font-weight:normal;text-align:left;padding-left:15px;height:30px;}
-			#quoteBox #title {width:98%;}
-			#quoteBox select {width:300px;height:20px;vertical-align:middle;}
-			#quoteBox textarea {width:515px;}
-			#quoteBox .items {text-overflow:ellipsis;overflow:hidden;width:530px;}
-			#quoteBox #date {vertical-align:middle;}
-			#quoteBox #captcha {width:84px;margin:0 0 0 2px;}
-			#quoteBox #ccaptcha img {top:4px;left:2px;}
-			#quoteBox #Submit {background: url('/skin/default/image/inquiry_fb_btn.png') no-repeat;border: 0;text-indent: -9999px;width: 162px;height: 42px;}
+			#content {border-bottom:1px solid #00aeef;padding:0 6px 10px 6px;}
+			.price {vertical-align:middle;margin:0 10px 0 15px;display:inline-block;*display:inline;zoom:1;}
+			.tools {height:30px;}			
+			.share img {width:20px;height:20px;padding:5px 6px 15px 6px;}					
+			#quoteBox {margin:0 10px 0 5px;}
 		</style>
 	</head>
 	<body>
@@ -42,29 +49,24 @@
 			<div class="b10 c_b"></div>
 			<table width="100%">
 			<tr>
-			<td>
+			<td valign="top">
 				<table width="100%">
 				<tr>
 				<td width="250" valign="top">
 					<div class="album">
 						<table width="100%" cellpadding="0" cellspacing="0">
 						<tr align="center">
-						<td width="250" valign="top"><div><span id="abm" title="点击查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+						<td width="250" valign="top"><div><span id="abm"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" id="DIMG"/></span></div></td>
 						</tr>
-<!-- 						<tr align="center">
-						<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> See Original Image</td>
-						</tr> -->
 						</table>
 					</div>
 				</td>
-				<td width="15"> </td>
 				<td valign="top">
 					<div id="imgshow" style="display:none;"></div>
 				</td>
 				</tr>
 			</table>
 			</td>
-			<td width="10"> </td>
 			<td width="300" valign="top">		
 				<div class="contact_head">Company Profile</div>
 				<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>				
@@ -82,12 +84,7 @@
 			<div class="box_head_2">
 				<div>
 					<span class="f_r">
-						<form method="post" action="{$MODULE[2][linkurl]}favorite.php">
-							<input type="hidden" name="action" value="add"/>
-							<input type="hidden" name="title" value="{$title}"/>
-							<input type="hidden" name="url" value="{$linkurl}"/>
-							<input type="image" src="{DT_SKIN}image/btn_fav.gif" class="c_p" style="margin-top:5px;"/>
-						</form>
+						{template 'detail-fav', 'chip'}
 					</span>
 					<strong>Product: </strong>
 					<h1 class="title_trade">{$title}</h1>
@@ -101,7 +98,7 @@
 				</tr>
 				<tr>
 				<td class="f_dblue">Price：</td>
-				<td class="f_b f_orange">{$price}</td>
+				<td class="f_b f_orange">{$price}&nbsp;{if $username && !$expired}<span class="price"><a href="{$MOD[linkurl]}{rewrite('price.php?itemid='.$itemid)}" target="_blank"><img src="{DT_SKIN}image/btn_price.gif" alt="Make Offer" class="c_p"/></a></span>{/if}</td>
 				</tr>
 				<tr>
 				<td class="f_dblue">specification：</td>
@@ -113,7 +110,7 @@
 				</tr>
 				<tr>
 				<td class="f_dblue">Location：</td>
-				<td>{area_pos($areaid, '')}</td>
+				<td>{area_pos($areaid, '', 1)}</td>
 				</tr>
 				<tr>
 				<td class="f_dblue">Valid Date：</td>
@@ -127,11 +124,6 @@
 				<td width="80" class="f_dblue">Views：</td>
 				<td><span id="hits">{$hits}</span></td>
 				</tr>
-				{if $username && !$expired}
-				<tr>
-				<td colspan="2"><img src="{DT_SKIN}image/btn_price.gif" alt="Make Offer" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('price.php?itemid='.$itemid)}');"/></td>
-				</tr>
-				{/if}
 				</table>				
 			</div>
 
@@ -143,19 +135,7 @@
 			{template 'comment', 'chip'}
 			</div>
 
-
-			<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
-			<input type="hidden" name="itemid" value="{$itemid}"/> 
-			<input type="hidden" name="title" value="{$title}"/>
-			<input type="hidden" name="linkurl" value="{$linkurl}"/>
-			</form>
-			<div class="tools f_r">
-				[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]} search</a> ]&nbsp;
-				[ <script type="text/javascript">addFav('+ Favorite');</script> ]&nbsp;
-				[ <a href="javascript:Dd('sendmail').submit();void(0);">share</a> ]&nbsp;
-				[ <a href="javascript:Print();">print</a> ]&nbsp;
-				[ <a href="javascript:window.close()">close</a> ]
-			</div>
+			{template 'show_toolbar','chip'}
 		</div>
 	{template 'zoom', 'chip'}
 	</body>

@@ -14,9 +14,9 @@
 	<div class="box_head_1">
 		{if $moduleid==5}
 			<div class="buttons f_r">
-				<img src="{DT_SKIN}image/list_img{if $list==0}_on{/if}.gif" width="21" height="21" title="圖片列表" align="absmiddle" class="c_p trigger" onclick="Dd('list').value=0;Dd('fsearch').submit();"/>&nbsp;	
-				<img src="{DT_SKIN}image/list_mix{if $list==1}_on{/if}.gif" width="21" height="21" title="圖文列表" align="absmiddle" class="c_p trigger" onclick="Dd('list').value=1;Dd('fsearch').submit();"/>&nbsp;			
-				<img src="{DT_SKIN}image/list_txt{if $list==2}_on{/if}.gif" width="21" height="21" title="文字列表" align="absmiddle" class="c_p trigger" onclick="Dd('list').value=2;Dd('fsearch').submit();"/>&nbsp;
+				<img src="{DT_SKIN}image/list_img{if $list==0}_on{/if}.gif" width="21" height="21" title="Image List" align="absmiddle" class="c_p trigger" onclick="Dd('list').value=0;Dd('fsearch').submit();"/>&nbsp;	
+				<img src="{DT_SKIN}image/list_mix{if $list==1}_on{/if}.gif" width="21" height="21" title="Gallery List" align="absmiddle" class="c_p trigger" onclick="Dd('list').value=1;Dd('fsearch').submit();"/>&nbsp;			
+				<img src="{DT_SKIN}image/list_txt{if $list==2}_on{/if}.gif" width="21" height="21" title="Text List" align="absmiddle" class="c_p trigger" onclick="Dd('list').value=2;Dd('fsearch').submit();"/>&nbsp;
 			</div>
 		{/if}						
 		<ul class="tabs">
@@ -26,7 +26,7 @@
 	</div>
 	{if $MOD[group] || $moduleid==4}
 		<div class="result f_r">
-			<span class="resultSpan"><span class="f_r px11">(<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $items<$pagesize*$page ? $items : $pagesize*$page;}?> out of <?php echo $group ? $total : $items;?>)</span><strong>Result{if $items>1}s{/if}{if $catid} for <span class="f_red">{$CAT[$catid]}</span>{/if}:</strong></span> {$items} product{if $items>1}s{/if}{if $MOD[group]} from {$total} {if $total>1}companies{else}company{/if}{/if}
+			<span class="resultSpan"><strong>Result{if $item>1}s{/if}{if $catid} for <span class="f_red">{$CAT[$catid]}</span>{/if}:</strong></span> {$item} {if $moduleid==4}{if $item>1}companies{else}company{/if}{else} product{if $item>1}s{/if}{/if}{if $total} from {$total} {if $total>1}companies{else}company{/if}{/if}<span> (<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $item<$pagesize*$page ? $item : $pagesize*$page;}?> out of <?php echo $group ? $total : $item;?>)</span>
 		</div>
 	{/if}
 	{if $moduleid==5}					

@@ -1,8 +1,8 @@
 {template 'header'}
 <style>
-	#inquiryBox {margin:0 5px;}
 	#inquiryBox table {white-space:nowrap;}
-	#inquiryBox table th {font-size:14px;font-weight:normal;text-align:left;padding-left:15px;height:30px;}
+	#inquiryBox table th {font-size:14px;font-weight:normal;text-align:left;padding:0 12px;height:30px;}
+	#inquiryBox #title {width:79%;}	
 	#inquiryBox select {width:300px;height:20px;vertical-align:middle;}
 	#inquiryBox textarea {width:530px;}
 	#inquiryBox .items {text-overflow:ellipsis;overflow:hidden;width:530px;}
@@ -11,7 +11,7 @@
 	#inquiryBox .inquiryType > li {display:inline-block;*display:inline;zoom:1;padding-right:12px;}
 	#inquiryBox #captcha {width:84px;margin:0 0 0 2px;}
 	#inquiryBox #ccaptcha img {top:4px;left:2px;}
-	#inquiryBox #Submit {background: url('../skin/default/image/inquiry_fb_btn.png') no-repeat;border: 0;text-indent: -9999px;width: 162px;height: 42px;}
+	#inquiryBox #Submit {background: url('../skin/default/image/inquiry_fb_btn.png') no-repeat;border: 0;cursor:pointer;width: 180px;height: 42px;vertical-align:middle;}
 </style>
 <div class="m">
 	<div class="f_l side">
@@ -19,6 +19,14 @@
 			{php $mid = $moduleid;$stat = 1;}
 			{template 'catalog','chip'}
 		{/if}
+		
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->			
 	</div>
 
 	<div class="m_l_1 f_l">
@@ -31,7 +39,7 @@
 					<input type="hidden" name="itemids" value="{$itemids}"/>
 					<table cellpadding="1" cellspacing="6" width="100%">
 						<tr>
-						<th bgcolor="#f5f5f5" width="90">Product/Service</th>
+						<th bgcolor="#f5f5f5" width="120">Product/Service</th>
 						<td bgcolor="#FFFFFF">
 						{loop $list $v}
 						<div class="items">&raquo; <a href="{$MOD[linkurl]}{$v[linkurl]}" target="_blank" class="px12 f_b">{$v[title]}</a> <a href="{userurl($v[username])}" target="_blank">({$v[company]})</a></div>
@@ -80,7 +88,7 @@
 						</tr>
 
 						<tr>
-						<th bgcolor="#f5f5f5" colspan="2">My Contact Info:{if !$_userid}<div style="font-size:12px;white-space:normal;"> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b">Sign up NOW!</a> Or leave your message( <span class="f_red">*</span> is required)：I am member! <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b">Log in</a>.</div>{/if}</th>
+						<th bgcolor="#f5f5f5" colspan="2">My Contact Info:{if !$_userid}<div style="font-size:12px;white-space:normal;height:20px;"> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b">Sign up NOW!</a> Or leave your message( <span class="f_red">*</span> is required)：I am member! <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b">Log in</a>.</div>{/if}</th>
 						</tr>
 						<tr>
 						<td> </td>
@@ -154,7 +162,7 @@
 						</td>
 						</tr>
 						<tr>						
-						<td bgcolor="#FFFFFF" colspan="2" align="center"><input type="submit" name="submit" value=" {if $total==1}Inquiry{else}Batch Inquiry{/if} " id="Submit" class="pd3 px14 f_b c_p"/>
+						<td bgcolor="#FFFFFF" colspan="2" align="center"><button type="submit" name="submit" id="Submit" class="pd3 px14 f_b c_p"> </button>
 
 						{if $MG[inquiry_limit]}
 						&nbsp;&nbsp;&nbsp;You can send <span class="f_b f_red">{$MG[inquiry_limit]}</span> today.
@@ -224,5 +232,17 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="m_n f_l">&nbsp;</div>
+	
+	<div class="m_r_1 f_l">
+		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
+		
+		<div class="b10">&nbsp;</div>
+
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
+
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+	</div>		
 </div>
 {template 'footer'}

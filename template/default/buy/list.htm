@@ -21,14 +21,8 @@
 			<!-- top AD -->
 			<!--{tag("table=ad&condition=status=3 and pid=23 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=23&class=h200&template=ad-single",-1)}-->
 			
-			<div class="type">
-			<a href="{$MOD[linkurl]}{$linkurl}" class="type_1">All</a>
-				{loop $TYPE $k $v}
-				<a href="javascript:Go('{$MOD[linkurl]}{rewrite('list.php?typeid='.$k.'&catid='.$catid)}');" class="type_2">{$v}</a>
-				{/loop}
-			</div>
-			<div class="b10 c_b">&nbsp;</div>
-			<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
+			{template 'buy_type', 'chip'}
+
 			{if $page == 1}{ad($moduleid,$catid,$kw,6)}{/if}
 			{if $tags}{template 'list-'.$module, 'tag'}{/if}
 			<br/>

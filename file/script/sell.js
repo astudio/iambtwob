@@ -94,9 +94,9 @@
 
 		// set list type cookie
 		if( Dd('list').value !=0 ) {
-			set_cookie('im_slt', Dd('list').value, 14);
+			set_cookie('list', Dd('list').value, 14);
 		} else {
-			del_cookie('im_slt');
-		}
+			del_cookie('list');
+		}	
 	});				
 })(jQuery);

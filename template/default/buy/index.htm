@@ -20,16 +20,9 @@
 		<div class="left_box">		
 			<div class="b10">&nbsp;</div>
 			<!-- top AD -->
-			<!--{tag("table=ad&condition=status=3 and pid=23 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=23&class=h200&template=ad-single",-1)}-->
-			
-			<div class="type">
-			<a href="{$MOD[linkurl]}" class="{if $typeid==99}type_1{else}type_2{/if}">All</a>
-				{loop $TYPE $k $v}
-					<a href="javascript:Go('{$MOD[linkurl]}{rewrite('index.php?typeid='.$k.'&catid='.$catid)}');" class="{if $typeid==$k}type_1{else}type_2{/if}">{$v}</a>
-				{/loop}
-			</div>
-			<div class="b10 c_b">&nbsp;</div>	
-			<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
+			<!--{tag("table=ad&condition=status=3 and pid=23 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=23&class=h200&template=ad-single",-1)}-->			
+			{template 'buy_type', 'chip'}
+
 			{if $page == 1}{ad($moduleid,0,'',6)}{/if}		<!--{tag("moduleid=$moduleid&condition=status=3$dtype&catid=$catid&areaid=$cityid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=3&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-buy")}-->
 		<br/>
 		</div>

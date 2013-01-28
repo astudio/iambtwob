@@ -18,7 +18,7 @@
 		<style>
 			#inquiryBox {margin:0 5px;}
 			#inquiryBox table {white-space:nowrap;}
-			#inquiryBox table th {font-size:14px;font-weight:normal;text-align:left;padding-left:15px;height:30px;}
+			#inquiryBox table th {font-size:13px;font-weight:normal;text-align:left;padding:0 6px;height:30px;}
 			#inquiryBox select {width:300px;height:20px;vertical-align:middle;}
 			#inquiryBox textarea {width:530px;}
 			#inquiryBox .items {text-overflow:ellipsis;overflow:hidden;width:530px;}
@@ -27,7 +27,7 @@
 			#inquiryBox .inquiryType > li {display:inline-block;*display:inline;zoom:1;padding-right:12px;}
 			#inquiryBox #captcha {width:84px;margin:0 0 0 2px;}
 			#inquiryBox #ccaptcha img {top:4px;left:2px;}
-			#inquiryBox #Submit {background: url('../skin/default/image/inquiry_fb_btn.png') no-repeat;border: 0;text-indent: -9999px;width: 162px;height: 42px;}
+			#inquiryBox #Submit {background: url('../skin/default/image/inquiry_fb_btn.png') no-repeat;border: 0;width: 180px;height: 42px;cursor:pointer;vertical-align:middle;}
 		</style>
 	</head>
 	<body>
@@ -163,7 +163,7 @@
 					</td>
 					</tr>
 					<tr>
-					<td bgcolor="#FFFFFF" colspan="2" align="center"><input type="submit" name="submit" value=" {if $total==1}Inquiry{else}Batch Inquiry{/if} " id="Submit" class="pd3 px14 f_b c_p"/>
+					<td bgcolor="#FFFFFF" colspan="2" align="center"><button type="submit" name="submit" id="Submit" class="pd3 px14 f_b c_p"> </button>
 
 					{if $MG[inquiry_limit]}
 					&nbsp;&nbsp;&nbsp;You can send <span class="f_b f_red">{$MG[inquiry_limit]}</span> today

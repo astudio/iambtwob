@@ -18,11 +18,11 @@ if(!check_group($_groupid, $MOD['group_list']) || !check_group($_groupid, $CAT['
 	exit(include template('noright', 'message'));
 }
 $CP = $MOD['cat_property'] && $CAT['property'];
-$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : (isset($_COOKIE[$CFG['cookie_pre'].'im_slt']) ? $_COOKIE[$CFG['cookie_pre'].'im_slt'] : 0); // 0:gallery 1:list 2:text
 if($MOD['cat_property'] && $CAT['property']) {
 	require DT_ROOT.'/include/property.func.php';
 	$PPT = property_condition($catid);
 }
+$list = isset($list) && in_array($list, array(0, 1, 2)) ? $list : (isset($_COOKIE[$CFG['cookie_pre'].'list']) ? $_COOKIE[$CFG['cookie_pre'].'list'] : 0); // 0:gallery 1:list 2:text
 unset($CAT['moduleid']);
 extract($CAT);
 $maincat = get_maincat($child ? $catid : $parentid, $moduleid);
@@ -44,17 +44,24 @@ if($cityid) {
 	} else {
 		$items = $CAT['item'];
 	}
-	if($MOD['group']){
-	  $group = $MOD['group'];
-	  $total = $db->count($table, $condition, $DT['cache_search'], $group);
-	}	
 }
+
+if($MOD['group']){
+	$group = $MOD['group'];
+	$total = $db->count($table, $condition, $DT['cache_search'], $group);
+    $dcount = "MAX(itemid) AS itemid,COUNT($group) AS dcount";	
+	$_group = " GROUP BY $group";  
+}
+$fields = $MOD['fields'];
 $pagesize = $MOD['pagesize'];
 $offset = ($page-1)*$pagesize;
-$pages = listpages($CAT, $items, $page, $pagesize);
+$pages = $group ? pages($total, $page, $pagesize) : listpages($CAT, $items, $page, $pagesize);
 $tags = array();
 if($items) {
-	$result = $db->query("SELECT ".$MOD['fields']." FROM {$table} WHERE {$condition} ORDER BY ".$MOD['order']." LIMIT {$offset},{$pagesize}", ($CFG['db_expires'] && $page == 1) ? 'CACHE' : '', $CFG['db_expires']);
+	$query = $group ? "SELECT a.{$fields},b.dcount FROM {$table} a INNER JOIN (SELECT {$dcount} FROM {$table} WHERE {$condition}{$_group}) b ON a.itemid = b.itemid" : "SELECT {$fields} FROM {$table} WHERE {$condition}";
+	$query .= "{$order} LIMIT $offset,$pagesize";
+	
+	$result = $db->query($query, ($CFG['db_expires'] && $page == 1) ? 'CACHE' : '', $CFG['db_expires']);
 	while($r = $db->fetch_array($result)) {
 		$r['adddate'] = timetodate($r['addtime'], 5);
 		$r['editdate'] = timetodate($r['edittime'], 5);
@@ -65,8 +72,9 @@ if($items) {
 	}
 	$db->free_result($result);
 }
+$length = 180;
 $showpage = 1;
-$datetype = 5;
+$datetype = 3;
 
 $seo_file = 'list';
 include DT_ROOT.'/include/seo.inc.php';

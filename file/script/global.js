@@ -25,6 +25,11 @@
 				$(this).removeClass('active');
 				$(this).find('.level2').hide();
 			});
+		// remove .big class while Ad does not exist
+		$('.Category .level2').each(function(){
+			var a = $(this).find('ul').siblings().is('img,a');
+			if(!a) $(this).removeClass('big');
+		});		
 
 		// 1st slideshow
 		$(".slidetabs").tabs(".images > div", {		
@@ -41,11 +46,7 @@
 		});
 
 		// images lazy load
-		$('img.lazy').jail();
-/* 		$('img.lazyAD').jail({
-			loadHiddenImages : true,
-			timeout : 1500
-		});	 */		
+		$('img.lazy').jail();	
 		// tooltip
 		$('.trigger').tooltip({
 			position	: 'top center',

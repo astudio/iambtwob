@@ -250,6 +250,11 @@ function get_albums($item, $type = 0) {
 		$imgs[] = $item['thumb'] ? str_replace('.thumb.', '.middle.', $item['thumb']) : $nopic;
 		$imgs[] = $item['thumb1'] ? str_replace('.thumb.', '.middle.', $item['thumb1']) : $nopic;
 		$imgs[] = $item['thumb2'] ? str_replace('.thumb.', '.middle.', $item['thumb2']) : $nopic;
+	} else if($type == 2) {
+		$nopic = DT_SKIN.'image/nopic240.gif';
+		$imgs[] = $item['thumb'] ? substr($item['thumb'], 0, -10) : $nopic;
+		$imgs[] = $item['thumb1'] ? substr($item['thumb1'], 0, -10) : $nopic;
+		$imgs[] = $item['thumb2'] ? substr($item['thumb2'], 0, -10) : $nopic;
 	}
 	return $imgs;
 }

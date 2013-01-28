@@ -17,7 +17,7 @@
 	<div class="m_l_1 f_l">	
 		<div class="b10">&nbsp;</div>		
 		<!-- 1st slideshow (AD) -->
-		{template 'tmp-slideshow','tag'}					
+		<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=15&template=ad-slideshow",-1)}-->					
 		<div class="b15">&nbsp;</div>		
 	
 		<div class="left_box">		
@@ -48,15 +48,16 @@
 					<label for="catid_1">Category</label>{$category_select}
 				</form>
 			</div>
-			
-			<div class="b15">&nbsp;</div>
-			
+
 			{if $page==1 && $kw}
 				{ad($moduleid,$catid,$kw,6)}
 				{load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
 			{/if}
 			
 			{if $tags}
+				<div class="b15">&nbsp;</div>
+				{template 'tip_tool','chip'}
+				<div class="b15">&nbsp;</div>			
 				{template 'list-company', 'tag'}
 			{else}
 				{template 'noresult', 'message'}

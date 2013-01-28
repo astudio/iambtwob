@@ -11,7 +11,7 @@
 		<input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip_list(this, {$t[itemid]});"/>
 
 		<ul>
-			<li class="title">{if $t[vip]}<span class="f_r"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry_btn.png" alt="詢價" class="iq_btn" /></a></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
+			<li class="title">{if $t[vip]}<span class="f_r"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry_btn.png" alt="Inquiry" class="iq_btn" /></a></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
 			<li>
 				<span class="f_r">
 					<img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/>
@@ -28,7 +28,7 @@
 				{if $t[validated]}<span class="f_green">[Verified]</span>{else}[Unverified]{/if}
 				{if !$t[username]} [Unregistered]{/if}
 				</span>				
-				<span> - [{area_pos($t[areaid], '')}]</span>
+				<span> [{area_pos($t[areaid], '', 1)}]</span>
 				<span class="f_gray">{timetodate($t[edittime], $datetype)}</span>
 				{if $t[unit] && $t[price]>0}
 					<!-- <span class="f_red"><strong class="px14">{$t[price]}</strong>/{$t[unit]}</span><br/>

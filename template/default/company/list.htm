@@ -15,7 +15,7 @@
 	<div class="m_l_1 f_l">
 		<div class="b10">&nbsp;</div>		
 		<!-- 1st slideshow (AD) -->
-		{template 'tmp-slideshow','tag'}					
+		<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=15&template=ad-slideshow",-1)}-->						
 		<div class="b15">&nbsp;</div>				
 
 		<div class="left_box">
@@ -24,7 +24,7 @@
 				
 				{if $page == 1}{ad($moduleid,0,'',6)}{/if}				
 
-				<!--{tag("moduleid=$moduleid&areaid=$cityid&catid=$catid&pagesize=10&length=200&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-company")}-->				
+				{if $tags}{template 'list-company', 'tag'}{/if}				
 			</form><br/>
 		</div>
 	</div>
@@ -34,6 +34,18 @@
 	<div class="m_r_1 f_l">
 		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
 		
+		<div class="b10">&nbsp;</div>
+		<!-- right sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
+		
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->			
+
+		<div class="box_head_3"><span class="f_r px12"><a class="more" href="{$MODULE[23][linkurl]}">more</a></span><div><strong>Catalogs</strong></div></div>
+		<div class="box_body">
+			<div class="cata_list">
+				<!--{tag("moduleid=23&condition=status=3 and thumb<>'' and catid=3518&pagesize=1&order=rand()&template=right-side-column", -1)}-->
+			</div>		
+		</div>
 		<div class="b10">&nbsp;</div>
 		
 		<div class="box_head_3"><div><strong>Top 10 of Week</strong></div></div>

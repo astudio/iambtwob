@@ -2,9 +2,13 @@
 	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
 	This is NOT a freeware, use is subject to license.txt
 */
+a:link, a:visited, a:active {color:#0569b4;}
+a:hover {color:#F60;}
+
 .sell_tip {width:180px;height:70px;background:url('image/sell_tip.gif') no-repeat;overflow:hidden;z-index:1000;position:absolute;font-size:13px;}
 .sell_tip p {margin:0 0 4px 2px;font-weight:bold;}
 .sell_tip div {padding:8px 0 0 10px;}
+.sell_tip .fb {color:#555;}
 .tool {}
 .tool .box_head_1 {height:33px;margin-bottom:15px;} .company .box_head_1 {margin-bottom:0;}
 .tool .tabs {height:33px;line-height:33px;overflow: hidden;}
@@ -47,20 +51,43 @@
 .sell_tip .btn_2 {margin-left:2px;}
 
 /*List1*/
-.Lists {margin:18px 0;border-bottom:1px solid #f5f5f5;}
+.Lists {margin:18px 0 18px 6px;border-bottom:1px solid #d7d7d7;}
 .list .thumb {padding:0;}
 .list > ul {margin-top:3px;font-size:13px;margin-right:14px;}
 .list > ul > li {line-height:18px;}
-.list > ul > .title {max-height:36px;overflow:hidden;text-align:left;}
+.list > ul > .title {height:20px;overflow:hidden;text-align:left;}
 .list > ul > .title > a {width:620px;display:block;}
 .list > ul > li .com {color:#F60;}
 .list > ul > li .trigger {vertical-align:middle;}
-.list > ul > li .f_r {margin-left:50px;margin-bottom:50px;}
+.list > ul > li .f_r {margin-left:50px;}
 /* search */
 #fsearch label {padding-right:5px;}
 #fsearch input {padding:1px 3px;}
 #fsearch select {width:170px;height:21px;overflow:hidden;}
 #fsearch #kw {width:90px;}
+/* show */
+.left_box {position:relative;}
+.box_head_2 strong {font-size:15px;}
+.proTitle {text-align:left;margin:10px 0 0 0;border-bottom:1px solid #0569b4;padding-left:40px;color:#0569b4;background:url('image/astudio.png') no-repeat -396px -248px;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:20px;font-weight:normal;}
+.album {width:400px;margin:15px;}
+.album div span, .album div span img {width:400px;height:400px;}
+.ab_on, .ab_im {width:100px;height:100px;margin-top:15px;-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);border-color:#d7d7d7;}
+#imgshow {left:435px;top:102px;}
+.rside {width:395px;overflow:hidden;}
+.rside table {margin:0 15px}
+.rside table td {font-size:13px;}
+#inquiryBtn {background: url('image/inquiry_fb_btn.png') no-repeat;border: 0;width: 180px;height: 42px;cursor: pointer;vertical-align: middle;margin:25px 0 0 100px;}
+.Related .profile {width:300px;}
+.Related .otherPro {width:500px;}
+.contact_head {background-position:0 -247px;padding:3px 0;font-size:16px;line-height:20px;color:#FFF;border-color:#00aeef;}
+.contact_body {border-color:#00aeef;}
+#contact li:last-child {border:none;}
+.Related .thumb {padding:10px;}
+.Related .thumb ul {width:503px;}
+.Related .thumb li {width:92px;height:92px;display:inline-block;*display:inline;zoom:1;padding:10px 20px 10px 10px;}
+.Related .thumb img {width:90px;height:90px;padding:0;-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);}
+.share {float:none;border-top:1px solid #00AEEF;padding-top:10px;margin-left:10px;}
+.share img {width:20px;height:20px;padding:5px 6px 15px 6px;border-color:#d7d7d7;}
 
 /* company only */
 .box_head_3 .more {color:#FFF;text-decoration:underline;}

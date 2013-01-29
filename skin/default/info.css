@@ -12,9 +12,20 @@
 a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
 .side {position:relative;}
-.Category {position:absolute;top:0;left:0;background:#FFF;width:185px;height:0;display:none;}
+/* .Category {position:absolute;top:0;left:0;background:#FFF;width:185px;height:0;display:none;} */
+.Rec {margin-top:-30px;}
 .menu_category {cursor:pointer;}
 .nobb {border-bottom:none !important;}
+
+/* left side column */
+.side .box_head_2 {line-height:30px;background:#0569b4;color:#FFF;}
+.side .box_head_2 > div {border:none;background:#ff5a00;}
+.side .box_head_2 strong {font-family:'微軟正黑體',Arial;}
+.side .box_head_2 .more {color:#FFF;padding-right:8px;text-decoration:underline;}
+.side .box_body {border:3px solid #ffc2a1;border-top:none;}
+.invest_rec {padding:14px 14px 0 14px;}
+.invest_rec img {width:149px;height:84px;border:1px solid #d7d7d7;margin-right:5px;}
+.invest_rec span {display:block;overflow:hidden;font-family:'微軟正黑體',Arial;margin-bottom:15px;}
 
 /* index */
 .booklist {height:435px;padding:20px;}
@@ -52,9 +63,9 @@ a:hover {color:#F60;}
 .box_head_1 span {padding:5px 15px;background:#00aeef;line-height:25px;color:#FFF;}
 
 /* show */
-.contact {width:300px;}
+.Contact {width:290px;}
 .banner {padding-left:40px;}
-.banner img {width:465px;height:290px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
+.banner img {width:465px;height:290px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin-bottom:10px;}
 .detail {padding-left:40px;}
 .detail .info_head {width:465px;border:1px solid #d7d7d7;border-bottom:none;text-align:center;height:26px;background:url('image/astudio.png') repeat-x 20px -277px;}
 .detail .info_head strong {font-size:15px;line-height:26px;}

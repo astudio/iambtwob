@@ -18,6 +18,6 @@ function im_msn($id, $style = 0) {
 }
 
 function im_skype($id, $style = 0) {
-	return $id ? '<a href="skype:'.$id.'" rel="nofollow"><img align="absmiddle" class="trigger" src="http://mystatus.skype.com/smallicon/'.$id.'" title="點擊Skype通話" onerror="this.src=DTPath+\'file/image/skype-off.gif\'"/></a>' : '';
+	return $id ? '<a href="skype:'.$id.'" rel="nofollow"><img class="trigger" src="http://mystatus.skype.com/smallicon/'.$id.'" title="點擊Skype通話" onerror="this.src=DTPath+\'file/image/skype-off.gif\'"/></a>' : '';
 }
 ?>

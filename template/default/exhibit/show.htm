@@ -1,10 +1,7 @@
 {template 'header'}
 <div class="m">
 	<div class="f_l side">
-		{if $DT[page_catalog]}
-			{php $mid = $moduleid;$stat = 1;}
-			{template 'catalog','chip'}
-		{/if}
+		{template 'exhibit-column', 'chip'}
 
 		<div class="b10">&nbsp;</div>
 		<!-- left sidebar ad -->
@@ -27,7 +24,7 @@
 	
 		<div class="m_l_1">
 			
-			<div class="info px13"><!-- <span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字体" class="c_p" onclick="fontZoom('+');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="缩小字体" class="c_p" onclick="fontZoom('-');"/></span> -->
+			<div class="info px13">
 			Updated:{$adddate}
 			&nbsp;&nbsp;Views:&nbsp;<span id="hits">{$hits}</span>
 			&nbsp;&nbsp;Status:&nbsp;<img src="{DT_PATH}file/image/process_{$process}.gif" id="process" alt="Exhibition Status" align="absmiddle"/>

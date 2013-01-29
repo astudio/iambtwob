@@ -5,7 +5,7 @@
 			
 			<ul>
 				<li>{if $t[vip]}<!-- <span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span> -->{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
-				<li class="intro">{$t[introduce]}</li>
+				<li class="intro"><span class="f_r"><a href="{$t[linkurl]}"><img src="{DT_SKIN}image/info_inquiry.png"></span>{$t[introduce]}</li>
 				<li>
 				<a class="publisher" href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;<span style="color:#b8b8b8;">[{area_pos($t[areaid], '', 1)}]&nbsp;{timetodate($t[edittime], $datetype)}</span>&nbsp;&nbsp;
 <!-- 				<span class="f_gray">

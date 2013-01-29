@@ -13,9 +13,20 @@
 a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
 .side {position:relative;}
-.Category {position:absolute;top:0;left:0;background:#FFF;width:185px;height:0;display:none;}
+/* .Category {position:absolute;top:0;left:0;background:#FFF;width:185px;height:0;display:none;} */
+.Rec {margin-top:-30px;}
 .menu_category {cursor:pointer;}
 .nobb {border-bottom:none !important;}
+
+/* left side column */
+.side .box_head_2 {line-height:30px;background:#0569b4;color:#FFF;}
+.side .box_head_2 > div {border:none;}
+.side .box_head_2 strong {font-family:'微軟正黑體',Arial;}
+.side .box_head_2 .more {color:#FFF;padding-right:8px;text-decoration:underline;}
+.side .box_body {border:3px solid #b4d2e8;border-top:none;}
+.invest_rec {padding:10px 5px 5px 5px;}
+.invest_rec img {width:70px;height:48px;border:1px solid #d7d7d7;margin-right:5px;float:left;}
+.invest_rec span {height:50px;display:block;overflow:hidden;font-family:'微軟正黑體',Arial;margin-bottom:5px;}
 
 /* browse by month*/
 .month {border-bottom:2px solid #0569b4;}
@@ -71,6 +82,10 @@ a:hover {color:#F60;}
 .list {height:100px;padding:10px 46px 10px 25px;border-top:none;border-bottom:1px solid #d7d7d7;}
 .list > div img {width:150px;}
 .box_head_1 span {padding:5px 15px;background:#00aeef;line-height:25px;color:#FFF;}
+
+/* search */
+#fsearch label {padding-right: 5px;}
+.fsearch #fsearch {width:650px;*padding-left:0;}
 
 /* show */
 .banner img {width:300px;height:200px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}

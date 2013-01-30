@@ -3,7 +3,7 @@
 {if $member}
 	<li class="f_b" style="font-size:14px;">{if $member[groupid]>5}<a class="contact" href="{$member[linkurl]}" target="_blank" title="{$member[company]}&#10;{$member[mode]}">{/if}<span class="contact">{$member[company]}</span>{if $member[groupid]>5}</a>{/if}</li>
 	{if $member[vip]}
-	<li class="f_orange" style="padding:5px 0 0 12px;"><img src="{DT_SKIN}image/vip_{$member[vip]}.gif"/> [第{vip_year($member[fromtime])}年] 指數:{$member[vip]}</li>
+	<li class="f_orange" style="padding:5px 0 0 12px;"><img src="{DT_SKIN}image/vip_{$member[vip]}.gif"/> <!-- [第{vip_year($member[fromtime])}年] 指數:{$member[vip]} --></li>
 	{/if}
 	{if $member[validated] || $member[vcompany] || $member[vtruename] || $member[vbank] || $member[vmobile] || $member[vemail]}{if $astudio}
 	<li class="f_green" style="padding-top:6px;padding-bottom:6px;">

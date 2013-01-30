@@ -38,10 +38,10 @@ a:hover {color:#F60;}
 /* index */
 .showCat {width:1040px;}
 .showCat > li {width:500px;float:left;padding-right:20px;}
-.showCat .box_head {border:none;background:none;padding:30px 0 0 0;}
+.showCat .box_head {border:none;background:none;padding:30px 0 0 0;height:25px;line-height:25px;}
 .showCat .box_head .catIcon {width: 100px;display: inline-block;position: relative;left: 6px;bottom: 3px;background:url('image/exhibit_index_catIcon.png') no-repeat;*display:inline;zoom:1;}
 .showCat .box_head a {color:#404041;}
-.showCat .box_head strong {display:block;padding:0 10px 0 30px;float:left;background:#d7d7d7;}
+.showCat .box_head strong {display:block;padding:0 10px 0 30px;float:left;background: #D7D7D7 url('image/video_type.png') no-repeat 0 0;}
 .showCat .box_body {border:1px solid #d7d7d7;}
 
 .mainlist {position:relative;}

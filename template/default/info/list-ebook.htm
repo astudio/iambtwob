@@ -1,11 +1,14 @@
 {template 'header'}
+<style>
+	.slideshow {width:817px;background:#f5f5f5;}
+	#tab_nav {width:637px;border:none;background:#FFF;}
+	#panes {width:135px;margin:0 22px;}
+	#panes img {width:135px;}
+</style>
 <script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
 <div class="m">
 	<div class="f_l side">
-		{if $DT[page_catalog]}
-			{php $mid = $moduleid;$stat = 1;}
-			{template 'catalog','chip'}
-		{/if}
+		{template 'ebook-column', 'chip'}
 
 		<div class="b10">&nbsp;</div>
 		<!-- left sidebar ad -->
@@ -47,7 +50,7 @@
 			</div>
 			
 			<div class="b10">&nbsp;</div>
-			<!--{tag("moduleid=$moduleid&condition=status=3&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=3&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-info")}-->
+			{template 'list-'.$module, 'tag'}
 		</div>
 	</div>
 </div>

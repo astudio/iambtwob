@@ -1,10 +1,13 @@
 {template 'header'}
+<style>
+	.slideshow {width:817px;background:#f5f5f5;}
+	#tab_nav {width:637px;border:none;background:#FFF;}
+	#panes {width:135px;margin:0 22px;}
+	#panes img {width:135px;}
+</style>
 <div class="m">
 	<div class="f_l side">
-		{if $DT[page_catalog]}
-			{php $mid = $moduleid;$stat = 1;}
-			{template 'catalog','chip'}
-		{/if}
+		{template 'ebook-column', 'chip'}
 
 		<div class="b10">&nbsp;</div>
 		<!-- left sidebar ad -->
@@ -25,18 +28,18 @@
 	
 		<div class="m_l_1">
 			
-			<div class="info px13"><!-- <span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字体" class="c_p" onclick="fontZoom('+');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="缩小字体" class="c_p" onclick="fontZoom('-');"/></span> -->
+			<div class="info px13">
 			Updated:{$adddate}
 			&nbsp;&nbsp;Views:&nbsp;<span id="hits">{$hits}</span>
 			</div>
 			<div class="contact f_r">
-				<div class="contact_head">Company Profile</div>
+				<div class="contact_head">>> Company Profile <<</div>
 				<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
 				<div class="b10 c_b">&nbsp;</div>
-				<br/>
-				<img src="#" width="100" height="50" title="按鈕" />
+				
+				<a href="{$ebookurl}" target="_blank"><img class="viewOnline" src="{DT_SKIN}image/ebook_view.png" alt="View online" /></a>
 			</div>		
-			<span class="banner"><img src="{$thumb}" alt="{$title}"/></span>
+			<span class="banner"><a href="{$ebookurl}" target="_blank"><img src="{$thumb}" alt="{$title}"/></a></span>
 			<div class="detail">		
 				<div class="box_head_2">
 					<div>

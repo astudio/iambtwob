@@ -46,7 +46,7 @@
 			</div>
 			
 			<div class="b10">&nbsp;</div>
-			<!--{tag("moduleid=$moduleid&condition=status=3 and totime>".$DT_TIME."&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-exhibit")}-->
+			{if $tags}{template 'list-'.$module, 'tag'}{/if}
 		</div>
 	</div>
 </div>

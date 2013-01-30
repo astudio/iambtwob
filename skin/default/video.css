@@ -25,6 +25,9 @@ a:hover {color:#F60;}
 .Category {position:absolute;top:0;left:0;background:#FFF;width:185px;height:0;display:none;}
 .menu_category {cursor:pointer;}
 .nobb {border-bottom:none !important;}
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a, ul.tabs a:hover {background-color:#666666;}
+ul.tabs a,ul.tabs a:hover,ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {background-image:url('image/video_type.png');background-position:0 0;}
+ul.tabs a {padding:0 10px 0 20px;text-align:left;}
 
 /* index */
 /* .showCat {width:1040px;}
@@ -67,9 +70,10 @@ ul.tabs {border:0;height:25px;}
 .list {width:48%;height:140px;padding:10px 10px 10px 5px;border-top:none;float:left;margin:0;clear:none;}
 .list > div {margin-right:13px;}
 .list > ul {margin-top:0;}
-.list > ul > li {height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.list > ul > li {line-height:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .list > div img {width:250px;height:140px;}
 .list .videoTitle {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.list .inTro {color:#414147;white-space:normal;height:88px;overflow:hidden;}
 .box_head_1 span {padding:5px 15px;background:#00aeef;line-height:25px;color:#FFF;}
 .more {clear:both;text-align:right;padding:20px;text-decoration:underline;}
 

@@ -11,7 +11,7 @@ ul.tabs {
 
 /* single tab */
 ul.tabs li {
-	width:120px;
+	width:130px;
 	height:24px;
     float:left;
     text-indent:0;
@@ -33,7 +33,7 @@ ul.tabs a {
     margin:0px;
     position:relative;
     top:1px;
-	background:#d7d7d7 url('image/buy_type.png') no-repeat 102px 0;
+	background:#d7d7d7 url('image/buy_type.png') no-repeat 113px 0;
 }
 
 ul.tabs a:active {
@@ -42,14 +42,14 @@ ul.tabs a:active {
 
 /* when mouse enters the tab move the background image */
 ul.tabs a:hover {
-	background:#00AEEF url('image/buy_type.png') no-repeat 102px 0;
+	background:#00AEEF url('image/buy_type.png') no-repeat 112px 0;
 }
 
 /* active tab uses a class name "current". its highlight is also done by moving the background image. */
 ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
 /*     background-position: -420px -62px; */
     cursor:default !important;
-	background:#00AEEF url('image/buy_type.png') no-repeat 93px 0;
+	background:#00AEEF url('image/buy_type.png') no-repeat 112px 0;
 }
 
 /* initially all panes are hidden */

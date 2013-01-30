@@ -13,16 +13,20 @@ a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
 .side {position:relative;}
 /* .Category {position:absolute;top:0;left:0;background:#FFF;width:185px;height:0;display:none;} */
-.Rec {margin-top:-30px;}
+.Rec,.RecBook {margin-top:-30px;}
 .menu_category {cursor:pointer;}
 .nobb {border-bottom:none !important;}
+.pages {padding-top:30px;}
 
 /* left side column */
 .side .box_head_2 {line-height:30px;background:#0569b4;color:#FFF;}
 .side .box_head_2 > div {border:none;background:#ff5a00;}
+.RecBook .box_head_2 > div {background:#0569b4;}
 .side .box_head_2 strong {font-family:'微軟正黑體',Arial;}
+.RecBook .box_head_2 strong {font-family: 'Source Sans Pro',sans-serif,Verdana,Arial;}
 .side .box_head_2 .more {color:#FFF;padding-right:8px;text-decoration:underline;}
 .side .box_body {border:3px solid #ffc2a1;border-top:none;}
+.RecBook .box_body {border:3px solid #b4d2e8 !important;border-top:none !important;}
 .invest_rec {padding:14px 14px 0 14px;}
 .invest_rec img {width:149px;height:84px;border:1px solid #d7d7d7;margin-right:5px;}
 .invest_rec span {display:block;overflow:hidden;font-family:'微軟正黑體',Arial;margin-bottom:15px;}
@@ -62,6 +66,9 @@ a:hover {color:#F60;}
 .list .publisher:hover {text-decoration:underline;}
 .box_head_1 span {padding:5px 15px;background:#00aeef;line-height:25px;color:#FFF;}
 
+/* search */
+.fsearch #fsearch {width:650px;}
+
 /* show */
 .Contact {width:290px;}
 .banner {padding-left:40px;}
@@ -78,5 +85,10 @@ a:hover {color:#F60;}
 .box_head_2 {padding:0;clear:both;}
 .box_head_2 strong {padding:0 10px;}
 .box_body {border-bottom: 1px solid #00AEEF;}
+.contact {width:292px;}
+.contact_head {background-position:0 -247px;padding:3px 0;font-size:16px;line-height:20px;color:#FFF;border-color:#00aeef;}
+.contact_body {border-color:#00aeef;}
+#contact li:last-child {border:none;}
+.viewOnline {width:135px;height:34px;margin-top:20px;margin-left:78px;}
 
 .share img {width:20px;height:20px;padding:0 6px;}

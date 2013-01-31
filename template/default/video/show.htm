@@ -17,22 +17,51 @@
 	</div>
 
 	<div class="m_l_0 f_l">
-		<div class="left_box">		
+		<div class="b10">&nbsp;</div>
+		<!-- top slideshow AD -->
+		<!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3&order=rand()&pagesize=5&template=video-slideshow",-1)}-->
+		
+		<div class="left_box">
+			<div class="b15"> </div>
+			<div class="b15"> </div>
+			<h1 class="tiTle">{$title}</h1>
 			
-			<h1 class="title">{$title}</h1>
 			<div class="info">
 			Updated：{$adddate}
 			&nbsp;&nbsp;Views：<span id="hits">{$hits}</span>	
 			</div>
-			<div id="player">{template 'content', 'chip'}</div>
+			<div class="Contact f_r">
+				<div class="contact_head">>> Company Profile <<</div>
+				<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+				
+				<div class="b15"> </div>
+				
+				<div class="box_head_2"><span class="f_r px12"><a class="more" href="{$MODULE[23][linkurl]}">more</a></span><div><strong>Premium eCatalogs</strong></div></div>
+				<div class="box_body">
+					<div class="invest_rec catalog">
+						{php $pagesize=2;}
+						<!--{tag("moduleid=23&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&order=rand()&pagesize=$pagesize&template=right-side-rec",-1)}-->
+					</div>
+				</div>				
+			</div>			
+			<div id="player">		
+				{template 'content', 'chip'}
+			</div>
 			{if $content}
-			<div class="left_head">{$MOD[ename]} Introduction</div>
-			{if $CP}{template 'property', 'chip'}{/if}
-			<div class="content" id="content">{$content}</div>
-			<div class="b10">&nbsp;</div>
-			{/if}
-			{template 'show_toolbar','chip'}
-			{template 'comment', 'chip'}
+			<div class="detail f_l">
+				<div class="box_head_2">
+					<div>
+						<strong>Description</strong>
+					</div>	
+				</div>
+				{if $CP}{template 'property', 'chip'}{/if}
+					<div class="content" id="content">{$content}</div>
+					<div class="b10">&nbsp;</div>
+				{/if}
+			
+				{template 'show_toolbar','chip'}
+				{template 'comment', 'chip'}
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,11 @@
+/*menu.css*/
+.goog-te-gadget-simple .goog-te-menu-value span {color:#0569B4 !important;}
+/*catalog.css*/
+.side .level1 > h2 {padding:0;}
+.side .level1 > h2 > a {padding-left:10px;}
+.side .level2 {border:1px solid #d7d7d7;}
+.side .active {padding-bottom:1px;}
+.side .active > h2 > a {border:1px solid #d7d7d7;border-right:none;margin-top:-1px;margin-left:-1px;}
+/*sell.css*/
+#products_list > li {margin-right:17px;}
+#products_list .thumb img {border:1px solid #CCC;}

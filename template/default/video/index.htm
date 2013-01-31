@@ -2,10 +2,7 @@
 {template 'header'}
 <div class="m">
 	<div class="f_l side">
-		{if $DT[page_catalog]}
-			{php $mid = $moduleid;$stat = 1;}
-			{template 'catalog','chip'}
-		{/if}
+		{template $module.'-column', 'chip'}
 
 		<div class="b10">&nbsp;</div>
 		<!-- left sidebar ad -->

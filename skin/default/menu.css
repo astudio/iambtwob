@@ -8,8 +8,8 @@ width: 0;height: 0; display:none; }
 #google_translate_element .goog-te-gadget-simple .goog-te-menu-value {
 text-decoration: none;	}
 #google_translate_element .goog-te-gadget-simple .goog-te-menu-value > span:last-child {
-font-size:12px;color:#0569b4 !important;
-}
+font-size:12px;color:#0569b4 !important;}
+.goog-te-gadget-simple .goog-te-menu-value span {*color:#0569B4 !important;}
 body > div.skiptranslate > iframe {height:0;-moz-box-shadow:none;box-shadow:none;border:none;}
 #goog-gt-tt {z-index:0 !important;}
 #goog-gt-tt div.top {padding:0 !important;}

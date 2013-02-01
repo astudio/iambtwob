@@ -1,112 +1,92 @@
 {template 'header'}
 <style type="text/css">
-.tips {position:absolute;z-index:100;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
+.tips {position:absolute;z-index:100;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;left:750px;}
 .tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
-</style>
-<br/>
-<div class="m">
-	<table width="100%" cellpadding="0" cellspacing="0">
-	<tr>
-	<td width="20">&nbsp;</td>
-	<td width="300"><img src="{DT_SKIN}image/login_h.gif" alt="" width="300" height="35"/></td>
-	<td>&nbsp;</td>
-	</tr>
-	</table>
-</div>
-<div class="m">
-	<table width="100%" cellpadding="0" cellspacing="0">
-	<tr bgcolor="#2D92DA">
-	<td width="20"> </td>
-	<td width="300" bgcolor="#FFFFFF" background="{DT_SKIN}image/login_b.gif">
 
-		<form method="post" action="{$DT[file_login]}"  onsubmit="return Dcheck();">
-		<input name="forward" type="hidden" id="forward" value="{$forward}">
-		<table width="290" cellpadding="3" cellspacing="3" align="right">
-		<tr>
-		<td colspan="2" class="f_gray">您尚未登錄，或者訪問了一個需要登錄的頁面..</td>
-		</tr>
-		<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
-		<td align="right">
-		<select name="option">
-			<option value="username">用戶名</option>
-			{if $MOD[passport]}<option value="passport">通行證</option>{/if}
-			<option value="email">Email</option>
-			<option value="mobile">手機號</option>
-			<option value="company">公司名</option>
-			<option value="userid">會員ID</option>
-		</select>
-		</td>
-		<td><input name="username" type="text" id="username" value="{$username}" style="width:140px"/></td>
-		<td>
-			<div class="tips" id="tusername" style="display:none;">
-				<div>如果忘記了用戶名，請在左側選擇其他登錄名稱<br/>例如Email、手機號、公司名等</div>
-			</div>
-		</td>
-		</tr>
-		<tr onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
-		<td align="right">密 碼：</td>
-		<td>{template 'password', 'chip'}</td>
-		<td>
-			<div class="tips" id="tpassword" style="display:none;">
-				<div>如果忘記了密碼，請<a href="send.php" class="f_b">點擊這裡</a>自主找回或聯繫本站工作人員協助找回</div>
-			</div>
-		</td>
-		</tr>
-		{if $MOD[captcha_login]}
-		<tr>
-		<td align="right">驗證碼：</td>
-		<td>{template 'captcha', 'chip'}</td>
-		<td></td>
-		</tr>
-		{/if}
-		<tr>
-		<td align="right"></td>
-		<td><span title="選中後 一月內不用再次登錄 網吧或公共計算機請勿選"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">記住我</label></span>
-		<span title="選中後 將直接進入商務室 不返回登錄前的頁面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">進入商務室</label></span>
-		</td>
-		<td></td>
-		</tr>
-		<tr>
-		<td></td>
-		<td><input type="submit" name="submit" value=" 登 錄 "/>&nbsp;&nbsp;<a href="send.php">忘記了密碼？</a>
-		</td>
-		<td></td>
-		</tr>
-		{if $oa}
-		<tr>
-		<td align="right">其他登錄：</td>
-		<td>
-		{loop $OAUTH $k $v}
-		{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
-		{/loop}
-		</td>
-		<td></td>
-		</tr>
-		{/if}
-		</form>
-		</table>
-	</td>
-	<td width="20">&nbsp;</td>
-	<td bgcolor="#FFFFFF" width="350" valign="top"><img src="{DT_SKIN}image/login_say.gif" alt="" width="350" height="140"/></td>
-	<td width="30">&nbsp;</td>
-	<td class="f_white" style="line-height:180%;">
-	還沒有會員賬號?<br/>立即免費註冊一個(僅需要大約1分鐘)...<br/><br/>
-	<input type="button" value=" 立即免費註冊 " class="pd3 px14 f_b ls1" style="background:#F8B003;" onclick="window.location='{$DT[file_register]}?forward={urlencode($forward)}';"/>
-	</td>
-	</tr>
-	</table>
-</div>
+.m_l_a {width:1212px;border:2px solid #00aeef;margin-top:22px;padding:8px 0;}
+.forgotPasswd {width:300px;float:left;font-size:15px;height:154px;border-right:1px solid #00aeef;padding-top:55px;padding-left:36px;line-height:22px;position:relative;}
+.forgotPasswd .Licon {background:url('{DT_SKIN}image/login.png') no-repeat -1px -1px;position:absolute;width:255px;height:40px;top:-8px;left:0;}
+.logIn {float:left;width:400px;height:163px;border-right:1px solid #00aeef;padding:23px 25px;}
+.joinFree {float:right;width:380px;height:169px;padding:20px 22px;}
+.joinFree div {font-size:15px;}
+form button {width:100px;height:40px;background:url('{DT_SKIN}image/login.png') no-repeat 5px -44px;border:0;text-indent:-9999px;margin-left:34px;cursor:pointer;vertical-align:middle;}
+form label {font-size:15px;}
+.logIn select {width:134px;height:24px;font-size:15px;line-height:24px;}
+.logIn #username {width:124px;height:20px;line-height:18px;vertical-align:top;font-size:15px;padding:0 3px;}
+form .password {margin:14px 0;}
+#password {width:192px;height:20px;font-size:15px;font-family:Arial;padding:0 3px;}
+#captcha {width:145px;height:20px;margin:0 !important;padding:0 3px;font-size:15px;}
+#captchapng {vertical-align:top;}
+#ccaptcha img {left:0px;top:0px;}
+.remark {font-size:13px;margin:8px 0;}
+.remember {margin-top:6px;}
+.register {width:179px;height:40px;background:url('{DT_SKIN}image/login.png') no-repeat 0 -84px;margin-top:10px;}
+#kb {left:498px !important;}
+</style>
+
 <div class="m">
-	<table width="100%" cellpadding="0" cellspacing="0">
-	<tr>
-	<td width="20">&nbsp;</td>
-	<td width="300"><img src="{DT_SKIN}image/login_f.gif" alt="" width="300" height="25"/></td>
-	<td>&nbsp;</td>
-	</tr>
-	</table>
-</div>
-<br/>
-<br/>
+	<div class="m_l_a f_l">
+		<div class="forgotPasswd">
+			<div class="Licon"> </div>
+			<a href="send.php">Password Forgot?</a>
+			<div>You are not logged, or Access the login page...</div>
+		</div>
+		
+		<form class="logIn " method="post" action="{$DT[file_login]}"  onsubmit="return Dcheck();">
+			<input name="forward" type="hidden" id="forward" value="{$forward}">
+
+			<div onmouseover="Ds('tusername');" onmouseout="Dh('tusername');" >
+				<select name="option">
+					<option value="username">用户名</option>
+					{if $MOD[passport]}<option value="passport">通行证</option>{/if}
+					<option value="email">Email</option>
+					<option value="mobile">手机号</option>
+					<option value="company">公司名</option>
+					<option value="userid">会员ID</option>
+				</select>
+				<input name="username" type="text" id="username" value="{$username}" placeholder="Username" />
+			</div>				
+			<div class="tips" id="tusername" style="display:none;">
+				<div>如果忘记了用户名，请在左侧选择其他登录名称<br/>例如Email、手机号、公司名等</div>
+			</div>
+
+			<div class="password" onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
+				<label for="password">Password:</label>
+				{template 'password', 'chip'}
+			</div>			
+			<div class="tips" id="tpassword" style="display:none;">
+				<div>如果忘记了密码，请<a href="send.php" class="f_b">点击这里</a>自主找回或联系本站工作人员协助找回</div>
+			</div>
+
+			{if $MOD[captcha_login]}
+				<label for="captcha">Verification Code: </label>
+				{template 'captcha', 'chip'}
+			{/if}
+			
+			<div class="remark">If you do not know the verification code, click the picture to refresh</div>
+
+			<div class="remember">
+				<span title="选中后 一月内不用再次登录 网吧或公共计算机请勿选"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">Remember me</label></span>
+				<span title="选中后 将直接进入商务室 不返回登录前的页面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">Enter My ImB2B</label></span>
+				<button type="submit">Login</button>
+			</div>	
+
+			{if $oa}
+			其他登录：
+			{loop $OAUTH $k $v}
+			{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
+			{/loop}
+			{/if}		
+		</form>
+		<div class="joinFree">
+			<div>Not is imB2B.com Member?</div>
+			<div>Immediately sign up for a free (only take about 1 minute)...</div>
+			<a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><div class="register"> </div></a>
+		</div>
+		
+		<!-- ad here -->
+	</div>
+</div>	
 <script type="text/javascript">
 if(Dd('username').value == '') {
 	Dd('username').focus();
@@ -115,18 +95,18 @@ if(Dd('username').value == '') {
 }
 function Dcheck() {
 	if(Dd('username').value == '') {
-		confirm('請輸入登錄名稱');
+		confirm('请输入登录名称');
 		Dd('username').focus();
 		return false;
 	}
 	if(Dd('password').value == '') {
-		confirm('請輸入密碼');
+		confirm('请输入密码');
 		Dd('password').focus();
 		return false;
 	}
 {if $MOD[captcha_login]}
 	if(!is_captcha(Dd('captcha').value)) {
-		confirm('請填寫驗證碼');
+		confirm('请填写验证码');
 		Dd('captcha').focus();
 		return false;
 	}

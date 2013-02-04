@@ -68,7 +68,7 @@ form .password {margin:14px 0;}
 			<div class="remember">
 				<span title="选中后 一月内不用再次登录 网吧或公共计算机请勿选"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">Remember me</label></span>
 				<span title="选中后 将直接进入商务室 不返回登录前的页面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">Enter My ImB2B</label></span>
-				<button type="submit">Login</button>
+				<button type="submit" name="submit">Login</button>
 			</div>	
 
 			{if $oa}

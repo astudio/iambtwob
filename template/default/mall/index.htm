@@ -1,42 +1,46 @@
+{php $CSS = array('index','tabs');}
 {template 'header'}
 <div class="m">
-	<table cellpadding="0" cellspacing="0" width="100%">
-	<tr>
-	<td valign="top" class="left_menu">
-		<ul>
-		<li class="left_menu_on"><a href="{$MOD[linkurl]}">商品分類</a></li>
-		{loop $maincat $k $v}
-		<li class="left_menu_li"><a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}({$v[item]})</a></li>
-		{/loop}
-		</ul>
-	</td>
-	<td valign="top">
-		{if $MOD[page_irec]}
-		<div class="tab_head">
-		<ul>
-			<li class="tab_2" id="mall_t_1" onmouseover="Tb(1, 2, 'mall', 'tab');">推薦商品</li>
-			<li class="tab_1" id="mall_t_2" onmouseover="Tb(2, 2, 'mall', 'tab');">熱賣商品</li>
-		</ul>
-		</div>
-		<div class="box_body">
-			<div class="thumb" id="mall_c_1" style="display:">
-			<!--{tag("moduleid=$moduleid&length=20&condition=status=3 and level>0&areaid=$cityid&pagesize=".$MOD[page_irec]."&order=".$MOD[order]."&width=100&height=100&cols=5&template=thumb-mall&target=_blank")}-->
-			</div>
-			<div class="thumb" id="mall_c_2" style="display:none">			<!--{tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=".$MOD[page_irec]."&order=orders desc&width=100&height=100&cols=5&template=thumb-mall&target=_blank")}-->
-			</div>
-		</div>
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat=1;}
+			{template 'catalog','chip'}
+		{/if}
+		
 		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
+	</div>
+	
+	<div class="m_l_0 f_l">
+		<div class="b10"> </div>
+		{if $MOD[page_irec]}
+			<ul class="tabs">
+				<li><a href="javascript:;">推薦商品</a></li>
+				<li><a href="javascript:;">Hot Products</a></li>
+			</ul>
+			<div class="panes thUmb">
+				<div>
+					<!--{tag("moduleid=$moduleid&length=20&condition=status=3 and level>0&areaid=$cityid&pagesize=".$MOD[page_irec]."&order=".$MOD[order]."&cols=7&template=thumb-mall&target=_blank",-1)}-->
+				</div>
+				<div>
+					<!--{tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=".$MOD[page_irec]."&order=orders desc&cols=7&template=thumb-mall&target=_blank",-1)}-->
+				</div>
+			</div>
+			<div class="b10">&nbsp;</div>
 		{/if}
 		{if $MOD[page_inew]}
-		<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?new=1')}">更多..</a></span><strong>最新上架</strong></div>
-		<div class="box_body">
-			<div class="thumb">
-			<!--{tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=".$MOD[page_inew]."&order=".$MOD[order]."&width=100&height=100&cols=5&template=thumb-mall&target=_blank")}-->
+			<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?new=1')}">more ></a></span><strong>New Products</strong></div></div>
+			<div class="thUmb">
+				<div>
+					<!--{tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=".$MOD[page_inew]."&order=".$MOD[order]."&cols=7&template=thumb-mall&target=_blank",-1)}-->
+				</div>
 			</div>
-		</div>
 		{/if}
-	</td>
-	</tr>
-	</table>
+	</div>
 </div>
 {template 'footer'}

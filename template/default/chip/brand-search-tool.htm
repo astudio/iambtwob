@@ -1,0 +1,29 @@
+<div class="box_head_1">
+	<div>
+		<a href="http://demo.imb2b.com/sell/"><strong>Search the parts directory</strong></a>
+	</div>
+</div>
+<div class="Alphabet">
+	<span class="f_gray f_l px14">Brands: </span>			
+	<ul class="alphabet">
+		<li><a class="f_gray" href="{$MOD[linkurl]}search.php?letter=0" target="_blank">0-9</a></li>
+		{loop $LETTER $c}
+		<li><a href="{$MOD[linkurl]}search.php?letter={$c}" target="_blank">{strtoupper($c)}</a></li>
+		{/loop}
+	</ul>
+
+	<span class="f_gray px14 sep">Suppliers: </span>	
+	<ul class="alphabet">
+		<li><a class="f_gray" href="{$MOD[linkurl]}search.php?cletter=0" target="_blank">0-9</a></li>
+		{loop $LETTER $c}
+		<li><a href="{$MOD[linkurl]}search.php?cletter={$c}" target="_blank">{strtoupper($c)}</a></li>
+		{/loop}
+	</ul>
+</div>
+<div class="bSearch">
+	<label class="f_gray f_l px14" for="bsearch">Search: </label>
+	<form action="{$MOD[linkurl]}search.php" target="_blank">
+		<input type="text" id="bsearch" name="kw" value="{$kw}" placeholder="Enter a keyword" />
+		<input type="submit" class="Btn" value="Search" />
+	</form>
+</div>

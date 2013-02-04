@@ -1,0 +1,24 @@
+<div class="sell_tip" id="sell_tip" style="display:none;" title="Double click to close" ondblclick="Dh(this.id);">		
+	<div>
+		<p>You can select to</p>
+		<a href="javascript:;" rel="compare" class="btn_1 fb">Compare</a> or 
+		<input type="submit" value="Order" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_2" />
+	</div>
+</div>
+<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
+
+<div class="tool">		
+	<div class="box_head_1">					
+		<ul class="tabs">
+			<li><a href="{$MODULE[16][linkurl]}" class="current">Products</a></li>
+		</ul>
+	</div>
+
+	<div class="result f_r">
+		<span class="resultSpan"><strong>Result{if $item>1}s{/if}{if $catid} for <span class="f_red">{$CAT[$catid]}</span>{/if}:</strong></span> {$item} {if $moduleid==4}{if $item>1}companies{else}company{/if}{else} product{if $item>1}s{/if}{/if}{if $total} from {$total} {if $total>1}companies{else}company{/if}{/if}<span> (<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $item<$pagesize*$page ? $item : $pagesize*$page;}?> out of <?php echo $group ? $total : $item;?>)</span>
+	</div>
+				
+	<label for="checkAll">Select All</label><input id="checkAll" type="checkbox" />
+	<a href="javascript:;" rel="compare" class="btn_1 fb"><span>►</span>Compare</a>&nbsp; 
+	<input type="submit" value="►    Order" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_2" />	
+</div>

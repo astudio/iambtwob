@@ -1,17 +1,27 @@
 (function($) {
 	if(!$) return false;
 
+	function getMoreLink(id) {
+		var catid = id ? id : $('ul.tabs > li:first-child').data('catid');
+		$('.main .more > a').attr('href',DTPath+'brand/list.php?catid='+catid);
+	}
+	
 	$(function(){
-		// left Category toggle
-		$('.menu_category').toggle(
-			function(){
-				$('.side .Category').show().stop().animate({height:'100%'},1200,function(){});
-			},
-			function(){
-				$('.side .Category').stop().animate({height:'0px'},600,function(){$(this).hide();});
-			});
+		// index category more
+		getMoreLink();
+		$('ul.tabs > li').on('click',function(){
+			getMoreLink($(this).data('catid'));
+			$('.panes > div:visible').find('img.lazy').each(function(){
+				var o = $(this).attr('data-src');
+				if( o ) $(this).attr('src',o).removeAttr('data-src');
+			});			
+		});
 		
 		// index category tabs
-		$("ul.tabs").tabs("div.panes > div");
+/* 		$("ul.tabs").tabs("div.panes > div",{
+			effect: 'fade',
+			fadeInSpeed: 600,
+			fadeOutSpeed: 400
+		}); */
 	});				
 })(jQuery);

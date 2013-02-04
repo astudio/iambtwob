@@ -2,10 +2,7 @@
 {template 'header'}
 <div class="m">
 	<div class="f_l side">
-		{if $DT[page_catalog]}
-			{php $mid = $moduleid;$stat = 1;}
-			{template 'catalog','chip'}
-		{/if}
+		{template 'brand-column','chip'}
 
 		<div class="b10">&nbsp;</div>
 		<!-- left sidebar ad -->
@@ -32,46 +29,28 @@
 		<div class="b10">&nbsp;</div>
 		
 		<div class="f_l main">
-			<div class="box_head_1"><div><a href="http://demo.imb2b.com/sell/"><strong>Search the parts directory</strong></a></div></div>			
-			
-			<div class="Alphabet">
-				<span class="f_gray f_l px14">Brands: </span>			
-				<ul class="alphabet">
-					<li><a class="f_gray" href="{$MOD[linkurl]}search.php?letter=0" target="_blank">0-9</a></li>
-					{loop $LETTER $c}
-					<li><a href="{$MOD[linkurl]}search.php?letter={$c}" target="_blank">{strtoupper($c)}</a></li>
-					{/loop}
-				</ul>
-
-				<span class="f_gray px14 sep">Suppliers: </span>
-				
-				<ul class="alphabet">
-					<li><a class="f_gray" href="{$MOD[linkurl]}search.php?cletter=0" target="_blank">0-9</a></li>
-					{loop $LETTER $c}
-					<li><a href="{$MOD[linkurl]}search.php?cletter={$c}" target="_blank">{strtoupper($c)}</a></li>
-					{/loop}
-				</ul>
-			</div>
-			<div class="bSearch">
-				<label class="f_gray f_l px14" for="bsearch">Search: </label>
-				<form action="{$MOD[linkurl]}search.php">
-					<input type="text" id="bsearch" name="kw" />
-					<input type="submit" value="Search" />
-				</form>
-			</div>	
+			{template 'brand-search-tool','chip'}
 		</div>
 		
-		<div class="m_l f_l">
+		<div class="m_l_0 f_l">
+			<div class="b15"> </div>
+			<div class="b15"> </div>
+			
+			<div class="more f_r"><a href="#">more ></a></div>
 			<ul class="tabs">
 				{loop $maincat $i $c}
-					<li><a href="javascript:;">{$c[catname]}</a></li>								
+					<li data-catid="{$c[catid]}"><a href="javascript:;">{$c[catname]}</a></li>
 				{/loop}
 			</ul>
 			
 			<div class="panes">
 				{loop $maincat $i $c} 
-					<div><!--{tag("moduleid=$moduleid&areaid=$cityid&condition=status=3 and thumb<>'' and catid=".$c[catid]."&order=rand()&pagesize=12&template=thumb-brand",-1)}-->
-					<div class="more"><a href="{$MOD[linkurl]}{$s[linkurl]}">More >></a></div>
+					<div>
+						<a href="{$MOD[linkurl]}{$s[linkurl]}">
+							<img class="lazy bAnner" data-src="{DT_SKIN}image/brand_cat_{substr(strtolower($c[catname]),0,3)}.jpg" src="{DT_SKIN}image/blank.gif" />
+							<div class="catName">{$c[catname]}</div>
+						</a>
+						<!--{tag("moduleid=$moduleid&areaid=$cityid&catid=".$c[catid]."&condition=status=3 and thumb<>''&order=rand()&pagesize=12&cols=4&template=thumb-brand",-1)}-->						
 					</div>
 				{/loop}	
 			</div>

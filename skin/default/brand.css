@@ -9,6 +9,7 @@
 .brand_pdt {border-top:#AACCEE 1px dotted;height:10px;font-size:1px;} */
 a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
+/*index*/
 /*==============Slideshow=========================*/
 .images img {width:827px;height:218px;}
 .slidetabs {height:100%;border-top:none;margin:0;background:none;position:relative;left:738px;bottom:5px;}
@@ -20,10 +21,66 @@ a:hover {color:#F60;}
 .alphabet li {display:inline-block;*display:inline;zoom:1;padding:0 2px;}
 .alphabet li a.f_gray {color:#666;}
 .sep {margin-left:25px;}
+#bsearch {width:316px;height:19px;margin-left:10px;border:1px solid #d7d7d7;padding:1px 3px;}
+.Btn {width: 78px;height: 23px;border: 1px solid #b8b8b8;font-size: 13px;background: url('image/astudio.png') no-repeat 0 -282px;color:#404041;margin-left:5px;}
 /*==============Category======================*/
-ul.tabs {height:25px;}
+.m_l_0 {*position:relative;}
+ul.tabs {height:25px;width:100%;}
 ul.tabs li {background:transparent;}
+ul.tabs li > a {font-size:12px;}
+.panes {margin:22px 22px 22px 2px;height:422px;*margin:22px 0 22px 2px;}
+.panes > div {height:420px;position:relative;}
+.panes .bAnner {width:240px;height:420px;border:none;margin-right:24px;}
+.panes .catName {width:225px;height:35px;background:#000;position:absolute;top:370px;left:0;opacity:0.5;padding-top:15px;padding-left:15px;font-size:18px;color:#FFF;overflow:hidden;}
+.panes > div > ul {width:1024px;*width:auto;}
+.panes > div > ul > li {display:inline-block;*display:inline;zoom:1;padding-right:23px;padding-bottom:21px;margin:0;width:164px;vertical-align:top;}
+.panes > div > ul img {float:left;width:162px;height:54px;border:1px solid #d7d7d7;margin:0;margin-bottom:8px;padding:23px 0;}
+.panes > div > ul span {float:left;text-align:center;font-size:13px;line-height:16px;width:164px;}
+.more {padding-top:5px;padding-right:3px;*position:absolute;*right:0;*top:30px;}
+.more > a {color:#00aeef;}
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a, ul.tabs a:hover {background-color:#666666;}
+ul.tabs a,ul.tabs a:hover,ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {background-image:url('image/video_type.png');background-position:0 0;}
+ul.tabs a {padding:0 10px 0 20px;text-align:left;}
+ul.tabs a.current,ul.tabs a:hover,ul.tabs a.current:hover {color:#FFF !important;}
 /*==============Scrollable====================*/
 .Scrollable, .scrollable, a.browse {height:320px;}
 .scrollable .items .b10 {margin:0;}
+.scrollable .items div {*width:910px;}
 a.left span, a.right span {margin:145px 7px;}
+/*==============Left Side=====================*/
+.RecCom {margin-top:-30px;}
+.RecCom .box_head_2 {background:#0569b4;padding-left:22px;margin-bottom:15px;}
+.RecCom .box_head_2 div {border:none;}
+.RecCom .box_head_2 div strong {color:#FFF;line-height:28px;font-weight:normal;}
+
+.RecCom .box_body img {width:88px;height:88px;border:1px solid #d7d7d7;margin:0 7px 5px 2px;}
+.RecCom .box_body .image {margin-top:10px;}
+.RecCom .box_body .image span {font-size:13px;line-height:14px;}
+.RecCom .box_body .intro {clear:left;padding:0 3px 8px 3px;border-bottom:1px dotted #b8b8b8;}
+.RecCom .more {text-align: right;margin-top: -1px;background: white;border-bottom: 3px solid #00AEEF;padding:0;margin-bottom:10px;}
+/*===============List=========================*/
+
+/*===============Show=========================*/
+
+/*===============Product======================*/
+.tiTle {text-align: left;margin: 0;border-bottom: 1px solid #0569B4;padding-left: 40px;color: #0569B4;background: url('image/astudio.png') no-repeat -396px -248px;height: 28px;line-height: 20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 20px;font-weight: normal;}
+.left_box {width:998px;padding:24px 0 0 0;}
+.Contact {width:300px;}
+.contact_head {background-position:0 -247px;padding:3px 0;font-size:16px;line-height:20px;color:#FFF;border-color:#00aeef;}
+.contact_body {border-color:#00aeef;}
+#contact li:last-child {border:none;}
+.brand_info,.detail {width:640px;padding-left:40px;}
+.brand_info li,.brand_info strong,.brand_info span {font-size:13px;}
+.box_head_2 {padding:0;clear:both;}
+.box_head_2 strong {padding:0 10px;}
+.box_body {border-bottom: 1px solid #00AEEF !important;}
+.brand_logo {width:118px;height:40px;border:1px solid #d7d7d7;padding:39px 0;margin-right:17px;margin-bottom:15px;}
+.joinBtn {padding-top:43px;}
+.tHumb {padding:10px;}
+.tHumb > ul {width:640px;}
+.tHumb > ul > li {display:inline-block;*display:inline;zoom:1;width:133px;padding:10px 12px 10px 10px;vertical-align:top;}
+.tHumb > ul > li img {width:130px;height:130px;padding: 0;-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);*border:1px solid #d7d7d7;}
+.tHumb > ul > li span {width:131px;display:block;text-align:center;padding:8px 0 0 0;color:#666;}
+.tHumb .pages {margin-top:20px;padding-top:20px;border-top:1px solid #00AEEF;}
+
+.share img {width:20px;height:20px;padding:0 6px;}

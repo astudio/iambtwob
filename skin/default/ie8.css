@@ -9,3 +9,8 @@
 /*sell.css*/
 #products_list > li {margin-right:17px;}
 #products_list .thumb img {border:1px solid #CCC;}
+
+/*brand.css*/
+#searchBtn {vertical-align:middle;}
+
+.tHumb > ul > li img {border:1px solid #d7d7d7;}

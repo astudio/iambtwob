@@ -9,8 +9,7 @@
 		$(".slidetabs2").tabs(".images2 > div", {				 
 			// enable "cross-fading" effect
 			effect: 'horizontal',
-			event: 'mouseover',
-			fadeOutSpeed: 2000,				 
+			event: 'mouseover',			 
 			// start from the beginning after the last tab
 			rotate: true
 		}).slideshow({
@@ -30,7 +29,12 @@
 			}
 		});		
 		// exhibit tabs
-		$("ul.tabs").tabs("div.panes > div");
+		// brand nav alse uses
+		$("ul.tabs").tabs("div.panes > div",{
+			effect: 'fade',
+			fadeInSpeed: 600,
+			fadeOutSpeed: 400
+		});		
 		// movie tabs
 		$("#tab_nav ul").tabs("#panes > div", {
 			effect: 'fade',

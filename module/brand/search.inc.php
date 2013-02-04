@@ -71,18 +71,22 @@ if($DT_QST) {
 	} else {
 		if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
 		// query by alphebet or number
-		if($letter && in_array(strtolower($letter), $LETTER)) {
-			$condition .= " AND title LIKE '$letter%'";
-		} elseif($letter && !in_array(strtolower($letter), $LETTER)) {
-			$condition .= " AND title REGEXP '^[0-9]+'";
-		}
- 		if($cletter && in_array(strtolower($cletter), $LETTER)) {
-			$condition .= " AND company LIKE '$cletter%'";
-		} elseif($cletter && !in_array(strtolower($letter), $LETTER)) {
-			$condition .= " AND company REGEXP '^[0-9]+'";
-		}
+		if(isset($letter)) {
+			if(in_array(strtolower($letter), $LETTER)) {
+				$condition .= " AND title LIKE '$letter%'";
+			} else {
+				$condition .= " AND title REGEXP '^[0-9]+'";
+			}
+		}	
+ 		if(isset($cletter)) {
+			if(in_array(strtolower($cletter), $LETTER)) {
+				$condition .= " AND company LIKE '$cletter%'";
+			} else {
+				$condition .= " AND company REGEXP '^[0-9]+'";
+			}
+		}	
 		if($pptsql) $condition .= $pptsql;//PPT
-		$condition = "status=3".$condition;//var_dump($condition);die;
+		$condition = "status=3".$condition;
 	}
 	$pagesize = $MOD['pagesize'];
 	$offset = ($page-1)*$pagesize;

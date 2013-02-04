@@ -66,7 +66,7 @@ a:hover {color:#F60;}
 #fsearch select {width:170px;height:21px;overflow:hidden;}
 #fsearch #kw {width:90px;}
 /* show */
-.left_box {position:relative;}
+/* .left_box {position:relative;} */
 .box_head_2 strong {font-size:15px;}
 .proTitle {text-align:left;margin:10px 0 0 0;border-bottom:1px solid #0569b4;padding-left:40px;color:#0569b4;background:url('image/astudio.png') no-repeat -396px -248px;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:20px;font-weight:normal;}
 .album {width:400px;margin:15px;}

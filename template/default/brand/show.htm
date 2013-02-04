@@ -1,68 +1,84 @@
-{template 'header'}
+{php $CSS = array('index','tabs');}
+{template 'header'} 
 <div class="m">
-<div class="m_l f_l">
-	<div class="left_box">		
-		<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo; </div>
-		<div class="brand_info">
-			<div class="f_r"><img src="{$thumb}" width="{$MOD[thumb_width]}" height="{$MOD[thumb_height]}" alt="{$title}" class="brand_logo"/><br/><center><a href="{$linkurl}#join"><img src="{DT_SKIN}image/btn_join.gif" alt="Join Us"/></a></center></div>
-			<div>
-				<ul>
-				<li><strong>{$MOD[name]} Name</strong>：<span>{$title}</span></li>
-				<li><strong>Official Website</strong>：{if $homepage}<a href="{$homepage}" target="_blank">{$homepage}</a>{else}no{/if}</li>
-				<li><strong>Views</strong>：<span id="hits">{$hits}</span></li>
-				<li><strong>Updated</strong>：{$editdate}</li>
-				</ul>			
+	<div class="f_l side">
+		{template 'brand-column','chip'}
+
+		<div class="b10">&nbsp;</div>
+		<!-- left sidebar ad -->
+		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
+	</div>
+	<div class="main f_l">
+		<div class="b10">&nbsp;</div>
+		<div class="m_l_0 f_l">
+			<div class="topr" id="trades">		
+				{if $DT[page_login]}
+					{template 'user', 'chip'}
+				{/if}	
+			</div>
+			<div class="topl">
+				<!-- 1st slideshow (AD) -->
+				<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=16&template=ad-slideshow-brand",-1)}-->
+			</div>				
+		</div>
+					
+		<div class="b10">&nbsp;</div>
+		<div class="main f_l">
+			<div class="b15"> </div>
+			<h1 class="tiTle">Brand Name: {$title}</h1>
+
+			<div class="left_box">
+				<div class="Contact f_r">
+					<div class="contact_head">>> Contact Info <<</div>		
+					<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+					<div class="b10">&nbsp;</div>
+
+					<div class="box_head_2"><!-- <span class="f_r px12"><a class="more" href="{$MODULE[23][linkurl]}">more</a></span> --><div><strong>>> Brand Products <<</strong></div></div>
+					<div class="box_body">
+						<div class="thumb"><!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>'' and username='$username' and brand='$title'&pagesize=4&order=rand()&cols=2&template=thumb-table&target=_blank", -2)}--></div>
+						<div class="brand_pdt">&nbsp;</div>
+					</div>		
+					<div class="b10 c_b">&nbsp;</div>
+					
+					<!-- AD here -->
+					<img src="http://www.adasystemsinc.com/sites/default/files/company.jpg?1320225089" />
+					<div class="b10"> </div>					
+				</div>
+				
+				<div class="brand_info">
+					<div class="f_l">
+						<img src="{$thumb}" alt="{$title}" class="brand_logo" />
+					</div>
+					<div>
+						<ul>						
+							<li><strong>Official Website</strong>: {if $homepage}<a href="{$homepage}" target="_blank">{$homepage}</a>{else}no{/if}</li>
+							<li><strong>Views</strong>: <span id="hits">{$hits}</span></li>
+							<li><strong>Updated</strong>: {$editdate}</li>
+						</ul>
+						<a href="{$linkurl}#join"><img class="joinBtn" src="{DT_SKIN}image/btn_join.gif" alt="Join Us"/></a>		
+					</div>
+				</div>
+				
+				<div class="detail f_l">
+					<div class="box_head_2"><div><strong>Brand Introduction</strong></div></div>
+					<div class="box_body">
+						{if $CP}{template 'property', 'chip'}{/if}
+						<div class="content" id="content">{$content}</div>
+					</div>					
+					<div class="b10">&nbsp;</div>
+					{template 'show_toolbar','chip'}					
+					<div class="b10">&nbsp;</div>
+					<div class="box_head_2"><div><strong>Join Us</strong></div></div>
+					<div class="pd10"><script type="text/javascript">show_message('{$MOD[linkurl]}', {$itemid});</script></div>
+					{template 'comment', 'chip'}					
+				</div>
 			</div>
 		</div>
-		<div class="c_b"></div>
-		<div class="left_head">{$MOD[name]} Introduction</div>
-		{if $CP}{template 'property', 'chip'}{/if}
-		<div class="content" id="content">{$content}</div>
-		<div class="b10">&nbsp;</div>
-		<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
-		<input type="hidden" name="itemid" value="{$itemid}"/> 
-		<input type="hidden" name="title" value="{$title}"/>
-		<input type="hidden" name="linkurl" value="{$linkurl}"/>
-		</form>
-		<center>
-		[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]} search</a> ]&nbsp;
-		[ <script type="text/javascript">addFav('+ Favorite');</script> ]&nbsp;
-		[ <a href="javascript:Dd('sendmail').submit();void(0);">share</a> ]&nbsp;
-		[ <a href="javascript:Print();">print</a> ]&nbsp;
-		[ <a href="javascript:window.close()">close</a> ]
-		</center>
-		<br/>
-		<div class="left_head">Leave a message<a name="join"></a></div>
-		<div class="pd10"><script type="text/javascript">show_message('{$MOD[linkurl]}', {$itemid});</script></div>
-		{template 'comment', 'chip'}
-		<br/>
 	</div>
-</div>
-<div class="m_n f_l">&nbsp;</div>
-	<div class="m_r f_l">
-		<div class="contact_head">Contact Info</div>		
-		<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
-		<div class="b10">&nbsp;</div>
-		<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('product.php?itemid='.$itemid)}">more..</a></span><strong>{$MOD[name]} Product</strong></div></div>
-		<div class="box_body">
-			<div class="thumb"><!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>'' and username='$username' and brand='$title'&pagesize=2&order=addtime desc&width=120&height=90&cols=2&template=thumb-table&target=_blank", -2)}--></div>
-			<div class="brand_pdt">&nbsp;</div>
-			<div class="f_gray li_dot"><!--{tag("moduleid=5&condition=status=3 and brand='$title'&pagesize=10&order=addtime desc&target=_blank", -2)}--></div>
-		</div>		
-		<div class="b10 c_b">&nbsp;</div>
-		{if $username}
-		<div class="box_head_1"><div><strong>Other {$MOD[name]}</strong></div></div>
-		<div class="box_body thumb">
-		<!--{tag("moduleid=$moduleid&condition=status=3 and username='$username'&pagesize=10&order=addtime desc&width=120&height=40&cols=2&template=thumb-brand", -2)}-->
-		</div>
-		{else}
-		<div class="box_head_1"><div><strong>Related {$MOD[name]}</strong></div></div>
-		<div class="box_body thumb">
-		<!--{tag("moduleid=$moduleid&condition=status=3&catid=$catid&areaid=$cityid&pagesize=10&order=addtime desc&width=120&height=40&cols=2&template=thumb-brand", -2)}-->
-		</div>
-		{/if}
-	</div>
-	
 </div>
 {template 'zoom', 'chip'}
 {template 'footer'}

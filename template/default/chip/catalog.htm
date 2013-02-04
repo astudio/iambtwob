@@ -1,7 +1,7 @@
 <ul class="Category">				
 	{php $child = get_maincat(0, $mid, 1);}
 	{loop $child $c}
-	<li class="level1">
+	<li class="level1{if $c[child]} child{else} nochild{/if}">
 		<!-- first level category -->
 		<h2>
 			<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{$c[catname]}{if $c[child]}<span class="arrow">></span>{/if}</a>

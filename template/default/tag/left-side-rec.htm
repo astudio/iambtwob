@@ -1,6 +1,18 @@
 {loop $tags $i $t}
-	<a href="{$t[linkurl]}" target="_blank">
-		<img src="{$t[thumb]}" alt="{$t[title]}" />
-		<span>{$t[title]}</span>
-	</a>
+	{if $isCompany}
+		<div class="image">
+			<a href="{$t[linkurl]}" target="_blank">
+				<img class="f_l" src="{$t[thumb]}" alt="{$t[company]}" />
+				<span>{$t[company]}</span>
+			</a>
+		</div>
+		<div class="intro">
+			{if $length}{dsubstr($t[introduce], $length)}...{else}{$t[introduce]}{/if}&nbsp;&nbsp;<a href="{$t[linkurl]}introduce/" target="_blank">[Details]</a>
+		</div>
+	{else}
+		<a href="{$t[linkurl]}" target="_blank">
+			<img src="{$t[thumb]}" alt="{$t[title]}" />
+			<span>{$t[title]}</span>
+		</a>
+	{/if}
 {/loop}	

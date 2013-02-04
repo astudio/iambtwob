@@ -1,10 +1,6 @@
 (function($) {
 	if(!$) return false;
 
-/* 	function imgScroll() {
-		$('img.lazy:visible').scroll();
-	} 
- */
 	$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));
 	
 	$(function(){
@@ -14,9 +10,8 @@
 		}	
 	
 		/* global */
-		//imgScroll();
 		// menu
-		$('.side li.level1').hover(
+		$('.side li.level1.child').hover(
 			function(){
 				$(this).addClass('active');
 				$(this).find('.level2').show();
@@ -36,7 +31,7 @@
 			// enable "cross-fading" effect
 			effect: 'horizontal',
 			event: 'mouseover',
-			fadeOutSpeed: 1000,				 
+			//fadeOutSpeed: 1000,				 
 			// start from the beginning after the last tab
 			rotate: true				 
 		}).slideshow({

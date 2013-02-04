@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+ 		<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+		{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+		{if $itemid && $DT[anticopy]}
+		<script type="text/javascript">
+		document.oncontextmenu=function(e){return false;};
+		document.onselectstart=function(e){return false;};
+		</script>
+		{/if}
+		<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>	
+		
+		<style type="text/css">
+		.compare {margin:8px;}
+		.compare table {background:#FFFFFF;border-collapse:collapse;}
+		.compare table tr {text-align:center;border:1px solid #408cc6;}
+		.compare table td {width:100px;padding:5px;border:#408cc6 1px solid;line-height:120%;}
+		.compare table td img.thumb {
+		-webkit-box-shadow:  0px 0px 1px 1px rgba(0, 0, 0, 0.1);box-shadow:  0px 0px 1px 1px rgba(0, 0, 0, 0.1);*border:1px solid #CCC;padding:0;
+		}
+		a:link, a:visited, a:active {color:#0569b4;}
+		a:hover {color:#f60;}
+		.compare div {font-weight:bold;color:#00aeef;white-space:nowrap;}
+		</style>
+	</head>
+	<body>
+		<div class="left_box">	
+		<!-- 將以ajax輸入 -->
+		
+			<div class="pos" style="display:none;">
+				<span class="f_r">
+					<form method="post" action="{$MOD[linkurl]}compare.php?fbox=1&addid=1">
+						輸入信息ID <input type="text" name="itemid[]" id="newid" size="10"/>{loop $tags $k $v}<input type="hidden" name="itemid[]" id="itemid_{$v[itemid]}" value="{$v[itemid]}"/>{/loop}
+						<input type="submit" value="添加至對比欄" class="btn_4" onclick="if(Dd('newid').value==''){confirm('請輸入信息ID');Dd('newid').focus();return false;}"/>&nbsp;
+					</form>
+				</span>
+			</div>
+			<div class="compare">
+			<table cellspacing="1">
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Remove</div></td>
+			{loop $tags $k $v}
+			<td id="del_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="Remove" alt=""/></span></td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Image</div></td>
+			{loop $tags $k $v}
+			<td id="pic_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt="" class="thumb" /></a></td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Subject</div></td>
+			{loop $tags $k $v}
+			<td id="title_{$v[itemid]}_{$k}"><a href="{$v[linkurl]}" target="_blank" title="{$v[title]}">{$v[stitle]}</a></td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Product</div></td>
+			{loop $tags $k $v}
+			<td id="tag_{$v[itemid]}_{$k}">{$v[tag]}&nbsp;</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Model</div></td>
+			{loop $tags $k $v}
+			<td id="model_{$v[itemid]}_{$k}">{$v[model]}&nbsp;</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Specification</div></td>
+			{loop $tags $k $v}
+			<td id="standard_{$v[itemid]}_{$k}">{$v[standard]}&nbsp;</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Brand</div></td>
+			{loop $tags $k $v}
+			<td id="brand_{$v[itemid]}_{$k}">{$v[brand]}&nbsp;</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Date</div></td>
+			{loop $tags $k $v}
+			<td id="date_{$v[itemid]}_{$k}">{$v[editdate]}</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Company</div></td>
+			{loop $tags $k $v}
+			<td id="com_{$v[itemid]}_{$k}"><a href="{$v[userurl]}" target="_blank">{$v[company]}</a></td>
+			{/loop}
+			</tr>
+ 			<tr>
+			<td bgcolor="#f5f5f5"><div>Member</div></td>
+			{loop $tags $k $v}
+			<td id="vip_{$v[itemid]}_{$k}">
+			{if $v[vip]} <img src="{DT_SKIN}image/vip_{$v[vip]}.gif"/>{/if}&nbsp;
+			</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Location</div></td>
+			{loop $tags $k $v}
+			<td id="area_{$v[itemid]}_{$k}">{area_pos($v[areaid], ' ', 2)}</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Price</div></td>
+			{loop $tags $k $v}
+			<td id="price_{$v[itemid]}_{$k}">{if $v[price]>0}<strong class="f_red">{$v[price]}</strong>{$DT[money_unit]}/{$v[unit]}{else}面議{/if}</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>MOQ.</div></td>
+			{loop $tags $k $v}
+			<td id="min_{$v[itemid]}_{$k}">{if $v[minamount]}{$v[minamount]} {$v[unit]}{else}未填寫{/if}</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Supply Ability</div></td>
+			{loop $tags $k $v}
+			<td id="amount_{$v[itemid]}_{$k}">{if $v[amount]}{$v[amount]} {$v[unit]}{else}未填寫{/if}</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Processing Time</div></td>
+			{loop $tags $k $v}
+			<td id="days_{$v[itemid]}_{$k}">{if $v[days]}{$v[days]} days {else}未填寫{/if}</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Live Chat</div></td>
+			{loop $tags $k $v}
+			<td id="im_{$v[itemid]}_{$k}">&nbsp;
+				{if $v[username] && $DT[im_web]}{im_web($v[username].'&mid='.$moduleid.'&itemid='.$v[itemid])}&nbsp;{/if}
+				{if $v[qq] && $DT[im_qq]}{im_qq($v[qq])}&nbsp;{/if}
+				{if $v[ali] && $DT[im_ali]}{im_ali($v[ali])}&nbsp;{/if}
+				{if $v[msn] && $DT[im_msn]}{im_msn($v[msn])}&nbsp;{/if}
+				{if $v[skype] && $DT[im_skype]}{im_skype($v[skype])}</a>&nbsp;{/if}
+			</td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Inquiry</div></td>
+			{loop $tags $k $v}
+			<td id="inq_{$v[itemid]}_{$k}"><a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$v['itemid'])}" target="_blank"><img src="{DT_SKIN}image/inquiry_btn.gif" title="Inquiry this product" alt=""/></a></td>
+			{/loop}
+			</tr>
+			<tr>
+			<td bgcolor="#f5f5f5"><div>Remove</div></td>
+			{loop $tags $k $v}
+			<td id="move_{$v[itemid]}_{$k}"><span class="jt" onclick="del({$v[itemid]}, {$k});"><img src="{DT_SKIN}image/inquiry_del.png" title="Remove" alt=""/></span></td>
+			{/loop}
+			</tr>
+			</table>
+			</div>
+		</div>
+	
+		<script type="text/javascript">
+			var n = {$item_nums};
+			function del(id, k) {
+				if(n < 3) {confirm('You have to select 2 products at least.');return;}
+				var d = ['del','pic','title','tag','model','standard','brand','date','com','vip','area','price','min','amount','days','im','inq','move'];
+				var l = d.length;
+				for(var i=0;i<l;i++){
+					Dd(d[i]+'_'+id+'_'+k).style.display='none';
+				}
+				Dd('itemid_'+id).value=0;
+				n--;
+			}
+		</script>
+	</body>
+</html>

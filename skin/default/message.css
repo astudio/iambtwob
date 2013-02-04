@@ -12,3 +12,6 @@ a:hover {color:#FF6600;}
 .f_red {color:red;}
 .f_gray {color:#666666;}
 .f_b {font-weight:bold;}
+table {border:1px solid #d7d7d7;}
+#captcha {width:99px;}
+.Btn {width: 78px;height: 23px;border: 1px solid #b8b8b8;font-size: 13px;background: url('image/astudio.png') no-repeat 0 -282px;color:#404041;margin-left:5px;}

@@ -20,19 +20,19 @@ if(parent.location == window.location) window.location='{$linkurl}';
 <form method="post" action="{$MOD[linkurl]}message.php" target="send" id="dform" onsubmit="return check();">
 <input type="hidden" name="forward" value="{$forward}"/>
 <input type="hidden" name="itemid" value="{$itemid}"/>
-<table width="100%" cellpadding="8" cellspacing="1" bgcolor="#C5D7ED">
+<table width="100%" cellpadding="4" cellspacing="4">
 {if $error}
 <tr>
-<td bgcolor="#FFFEBF" align="right"><strong>Tips</strong>：</td>
+<td bgcolor="#f5f5f5" width="130" align="right"><strong>Tips</strong>:</td>
 <td bgcolor="#FFFEBF">{$error}</td>
 </tr>
 {/if}
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Subject：</td>
-<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title"/><br/><span class="f_gray">Tell The Supplier What You Want!</span> <br/><span class="f_red" id="dtitle"></span></td>
+<td bgcolor="#f5f5f5" width="130" align="right"><span class="f_red">*</span> Subject:</td>
+<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title"/><br/><span class="f_gray">Tell The Supplier What You Want!</span><span class="f_red" id="dtitle"></span></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">Question：</td>
+<td bgcolor="#f5f5f5" align="right">Question:</td>
 <td bgcolor="#FFFFFF">
 <select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
 <option value="">Select a topic</option>
@@ -44,112 +44,110 @@ if(parent.location == window.location) window.location='{$linkurl}';
 </td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Content：</td>
+<td bgcolor="#f5f5f5" align="right"><span class="f_red">*</span> Content:</td>
 <td bgcolor="#FFFFFF"><textarea rows="6" cols="70" name="content" id="content" onfocus="H();">{$content}</textarea><br/>
 Contact me before  {dcalendar('date', $date)} <span class="f_red" id="dcontent"></span>
 </td>
 </tr>
 {if $_userid}
 <tr>
-<td bgcolor="#F1F7FC" align="right"><strong>Contact Info：</strong></td>
-<td bgcolor="#F1F7FC">&nbsp; </td>
+<td bgcolor="#f5f5f5" colspan="2" style="padding-left:18px;"><strong>Contact Info:</strong></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">Company：</td>
+<td bgcolor="#f5f5f5" align="right">Company:</td>
 <td bgcolor="#FFFFFF">{$company}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">Name：</td>
+<td bgcolor="#f5f5f5" align="right">Name:</td>
 <td bgcolor="#FFFFFF">{$truename}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">Tel：</td>
+<td bgcolor="#f5f5f5" align="right">Tel:</td>
 <td bgcolor="#FFFFFF">{$telephone}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">E-mail：</td>
+<td bgcolor="#f5f5f5" align="right">E-mail:</td>
 <td bgcolor="#FFFFFF">{$email}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">QQ：</td>
+<td bgcolor="#f5f5f5" align="right">QQ:</td>
 <td bgcolor="#FFFFFF">{$qq}</td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">MSN：</td>
+<td bgcolor="#f5f5f5" align="right">MSN:</td>
 <td bgcolor="#FFFFFF">{$msn}</td>
 </tr>
 {else}
 <tr>
-<td bgcolor="#F1F7FC" align="right"><strong>Contact Info：</strong></td>
-<td bgcolor="#F1F7FC"> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">Sign Up Now!</a> or Leave your Message&nbsp;&nbsp;I am member! <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">Log in</a></td></tr>
+<td bgcolor="#f5f5f5" align="right"><strong>Contact Info:</strong></td>
+<td bgcolor="#f5f5f5"> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">Sign Up Now!</a> or Leave your Message&nbsp;&nbsp;I am member! <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">Log in</a></td></tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">Company</td>
+<td bgcolor="#f5f5f5" align="right">Company</td>
 <td bgcolor="#FFFFFF"><input type="text" name="company" size="30" id="company"/></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Name</td>
+<td bgcolor="#f5f5f5" align="right"><span class="f_red">*</span> Name</td>
 <td bgcolor="#FFFFFF"><input type="text" name="truename" size="30" id="truename"/> <span class="f_red" id="dtruename"></span></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Tel</td>
+<td bgcolor="#f5f5f5" align="right"><span class="f_red">*</span> Tel</td>
 <td bgcolor="#FFFFFF"><input type="text" name="telephone" size="30" id="telephone"/> <span class="f_red" id="dtelephone"></span></td>
 </tr>
 <tr>
-<td bgcolor="#F1F7FC" align="right">E-mail</td>
+<td bgcolor="#f5f5f5" align="right">E-mail</td>
 <td bgcolor="#FFFFFF"><input type="text" name="email" size="30" id="email"/> <span class="f_red" id="demail"></span></td>
 </tr>
 {if $DT[im_qq]}
 <tr>
-<td bgcolor="#F1F7FC" align="right">QQ </td>
+<td bgcolor="#f5f5f5" align="right">QQ </td>
 <td bgcolor="#FFFFFF"><input type="text" size="20" name="qq" id="qq"/></td>
 </tr>
 {/if}
 {if $DT[im_ali]}
 <tr>
-<td bgcolor="#F1F7FC" align="right">阿里旺旺 </td>
+<td bgcolor="#f5f5f5" align="right">阿里旺旺 </td>
 <td bgcolor="#FFFFFF"><input type="text" size="20" name="ali" id="ali"/></td>
 </tr>
 {/if}
 {if $DT[im_msn]}
 <tr>
-<td bgcolor="#F1F7FC" align="right">MSN </td>
+<td bgcolor="#f5f5f5" align="right">MSN </td>
 <td bgcolor="#FFFFFF"><input type="text" size="30" name="msn" id="msn"/></td>
 </tr>
 {/if}
 {if $DT[im_skype]}
 <tr>
-<td bgcolor="#F1F7FC" align="right">Skype </td>
+<td bgcolor="#f5f5f5" align="right">Skype </td>
 <td bgcolor="#FFFFFF"><input type="text" size="20" name="skype" id="skype"/></td>
 </tr>
 {/if}
 {/if}
 {if $need_question}
 <tr onmouseout="H();">
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Security Question：</td>
+<td bgcolor="#f5f5f5" align="right"><span class="f_red">*</span> Security Question:</td>
 <td bgcolor="#FFFFFF">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
 </tr>
 {/if}
 {if $need_captcha}
 <tr onmouseout="H();">
-<td bgcolor="#F1F7FC" align="right"><span class="f_red">*</span> Security Code：</td>
+<td bgcolor="#f5f5f5" align="right"><span class="f_red">*</span> Security Code:</td>
 <td bgcolor="#FFFFFF">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 {/if}
 {if $_userid && $DT[sms]}
 <tr>
-<td bgcolor="#F1F7FC" align="right">短信通知：</td>
+<td bgcolor="#f5f5f5" align="right">短信通知:</td>
 <td bgcolor="#FFFFFF"><input type="checkbox" name="sendsms" value="1"/> 发送短信通知至接收人手机 (<a href="{$MODULE[2][linkurl]}sms.php" target="_blank">My 可用短信 <strong class="f_blue">{$_sms}</strong> 条</a>)</td>
 </tr>
 {/if}
 <tr>
-<td bgcolor="#F1F7FC"> </td>
-<td bgcolor="#FFFFFF">
-<input type="submit" name="submit" value=" Submit "{if $error} disabled{/if}/>&nbsp;
-<input type="reset" name="reset" value=" Reset "/>
+<td bgcolor="#FFFFFF" colspan="2" align="center">
+<input type="submit" class="Btn" name="submit" value=" Submit "{if $error} disabled{/if}/>&nbsp;
+<input type="reset" class="Btn" name="reset" value=" Reset "/>
 {if $MG[message_limit]}
-&nbsp;&nbsp;You can send <span class="f_b f_red">{$MG[message_limit]}</span> today
-&nbsp;&nbsp;You`ve sent <span class="f_b">{$limit_used}</span> 
-&nbsp;&nbsp;<span class="f_b f_blue">{$limit_free}</span> available
+&nbsp;&nbsp;You can send <span class="f_b f_red">{$MG[message_limit]}</span> today.
+&nbsp;&nbsp;You`ve sent <span class="f_b">{$limit_used}.</span> 
+&nbsp;&nbsp;<span class="f_b f_blue">{$limit_free}</span> available.
 {/if}
 </td>
 </tr>

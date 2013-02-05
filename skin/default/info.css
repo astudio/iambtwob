@@ -13,6 +13,7 @@ a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
 .side {position:relative;}
 .nobb {border-bottom:none !important;}
+#rightAD, #rightAd img {width:190px;height:200px;}
 .pages {padding-top:30px;}
 
 /* left side column */
@@ -25,8 +26,8 @@ a:hover {color:#F60;}
 .side .box_head_2 .more {color:#FFF;padding-right:8px;text-decoration:underline;}
 .side .box_body {border:3px solid #ffc2a1;border-top:none;}
 .RecBook .box_body {border:3px solid #b4d2e8 !important;border-top:none !important;}
-.invest_rec {padding:14px 14px 0 14px;}
-.invest_rec img {width:149px;height:84px;border:1px solid #d7d7d7;margin-right:5px;}
+.invest_rec {padding:14px 14px 0 14px;text-align:center;}
+.invest_rec img {width:100px;height:144px;border:1px solid #d7d7d7;margin-right:5px;}
 .invest_rec span {display:block;overflow:hidden;font-family:'微軟正黑體',Arial;margin-bottom:15px;}
 .RecBook .invest_rec span {font-family: 'Source Sans Pro',sans-serif,Verdana,Arial;}
 

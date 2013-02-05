@@ -1,6 +1,6 @@
 {loop $tags $i $t}
 {if $i%$cols==0}<ul>{/if}
-<li><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}><img src="{$t[thumb]}" alt="{$t[alt]}"/></a>
+<li><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}><img class="lazy" data-src="{$t[thumb]}" src="{DT_SKIN}image/blank.gif" alt="{$t[alt]}"/></a>
 <ul><li><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}>{$t[title]}</a></li><li class="price"><span class="f_price">$ {$t[price]}</span></li></ul></li>
 {if $i%$cols==($cols-1)}</ul>{/if}
 {/loop}

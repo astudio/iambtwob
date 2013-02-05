@@ -8,8 +8,9 @@
 		{/if}
 		
 		<div class="b15">&nbsp;</div>
-		
-		{template 'catalog_list','chip'}
+		{if $CAT[child]}
+			{template 'catalog_list','chip'}
+		{/if}
 	</div>
 
 	<div class="m_l_1 f_l">
@@ -23,7 +24,7 @@
 				{template 'mall_tip_tool','chip'}
 				
 				{if $page == 1}{ad($moduleid,$catid,$kw,6)}{/if}
-				{if $tags}{template 'list-sell-mix', 'tag'}{/if}
+				{if $tags}{template 'list-'.$module, 'tag'}{/if}
 			</form><br/>
 		</div>
 	</div>

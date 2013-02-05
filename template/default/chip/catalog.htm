@@ -4,7 +4,7 @@
 	<li class="level1{if $c[child]} child{else} nochild{/if}">
 		<!-- first level category -->
 		<h2>
-			<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{$c[catname]}{if $c[child]}<span class="arrow">></span>{/if}</a>
+			<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}"{if $c[catid]==$catid} class="current"{/if}>{$c[catname]}{if $c[child]}<span class="arrow">></span>{/if}</a>
 		</h2>
 		{if $c[child]}
 		{php $sub = get_maincat($c[catid], $mid, 1);}				

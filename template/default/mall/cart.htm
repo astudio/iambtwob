@@ -1,3 +1,4 @@
+{php $CSS = array('index','tabs');}
 {template 'header'}
 <script type="text/javascript">
 var errimg = '{DT_SKIN}image/nopic50.gif';
@@ -12,18 +13,19 @@ function check() {
 </script>
 <div class="m">
 <div class="left_box">
-	<div class="pos">
+	<div class="b10"> </div>	
+	<div>
 		<div class="f_r">
-		<form action="cart.php" method="post" onsubmit="return check();">
-		<input name="action" type="hidden" value="add"/>
-		輸入商品ID&nbsp;<input name="itemid" type="text" size="10" id="itemid"/>&nbsp;
-		<input type="submit" value="加入購物車" class="btn_4"/>&nbsp;
-		<input type="button" value="清空購物車" class="btn_4" onclick="if(confirm('確定要清空購物車嗎？')) Go('?action=clear');"/>
-		</form>
+			<form action="cart.php" method="post" onsubmit="return check();">
+			<input name="action" type="hidden" value="add"/>
+			輸入商品ID&nbsp;<input name="itemid" type="text" size="10" id="itemid"/>&nbsp;
+			<input type="submit" value="加入購物車" class="btn_4"/>&nbsp;
+			<input type="button" value="清空購物車" class="btn_4" onclick="if(confirm('確定要清空購物車嗎？')) Go('?action=clear');"/>
+			</form>
 		</div>
-		您的位置: <a href="{DT_PATH}">首頁</a> 
-		&raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a>
-		&raquo; <a href="{$MOD[linkurl]}cart.php">購物車</a>
+		<ul class="tabs">
+			<li><a href="javascript:;" class="current">購物車</a></li>
+		</ul>
 	</div>
 
 	{if $tags}

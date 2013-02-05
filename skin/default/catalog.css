@@ -30,6 +30,7 @@
 .side .level1 > h2{font-size:14px;margin:0;padding:0 0 0 10px;font-weight:normal;*height:32px;*line-height:32px;*padding:0;}
 .side .level1 > h2:first-letter {font-weight:bold;}
 .side .level1 > h2 > a {color:black;display:block;*display:inline;zoom:1;*padding-left:10px;}
+.side .level1 > h2 > a.current {color:#f60;cursor:default;}
 .side .level1 > h2 > a > .arrow {float:right;margin-right:10px;*margin-top:-30px;}
 
 .side .level2 {position:absolute;left:184px;z-index:1;top:0px;background:#FFF;-webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);

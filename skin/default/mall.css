@@ -45,14 +45,15 @@ ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a, ul.tabs a:hove
 ul.tabs a,ul.tabs a:hover,ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {background-image:url('image/video_type.png');background-position:0 0;}
 ul.tabs a {padding:0 10px 0 20px;text-align:left;}
 ul.tabs a.current,ul.tabs a:hover,ul.tabs a.current:hover {color:#FFF !important;}
-.panes > div {display:none;*display:inherit;}
+/* .panes > div {display:none;*display:inherit;} */
 .thUmb > div img {width:118px;height:118px;}
 .thUmb {height:380px;overflow:hidden;margin:12px;}
+.thUmb > div {height:380px;}
 .thUmb > div > ul {width:1010px;}
 .thUmb > div > ul > li {width:120px;display:inline-block;*display:inline;zoom:1;margin:10px 17px 0 6px;vertical-align:top;}
 .thUmb > div img {width:118px;height:118px;margin-bottom:5px;border:1px solid #d7d7d7;}
 .thUmb > div > ul ul > li {height:32px;float:left;width:120px;overflow:hidden;}
-.thUmb > div > ul ul > li > a {color:#404041;font-size:13px;display:block;}
+.thUmb > div > ul ul > li > a {color:#404041;font-size:13px;display:block;line-height:15px;}
 .thUmb > div .price {text-align:center;height:20px;line-height:20px;}
 .tool .tabs > li > a:hover {background: #00AEEF;}
 

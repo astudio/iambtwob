@@ -1,12 +1,12 @@
+{php $CSS = array('index','tabs');}
 {template 'header'}
 <script type="text/javascript">var errimg = '{DT_SKIN}image/nopic50.gif';</script>
 <div class="m">
 <div class="left_box">
-	<div class="pos">
-		您的位置: <a href="{DT_PATH}">首頁</a> 
-		&raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a>
-		&raquo; 提交訂單
-	</div>
+	<div class="b10"> </div>
+	<ul class="tabs">
+		<li><a href="javascript:;" class="current">提交訂單</a></li>
+	</ul>
 	<div class="b10">&nbsp;</div>
 	{if $tags}
 	<form method="post" action="{$MOD[linkurl]}buy.php" onsubmit="return check();">

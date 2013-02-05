@@ -7,7 +7,7 @@
 	}
 	
 	$(function(){
-		// index category more
+		// index category / more
 		getMoreLink();
 		$('ul.tabs > li').on('click',function(){
 			getMoreLink($(this).data('catid'));
@@ -16,12 +16,5 @@
 				if( o ) $(this).attr('src',o).removeAttr('data-src');
 			});			
 		});
-		
-		// index category tabs
-/* 		$("ul.tabs").tabs("div.panes > div",{
-			effect: 'fade',
-			fadeInSpeed: 600,
-			fadeOutSpeed: 400
-		}); */
 	});				
 })(jQuery);

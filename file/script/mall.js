@@ -25,7 +25,14 @@
 			fadeOutSpeed: 400
 		});
 		
-		// multiple inquiry / compare fbox
+		$('ul.tabs > li').on('click',function(){
+			$('.panes > div:visible').find('img.lazy').each(function(){
+				var o = $(this).attr('data-src');
+				if( o ) $(this).attr('src',o).removeAttr('data-src');
+			});			
+		});		
+		
+		// multiple compare fbox
 		$("a.fb").click(function(){			
 			var checked = $("[name='itemid[]']:checked");
 			//itemid

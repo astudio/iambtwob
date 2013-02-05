@@ -173,7 +173,7 @@ box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
 .f_green {color:green;}
 .f_blue {color:blue;}
 .f_dblue {color:#404041;}
-.f_price {font-weight:bold;font-family:Arial;color:#FF6600;}
+.f_price {font-weight:bold;color:#FF6600;}
 .px10 {font-size:10px;}
 .px11 {font-size:11px;}
 .px12 {font-size:12px;}
@@ -259,7 +259,7 @@ box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
 .list > input {position:absolute;top:12px;left:2px;}
 .list > ul {margin-top:15px;}
 .list > div {float:left;margin-right:18px;}
-.list > div img {width:106px;height:106px;border:0;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);padding:0;}
+.list > div img {width:100px;height:100px;border:0;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);padding:0;}
 .list h3 {font-size:14px;margin:0px;height:22px;overflow:hidden;}
 .about {border:#2786C6 1px solid;background:#F2F2F2;padding:8px;margin:15px 15px 0 15px;}
 .about li {padding:5px 0 5px 5px;}

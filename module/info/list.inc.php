@@ -61,7 +61,7 @@ if($items) {
 	$db->free_result($result);
 }
 $showpage = 1;
-$datetype = 5;
+$datetype = 3;
 $introduce = 150;
 
 $seo_file = 'list';

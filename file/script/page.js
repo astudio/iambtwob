@@ -171,7 +171,7 @@ function img_tip_list(o, i) {
 			var aTag = o; var leftpos = toppos = 0;
 			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
 			} while(aTag.offsetParent != null);
-			var X = o.offsetLeft + leftpos + 106;
+			var X = o.offsetLeft + leftpos + 100;
 			var Y = o.offsetTop + toppos + 25;
 			Dd('img_tip').style.left = X + 'px';
 			Dd('img_tip').style.top = Y + 'px';

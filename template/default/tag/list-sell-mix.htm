@@ -9,7 +9,7 @@
 			<li class="f_gray"><span class="f_r"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry_btn.png" alt="Inquiry" class="iq_btn" /></a></span>{if $length}{trim(dsubstr($t[introduce], $length))}{if strlen($t[introduce])>=$length}&hellip;&nbsp;{/if}{else}{$t[introduce]}{/if}</li>
 			<li>[{area_pos($t[areaid], '', 1)}]</li>
 			<li>
-				<a href="{userurl($t[username])}" class="com trigger" target="_blank" title="{if $t[dcount]>1}All Items({$t[dcount]}){/if}">{$t[company]}</a>&nbsp;
+				<a href="{userurl($t[username])}" class="com{if $t[dcount]>1} trigger{/if}" target="_blank" title="{if $t[dcount]>1}All Items({$t[dcount]}){/if}">{$t[company]}</a>&nbsp;
 				<span class="f_gray">
 				{if $t[validated]}<span class="f_green">[Verified]</span>{else}[Unverified]{/if}
 				{if !$t[username]} [Unregistered]{/if}

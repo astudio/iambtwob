@@ -3,7 +3,7 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 /* global */
-* {word-break:break-all;font-family:Verdana,Arial;}
+* {word-break:break-all;font-family:'微軟正黑體',Verdana,Arial;}
 body {background:#FFFFFF;color:#000000;font-size:12px;margin:0px;height:100%;}
 input,textarea,select,button,td {font-size:12px;}
 img {border:none;}
@@ -27,7 +27,7 @@ a.m:link,a.m:visited,a.m:active {color:#666666;text-decoration:none;}
 a.m:hover {color:#FF6600;}
 a.f:link,a.f:visited,a.f:active,a.f:hover {text-decoration:none;display:block;width:125px;color:#888888;font-size:14px;}
 
-.head {background:#FFFFFF url('head_bg.gif') repeat-x 0 bottom;padding:0 0 5px 0;position:fixed;width:100%;}
+.head {/* background:#FFFFFF url('head_bg.gif') repeat-x 0 bottom; padding:0 0 5px 0;*/position:fixed;width:100%;border-bottom:5px solid #FF5A00;background:#FFF;}
 #top {padding:5px 8px 4px 8px;border-bottom:#F0F0F0 1px solid;color:#929393;}
 #top a {color:#555555;}
 #m_menu {z-index:1000;position:absolute;left:190px;border:#F0F0F0 1px solid;border-top:#FFFFFF 1px solid;margin-top:-1px;background:#FFFFFF;width:70px;overflow:hidden;filter:Alpha(opacity=90);-moz-opacity:0.9;}
@@ -39,9 +39,9 @@ a.f:link,a.f:visited,a.f:active,a.f:hover {text-decoration:none;display:block;wi
 #head_kw {border:#6C92AD 1px solid;padding:2px;color:#666666;background:url('head_sch.gif') no-repeat right center;}
 #head_bt {z-index:1;position:absolute;width:62px;height:20px;margin:0 0 0 -62px;}
 
-.side {background:url('side_bg.gif') repeat-y;width:190px;}
-.side_head {width:189px;height:28px;background:url('side_head.gif') repeat-x;overflow:hidden;cursor:pointer;}
-.side_head div {padding:4px 3px 0 8px;color:#005590;line-height:22px;font-weight:bold;font-size:14px;}
+.side {background:#f5f5f5 url('side_bg.gif') repeat-y;width:190px;}
+.side_head {width:189px;height:28px;/* background:url('side_head.gif') repeat-x; */overflow:hidden;cursor:pointer;background:#F7B300} .side_head:hover {background:#ff5a00;}
+.side_head div {padding:4px 3px 0 8px;color:#404041;line-height:20px;font-weight:bold;font-size:14px;}
 .side_body {clear:both;}
 .side_a {padding:4px 10px 4px 20px;line-height:18px;background:url('side_li.gif') no-repeat 7px 8px;}
 .side_b {padding:5px 10px 5px 20px;line-height:18px;border-bottom:#2A6BA6 1px solid;border-top:#2A6BA6 1px solid;background:#FFFFFF url('side_li.gif') no-repeat 7px 8px;}

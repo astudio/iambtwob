@@ -48,7 +48,7 @@ ul.tabs a.current,ul.tabs a:hover,ul.tabs a.current:hover {color:#FFF !important
 .scrollable .items div {*width:910px;}
 a.left span, a.right span {margin:145px 7px;}
 /*==============Left Side=====================*/
-.RecCom {margin-top:-30px;}
+.RecCom {margin-top:-30px;*position:relative;}
 .RecCom .box_head_2 {background:#0569b4;padding-left:22px;margin-bottom:15px;}
 .RecCom .box_head_2 div {border:none;}
 .RecCom .box_head_2 div strong {color:#FFF;line-height:28px;font-weight:normal;}
@@ -57,7 +57,7 @@ a.left span, a.right span {margin:145px 7px;}
 .RecCom .box_body .image {margin-top:10px;}
 .RecCom .box_body .image span {font-size:13px;line-height:14px;}
 .RecCom .box_body .intro {clear:left;padding:0 3px 8px 3px;border-bottom:1px dotted #b8b8b8;}
-.RecCom .more {text-align: right;margin-top: -1px;background: white;border-bottom: 3px solid #00AEEF;padding:0;margin-bottom:10px;}
+.RecCom .more {text-align: right;margin-top: -2px;background: white;border-bottom: 3px solid #00AEEF;padding:0;margin-bottom:10px;}
 /*===============List=========================*/
 
 /*===============Show=========================*/

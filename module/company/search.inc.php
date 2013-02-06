@@ -74,6 +74,7 @@ if($DT_QST) {
 		if($page == 1 && $kw) keyword($kw, $items, $moduleid);
 	}
 }
+$item = $items; // amount stat
 $showpage = 1;
 $seo_file = 'search';
 include DT_ROOT.'/include/seo.inc.php';

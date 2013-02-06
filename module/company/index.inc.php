@@ -54,7 +54,7 @@ if($username) {
 		exit(include($html_file));
 	}
 	
-	$condition = 'groupid>5';
+	$condition = "groupid>5 AND catids<>''";
 	$item = $db->count($table, $condition, $DT['cache_search']);
 
 	$seo_file = 'index';

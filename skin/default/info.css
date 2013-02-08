@@ -38,7 +38,12 @@ a:hover {color:#F60;}
 .booklist > li > ul {padding:5px 20px 0 10px;margin-left:136px}
 .booklist .publisher {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .booklist > li > ul > li {line-height:18px;height:18px;}
-.booklist .intro {height:145px;overflow:hidden;}
+.booklist .intro {height:112px;overflow:hidden;}
+.booklist > li {position:relative;}
+.booklist .details {position: absolute;width: 63px;height: 26px;background: url('image/ebook_index_buttons.png') no-repeat 0 0;left: 146px;bottom: 30px;}
+.booklist .details:hover {background-position:0 -33px;}
+.booklist .view {position: absolute;width: 95px;height: 26px;background: url('image/ebook_index_buttons.png') no-repeat -66px 0;right: 18px;bottom: 30px;}
+.booklist .view:hover {background-position:-66px -33px;}
 .more {text-align:right;}
 .more a {text-decoration:underline;}
 /*===================slideshow=======================*/

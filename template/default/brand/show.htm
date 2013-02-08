@@ -39,7 +39,9 @@
 
 					<div class="box_head_2"><!-- <span class="f_r px12"><a class="more" href="{$MODULE[23][linkurl]}">more</a></span> --><div><strong>>> Brand Products <<</strong></div></div>
 					<div class="box_body">
-						<div class="thumb"><!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>'' and username='$username' and brand='$title'&pagesize=4&order=rand()&cols=2&template=thumb-table&target=_blank", -2)}--></div>
+						<div class="thumb"><!--{tag("moduleid=5&length=14&condition=status=3 and thumb<>'' and username='$username' and brand='$title'&pagesize=4&order=rand()&cols=2&template=thumb-table&target=_blank", -2)}-->
+						<div class="f_r"><a href="{$MOD[linkurl]}{rewrite('product.php?itemid='.$itemid)}">more></a></div>
+						</div>
 						<div class="brand_pdt">&nbsp;</div>
 					</div>		
 					<div class="b10 c_b">&nbsp;</div>

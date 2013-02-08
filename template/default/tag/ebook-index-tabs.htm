@@ -12,6 +12,8 @@
 			<li class="intro f_gray px13">
 			<span class="f_gray">Description:</span><br/>{if $length}{dsubstr($t[introduce], $length)}{else}{$t[introduce]}{/if}</li>
 		</ul>
+		<a href="{$t[linkurl]}" target="_blank"><div class="details"> </div></a>
+		<a href="{$t[ebookurl]}" target="_blank"><div class="view"> </div></a>
 	</li>
 	{/loop}
 </ul>

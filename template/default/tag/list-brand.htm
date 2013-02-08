@@ -1,26 +1,21 @@
-{loop $tags $k $t}
-<div class="list" id="item_{$t[itemid]}">
-	<table>
-	<tr align="center">
-		<td width="140"><div><a href="{$t[linkurl]}" target="_blank"><img src="{$t[thumb]}" width="120" alt="{$t[alt]}"/></a></div></td>
-		<td width="10"> </td>
-		<td align="left">
-			<ul>
-			<li>{if $t[vip]}<span class="f_r"><img src="{DT_SKIN}image/vip.gif"/> <img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
+<div class="Lists">
+	{loop $tags $k $t}
+	<div class="list" id="item_{$t[itemid]}">
+		<div><a href="{$t[linkurl]}" target="_blank"><img src="{$t[thumb]}" width="120" alt="{$t[alt]}"/></a></div>
+
+		<ul>
+			<li><a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
 			<li>
-			<span class="f_r px11">{timetodate($t[edittime], $datetype)}&nbsp;&nbsp;</span>
-			<a href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;
-			<span class="f_gray">
-			{if $t[validated]}[已核實]{else}[未核實]{/if}
-			{if !$t[username]} [未註冊]{/if}
-			</span>
+				<a href="{userurl($t[username])}" target="_blank" class="px13">{$t[company]}</a>&nbsp;
+				<span class="f_gray px13">
+					{if $t[validated]}[Verified]{else}[Unverified]{/if}
+					{if !$t[username]} [Unregistered]{/if}
+				</span>
 			</li>
-			</ul>
-		</td>
-		<td width="10"> </td>
-		<td width="100" class="f_gray">[{area_pos($t[areaid], '', 1)}]</td>
-	</tr>
-	</table>
-</div>
-{/loop}		
+			<li class="f_gray px13">{timetodate($t[edittime], $datetype)}&nbsp;&nbsp;[{area_pos($t[areaid], '', 1)}]</li>
+			{if $t[vip]}<li><div class="mg6"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></div></li>{/if}
+		</ul>
+	</div>
+	{/loop}
+</div>	
 {if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

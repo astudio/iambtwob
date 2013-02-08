@@ -22,7 +22,7 @@ a:hover {color:#F60;}
 .alphabet li a.f_gray {color:#666;}
 .sep {margin-left:25px;}
 #bsearch {width:316px;height:19px;margin-left:10px;border:1px solid #d7d7d7;padding:1px 3px;}
-.Btn {width: 78px;height: 23px;border: 1px solid #b8b8b8;font-size: 13px;background: url('image/astudio.png') no-repeat 0 -282px;color:#404041;margin-left:5px;}
+.Btn {width: 78px;height: 23px;border: 1px solid #b8b8b8;font-size: 13px;background: url('image/astudio.png') no-repeat 0 -282px;color:#404041;margin-left:5px;cursor:pointer;}
 /*==============Category======================*/
 .m_l_0 {*position:relative;}
 ul.tabs {height:25px;width:100%;}
@@ -42,6 +42,7 @@ ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a, ul.tabs a:hove
 ul.tabs a,ul.tabs a:hover,ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {background-image:url('image/video_type.png');background-position:0 0;}
 ul.tabs a {padding:0 10px 0 20px;text-align:left;}
 ul.tabs a.current,ul.tabs a:hover,ul.tabs a.current:hover {color:#FFF !important;}
+ul.tabs a.current, ul.tabs a.current:hover {cursor:pointer !important;}
 /*==============Scrollable====================*/
 .Scrollable, .scrollable, a.browse {height:320px;}
 .scrollable .items .b10 {margin:0;}
@@ -59,9 +60,26 @@ a.left span, a.right span {margin:145px 7px;}
 .RecCom .box_body .intro {clear:left;padding:0 3px 8px 3px;border-bottom:1px dotted #b8b8b8;}
 .RecCom .more {text-align: right;margin-top: -2px;background: white;border-bottom: 3px solid #00AEEF;padding:0;margin-bottom:10px;}
 /*===============List=========================*/
+.catWrap {padding:17px 0 17px 25px;}
+.suBcat > li {display:inline-block;*display:inline;zoom:1;padding-left:15px;}
+.suBcat > li > a {font-size:13px;}
+.suBcat > li span {color:#b8b8b8;}
+.suBcat > li > a.current {font-weight:bold;}
+.Lists {margin-left:15px;}
+.Lists > .list > div img {width:118px;height:auto;padding:40px 0;-webkit-box-shadow:none;box-shadow:none;background:#FFF;border:#d7d7d7 1px solid;}
+.Lists > .list {border-top:none;border-bottom:#f5f5f5 1px solid;height:120px;padding:10px 0 10px 10px;width:48%;display:inline-block;*display:inline;zoom:1;vertical-align:top;}
+.Lists > .list > ul {margin-top:2px;}
+.Lists > .list .mg6 {margin:6px 0;}
+.Lists > .list a.px13:hover {text-decoration:underline;}
 
 /*===============Show=========================*/
-
+.Contact > .box_head_2 {background:url('image/astudio.png') 0 -277px;border:#b8b8b8 1px solid;height:25px;text-align:center;}
+.Contact > .box_body {border:#b8b8b8 1px solid !important;border-top:none !important;width:278px;height:355px;padding:20px 10px;}
+.Contact .thumb > ul {width:284px;}
+.Contact .thumb li {width:136px;height:175px;display:inline-block;*display:inline;zoom:1;vertical-align:top;margin-right:4px;}
+.Contact .thumb img {width:130px;height:130px;padding:0;border:none;vertical-align:middle;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin:3px;}
+.Contact .thumb span {display:block;line-height:16px;text-align:center;color:#666666;margin:8px 0;}
+.Lists + .pages {padding-top:25px;}
 /*===============Product======================*/
 .tiTle {text-align: left;margin: 0;border-bottom: 1px solid #0569B4;padding-left: 40px;color: #0569B4;background: url('image/astudio.png') no-repeat -396px -248px;height: 28px;line-height: 20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 20px;font-weight: normal;}
 .left_box {width:998px;padding:24px 0 0 0;}

@@ -37,19 +37,22 @@
 			<div class="b15"> </div>
 
 			<ul class="tabs">
-				{php $Maincat = get_maincat(0, $moduleid, 1);//var_dump($Maincat);die;}
+				{php $Maincat = get_maincat(0, $moduleid, 1);}
 				{loop $Maincat $i $c}
-					<li><a href="{$MOD[linkurl]}{$c[linkurl]}"{if $CAT[catid]==$c[catid]} class="current"{/if}>{$c[catname]}</a></li>
+					<li><a href="{$MOD[linkurl]}{$c[linkurl]}"{if $CAT[catid]==$c[catid]||$CAT[parentid]==$c[catid]} class="current"{/if}>{$c[catname]}</a></li>
 				{/loop}
 			</ul>
-
-			<ul>
-				{if $Maincat != $maincat}
-					{loop $maincat $i $c}
-						<li data-catid="{$c[catid]}"><a href="{$MOD[linkurl]}{$c[linkurl]}">{$c[catname]}</a></li>
-					{/loop}
-				{/if}	
-			</ul>		
+			
+			{if $Maincat != $maincat}
+				<div class="catWrap">
+					<span class="f_l px13">All Categories: </span>
+					<ul class="suBcat">
+						{loop $maincat $i $c}
+							<li data-catid="{$c[catid]}"><a href="{$MOD[linkurl]}{$c[linkurl]}"{if $c[catid]==$catid} class="current"{/if}>{$c[catname]}<span> ({$c[item]})</span></a></li>
+						{/loop}				
+					</ul>
+				</div>
+			{/if}		
 			
 			{if $tags}{template 'list-'.$module, 'tag'}{/if}		
 		</div>

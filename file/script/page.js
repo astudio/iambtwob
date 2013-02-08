@@ -189,7 +189,7 @@ function img_tip_buy(o, i) {
 			var aTag = o; var leftpos = toppos = 0;
 			do {aTag = aTag.offsetParent; leftpos	+= aTag.offsetLeft; toppos += aTag.offsetTop;
 			} while(aTag.offsetParent != null);
-			var X = o.offsetLeft + leftpos + 156;
+			var X = o.offsetLeft + leftpos + 150;
 			var Y = o.offsetTop + toppos + 30;
 			Dd('img_tip').style.left = X + 'px';
 			Dd('img_tip').style.top = Y + 'px';

@@ -13,6 +13,6 @@
 		});
 		
 		// index category tabs
-		$("ul.tabs").tabs("div.panes > div");
+		$("ul.tabs").tabs("div.panes > div");		
 	});				
 })(jQuery);

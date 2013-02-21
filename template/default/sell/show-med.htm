@@ -13,37 +13,47 @@
 		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->			
 	</div>
 	
-	<div class="m_l_1 f_l">
-		<div class="b10">&nbsp;</div>		
-		<!-- 1st slideshow (AD) -->
-		<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=15&template=ad-slideshow",-1)}-->					
-		<div class="left_box">		
+	<div class="m_l_0 f_l">
+		<div class="b15">&nbsp;</div>				
+		<div class="left_box">
+			<div>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[ename]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo;Detail</div>
 			<div class="b10 c_b"></div>
 
 			<h1 class="proTitle">
-				<span class="f_r">
-					{template 'detail-fav', 'chip'}
-				</span>				
+			
 				<span>{$title}</span>
 			</h1>
 
 			<div class="Content">
+				<div class="profile f_r">
+					<div class="contact_head">>> Company Profile <<</div>
+					<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+					{if !$username}
+					<br/>
+					&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} member with the best services</strong></a>
+					{/if}
+				</div>
+			
 				<div class="album f_l">
 					<div>
 						<span id="abm">
 							<img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/>
-						</span>
+						</span>						
 					</div>
+					
+					{loop $thumbs $k $v}<img src="{$v}" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
 				</div>
 				<div id="imgshow" style="display:none;"></div>
 				<div class="rside f_l">
-					{loop $thumbs $k $v}<img src="{$v}" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
-						
 					{template 'sell-detail', 'chip'}
 
-					{if $username && !$expired}
-						<a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}" target="_blank"><div id="inquiryBtn"> </div></a>
-					{/if}					
+					<div class="Buttons">
+						{if $username && !$expired}						
+							<a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}" target="_blank"><div id="inquiryBtn" class="f_l"> </div></a>
+						{/if}
+						<span class="f_l">{template 'detail-fav', 'chip'}</span>
+					</div>
+					
 				</div>				
 			</div>
 			
@@ -51,7 +61,7 @@
 			
 			<div class="box_head_2">
 				<div>
-				<strong>Description</strong>
+					<strong>Description</strong>
 				</div>
 			</div>
 			<div class="box_body" style="padding:0;">
@@ -64,39 +74,19 @@
 				<div class="b10">&nbsp;</div>
 				
 				<div class="Related">
-					<div class="profile f_r">
-						<div class="contact_head">>> Company Profile <<</div>
-						<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
-						{if !$username}
-						<br/>
-						&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} member with the best services</strong></a>
-						{/if}
-					</div>
-					<div class="otherPro f_l">
+					<div class="otherPro">
 						<div class="box_head_2"><div><span class="f_r"><a href="{userurl($username, 'file=sell')}" target="_blank">more..</a></span><strong>Other Products</strong></div></div>
 						<div class="box_body">
 						<div class="thumb">
-						<!--{tag("moduleid=$moduleid&condition=status=3 and thumb<>'' and username='$username'&pagesize=8&order=rand()&cols=4&target=_blank&template=thumb-table", -1)}-->
+						<!--{tag("moduleid=$moduleid&condition=status=3 and thumb<>'' and username='$username' and itemid<>'$itemid'&pagesize=16&order=rand()&cols=8&target=_blank&template=thumb-table", -1)}-->
 						</div>
 						</div>
 					</div>
-				</div>		
+				</div>			
 			{/if}
 			<div class="b10">&nbsp;</div>
 			{template 'show_toolbar','chip'}
 		</div>
-	</div>
-	
-	<div class="m_n f_l">&nbsp;</div>
-	
-	<div class="m_r_1 f_l">
-		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
-		
-		<div class="b10">&nbsp;</div>
-		
-		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
-
-		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
 	</div>	
 </div>
 {template 'zoom', 'chip'}

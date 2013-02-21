@@ -1,116 +1,154 @@
+{php $CSS = array('sell');}
 {template 'header'}
 <div class="m">
-<div class="left_box">		
-		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo;</div>
-		<div class="b10 c_b"></div>
-		<table width="100%">
-		<tr>
-		<td width="10"> </td>
-		<td>
-			<table width="100%">
-			<tr>
-			<td colspan="3"><h1 class="title_trade">{$title}</h1></td>
-			</tr>
-			<tr>
-			<td width="250" valign="top">
-				<div class="album">
-					<table width="100%" cellpadding="0" cellspacing="0">
-					<tr align="center">
-					<td width="250" valign="top"><div><span id="abm" title="點擊查看大圖"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog','chip'}
+		{/if}
+		
+		<div class="b15">&nbsp;</div>
+		{if $CAT[child]}
+			{template 'catalog_list','chip'}
+		{/if}
+	</div>
+
+	<div class="m_l_0 f_l">		
+		<div class="b15"> </div>
+		<div class="left_box">
+			<div>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo;Detail</div>
+			<div class="b10 c_b"></div>			
+
+			<h1 class="proTitle">			
+				<span>{$title}</span>
+			</h1>			
+
+			<div class="Content">
+				<div class="profile f_r">
+					<div class="contact_head">>> Company Profile <<</div>
+					<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+					{if !$username}
+					<br/>
+					&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} member with the best services</strong></a>
+					{/if}
+				</div>
+			
+				<div class="album f_l">
+					<div>
+						<span id="abm">
+							<img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/>
+						</span>						
+					</div>
+					
+					{loop $thumbs $k $v}<img src="{$v}" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
+				</div>
+				<div id="imgshow" style="display:none;"></div>
+				<div class="rside f_l">
+					<table width="100%" cellpadding="3" cellspacing="0">
+					<tr>
+					<td class="kw" colspan="2">{$title}</td>
 					</tr>
 					<tr>
-					<td>
-					{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+					<td class="f_dblue">單 價：</td>
+					<td class="f_gray"><span class="f_price px16">${$price}</span></td>
 					</tr>
-					<tr align="center">
-					<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 點擊圖片查看原圖</td>
+					<tr>
+					<td class="f_dblue">品 牌：</td>
+					<td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填寫{/if}</td>
 					</tr>
+					<tr>
+					<td class="f_dblue">所在地：</td>
+					<td>{area_pos($areaid, '-')}</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">銷 量：</td>
+					<td><a href="#order" onclick="Mshow('order');">累計出售 <span class="f_orange">{$sales}</span> 件，{$orders} 個訂單</a></td>
+					</tr>
+					<tr>
+					<td class="f_dblue">評 價：</td>
+					<td><a href="#comment" onclick="Mshow('comment');">已有 <span class="f_orange">{$comments}</span> 條評價</a></td>
+					</tr>
+					<tr>
+					<td class="f_dblue">庫 存：</td>
+					<td>還剩 <span class="f_orange">{$amount}</span> 件</td>
+					</tr>
+					<tr>
+					<td width="50" class="f_dblue">人 氣：</td>
+					<td>已有 <span class="f_orange"><span id="hits">{$hits}</span></span> 人關注</td>
+					</tr>
+					<tr>
+					<td class="f_dblue">更 新：</td>
+					<td>{$editdate}</td>
+					</tr>
+					{if $status == 3}
+					<tr>
+					<td colspan="2">
+					<div id="cart_tip" style="display:none;">
+						<p><img src="{DT_SKIN}image/close.gif" alt="關閉" width="17" height="12" onclick="Dh('cart_tip');"/>提示信息</p>
+						<div>已成功添加到購物車！購物車裡已有 <span id="cart_num">0</span> 種商品</div>
+						<center>
+						<input type="button" value="再逛逛" onclick="Dh('cart_tip');"/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" value="去結算" onclick="Go('{$MOD[linkurl]}cart.php');"/>
+						</center>
+					</div>
+					<img src="{DT_SKIN}image/btn_tobuy.gif" alt="立即購買" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/>
+					&nbsp;
+					<img src="{DT_SKIN}image/btn_addcart.gif" alt="加入購物車" class="c_p" onclick="AddCart({$itemid});"/>
+					</td>
+					</tr>
+					{else}
+					<tr>
+					<td></td>
+					<td><strong class="f_red">該商品已下架</strong></td>
+					</tr>				
+					{/if}
 					</table>
-				</div>
-			</td>
-			<td width="15"> </td>
-			<td valign="top">
-				<div id="imgshow" style="display:none;"></div>
-				<table width="100%" cellpadding="5" cellspacing="5">
-				<tr>
-				<td class="f_dblue">單 價：</td>
-				<td class="f_gray">￥<span class="f_price px16">{$price}</span></td>
-				</tr>
-				<tr>
-				<td class="f_dblue">品 牌：</td>
-				<td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填寫{/if}</td>
-				</tr>
-				<tr>
-				<td class="f_dblue">所在地：</td>
-				<td>{area_pos($areaid, '')}</td>
-				</tr>
-				<tr>
-				<td class="f_dblue">銷 量：</td>
-				<td><a href="#order" onclick="Mshow('order');">累計出售 <span class="f_orange">{$sales}</span> 件，{$orders} 個訂單</a></td>
-				</tr>
-				<tr>
-				<td class="f_dblue">評 價：</td>
-				<td><a href="#comment" onclick="Mshow('comment');">已有 <span class="f_orange">{$comments}</span> 條評價</a></td>
-				</tr>
-				<tr>
-				<td class="f_dblue">庫 存：</td>
-				<td>還剩 <span class="f_orange">{$amount}</span> 件</td>
-				</tr>
-				<tr>
-				<td width="50" class="f_dblue">人 氣：</td>
-				<td>已有 <span class="f_orange"><span id="hits">{$hits}</span></span> 人關注</td>
-				</tr>
-				<tr>
-				<td class="f_dblue">更 新：</td>
-				<td>{$editdate}</td>
-				</tr>
-				{if $status == 3}
-				<tr>
-				<td colspan="2">
-				<div id="cart_tip" style="display:none;">
-					<p><img src="{DT_SKIN}image/close.gif" alt="關閉" width="17" height="12" onclick="Dh('cart_tip');"/>提示信息</p>
-					<div>已成功添加到購物車！購物車裡已有 <span id="cart_num">0</span> 種商品</div>
-					<center>
-					<input type="button" value="再逛逛" onclick="Dh('cart_tip');"/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" value="去結算" onclick="Go('{$MOD[linkurl]}cart.php');"/>
-					</center>
-				</div>
-				<img src="{DT_SKIN}image/btn_tobuy.gif" alt="立即購買" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/>
-				&nbsp;
-				<img src="{DT_SKIN}image/btn_addcart.gif" alt="加入購物車" class="c_p" onclick="AddCart({$itemid});"/>
-				</td>
-				</tr>
-				{else}
-				<tr>
-				<td></td>
-				<td><strong class="f_red">該商品已下架</strong></td>
-				</tr>				
-				{/if}
-				</table>
-			</td>
-			</tr>
-		</table>
-		</td>
-		<td width="10"> </td>
-		<td width="300" valign="top">		
-			<div class="contact_head">公司基本資料信息</div>
-			<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
-			{if !$username}
-			<br/>
-			&nbsp;<strong class="f_red">注意</strong>:發佈人未在本站註冊，建議優先選擇<a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP}會員</strong></a>
-			{/if}
+
+<!-- 					<div class="Buttons">
+						{if $username && !$expired}						
+							<a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}" target="_blank"><div id="inquiryBtn" class="f_l"> </div></a>
+						{/if}
+						<span class="f_l">{template 'detail-fav', 'chip'}</span>
+					</div> -->
+					
+				</div>				
 			</div>
-		</td>
-		<td width="10"> </td>
-		</tr>
-		</table>
-		<div class="b10">&nbsp;</div>
-</div>
+			
+			<div class="b10">&nbsp;</div>
+			
+			<div class="box_head_2">
+				<div>
+					<strong>Description</strong>
+				</div>
+			</div>
+			<div class="box_body" style="padding:0;">
+				{if $CP}{template 'property', 'chip'}{/if}
+				<div class="content c_b" id="content">{$content}</div>
+				{template 'comment', 'chip'}
+			</div>
+
+			{if $username}
+				<div class="b10">&nbsp;</div>
+				
+				<div class="Related">
+					<div class="otherPro">
+						<div class="box_head_2"><div><span class="f_r"><a href="{userurl($username, 'file=sell')}" target="_blank">more..</a></span><strong>Other Products</strong></div></div>
+						<div class="box_body">
+						<div class="thumb">
+						<!--{tag("moduleid=$moduleid&condition=status=3 and thumb<>'' and username='$username' and itemid<>'$itemid'&pagesize=16&order=rand()&cols=8&target=_blank&template=thumb-table", -1)}-->
+						</div>
+						</div>
+					</div>
+				</div>		
+			{/if}
+			<div class="b10">&nbsp;</div>
+			{template 'show_toolbar','chip'}
+		</div>
+	</div>	
 </div>
 
-
-<div class="m">
+<div class="m" style="display:none;">
 	<div class="b10">&nbsp;</div>
 	<div class="mall_t">
 		<ul>
@@ -130,23 +168,6 @@
 	<div class="mall_c" style="display:none;" id="c_order">
 		<center>正在載入交易記錄...</center>
 	</div>
-</div>
-
-<div class="m">
-	<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
-	<input type="hidden" name="itemid" value="{$itemid}"/> 
-	<input type="hidden" name="title" value="{$title}"/>
-	<input type="hidden" name="linkurl" value="{$linkurl}"/>
-	</form>
-	<br/>
-	<center>
-	[ <a href="{$MOD[linkurl]}search.php">商品搜索</a> ]&nbsp;
-	[ <script type="text/javascript">addFav('加入收藏');</script> ]&nbsp;
-	[ <a href="javascript:Dd('sendmail').submit();void(0);">告訴好友</a> ]&nbsp;
-	[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
-	[ <a href="javascript:window.close()">關閉窗口</a> ]
-	</center>
-	<br/>
 </div>
 {template 'zoom', 'chip'}
 <script type="text/javascript">

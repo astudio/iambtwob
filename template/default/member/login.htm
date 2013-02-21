@@ -37,12 +37,12 @@ form .password {margin:14px 0;}
 
 			<div onmouseover="Ds('tusername');" onmouseout="Dh('tusername');" >
 				<select name="option">
-					<option value="username">用户名</option>
-					{if $MOD[passport]}<option value="passport">通行证</option>{/if}
+					<option value="username">Username</option>
+					{if $MOD[passport]}<option value="passport">Passport</option>{/if}
 					<option value="email">Email</option>
-					<option value="mobile">手机号</option>
-					<option value="company">公司名</option>
-					<option value="userid">会员ID</option>
+					<option value="mobile">Mobile</option>
+					<option value="company">Company Name</option>
+					<option value="userid">Member ID</option>
 				</select>
 				<input name="username" type="text" id="username" value="{$username}" placeholder="Username" />
 			</div>				
@@ -83,10 +83,22 @@ form .password {margin:14px 0;}
 			<div>Immediately sign up for a free (only take about 1 minute)...</div>
 			<a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><div class="register"> </div></a>
 		</div>
-		
-		<!-- ad here -->
 	</div>
-</div>	
+	
+	<div class="m b15"> </div>
+	
+	<div class="m_l f_l">
+		<!--{tag("table=ad&condition=status=3 and pid=24 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=24&template=ad-single",-1)}-->	
+	</div>
+	<div class="m_n f_l">&nbsp;</div>
+	<div class="m_r f_l">
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->	
+	</div>
+	<div class="m_n f_l">&nbsp;</div>
+	<div class="m_r f_l">
+		<!--{tag("table=ad&condition=status=3 and pid=20 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=20&template=ad-single",-1)}-->	
+	</div>
+</div>
 <script type="text/javascript">
 if(Dd('username').value == '') {
 	Dd('username').focus();

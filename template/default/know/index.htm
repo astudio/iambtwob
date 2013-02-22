@@ -1,78 +1,95 @@
+{php $CSS = array('tabs-accordion');}
 {template 'header'}
 <div class="m">
-	<div class="m_l f_l">
-		{if $MOD[page_irec]}
-		<div class="box_head_2"><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?typeid=4')}">更多..</a></span><strong>精彩推薦</strong></div>
-		<div class="box_body"><!--{tag("moduleid=$moduleid&condition=status=3 and level>0&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_irec]."&datetype=4&template=list-know")}--></div>
-		<div class="b10"></div>
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog_accordion','chip'}
 		{/if}
-		{if $MOD[page_isolve]}
-		<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?typeid=1')}">更多..</a></span><strong>待解決的問題</strong></div>
-		<div class="box_body"><!--{tag("moduleid=$moduleid&condition=status=3 and process=1&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_isolve]."&datetype=4&template=list-know")}--></div>
-		<div class="b10"></div>
-		{/if}
-		{if $MOD[page_ivote]}
-		<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?typeid=2')}">更多..</a></span><strong>投票中的問題</strong></div>
-		<div class="box_body"><!--{tag("moduleid=$moduleid&condition=status=3 and process=2&order=updatetime desc&areaid=$cityid&pagesize=".$MOD[page_ivote]."&datetype=4&template=list-know")}--></div>
-		<div class="b10"></div>
-		{/if}
-		{if $MOD[page_iresolve]}
-		<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?typeid=0')}">更多..</a></span><strong>已解決的問題</strong></div>
-		<div class="box_body"><!--{tag("moduleid=$moduleid&condition=status=3 and process=3&order=updatetime desc&areaid=$cityid&pagesize=".$MOD[page_iresolve]."&datetype=4&template=list-know")}--></div>
-		<div class="b10"></div>
-		{/if}
-	</div>
-	<div class="m_n f_l">&nbsp;</div>
-	<div class="m_r f_l">
-		<div class="box_head_3"><div><strong>問題搜索</strong></div></div>
-		<div class="box_body_3">
-			<div class="know_sch">
-				<form action="{$MODULE[2][linkurl]}{$DT[file_my]}" id="ask_form">
-				<input type="hidden" name="mid" value="{$moduleid}"/>
-				<input type="hidden" name="cid" value="{$catid}"/>
-				<input type="hidden" name="action" value="add"/>
-				<input type="hidden" name="kw" value="" id="ask_kw"/>
-				</form>
-				<form action="{$MOD[linkurl]}search.php" onsubmit="return know_sch_check();">
-				<input type="hidden" name="typeid" value="99" id="know_typeid"/>
-				<input type="text" name="kw" id="know_kw" value="請輸入問題" class="know_sch_inp" onfocus="if(this.value=='請輸入問題')this.value='';"/>
-				<div class="know_sch_btn">
-				<input type="submit" value="搜索答案" class="know_btn_1" onclick="Dd('know_typeid').value=99;"/>&nbsp;
-				<input type="submit" value="我要回答" class="know_btn_2" onclick="Dd('know_typeid').value=3;"/>&nbsp;
-				<input type="button" value="我要提問" class="know_btn_2" onclick="if(know_sch_check()){Dd('ask_kw').value=Dd('know_kw').value;Dd('ask_form').submit();}"/>&nbsp;
-				</div>
-				</form>
-				<script type="text/javascript">
-					function know_sch_check() {
-						if(Dd('know_kw').value == '請輸入問題' || Dd('know_kw').value.length < 1) {
-							alert('請輸入問題');
-							Dd('know_kw').focus();
-							return false;
-						}
-						return true;
-					}
-				</script>
-				<div class="know_sch_item">
-				已解決問題數：{php echo $db->count($table, 'status=3 and process=3', 1800);}<br/>
-				待解決問題數：{php echo $db->count($table, 'status=3 and process=1', 1800);}
-				</div>
-			</div>			
-		</div>
-		<div class="b10"></div>
-		<div class="box_head"><div><strong>問題分類</strong></div></div>
-		<div class="box_body">
-			<div class="know_catalog">
-			{php $child = get_maincat(0, $moduleid, 1);}
-			{loop $child $i $c}		
-				<p><a href="{$MOD[linkurl]}{$c[linkurl]}"><strong class="px14">{set_style($c[catname], $c[style])}</strong></a> <span class="f_gray px10">({$c[item]})</span></p>
-				{if $c[child]}
-				<div>
-				{php $sub = get_maincat($c[catid], $moduleid, 1);}
-				{loop $sub $j $s}<a href="{$MOD[linkurl]}{$s[linkurl]}" class="b">{set_style($s[catname], $s[style])}</a>&nbsp;|&nbsp;{/loop}
-				</div>
-				{/if}
-			{/loop}
+
+		<div class="b10"> </div>
+		
+		<div class="contactUs">
+			<div class="box_head_2">
+				<div>升級您的會員資格</div>
 			</div>
+			<div class="box_body">
+				<img class="consultme" src="{DT_SKIN}image/upgrade.jpg" />
+				
+				<div class="tel">電話: +886-4-2313-2189</div>
+				<div class="fax">傳真: +886-4-2313-3159</div>
+				<div class="address">地址: 40753台中市西屯區文心路三段508號</div>
+				
+				<a href="{$MODULE[2][linkurl]}grade.php" target="_blank">
+					<div id="contact"> </div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="m_l_0 f_l">
+		<div class="b15"> </div>
+	
+		<img class="help" src="{DT_SKIN}image/help.jpg" />
+		<div class="lang f_l">
+			<span class="current">中文</span>
+			<span>English</span>
+		</div>
+		
+		<div class="b10"> </div>
+		
+		<div class="bOx_head">問題搜尋</div>
+		<div class="box_body">
+			<div class="fsearch">
+				<form action="{$MOD[linkurl]}search.php" id="fsearch">
+				<input type="hidden" name="typeid" id="typeid" value="{$typeid}"/>
+				<label for="kw">關鍵詞:</label>
+				<input type="text" size="60" name="kw" value="{$kw}" class="pd3"/>
+				{loop $sfields $k $v}
+				<input type="radio" name="fields" value="{$k}" id="fd_{$k}"{if $fields==$k} checked{/if}/><label for="fd_{$k}"> {$v}</label>&nbsp;
+				{/loop}	<br />		
+
+				<label for="category">所屬分類:</label>
+				{$category_select}
+
+				{if $DT[city]}
+				<label for="area">所在地區:</label>
+				{$area_select}
+				{/if}
+				
+				<label for="order">排序方式:</label>
+				{$order_select}
+
+				<div class="buttons">
+					<input type="image" src="{DT_SKIN}image/btn_search.png"/>&nbsp;&nbsp;
+					<a href="{$MOD[linkurl]}"><img src="{DT_SKIN}image/btn_reset_search.png"/></a>&nbsp;&nbsp;	
+					<!-- <a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$moduleid}&action=add&cid={$catid}&kw={urlencode($kw)}"><img src="{DT_SKIN}image/btn_ask.gif"/></a> -->
+				</div>
+			{if $CP}
+			{loop $PPT $p}
+			<div class="ppt">
+				<table cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+				<td class="ppt_l" valign="top">按{$p[name]}</td>
+				<td class="ppt_r" valign="top">
+				<input type="hidden" name="ppt_{$p[oid]}" id="ppt_{$p[oid]}" value="{$p[select]}"/>
+				<a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>全部</span>{else}全部{/if}</a>
+				{loop $p[options] $o}
+				&nbsp;|&nbsp;<a href="###" onclick="Dd('ppt_{$p[oid]}').value='{$o}';Dd('fsearch').submit();">{if $p[select]==$o}<span>{$o}</span>{else}{$o}{/if}</a>
+				{/loop}
+				</td>
+				</tr>
+				</table>
+			</div>
+			{/loop}
+			{/if}
+				</form>
+			</div>
+		</div>
+		
+		<div class="bOx_head">快速導覽</div>
+		<div class="box_body">
+			<img class="tour" src="{DT_SKIN}image/tour.jpg" />
 		</div>
 	</div>
 </div>

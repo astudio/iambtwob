@@ -2,7 +2,7 @@
 	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
 	This is NOT a freeware, use is subject to license.txt
 */
-a.konw_a:link,a.konw_a:active,a.konw_a:visited {color:#003399;text-decoration:underline;font-size:14px;}
+/* a.konw_a:link,a.konw_a:active,a.konw_a:visited {color:#003399;text-decoration:underline;font-size:14px;}
 a.konw_a:hover {color:#FF6600;text-decoration:none;}
 .know_sch {line-height:180%;}
 .know_sch_inp {width:260px;padding:3px;margin:5px;font-size:14px;}
@@ -22,4 +22,25 @@ a.konw_a:hover {color:#FF6600;text-decoration:none;}
 .best_answer_head {margin:0 15px 0 15px;padding:8px 10px 5px 30px;background:#F1F7FC url('image/know_flag.gif') no-repeat 10px 7px;border-top:#AACCEE 1px solid;}
 .best_answer_body {margin:0 15px 15px 15px;padding:10px 20px 0 20px;background:#FCFDFD;}
 .best_answer_show {font-size:14px;line-height:180%;}
-.best_answer_foot {padding:0 15px 8px 0;color:#666666;font-size:12px;}
+.best_answer_foot {padding:0 15px 8px 0;color:#666666;font-size:12px;} */
+.contactUs .box_head_2 {background:#00aeef;}
+.contactUs .box_head_2 div {color:#FFF;line-height:30px;text-align:center;font-size:14px;}
+.contactUs .box_body {border:3px solid #7fd0ef;border-top:none;padding:12px 8px;}
+.tel, .fax, .address {font-size:14px;padding:0 5px;}
+.tel {padding-top:8px;}
+.address {padding-bottom:8px;}
+#contact {width:101px;height:26px;background:url('image/contact_us_2.png') no-repeat 0 0;margin:auto;}
+#contact:hover {background-position:0 -26px;}
+
+.help {border:1px solid #00aeef;}
+.lang {margin-top:-3px;*margin-top:-4px;}
+.lang > span {padding:5px 33px 5px 25px;font-size:13px;float:left;line-height:16px;background:#f5f5f5 url('image/buy_type.png') no-repeat 90px 0;width:50px;}
+.lang > span.current {background-color:#00aeef;}
+.bOx_head {border-bottom:2px solid #00aeef;font-size:14px;padding:5px 0;}
+.fsearch {background:none;}
+.fsearch #fsearch {padding-left:0;}
+.fsearch .pd3 {padding:0;}
+.buttons {vertical-align:middle;padding-left:20px;display:inline-block;*display:inline;zoom:1;}
+
+/* show */
+h1.showTitle {height:36px;background:#f5f5f5;color:#ff5a00;font-size:18px;margin:0;font-weight:normal;line-height:30px;padding-left:25px;}

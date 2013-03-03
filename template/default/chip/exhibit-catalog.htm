@@ -1,0 +1,9 @@
+<div class="caTegory">Browse by Category</div>
+<ul class="caTitem">				
+	{php $child = get_maincat(0, $moduleid, 1);}
+	{loop $child $c}
+	<li{if $c[catid]==$CAT[catid]} class="current"{/if}>
+		<a href="{$MODULE[$moduleid][linkurl]}{$c[linkurl]}">{$c[catname]} <span class="f_orange">({$c[item]})</span></a>
+	</li>
+	{/loop}		
+</ul>

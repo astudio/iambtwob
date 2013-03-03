@@ -4,5 +4,5 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
-$L['product_title'] = '產品列表';
+$L['product_title'] = 'Product List';
 ?>

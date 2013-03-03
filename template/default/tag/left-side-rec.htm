@@ -9,6 +9,11 @@
 		<div class="intro">
 			{if $length}{dsubstr($t[introduce], $length)}...{else}{$t[introduce]}{/if}&nbsp;&nbsp;<a href="{$t[linkurl]}introduce/" target="_blank">[Details]</a>
 		</div>
+	{elseif $moduleid==12}
+		<a href="{$t[linkurl]}&fbox=1" class="Detail" data-title="{$t[title2]}">
+			<img src="{$t[thumb]}" alt="{$t[title]}" />
+			<span>{$t[title]}</span>
+		</a>	
 	{else}
 		<a href="{$t[linkurl]}" target="_blank">
 			<img src="{$t[thumb]}" alt="{$t[title]}" />

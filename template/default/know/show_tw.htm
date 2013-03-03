@@ -1,0 +1,48 @@
+{php $CSS = array('tabs-accordion');}
+{template 'header'}
+<div class="m">
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog_accordion','chip'}
+		{/if}
+
+		<div class="b10"> </div>
+		
+		<div class="contactUs">
+			<div class="box_head_2">
+				<div>升級您的會員資格</div>
+			</div>
+			<div class="box_body">
+				<img class="consultme" src="{DT_SKIN}image/upgrade.jpg" />
+				
+				<div class="tel">電話: +886-4-2313-2189</div>
+				<div class="fax">傳真: +886-4-2313-3159</div>
+				<div class="address">地址: 40753台中市西屯區文心路三段508號</div>
+				
+				<a href="{$MODULE[2][linkurl]}grade.php" target="_blank">
+					<div id="contact"> </div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="m_l_0 f_l">
+		<div class="b15"> </div>
+	
+		<img class="help" src="{DT_SKIN}image/help.jpg" />
+		<div class="lang f_l">
+			<span class="current">中文</span>
+			<span>English</span>
+		</div>
+		
+		<div class="b10"> </div>
+		
+		<div class="bOx_head"><a href="{$MODULE[1][linkurl]}">使用說明首頁</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo; {$title}</div>
+		<div class="box_body">
+			<h1 class="showTitle">{$title}</h1>
+			<div id="question" class="content px14">{$content}</div>
+		</div>
+	</div>
+</div>
+{template 'footer'}

@@ -3,8 +3,8 @@
 	{loop $child $c}
 		<h2{if $c[catid]==$catid} class="current"{/if}>{$c[catname]}</h2>
 		<div class="pane"{if $c[catid]==$catid} style="display:block;"{/if}>
-			<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and catid=".$c[catid]."&pagesize=10&order=addtime asc&template=null",-1);}-->
-			{loop $tags $t}
+			<!--{php $tag=tag("moduleid=$moduleid&condition=status=3 and catid=".$c[catid]."&pagesize=10&order=addtime asc&template=null",-1);}-->
+			{loop $tag $t}
 				<a href="{$t[linkurl]}">{$t[title]}</a>
 			{/loop}
 		</div>

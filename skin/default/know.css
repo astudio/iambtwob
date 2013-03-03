@@ -23,6 +23,8 @@ a.konw_a:hover {color:#FF6600;text-decoration:none;}
 .best_answer_body {margin:0 15px 15px 15px;padding:10px 20px 0 20px;background:#FCFDFD;}
 .best_answer_show {font-size:14px;line-height:180%;}
 .best_answer_foot {padding:0 15px 8px 0;color:#666666;font-size:12px;} */
+
+/* index */
 .contactUs .box_head_2 {background:#00aeef;}
 .contactUs .box_head_2 div {color:#FFF;line-height:30px;text-align:center;font-size:14px;}
 .contactUs .box_body {border:3px solid #7fd0ef;border-top:none;padding:12px 8px;}
@@ -34,13 +36,29 @@ a.konw_a:hover {color:#FF6600;text-decoration:none;}
 
 .help {border:1px solid #00aeef;}
 .lang {margin-top:-3px;*margin-top:-4px;}
-.lang > span {padding:5px 33px 5px 25px;font-size:13px;float:left;line-height:16px;background:#f5f5f5 url('image/buy_type.png') no-repeat 90px 0;width:50px;}
-.lang > span.current {background-color:#00aeef;}
+.lang span {padding:4px 32px 4px 25px;font-size:13px;float:left;line-height:16px;background:#f5f5f5 url('image/know_type.png') no-repeat 90px 0;width:50px;}
+.lang span.current {background-color:#00aeef;}
 .bOx_head {border-bottom:2px solid #00aeef;font-size:14px;padding:5px 0;}
 .fsearch {background:none;}
 .fsearch #fsearch {padding-left:0;}
 .fsearch .pd3 {padding:0;}
 .buttons {vertical-align:middle;padding-left:20px;display:inline-block;*display:inline;zoom:1;}
 
+.how_to_buy {width:200px;padding:20px 25px;}
+.tour {width:392px;}
+.how_to_sell {width:328px;padding:20px 25px;}
+.how_to_buy h2, .how_to_sell h2 {margin:0;font-size:24px;color:#FF5A00;font-weight:normal;}
+.steps {width:225px;padding:15px 0;}
+.steps > li {padding-top:31px;padding-left:96px;font-size:18px;color:#404041;height:100%;}
+.steps > li > a {display:block;color:#0569b4;font-size:18px;text-decoration:underline;}
+.steps > li > a:hover {color:#FF5A00;}
+.how_to_sell .steps {width:328px;}
+.how_to_buy .steps {background:url('image/how_to_buy.png') no-repeat;*background-position-y:6x;}
+.how_to_sell .steps {background:url('image/how_to_sell.png') no-repeat;*background-position-y:6px;}
+
 /* show */
 h1.showTitle {height:36px;background:#f5f5f5;color:#ff5a00;font-size:18px;margin:0;font-weight:normal;line-height:30px;padding-left:25px;}
+
+/* search */
+.know_list > ul {display:inline-block;*display:inline;zoom:1;vertical-align:middle;}
+.know_list > span {padding-left:30px;vertical-align:middle;}

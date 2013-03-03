@@ -12,14 +12,14 @@
 	<div style="padding:20px 50px 20px 50px;">
 		<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
 		<span class="f_b">
-		&raquo; 已經是會員？請<a href="{$DT[file_login]}">點這裡登錄</a>&nbsp;
-		&raquo; 忘記了密碼？請<a href="send.php">點這裡找回</a>&nbsp;
+		&raquo; Already a member? Please <a href="{$DT[file_login]}">click here to login</a>.&nbsp;
+		&raquo; Forgot your password? Please <a href="send.php">click here to find</a>.&nbsp;
 		{if $MOD[checkuser] == 2}
-		&raquo; <span class="f_red">未收到驗證信？</span>請<a href="send.php?action=check">點這裡重發</a>
+		&raquo; <span class="f_red">Did not receive your validation email? </span>Please <a href="send.php?action=check">click here to re-send.</a>
 		{/if}
 		</span>
 		<br/>
-		<span class="f_gray">請認真、仔細地填寫以下信息，嚴肅的商業信息有助於您獲得別人的信任，結交潛在的商業夥伴，獲取商業機會！<span class="f_red">*</span>為必填項		
+		<span class="f_gray">- Please carefully fill in the following information and serious business information to help you get the confidence of others, meet potential business partners, obtain business opportunities! <br /> - Fill out each field in <strong>English only</strong>. <span class="f_red">*</span> are required.		
 		</span>
 		</div>
 		<br/>
@@ -27,10 +27,10 @@
 			<form action="{$DT[file_register]}" method="post" target="send" onsubmit="return check();">
 			<input name="action" type="hidden" id="action" value="{crypt_action('register')}"/>
 			<input name="forward" type="hidden" value="{$forward}"/>
-			<div class="reg_title">帳戶信息</div>
+			<div class="reg_title">Account Information</div>
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr>
-			<td class="tl">會員類型 <span class="f_red">*</span></td>
+			<td class="tl">Member Type <span class="f_red">*</span></td>
 			<td>
 			<input type="radio" name="post[regid]" value="6" id="g_6"onclick="reg(1);" checked/><label for="g_6"> {$GROUP[6][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;
 			{loop $GROUP $k $v}
@@ -42,81 +42,83 @@
 			</tr>
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
-			<td class="tl">會員名 <span class="f_red">*</span></td>
+			<td class="tl">Username <span class="f_red">*</span></td>
 			<td width="220"><input type="text" class="reg_inp" style="width:200px;" name="post[username]" id="username" onblur="validator('username');"{if $username} value="{$username}" readonly{/if}/>
 			</td>
 			<td>
 			<div class="tips" id="tusername" style="display:none;">
-				<div>{$MOD[minusername]}-{$MOD[maxusername]}個字符，只能使用小寫字母(a-z)、數字(0-9)、下劃線(_)、中劃線(-)，且以字母或數字開頭和結尾</div>
+				<div>{$MOD[minusername]}-{$MOD[maxusername]} characters, use only lowercase letters(a-z), numbers(0-9), and begin with a letter</div>
 			</div>
 			<span id="dusername" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			{if $MOD[passport] && $passport}
 			<tr onmouseover="Ds('tpassport');" onmouseout="Dh('tpassport');">
-			<td class="tl">通行證用戶名 &nbsp;</td>
+			<td class="tl">Passport &nbsp;</td>
 			<td><input type="text" class="reg_inp" style="width:200px;" name="post[passport]" id="passport" onblur="validator('passport');"{if $passport} value="{$passport}" readonly{/if}/></td>
 			<td>
 			<div class="tips" id="tpassport" style="display:none;">
-				<div>支持中文名，可用於論壇等系統用戶名<br/>如果不填寫，則和會員名一致</div>
+				<div>Chinese name is accepted as username in forum system.<br />It will remain the same with username if you don`t fill in.</div>
 			</div>
 			<span id="dpassport" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			{/if}
 			<tr onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
-			<td class="tl">登錄密碼 <span class="f_red">*</span></td>
+			<td class="tl">Create Password <span class="f_red">*</span></td>
 			<td><input type="password" class="reg_inp" style="width:200px;" name="post[password]" id="password" onblur="validator('password');"{if $password} value="{$password}" readonly{/if}/></td>
 			<td>
 			<div class="tips" id="tpassword" style="display:none;">
-				<div>{$MOD[minpassword]}-{$MOD[maxpassword]}個字符，區分大小寫，推薦使用數字、字母和特殊符號組合</div>
+				<div>{$MOD[minpassword]}-{$MOD[maxpassword]} characters, case sensitive, recommended the use of numbers, letters and special symbols</div>
 			</div>
 			<span id="dpassword" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			<tr onmouseover="Ds('tcpassword');" onmouseout="Dh('tcpassword');">
-			<td class="tl">重複輸入密碼 <span class="f_red">*</span></td>
+			<td class="tl">Re-enter Password <span class="f_red">*</span></td>
 			<td><input type="password" class="reg_inp" style="width:200px;" size="30" name="post[cpassword]" id="cpassword" onblur="validate('cpassword');"{if $password} value="{$password}" readonly{/if}/></td>
 			<td>
 			<div class="tips" id="tcpassword" style="display:none;">
-				<div>請再輸入一遍上面填寫的密碼</div>
+				<div>Please re-enter your password above</div>
 			</div>
 			<span id="dcpassword" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			</table>
-			<div class="reg_title">聯繫方式</div>
+			<div class="reg_title">Contact Information</div>
 
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('ttruename');" onmouseout="Dh('ttruename');">
-			<td class="tl">真實姓名 <span class="f_red">*</span></td>
+			<td class="tl">Real Name <span class="f_red">*</span></td>
 			<td width="220">
-			<input type="text" class="reg_inp" style="width:100px;" name="post[truename]" id="truename" onblur="validate('truename');"/>
-			<input type="radio" name="post[gender]" value="1" checked id="gender_1"/><label for="gender_1"> 先生</label>
-			<input type="radio" name="post[gender]" value="2" id="gender_2"/><label for="gender_2"> 女士</label>
+			<input type="text" class="reg_inp" style="width:100px;" name="post[truename]" id="truename" onblur="validate('truename');" onfocus="if(this.value=='First Name') this.value='';" value="First Name" />
+			<input type="text" class="reg_inp" style="width:100px;" name="post_fields[lastname]" id="lastname" onblur="validate('lastname');" onfocus="if(this.value=='Last Name') this.value='';" value="Last Name" />&nbsp;
+			
+			<input type="radio" name="post[gender]" value="1" checked id="gender_1"/><label for="gender_1"> Mr.</label>
+			<input type="radio" name="post[gender]" value="2" id="gender_2"/><label for="gender_2"> Ms.</label>
 			</td>
 			<td>
 			<div class="tips" id="ttruename" style="display:none;">
-				<div>請與有效身份證件上的姓名保持一致</div>
+				<div>Please use the name on ID/Password</div>
 			</div>
 			<span id="dtruename" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			<tr>
-			<td class="tl">所在地區 <span class="f_red">*</span></td>
-			<td>{ajax_area_select('post[areaid]', '請選擇', $areaid, '', 2)}</td>
+			<td class="tl">Location <span class="f_red">*</span></td>
+			<td>{ajax_area_select('post[areaid]', 'Select a location', $areaid, '', 2)}</td>
 			<td><span id="dareaid" class="f_red"></span>&nbsp;</td>
 			</tr>
 			<tr onmouseover="Ds('temail');" onmouseout="Dh('temail');">
-			<td class="tl">電子郵箱 <span class="f_red">*</span></td>
+			<td class="tl">Email <span class="f_red">*</span></td>
 			<td><input type="text" class="reg_inp" style="width:200px;" name="post[email]" id="email" onblur="validator('email');"{if $email} value="{$email}" readonly{/if}/></td>
 			<td>
 			<div class="tips" id="temail" style="display:none;">
 				<div>
 				{if $MOD[checkuser] == 2}
-				<span class="f_red">系統設置了郵件驗證註冊，請確保當前的郵件地址真實有效<br/></span>
+				<span class="f_red">Email validation has set up by ImB2B system under registration process, please ensure the email address you entered is valid.<br/></span>
 				{/if}
-				請使用常用常用郵箱(E-mail)地址，地址不會被公開且可用於登錄網站			
+				Please use a common email address, it will not be publicly and can be used to sign in.			
 				</div>
 			</div>
 			<span id="demail" class="f_red"></span>&nbsp;	
@@ -124,7 +126,7 @@
 			</tr>
 			{if $could_emailcode}
 			<tr onmouseover="Ds('temailcode');" onmouseout="Dh('temailcode');">
-			<td class="tl">郵件驗證碼 <span class="f_red">*</span></td>
+			<td class="tl">Email Validation Code <span class="f_red">*</span></td>
 			<td><input type="text" class="reg_inp" style="width:80px;" name="post[emailcode]" id="emailcode" onblur="validator('emailcode');"/>
 			<input type="button" value="立即發送" id="send_code" onclick="SendCode();"/>
 			</td>
@@ -144,16 +146,16 @@
 			</tr>
 			{/if}
 			<tr onmouseover="Ds('tmobile');" onmouseout="Dh('tmobile');">
-			<td class="tl">手機號碼 &nbsp;</td>
+			<td class="tl">Mobile &nbsp;</td>
 			<td><input type="text" class="reg_inp" style="width:200px;" name="post[mobile]" id="mobile"/></td>
 			<td>
 			<div class="tips" id="tmobile" style="display:none;">
-				<div>推薦填寫，以便直接與您取得聯繫<br/>號碼可用於登錄網站和接收本站短信</div>
+				<div>Recommended fill out in order to get in touch with you immediately.</div>
 			</div>
 			<span id="dmobile" class="f_red"></span>&nbsp;	
 			</td>
 			</tr>
-			<tr onmouseover="Ds('tqq');" onmouseout="Dh('tqq');">
+<!-- 			<tr onmouseover="Ds('tqq');" onmouseout="Dh('tqq');">
 			<td class="tl">QQ號碼 &nbsp;</td>
 			<td><input type="text" class="reg_inp" style="width:200px;" name="post[qq]" id="qq"/></td>
 			<td>
@@ -162,38 +164,38 @@
 			</div>
 			<span id="dqq" class="f_red"></span>&nbsp;	
 			</td>
-			</tr>
+			</tr> -->
 			</table>
 
 			<div id="company_detail">
-			<div class="reg_title">公司信息</div>
+			<div class="reg_title">Company Information</div>
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('tcompany');" onmouseout="Dh('tcompany');">
-			<td class="tl">公司名稱 <span class="f_red">*</span></td>
+			<td class="tl">Name <span class="f_red">*</span></td>
 			<td width="300"><input type="text" class="reg_inp" style="width:280px;" name="post[company]" id="company" onblur="validator('company');"/></td>
 			<td>
 			<div class="tips" id="tcompany" style="display:none;">
-				<div>請填寫公司全稱，與營業執照保持一致，註冊之後將不可更改</div>
+				<div>Please fill in the comapny`s full name, and ensure the name is valid</div>
 			</div>
 			<span id="dcompany" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			<tr onmouseover="Ds('ttype');" onmouseout="Dh('ttype');">
-			<td class="tl">公司類型 <span class="f_red">*</span></td>
-			<td>{dselect($COM_TYPE, 'post[type]', '請選擇', '', 'id="type"', 0)}</td>
+			<td class="tl">Business Type <span class="f_red">*</span></td>
+			<td>{dselect($COM_TYPE, 'post[type]', 'Select a type', '', 'id="type"', 0)}</td>
 			<td>
 			<div class="tips" id="ttype" style="display:none;">
-				<div>如果沒有匹配的類型，請選擇其它</div>
+				<div>If there is no matching type, please choose other</div>
 			</div>
 			<span id="dtype" class="f_red"></span>&nbsp;
 			</td>
 			</tr>
 			<tr onmouseover="Ds('ttelephone');" onmouseout="Dh('ttelephone');">
-			<td class="tl">公司電話 <span class="f_red">*</span></td>
+			<td class="tl">Telephone <span class="f_red">*</span></td>
 			<td><input type="text" class="reg_inp" style="width:200px;" name="post[telephone]" id="telephone" onblur="validate('telephone');"/></td>
 			<td>
 			<div class="tips" id="ttelephone" style="display:none;">
-				<div>國內用戶請加區號，國外用戶請加國家碼<br/>格式範例：86-010-88889999</div>
+				<div>Domestic users add the area code, and foreign users add the country code.<br/>Example: 886-4-12345678</div>
 			</div>
 			<span id="dtelephone" class="f_red"></span>&nbsp;
 			</td>
@@ -203,11 +205,11 @@
 			<table cellpadding="5" cellspacing="5" width="100%">
 			{if $MOD[question_register]}
 			<tr onmouseover="Ds('tanswer');" onmouseout="Dh('tanswer');">
-			<td class="tl">驗證問題 <span class="f_red">*</span></td>
+			<td class="tl">Security Question <span class="f_red">*</span></td>
 			<td>{template 'question', 'chip'}</td>
 			<td>
 			<div class="tips" id="tanswer" style="display:none;">
-				<div>請把問題的答案填寫到輸入框中</div>
+				<div>Please fill in the answer to the input box</div>
 			</div>
 			<span id="danswer" class="f_red"></span>&nbsp;
 			</td>
@@ -215,11 +217,11 @@
 			{/if}
 			{if $MOD[captcha_register]}
 			<tr onmouseover="Ds('tcaptcha');" onmouseout="Dh('tcaptcha');">
-			<td class="tl">驗證碼 <span class="f_red">*</span></td>
+			<td class="tl">Security Code <span class="f_red">*</span></td>
 			<td>{template 'captcha', 'chip'}</td>
 			<td>
 			<div class="tips" id="tcaptcha" style="display:none;">
-				<div>請把圖形中的字符填寫到輸入框中<br/>如果看不清楚，請點擊圖片刷新</div>
+				<div>Please fill in the characters shown to the input box,<br/>and if not clear, please check the image to refresh</div>
 			</div>
 			<span id="dcaptcha" class="f_red"></span>&nbsp;
 			</td>
@@ -227,17 +229,17 @@
 			{/if}
 			<tr>
 			<td class="tl">&nbsp;</td>
-			<td width="300"><input type="submit" name="submit" value="同意以下服務條款，提交" style="font-size:14px;padding:3px;"/></td>
+			<td width="300"><input type="submit" name="submit" value="Agree to the following Terms of Service and Submit" style="font-size:14px;padding:3px;"/></td>
 			<td>&nbsp;</td>
 			</tr>
 			</table>
 			</form>
 			<br/>
 			<div style="width:700px;height:100px;overflow-y:scroll;border:#9DBFDA 1px solid;background:#FAFAFA;margin:auto;line-height:180%;padding:10px;" id="agreement">
-			<center class="px14 f_b">請閱讀本站服務條款</center>
+			<center class="px14 f_b">Please read the {$DT[sitename]}`s Terms of Service</center>
 			{template 'agreement', $module}
 			</div>
-			<div style="text-align:right;padding:10px 100px 20px 0;"><a href="?print=1" target="_blank">可打印版本</a></div>
+			<div style="text-align:right;padding:10px 100px 20px 0;"><a href="?print=1" target="_blank">Printable Version</a></div>
 		</div>
 		<br/>
 		<script type="text/javascript">
@@ -258,23 +260,30 @@
 		function validate(type) {
 			if(type == 'cpassword') {
 				if(Dd('cpassword').value != Dd('password').value) {
-					err_msg('兩次輸入的密碼不一致', type);
+					err_msg('Passwords are not the same.', type);
 				} else {
 					err_msg('', type);
 				}
 			}
 			if(type == 'truename') {
 				if(Dd('truename').value.length < 2) {
-					err_msg('請輸入真實姓名', type);
+					err_msg('Enter your first name.', type);
 				} else {
 					err_msg('', type);
 				}
 			}
+			if(type == 'lastname') {
+				if(Dd('truename').value.length < 2) {
+					err_msg('Enter your last name.', type);
+				} else {
+					err_msg('', 'truename');
+				}
+			}			
 			if(type == 'telephone') {
 				if(Dd('telephone').value.match(/^[0-9\-\(\)\+\.]{7,}$/)) {
 					err_msg('', type);
 				} else {
-					err_msg('請輸入公司電話', type);
+					err_msg('Enter your company telephone.', type);
 				}
 			}
 		}
@@ -292,7 +301,7 @@
 			var f,p;
 			f = 'username';
 			if(Dd(f).value == '') {
-				err_msg('請填寫會員登錄名', f);
+				err_msg('Create your username.', f);
 				Df(f);
 				return false;
 			}
@@ -302,7 +311,7 @@
 			}
 			f = 'password';
 			if(Dd(f).value.length < 6) {
-				err_msg('請填寫會員登錄密碼', f);
+				err_msg('Create your password.', f);
 				Df(f);
 				return false;
 			}
@@ -312,24 +321,30 @@
 			}
 			f = 'cpassword';
 			if(Dd(f).value == '') {
-				err_msg('請重複輸入密碼', f);
+				err_msg('Re-enter your password.', f);
 				Df(f);
 				return false;
 			}
 			if(Dd('password').value != Dd(f).value) {
-				err_msg('兩次輸入的密碼不一致', f);
+				err_msg('Passwords are not the same.', f);
 				Df(f);
 				return false;
 			}
 			f = 'truename';
-			if(Dd(f).value == '') {
-				err_msg('請填寫真實姓名', f);
+			if(Dd(f).value == '' || Dd(f).value == 'First Name') {
+				err_msg('Enter your first name.', f);
 				Df(f);
 				return false;
 			}
+			f = 'lastname';
+			if(Dd(f).value == '' || Dd(f).value == 'Last Name') {
+				err_msg('Enter your last name.', f);
+				Df(f);
+				return false;
+			}			
 			f = 'email';
 			if(Dd(f).value.length < 6) {
-				err_msg('請填寫電子郵箱', f);
+				err_msg('Enter your email address.', f);
 				Df(f);
 				return false;
 			}
@@ -338,20 +353,20 @@
 				return false;
 			}
 			if(Dd('areaid_1').value == 0) {
-				Dmsg('請選擇所在地', 'areaid');
+				Dmsg('Select a location.', 'areaid');
 				return false;
 			}
 			{if $could_emailcode}
 				f = 'emailcode';
 				if(!Dd(f).value.match(/^[0-9]{6}$/)) {
-					Dmsg('請填寫郵件驗證碼', f);
+					Dmsg('Enter your email validation code.', f);
 					return false;
 				}
 			{/if}
 			if(Dd('g_5').checked == false) {
 				f = 'company';
 				if(Dd(f).value == '') {
-					err_msg('請填寫公司名稱', f);
+					err_msg('Enter your company name.', f);
 					Df(f);
 					return false;
 				}
@@ -360,12 +375,12 @@
 					return false;
 				}
 				if(Dd('type').value == '') {
-					Dmsg('請選擇公司類型', 'type');
+					Dmsg('Select a business type.', 'type');
 					return false;
 				}
 				f = 'telephone';
 				if(Dd(f).value.length < 7) {
-					err_msg('請填寫公司電話', f);
+					err_msg('Enter your company telephone.', f);
 					Df(f);
 					return false;
 				}
@@ -373,14 +388,14 @@
 			{if $MOD[question_register]}
 			f = 'answer';
 			if(Dd(f).value == '') {
-				Dmsg('請回答驗證問題', f);
+				Dmsg('Answer the security question.', f);
 				return false;
 			}
 			{/if}
 			{if $MOD[captcha_register]}
 			f = 'captcha';
 			if(!is_captcha(Dd(f).value)) {
-				Dmsg('請填寫驗證碼', f);
+				Dmsg('Enter the security code shown.', f);
 				return false;
 			}
 			{/if}

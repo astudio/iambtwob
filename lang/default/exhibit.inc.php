@@ -4,8 +4,8 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
-$L['sponsor'] = '主辦';
-$L['undertaker'] = '承辦';
-$L['hallname'] = '展館';
-$L['city'] = '城市';
+$L['sponsor'] = 'Organizer';
+$L['undertaker'] = 'Sponsor';
+$L['hallname'] = 'Venue';
+$L['city'] = 'City';
 ?>

@@ -47,10 +47,10 @@
 				<div class="ppt">
 					<table cellpadding="0" cellspacing="0" width="100%">
 					<tr>
-					<td class="ppt_l" valign="top">按{$p[name]}</td>
+					<td class="ppt_l" valign="top">by {$p[name]}</td>
 					<td class="ppt_r" valign="top">
 					<input type="hidden" name="ppt_{$p[oid]}" id="ppt_{$p[oid]}" value="{$p[select]}"/>
-					<a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>全部</span>{else}全部{/if}</a>
+					<a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>all</span>{else}all{/if}</a>
 					{loop $p[options] $o}
 					&nbsp;|&nbsp;<a href="###" onclick="Dd('ppt_{$p[oid]}').value='{$o}';Dd('fsearch').submit();">{if $p[select]==$o}<span>{$o}</span>{else}{$o}{/if}</a>
 					{/loop}

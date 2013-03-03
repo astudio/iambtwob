@@ -4,7 +4,7 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
-$L['guest_title'] = '您訪問的公司尚未註冊本站會員';
-$L['not_company'] = '公司不存在';
-$L['news_title'] = '企業新聞';
+$L['guest_title'] = 'The company you visit is not our registered member.';
+$L['not_comapny'] = 'Company Not Found';
+$L['news_title'] = 'Company News';
 ?>

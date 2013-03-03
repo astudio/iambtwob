@@ -4,55 +4,55 @@
 	<tr>
 	<td valign="top" class="left_menu">
 		<ul>
-		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">網站首頁</a></li>
-		<li class="left_menu_li" id="type_0"><a href="./">友情鏈接</a></li>
+		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">Home</a></li>
+		<li class="left_menu_li" id="type_0"><a href="./">Logo Link</a></li>
 		{loop $TYPE $t}
 		<li class="left_menu_li" id="type_{$t[typeid]}"><a href="{rewrite('index.php?typeid='.$t['typeid'])}">{$t[typename]}</a></li>
 		{/loop}
-		<li class="left_menu_li" id="type_reg"><a href="{rewrite('index.php?action=reg')}">申請鏈接</a></li>
+		<li class="left_menu_li" id="type_reg"><a href="{rewrite('index.php?action=reg')}">Apply</a></li>
 		</ul>
 	</td>
 	<td valign="top">
 		<div class="left_box">
 		{if $action == 'reg'}		
-			<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="./">友情鏈接</a> &raquo; <a href="{rewrite('index.php?action=reg')}">申請鏈接</a></div>
+			<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">Logo Link</a> &raquo; <a href="{rewrite('index.php?action=reg')}">Apply</a></div>
 			<br/>
 			<form method="post" action="index.php" id="dform" onsubmit="return check();">
 			<input type="hidden" name="action" value="reg"/>
 			<table cellpadding="6" cellspacing="1" width="96%" align="center" bgcolor="#E3EEF5">
 			{if $MOD[link_request]}
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC">鏈接說明</td>
+			<td bgcolor="#F1F7FC">Description (ALT)</td>
 			<td>{$MOD[link_request]}</td>
 			</tr>
 			{/if}
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC" width="100">網站分類 <span class="f_red">*</span></td>
+			<td bgcolor="#F1F7FC" width="100">Category <span class="f_red">*</span></td>
 			<td>{$type_select} <span id="dtypeid" class="f_red"></span></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC">網站名稱 <span class="f_red">*</span></td>
+			<td bgcolor="#F1F7FC">Sitename <span class="f_red">*</span></td>
 			<td><input name="post[title]" type="text" id="title" size="40" /> <span id="dtitle" class="f_red"></span></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC">網站地址 <span class="f_red">*</span></td>
+			<td bgcolor="#F1F7FC">URL <span class="f_red">*</span></td>
 			<td><input name="post[linkurl]" type="text" id="linkurl" size="40" value="http://"/> <span id="dlinkurl" class="f_red"></span></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC">網站LOGO</td>
+			<td bgcolor="#F1F7FC">LOGO</td>
 			<td><input name="post[thumb]" type="text" id="thumb" size="40"/> <span id="dthumb" class="f_red"></span></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC">網站介紹</td>
+			<td bgcolor="#F1F7FC">Introduction</td>
 			<td><textarea name="post[introduce]" style="width:300px;height:40px;"></textarea></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
-			<td bgcolor="#F1F7FC">驗證碼 <span class="f_red">*</span></td>
+			<td bgcolor="#F1F7FC">Security Code <span class="f_red">*</span></td>
 			<td>{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
 			<td bgcolor="#F1F7FC"> </td>
-			<td><input type="submit" name="submit" value=" 確定 " class="btn"/>&nbsp;&nbsp;<input type="reset" name="reset" value=" 重置 " class="btn"/></td>
+			<td><input type="submit" name="submit" value=" Apply " class="btn"/>&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/></td>
 			</tr>
 			</table>
 			</form>
@@ -64,32 +64,32 @@
 				f = 'typeid';
 				l = Dd(f).value;
 				if(l == 0) {
-					Dmsg('請選擇分類', f);
+					Dmsg('Select a category.', f);
 					return false;
 				}
 				f = 'title';
 				l = Dd(f).value.length;
 				if(l < 2) {
-					Dmsg('請輸入網站名稱', f);
+					Dmsg('Enter a website name.', f);
 					return false;
 				}
 				f = 'linkurl';
 				l = Dd(f).value.length;
 				if(l < 12) {
-					Dmsg('請輸入網站地址', f);
+					Dmsg('Enter a website URL.', f);
 					return false;
 				}
 				f = 'captcha';
 				l = Dd(f).value;
 				if(!is_captcha(l)) {
-					Dmsg('請填寫驗證碼', f);
+					Dmsg('Enter Security Code.', f);
 					return false;
 				}
 			}
 			try{Dd('type_reg').className='left_menu_on';}catch(e){}
 			</script>
 		{else}
-			<div class="pos"><span class="f_r f_b"><a href="{rewrite('index.php?action=reg')}">申請鏈接</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="./">友情鏈接</a></div>
+			<div class="pos"><span class="f_r f_b"><a href="{rewrite('index.php?action=reg')}">Apply</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">Logo Link</a></div>
 			<div style="padding:10px;">
 			{if $typeid}
 			<!--{tag("table=link&condition=thumb!='' and status=3 and username='' and typeid=$typeid&areaid=$cityid&pagesize=1400&order=listorder desc,itemid desc&template=list-link&cols=7")}-->

@@ -16,7 +16,7 @@
 	<div class="m_l_0 f_l">		
 		<div class="b15"> </div>
 		<div class="left_box">
-			<div>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo;Detail</div>
+			<div>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[ename]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo;Detail</div>
 			<div class="b10 c_b"></div>			
 
 			<h1 class="proTitle">			
@@ -29,7 +29,7 @@
 					<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
 					{if !$username}
 					<br/>
-					&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} member with the best services</strong></a>
+					&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} sellers with the best services</strong></a>
 					{/if}
 				</div>
 			
@@ -49,58 +49,58 @@
 					<td class="kw" colspan="2">{$title}</td>
 					</tr>
 					<tr>
-					<td class="f_dblue">單 價：</td>
+					<td class="f_dblue">Price: </td>
 					<td class="f_gray"><span class="f_price px16">${$price}</span></td>
 					</tr>
 					<tr>
-					<td class="f_dblue">品 牌：</td>
-					<td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填寫{/if}</td>
+					<td class="f_dblue">Brand: </td>
+					<td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}None{/if}</td>
 					</tr>
 					<tr>
-					<td class="f_dblue">所在地：</td>
+					<td class="f_dblue">Location: </td>
 					<td>{area_pos($areaid, '-')}</td>
 					</tr>
 					<tr>
-					<td class="f_dblue">銷 量：</td>
-					<td><a href="#order" onclick="Mshow('order');">累計出售 <span class="f_orange">{$sales}</span> 件，{$orders} 個訂單</a></td>
+					<td class="f_dblue">Proceeds: </td>
+					<td><a href="#order" onclick="Mshow('order');"><span class="f_orange">{$sales}</span>  Sold, {$orders} orders</a></td>
 					</tr>
 					<tr>
-					<td class="f_dblue">評 價：</td>
-					<td><a href="#comment" onclick="Mshow('comment');">已有 <span class="f_orange">{$comments}</span> 條評價</a></td>
+					<td class="f_dblue">Comments: </td>
+					<td><a href="#comment" onclick="Mshow('comment');"><span class="f_orange">{$comments}</span> comment{if $comments>1}s{/if}</a></td>
 					</tr>
 					<tr>
-					<td class="f_dblue">庫 存：</td>
-					<td>還剩 <span class="f_orange">{$amount}</span> 件</td>
+					<td class="f_dblue">In Stock: </td>
+					<td><span class="f_orange">{$amount}</span> available</td>
 					</tr>
 					<tr>
-					<td width="50" class="f_dblue">人 氣：</td>
-					<td>已有 <span class="f_orange"><span id="hits">{$hits}</span></span> 人關注</td>
+					<td width="50" class="f_dblue">Popularity: </td>
+					<td>We got <span class="f_orange"><span id="hits">{$hits}</span></span> watchers</td>
 					</tr>
 					<tr>
-					<td class="f_dblue">更 新：</td>
+					<td class="f_dblue">Update: </td>
 					<td>{$editdate}</td>
 					</tr>
 					{if $status == 3}
 					<tr>
 					<td colspan="2">
 					<div id="cart_tip" style="display:none;">
-						<p><img src="{DT_SKIN}image/close.gif" alt="關閉" width="17" height="12" onclick="Dh('cart_tip');"/>提示信息</p>
-						<div>已成功添加到購物車！購物車裡已有 <span id="cart_num">0</span> 種商品</div>
+						<p><img src="{DT_SKIN}image/close.gif" alt="Close" width="17" height="12" onclick="Dh('cart_tip');"/>Tips</p>
+						<div>Great! It just added to your cart. <span id="cart_num">0</span> item(s) in your cart.</div>
 						<center>
-						<input type="button" value="再逛逛" onclick="Dh('cart_tip');"/>
+						<input type="button" value="Continue shopping" onclick="Dh('cart_tip');"/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" value="去結算" onclick="Go('{$MOD[linkurl]}cart.php');"/>
+						<input type="button" value="Proceed to checkout" onclick="Go('{$MOD[linkurl]}cart.php');"/>
 						</center>
 					</div>
-					<img src="{DT_SKIN}image/btn_tobuy.gif" alt="立即購買" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/>
+					<img src="{DT_SKIN}image/btn_tobuy.gif" alt="Buy it Now" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/>
 					&nbsp;
-					<img src="{DT_SKIN}image/btn_addcart.gif" alt="加入購物車" class="c_p" onclick="AddCart({$itemid});"/>
+					<img src="{DT_SKIN}image/btn_addcart.gif" alt="Add to Cart" class="c_p" onclick="AddCart({$itemid});"/>
 					</td>
 					</tr>
 					{else}
 					<tr>
 					<td></td>
-					<td><strong class="f_red">該商品已下架</strong></td>
+					<td><strong class="f_red">This product has been removed.</strong></td>
 					</tr>				
 					{/if}
 					</table>
@@ -152,9 +152,9 @@
 	<div class="b10">&nbsp;</div>
 	<div class="mall_t">
 		<ul>
-		<li class="mall_tab_2" id="t_detail"><a href="#detail" onclick="Mshow('detail');">商品詳情</a></li>
-		<li class="mall_tab_1" id="t_comment"><a href="#comment" onclick="Mshow('comment');">評價詳情({$comments})</a></li>
-		<li class="mall_tab_1" id="t_order"><a href="#order" onclick="Mshow('order');">交易記錄({$orders})</a></li>
+		<li class="mall_tab_2" id="t_detail"><a href="#detail" onclick="Mshow('detail');">Detailed item info</a></li>
+		<li class="mall_tab_1" id="t_comment"><a href="#comment" onclick="Mshow('comment');">Comments ({$comments})</a></li>
+		<li class="mall_tab_1" id="t_order"><a href="#order" onclick="Mshow('order');">Order history ({$orders})</a></li>
 		</ul>
 		<a name="detail"></a><a name="comment"></a><a name="order"></a><div class="t_c"></div>
 	</div>
@@ -163,10 +163,10 @@
 		<div class="content c_b" id="content">{$content}</div>
 	</div>
 	<div class="mall_c" style="display:none;" id="c_comment">
-		<center>正在載入評論詳細...</center>
+		<center>Loading comments...</center>
 	</div>
 	<div class="mall_c" style="display:none;" id="c_order">
-		<center>正在載入交易記錄...</center>
+		<center>Loading order history...</center>
 	</div>
 </div>
 {template 'zoom', 'chip'}
@@ -176,8 +176,8 @@ function AddCart(i) {
 }
 function _AddCart() {
 	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
-		if(xmlHttp.responseText == -3) {alert('商品不存在或已下架');return;}
-		if(xmlHttp.responseText == -4) {alert('不能添加自己的商品');return;}
+		if(xmlHttp.responseText == -3) {alert('This product has been removed.');return;}
+		if(xmlHttp.responseText == -4) {alert('You can not add your own product.');return;}
 		var cart_num = substr_count(get_cookie('cart'), ',');
 		Dd('cart_num').innerHTML = cart_num;
 		if(cart_num) Dd('destoon_cart').innerHTML = '<strong class="f_red">'+cart_num+'</strong>';
@@ -216,7 +216,7 @@ function Mshow(i) {
 }
 function load_comment(p) {
 	if(n_c == 0) {
-		Dd('c_comment').innerHTML = '<div class="comment_no">暫無評論</div>';
+		Dd('c_comment').innerHTML = '<div class="comment_no">No comment</div>';
 		return;
 	}
 	if(p == 0 && Dd('c_comment').innerHTML != c_c) return;
@@ -229,7 +229,7 @@ function _load_comment() {
 }
 function load_order(p) {
 	if(n_o == 0) {
-		Dd('c_order').innerHTML = '<div class="order_no">暫無交易</div>';
+		Dd('c_order').innerHTML = '<div class="order_no">No order history</div>';
 		return;
 	}
 	if(p == 0 && Dd('c_order').innerHTML != c_o) return;

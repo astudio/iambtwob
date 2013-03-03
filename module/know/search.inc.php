@@ -113,5 +113,9 @@ $cols = 5;
 $class = '';
 $seo_file = 'search';
 include DT_ROOT.'/include/seo.inc.php';
-include template('search', $module);
+if($ltype) {
+	include template('search_tw', $module);
+} else {
+	include template('search', $module);
+}
 ?>

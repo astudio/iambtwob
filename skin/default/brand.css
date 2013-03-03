@@ -36,7 +36,8 @@ ul.tabs li > a {font-size:12px;}
 .panes > div > ul > li {display:inline-block;*display:inline;zoom:1;padding-right:23px;padding-bottom:21px;margin:0;width:164px;vertical-align:top;}
 .panes > div > ul img {float:left;width:162px;height:54px;border:1px solid #d7d7d7;margin:0;margin-bottom:8px;padding:23px 0;}
 .panes > div > ul span {float:left;text-align:center;font-size:13px;line-height:16px;width:164px;}
-.more {padding-top:5px;padding-right:3px;*position:absolute;*right:0;*top:30px;}
+.main .more {*position:absolute;*right:0;*top:30px;}
+.more {padding-top:5px;padding-right:3px;}
 .more > a {color:#00aeef;}
 ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a, ul.tabs a:hover {background-color:#666666;}
 ul.tabs a,ul.tabs a:hover,ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {background-image:url('image/video_type.png');background-position:0 0;}

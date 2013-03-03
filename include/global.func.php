@@ -182,7 +182,8 @@ function strip_nr($string, $js = false) {
 
 function template($template = 'index', $dir = '') {
 	global $CFG;
-	$to = $dir ? DT_CACHE.'/tpl/'.$dir.'-'.$template.'.php' : DT_CACHE.'/tpl/'.$template.'.php';
+	$suf = $CFG['template'] == 'zh-tw' ? '_tw' : '';
+	$to = $dir ? DT_CACHE.'/tpl/'.$dir.'-'.$template.$suf.'.php' : DT_CACHE.'/tpl/'.$template.$suf.'.php';
 	$isfileto = is_file($to);
 	if($CFG['template_refresh'] || !$isfileto) {
 		if($dir) $dir = $dir.'/';
@@ -852,7 +853,7 @@ function userurl($username, $qstring = '', $domain = '') {
 				}
 			}
 		} else if($DT['rewrite']) {
-			$URL = DT_PATH.'com/'.$username.'/';
+			$URL = DT_PATH.'com/'.$username.'/';//var_dump($qstring);die;
 			if($qstring) {
 				parse_str($qstring, $q);
 				if(isset($q['file'])) {

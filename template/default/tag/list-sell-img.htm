@@ -18,7 +18,7 @@
 		
 		<ul class="info">
 			<li> <a href="{$t[linkurl]}" target="_blank" class="px13 f_n">{$t[title]}</a></li>
-			<li><!-- {if $t[vip]}<img src="{DT_SKIN}image/vip.gif" alt="級別：{$t[vip]}" style="border:none;" align="absmiddle"/>&nbsp;{/if} --><a href="{userurl($t[username])}" target="_blank" class="tu trigger" title="{if $t[dcount]&&$t[dcount]>1}All Items(<span>{$t[dcount]}</span>){/if}">→{$t[company]}</a></li>
+			<li><!-- {if $t[vip]}<img src="{DT_SKIN}image/vip.gif" alt="級別：{$t[vip]}" style="border:none;" align="absmiddle"/>&nbsp;{/if} --><a href="{if $kw}{userurl($t[username],'file=sell&kw='.$kw)}{else}{userurl($t[username],'file=sell')}{/if}" target="_blank" class="tu trigger" title="{if $t[dcount]&&$t[dcount]>1}All Items(<span>{$t[dcount]}</span>){/if}">→{$t[company]}</a></li>
 		</ul>		
 	</li>
 {/loop}	

@@ -20,8 +20,8 @@
 		<div class="b10"> </div>
 		{if $MOD[page_irec]}
 			<ul class="tabs">
-				<li><a href="javascript:;">推薦商品</a></li>
-				<li><a href="javascript:;">Hot Products</a></li>
+				<li><a href="javascript:;">Best Picks</a></li>
+				<li><a href="javascript:;">Most Popular</a></li>
 			</ul>
 			<div class="panes thUmb">
 				<div>
@@ -37,7 +37,7 @@
 		<!--{tag("table=ad&condition=status=3 and pid=23 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=23&template=ad-single",-1)}-->
 		
 		{if $MOD[page_inew]}
-			<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?new=1')}">more ></a></span><strong>New Products</strong></div></div>
+			<div class="box_head_1"><div><span class="f_r"><a href="{$MOD[linkurl]}{rewrite('search.php?new=1')}">more ></a></span><strong>New Arrival</strong></div></div>
 			<div class="thUmb">
 				<div>
 					<!--{tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=".$MOD[page_inew]."&order=".$MOD[order]."&cols=7&template=thumb-mall&target=_blank",-1)}-->

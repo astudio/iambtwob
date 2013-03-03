@@ -12,41 +12,41 @@
 	{if $member[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="通過銀行帳號認證"/>{/if}
 	{if $member[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通過手機認證"/>{/if}
 	{if $member[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="通過郵件認證"/>{/if}
-	{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/> 通過{$member[validator]}認證{/if}
+	{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/> Business information is proved by {$member[validator]} validation.{/if}
 	&nbsp;
 	<a href="{userurl($member[username], 'file=credit')}">[誠信檔案]</a>
 	</li>{/if}
 	{/if}
 	<li>
-	<span>聯繫人</span>{$member[truename]}&nbsp;({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
+	<span>Contact</span>{$member[truename]}&nbsp;({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
 	{if $member[username] && $DT[im_web]}{im_web($member[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
 	{if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
 	{if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
 	{if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
 	{if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}
 	</li>
-	<li><span>會員</span> [{if online($member[userid])==1}<font class="f_red">當前在線</font>{else}<font class="f_gray">當前離線</font>{/if}] <a class="addGroup" href="{$MODULE[2][linkurl]}friend.php?action=add&username={$member[username]}" target="_blank">[加為商友]</a> <a class="sendMail" href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}" target="_blank">[發送信件]</a></li>
-	{if $member[mail]}<li><span>郵件</span>{anti_spam($member[mail])}</li>{/if}
-	{if $member[telephone]}<li><span>電話</span>{anti_spam($member[telephone])}</li>{/if}
-	{if $member[mobile]}<li><span>手機</span>{anti_spam($member[mobile])}{if $DT[sms] && $member[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($member[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="發送短信" alt=""/></a>{/if}</li>{/if}
-	<li><span>地區</span>{area_pos($member[areaid], '-')}</li>
-	{if $member[address]}<li title="{$member[address]}"><span>地址</span>{$member[address]}</li>{/if}
+	<li><span>Group</span> [{if online($member[userid])==1}<font class="f_red">Available</font>{else}<font class="f_gray">Offline</font>{/if}] <a class="addGroup" href="{$MODULE[2][linkurl]}friend.php?action=add&username={$member[username]}" target="_blank">[Add Friend]</a> <a class="sendMail" href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}" target="_blank">[Send Mail]</a></li>
+	{if $member[mail]}<li><span>Email</span>{anti_spam($member[mail])}</li>{/if}
+	{if $member[telephone]}<li><span>TEL</span>{anti_spam($member[telephone])}</li>{/if}
+	{if $member[mobile]}<li><span>Mobile</span>{anti_spam($member[mobile])}{if $DT[sms] && $member[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($member[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="Send SMS" alt=""/></a>{/if}</li>{/if}
+	<li><span>Location</span>{area_pos($member[areaid], '-')}</li>
+	{if $member[address]}<li title="{$member[address]}"><span>Address</span>{$member[address]}</li>{/if}
 {else}
 	<li class="f_b t_c" style="font-size:14px;"><a href="{userurl('')}" target="_blank">{$item[company]}</a></li>
 	<li style="padding-top:3px;">
-	<span>聯繫人</span>{$item[truename]}&nbsp;
+	<span>Contact</span>{$item[truename]}&nbsp;
 	{if $item[username] && $DT[im_web]}{im_web($item[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
 	{if $item[qq] && $DT[im_qq]}{im_qq($item[qq])}&nbsp;{/if}
 	{if $item[ali] && $DT[im_ali]}{im_ali($item[ali])}&nbsp;{/if}
 	{if $item[msn] && $DT[im_msn]}{im_msn($item[msn])}&nbsp;{/if}
 	{if $item[skype] && $DT[im_skype]}{im_skype($item[skype])}&nbsp;{/if}
-	&nbsp;&nbsp;<strong class="f_red">未註冊</strong>
+	&nbsp;&nbsp;<strong class="f_red">Unregistered</strong>
 	</li>
-	{if $item[email]}<li><span>郵件</span>{anti_spam($item[email])}</li>{/if}
-	{if $item[telephone]}<li><span>電話</span>{anti_spam($item[telephone])}</li>{/if}
-	{if $item[mobile]}<li><span>手機</span>{anti_spam($item[mobile])}</li>{/if}
-	<li><span>地區</span>{area_pos($item[areaid], '&nbsp;')}</li>
-	{if $item[address]}<li title="{$item[address]}"><span>地址</span>{$item[address]}</li>{/if}
+	{if $item[email]}<li><span>Email</span>{anti_spam($item[email])}</li>{/if}
+	{if $item[telephone]}<li><span>TEL</span>{anti_spam($item[telephone])}</li>{/if}
+	{if $item[mobile]}<li><span>Mobile</span>{anti_spam($item[mobile])}</li>{/if}
+	<li><span>Location</span>{area_pos($item[areaid], '&nbsp;')}</li>
+	{if $item[address]}<li title="{$item[address]}"><span>Address</span>{$item[address]}</li>{/if}
 	</li>
 {/if}
 </ul>
@@ -92,8 +92,8 @@
 {/if}
 <tr>
 <td>
-<a href="{$MODULE[2][linkurl]}grade.php"><img src="{DT_SKIN}image/btn_upgrade.gif" width="100" height="30" alt="現在升級"/></a>&nbsp;&nbsp;
-<a href="{$MODULE[2][linkurl]}grade.php"><img src="{DT_SKIN}image/btn_detail.gif" width="100" height="30" alt="瞭解詳情"/></a>
+<a href="{$MODULE[2][linkurl]}grade.php"><img src="{DT_SKIN}image/btn_upgrade.gif" width="100" height="30" alt="Upgrade Now.."/></a>&nbsp;&nbsp;
+<a href="{$MODULE[2][linkurl]}grade.php"><img src="{DT_SKIN}image/btn_detail.gif" width="100" height="30" alt="Detail"/></a>
 </td>
 </tr>
 </table>

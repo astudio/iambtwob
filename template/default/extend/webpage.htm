@@ -4,7 +4,7 @@
 	<tr>
 	<td valign="top" class="left_menu">
 		<ul>
-		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">網站首頁</a></li>
+		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">Home</a></li>
 		<!--{php $tags=tag("table=webpage&condition=item='$_item'&areaid=$cityid&pagesize=99&order=listorder desc,itemid desc&template=null");}-->
 		{loop $tags $k $t}
 		<li class="left_menu_li" id="webpage_{$t[itemid]}"><a href="{if $t[domain]}{$t[domain]}{else}{DT_PATH}{$t[linkurl]}{/if}">{$t[title]}</a></li>
@@ -13,7 +13,7 @@
 	</td>
 	<td valign="top">
 		<div class="left_box">
-			<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{DT_PATH}{$linkurl}">{$title}</a></div>
+			<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{DT_PATH}{$linkurl}">{$title}</a></div>
 			<div style="border-bottom:#C0C0C0 1px dotted;margin:5px 15px 5px 15px;line-height:36px;" class="t_c px14"><strong>{$title}</strong></div>
 			<div class="content" id="content">{$content}</div>
 		<br/>

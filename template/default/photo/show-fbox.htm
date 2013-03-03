@@ -1,0 +1,104 @@
+{if $pass}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+ 		<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<!-- 	{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if} -->
+		{if $itemid && $DT[anticopy]}
+		<script type="text/javascript">
+		document.oncontextmenu=function(e){return false;};
+		document.onselectstart=function(e){return false;};
+		</script>
+		{/if}
+		<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+		
+		<style>
+			.photo_info {font-size:14px;width:820px;}
+			#photo {width:820px;}
+			#photo .t_c > img {-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);*border:1px solid #d7d7d7;}
+			.photo_r {padding-left:20px;}
+			#cursor_a {position:absolute;z-index:1000;width:410px;cursor:url('image/prev.cur'),default;}
+			#cursor_b {position:absolute;z-index:1000;width:410px;cursor:url('image/next.cur'),default;margin-left:410px;}	#destoon_photo {width:820px;}
+			#side {margin-top:28px;}
+			#side > a > img.thumb_a, #side > a > img.thumb_b {width:100%;height:100%;}
+			#side > a > img {margin-bottom:10px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);*border:1px solid #d7d7d7;}
+			.share img {width: 20px;height: 20px;padding: 5px 6px 15px 6px;}
+			a.browse {width:25px;height:30px;display:inline-block;*display:inline;zoom:1;}
+			a.left span {width: 25px;height: 30px;background: url('/skin/default/image/astudio.png') no-repeat -165px -61px;display: block;}
+			a.right span {width: 25px;height: 30px;background: url('/skin/default/image/astudio.png') no-repeat -196px -61px;display: block;}
+		</style>
+	</head>
+	<body>		
+<!--[if IE]>
+<style type="text/css">
+#cursor_a {cursor:url('{DT_SKIN}image/prev.cur'),default;}
+#cursor_b {cursor:url('{DT_SKIN}image/next.cur'),default;}
+</style>
+<![endif]-->
+<div style="padding:23px 36px;">
+
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td valign="top" class="photo_l">
+<a name="p"></a>
+<div class="photo_info">
+<div class="photo_info_r f_r"><span class="count_a">{$page}</span> <span class="count_b">/ {$items}</span></div>
+Date:<span class="px11">{$adddate}</span>&nbsp;&nbsp;/&nbsp;&nbsp;
+Views:<span id="hits" class="px11">{$hits}</span>&nbsp;&nbsp;/&nbsp;&nbsp;
+<!-- <div>
+<span onclick="View(Dd('destoon_photo').src);" class="c_p">查看原圖</span>&nbsp;&nbsp;&nbsp;
+<span onclick="Go('{$MOD[linkurl]}{rewrite('view.php?itemid='.$itemid)}#p');" class="c_p">全部展開</span> 
+</div>-->
+</div>
+<div class="b10"></div>
+<div id="photo">
+	<div><img src="{DT_SKIN}image/spacer.gif" id="cursor_a" onclick="Go('{$prev_photo}&fbox=1#p');" title="上一張"/></a><img src="{DT_SKIN}image/spacer.gif" id="cursor_b" onclick="Go('{$next_photo}&fbox=1#p');" title="下一張"/></div>
+	<div class="t_c"><img src="{$P[src]}" id="destoon_photo" oncontextmenu="return false;" onload="if(this.width>{$MOD[max_width]})this.width={$MOD[max_width]};if(this.src.indexOf('spacer.gif')!=-1){this.width={$MOD[max_width]};this.height=1;}"/></div>
+</div>
+{if $P[introduce]}<div class="photo_intro">{nl2br($P[introduce])}</div>{/if}
+<div class="b10"></div>
+</td>
+<td valign="top" class="photo_r">
+
+<div id="side">
+{if $user_status == 3}
+	{loop $S $k $v}
+	<a href="{$v[linkurl]}&fbox=1#p"><img src="{$v[thumb]}" width="80" height="80" title="{$v[introduce]}" alt="" {if $page==$v[page]}class="thumb_b"{else}class="thumb_a" onmouseover="this.className='thumb_b';" onmouseout="this.className='thumb_a';"{/if}/></a>
+	{/loop}
+{else}
+<div style="height:200px;">&nbsp;</div>
+{/if}
+</div>
+
+<a href="{$prev_photo}&fbox=1#p" class="left browse" title="上一張"><span></span></a>
+<a href="{$next_photo}&fbox=1#p" class="right browse f_r" title="下一張"><span></span></a>
+</td>
+</tr>
+</table>
+
+<div class="b10">&nbsp;</div>
+<div class="box_head_2">
+	<div><strong style="color:#0569b4;">Description</strong></div>
+</div>
+<div class="box_body" style="margin:0 10px;border-bottom:1px solid #00aeef;">
+{if $CP}{template 'property', 'chip'}{/if}
+<div class="content c_b" id="content">{$content}</div>
+</div>
+
+<div style="margin-top:15px;">
+	{template 'show_toolbar','chip'}
+</div>
+</div>
+
+<script type="text/javascript">
+window.onload = function() { try{Dd('cursor_a').style.height = Dd('cursor_b').style.height =  Dd('destoon_photo').height+'px';} catch(e) {} }
+</script>
+	</body>
+</html>	
+{else}
+<meta http-equiv="refresh" content="0;url={$MOD[linkurl]}private.php?itemid={$itemid}&page={$page}">
+{/if}

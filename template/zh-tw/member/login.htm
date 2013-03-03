@@ -1,0 +1,125 @@
+{template 'header'}
+<style type="text/css">
+.tips {position:absolute;z-index:100;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;left:750px;}
+.tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+
+.m_l_a {width:1212px;border:2px solid #00aeef;margin-top:22px;padding:8px 0;}
+.forgotPasswd {width:300px;float:left;font-size:15px;height:154px;border-right:1px solid #00aeef;padding-top:55px;padding-left:36px;line-height:22px;position:relative;}
+.forgotPasswd .Licon {background:url('{DT_SKIN}image/login.png') no-repeat -1px -1px;position:absolute;width:255px;height:40px;top:-8px;left:0;}
+.logIn {float:left;width:400px;height:163px;border-right:1px solid #00aeef;padding:23px 25px;}
+.joinFree {float:right;width:380px;height:169px;padding:20px 22px;}
+.joinFree div {font-size:15px;}
+form button {width:100px;height:40px;background:url('{DT_SKIN}image/login.png') no-repeat 5px -44px;border:0;text-indent:-9999px;margin-left:34px;cursor:pointer;vertical-align:middle;}
+form label {font-size:15px;}
+.logIn select {width:134px;height:24px;font-size:15px;line-height:24px;}
+.logIn #username {width:124px;height:20px;line-height:18px;vertical-align:top;font-size:15px;padding:0 3px;}
+form .password {margin:14px 0;}
+#password {width:192px;height:20px;font-size:15px;font-family:Arial;padding:0 3px;}
+#captcha {width:145px;height:20px;margin:0 !important;padding:0 3px;font-size:15px;}
+#captchapng {vertical-align:top;}
+#ccaptcha img {left:0px;top:0px;}
+.remark {font-size:13px;margin:8px 0;}
+.remember {margin-top:6px;}
+.register {width:179px;height:40px;background:url('{DT_SKIN}image/login.png') no-repeat 0 -84px;margin-top:10px;}
+#kb {left:498px !important;}
+</style>
+
+<div class="m">
+	<div class="m_l_a f_l">
+		<div class="forgotPasswd">
+			<div class="Licon"> </div>
+			<a href="send.php">Password Forgot?</a>
+			<div>You are not logged, or Access the login page...</div>
+		</div>
+		
+		<form class="logIn " method="post" action="{$DT[file_login]}"  onsubmit="return Dcheck();">
+			<input name="forward" type="hidden" id="forward" value="{$forward}">
+
+			<div onmouseover="Ds('tusername');" onmouseout="Dh('tusername');" >
+				<select name="option">
+					<option value="username">Username</option>
+					{if $MOD[passport]}<option value="passport">Passport</option>{/if}
+					<option value="email">Email</option>
+					<option value="mobile">Mobile</option>
+					<option value="company">Company Name</option>
+					<option value="userid">Member ID</option>
+				</select>
+				<input name="username" type="text" id="username" value="{$username}" placeholder="Username" />
+			</div>				
+			<div class="tips" id="tusername" style="display:none;">
+				<div>如果忘记了用户名，请在左侧选择其他登录名称<br/>例如Email、手机号、公司名等</div>
+			</div>
+
+			<div class="password" onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
+				<label for="password">Password:</label>
+				{template 'password', 'chip'}
+			</div>			
+			<div class="tips" id="tpassword" style="display:none;">
+				<div>如果忘记了密码，请<a href="send.php" class="f_b">点击这里</a>自主找回或联系本站工作人员协助找回</div>
+			</div>
+
+			{if $MOD[captcha_login]}
+				<label for="captcha">Verification Code: </label>
+				{template 'captcha', 'chip'}
+			{/if}
+			
+			<div class="remark">If you do not know the verification code, click the picture to refresh</div>
+
+			<div class="remember">
+				<span title="选中后 一月内不用再次登录 网吧或公共计算机请勿选"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">Remember me</label></span>
+				<span title="选中后 将直接进入商务室 不返回登录前的页面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">Enter My ImB2B</label></span>
+				<button type="submit" name="submit">Login</button>
+			</div>	
+
+			{if $oa}
+			其他登录：
+			{loop $OAUTH $k $v}
+			{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
+			{/loop}
+			{/if}		
+		</form>
+		<div class="joinFree">
+			<div>Not is imB2B.com Member?</div>
+			<div>Immediately sign up for a free (only take about 1 minute)...</div>
+			<a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><div class="register"> </div></a>
+		</div>
+	</div>
+	
+	<div class="m b15"> </div>
+	
+	<div class="m_l f_l">
+		<!--{tag("table=ad&condition=status=3 and pid=24 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=24&template=ad-single",-1)}-->	
+	</div>
+	<div class="m_n f_l">&nbsp;</div>
+	<div class="m_n f_l">&nbsp;</div>
+	<div class="m_r_2 f_l">
+		<!--{tag("table=ad&condition=status=3 and pid=25 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=25&template=ad-single",-1)}-->	
+	</div>
+</div>
+<script type="text/javascript">
+if(Dd('username').value == '') {
+	Dd('username').focus();
+} else {
+	Dd('password').focus();
+}
+function Dcheck() {
+	if(Dd('username').value == '') {
+		confirm('请输入登录名称');
+		Dd('username').focus();
+		return false;
+	}
+	if(Dd('password').value == '') {
+		confirm('请输入密码');
+		Dd('password').focus();
+		return false;
+	}
+{if $MOD[captcha_login]}
+	if(!is_captcha(Dd('captcha').value)) {
+		confirm('请填写验证码');
+		Dd('captcha').focus();
+		return false;
+	}
+{/if}
+}
+</script>
+{template 'footer'}

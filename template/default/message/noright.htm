@@ -6,15 +6,15 @@ var i = 30;
 	<div class="warn">
 		<div>
 			<h1>{$head_title}</h1><br/>
-			&nbsp;&nbsp;<span id="second" class="f_red f_b"><script type="text/javascript">document.write(i);</script></span> 秒後將自動跳轉到{if $_userid}<a href="{$MODULE[2][linkurl]}grade.php">會員升級頁面</a>{else}<a href="{$MODULE[2][linkurl]}{$DT[file_login]}">會員登錄頁面</a>{/if}
+			&nbsp;&nbsp;You will be redirected to {if $_userid}<a href="{$MODULE[2][linkurl]}grade.php">Member Service</a>{else}<a href="{$MODULE[2][linkurl]}{$DT[file_login]}">Member Login</a>{/if} within <span id="second" class="f_red f_b"><script type="text/javascript">document.write(i);</script></span> seconds.
 			<br/><br/>
 			{if $_userid}
-			&nbsp;&nbsp;1、請升級您的會員組。 <br/>
+			&nbsp;&nbsp;1. Please upgrade to your member group. <br/>
 			{else}
-			&nbsp;&nbsp;1、請 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">登錄</a> 或 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}">免費註冊</a>。<br/>
+			&nbsp;&nbsp;1. Please <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">login now</a> or <a href="{$MODULE[2][linkurl]}{$DT[file_register]}">join free</a>.<br/>
 			{/if}
-			&nbsp;&nbsp;2、請檢查輸入的網址是否正確。 <br/>
-			&nbsp;&nbsp;3、如果不能確認輸入的網址，請瀏覽<a href="{$MODULE[1][linkurl]}">網站首頁</a>來查看所要訪問的網址。 <br/>
+			&nbsp;&nbsp;2. Please ensure the web address you`ve entered is correct. <br/>
+			&nbsp;&nbsp;3. If you are not sure of the web address, please visit <a href="{$MODULE[1][linkurl]}">ImB2B</a> to confirm. <br/>
 		</div>
 	</div>
 </div>

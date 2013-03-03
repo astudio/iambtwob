@@ -1,0 +1,33 @@
+{template 'header'}
+<script type="text/javascript">var i=30;</script>
+<div class="m">
+	<div class="warn">
+		<div>
+			<h1>{$head_title}</h1><br/>
+			&nbsp;&nbsp;<span id="second" class="f_red f_b"><script type="text/javascript">document.write(i);</script></span> 秒後將自動跳轉到<a href="{$MOD[linkurl]}">{$MOD[name]}首頁</a>
+			<br/><br/>
+			&nbsp;&nbsp;1、請檢查輸入的網址是否正確。 <br/>
+			&nbsp;&nbsp;2、如果不能確認輸入的網址，請瀏覽<a href="{$MOD[linkurl]}">{$MOD[name]}首頁</a>來查看所要訪問的網址。 <br/>
+			&nbsp;&nbsp;3、直接輸入要訪問的內容進行搜索： <br/>
+			<form action="{$MOD[linkurl]}search.php">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="25" name="kw"/> 
+			<input type="submit" value="搜索" class="btn"/>
+			<input type="button" value="高級" class="btn" onclick="window.location='{$MOD[linkurl]}search.php';"/>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var interval=window.setInterval(
+	function() {
+		if(i==0) {
+			Go('{$MOD[linkurl]}');
+			clearInterval(interval);
+		} else {
+			Dd('second').innerHTML=i;
+			i--;
+		}
+	}, 
+1000);
+</script>
+{template 'footer'}

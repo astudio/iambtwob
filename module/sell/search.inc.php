@@ -96,13 +96,24 @@ if($DT_QST) {
 		if($pptsql) $condition .= $pptsql;//PPT
 		$condition = "status=3".$condition;
 	}
+	
+	if($MOD['group']){
+		$group = $MOD['group'];
+		$total = $db->count($table, $condition, $DT['cache_search'], $group);
+		$dcount = "MAX(itemid) AS itemid,COUNT($group) AS dcount";	
+		$_group = " GROUP BY $group";  
+	}	
+	
 	$pagesize = $MOD['pagesize'];
 	$offset = ($page-1)*$pagesize;
 	$items = $db->count($table, $condition, $DT['cache_search']);
-	$pages = pages($items, $page, $pagesize);
+	$pages = $group ? pages($total, $page, $pagesize) : pages($items, $page, $pagesize);	
 	if($items) {
 		$order = $dorder[$order] ? " ORDER BY $dorder[$order]" : '';
-		$result = $db->query("SELECT $fds FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", ($DT['cache_search'] && $page == 1) ? 'CACHE' : '', $DT['cache_search']);
+		$query = $group ? "SELECT a.{$fds},b.dcount FROM {$table} a INNER JOIN (SELECT {$dcount} FROM {$table} WHERE {$condition}{$_group}) b ON a.itemid = b.itemid" : "SELECT {$fields} FROM {$table} WHERE {$condition}";
+		$query .= "{$order} LIMIT $offset,$pagesize";
+		
+		$result = $db->query($query, ($CFG['db_expires'] && $page == 1) ? 'CACHE' : '', $CFG['db_expires']);
 		if($kw) {
 			$replacef = explode(' ', $kw);
 			$replacet = array_map('highlight', $replacef);

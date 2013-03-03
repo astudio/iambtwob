@@ -1,0 +1,114 @@
+{php $CSS = array('tabs-accordion');}
+{template 'header'}
+<div class="m">
+	<div class="f_l side">
+		{if $DT[page_catalog]}
+			{php $mid = $moduleid;$stat = 1;}
+			{template 'catalog_accordion','chip'}
+		{/if}
+
+		<div class="b10"> </div>
+		
+		<div class="contactUs">
+			<div class="box_head_2">
+				<div>升級您的會員資格</div>
+			</div>
+			<div class="box_body">
+				<img class="consultme" src="{DT_SKIN}image/upgrade.jpg" />
+				
+				<div class="tel">電話: +886-4-2313-2189</div>
+				<div class="fax">傳真: +886-4-2313-3159</div>
+				<div class="address">地址: 40753台中市西屯區文心路三段508號</div>
+				
+				<a href="{$MODULE[2][linkurl]}grade.php" target="_blank">
+					<div id="contact"> </div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="m_l_0 f_l">
+		<div class="b15"> </div>
+	
+		<img class="help" src="{DT_SKIN}image/help.jpg" />
+		<div class="lang f_l">
+			<a href="{$MOD[linkurl]}?lt=1"><span class="current">中文</span></a>
+			<a href="{$MOD[linkurl]}?lt=0"><span>English</span></a>
+		</div>
+		
+		<div class="b10"> </div>
+		
+		<div class="bOx_head">問題搜尋</div>
+		<div class="box_body">
+			<div class="fsearch">
+				<form action="{$MOD[linkurl]}search.php" id="fsearch">
+				<input type="hidden" name="typeid" id="typeid" value="{$typeid}"/>
+				<label for="kw">關鍵詞:</label>
+				<input type="text" size="60" name="kw" value="{$kw}" class="pd3"/>
+				{loop $sfields $k $v}
+				<input type="radio" name="fields" value="{$k}" id="fd_{$k}"{if $fields==$k} checked{/if}/><label for="fd_{$k}"> {$v}</label>&nbsp;
+				{/loop}	<br />		
+
+				<label for="category">所屬分類:</label>
+				{$category_select}
+
+				{if $DT[city]}
+				<label for="area">所在地區:</label>
+				{$area_select}
+				{/if}
+				
+				<label for="order">排序方式:</label>
+				{$order_select}
+
+				<div class="buttons">
+					<input type="image" src="{DT_SKIN}image/btn_search.png"/>&nbsp;&nbsp;
+					<a href="{$MOD[linkurl]}"><img src="{DT_SKIN}image/btn_reset_search.png"/></a>&nbsp;&nbsp;	
+					<!-- <a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$moduleid}&action=add&cid={$catid}&kw={urlencode($kw)}"><img src="{DT_SKIN}image/btn_ask.gif"/></a> -->
+				</div>
+			{if $CP}
+			{loop $PPT $p}
+			<div class="ppt">
+				<table cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+				<td class="ppt_l" valign="top">按{$p[name]}</td>
+				<td class="ppt_r" valign="top">
+				<input type="hidden" name="ppt_{$p[oid]}" id="ppt_{$p[oid]}" value="{$p[select]}"/>
+				<a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>全部</span>{else}全部{/if}</a>
+				{loop $p[options] $o}
+				&nbsp;|&nbsp;<a href="###" onclick="Dd('ppt_{$p[oid]}').value='{$o}';Dd('fsearch').submit();">{if $p[select]==$o}<span>{$o}</span>{else}{$o}{/if}</a>
+				{/loop}
+				</td>
+				</tr>
+				</table>
+			</div>
+			{/loop}
+			{/if}
+				</form>
+			</div>
+		</div>
+		
+		<div class="bOx_head">快速導覽</div>
+		<div class="box_body">
+			<div class="how_to_buy f_l">
+				<h2>如何買?</h2>
+				<ul class="steps">
+					<li>步驟1.<a href="{$MOD[linkurl]}">尋找產品</a></li>					
+					<li>步驟2.<a href="{$MOD[linkurl]}">發佈採購需求</a></li>					
+					<li>步驟3.<a href="{$MOD[linkurl]}">發送詢問函</a></li>
+				</ul>
+			</div>		
+			
+			<img class="tour f_l" src="{DT_SKIN}image/tour.jpg" />
+			
+			<div class="how_to_sell f_l">
+				<h2>如何賣?</h2>
+				<ul class="steps">
+					<li>步驟1.<a href="{$MOD[linkurl]}">加入會員</a></li>					
+					<li>步驟2.<a href="{$MOD[linkurl]}">提高買家詢問機會</a></li>					
+					<li>步驟3.<a href="{$MOD[linkurl]}">接收詢問函</a></li>
+				</ul>				
+			</div>
+		</div>
+	</div>
+</div>
+{template 'footer'}

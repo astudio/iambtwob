@@ -32,8 +32,8 @@
 	
 		<img class="help" src="{DT_SKIN}image/help.jpg" />
 		<div class="lang f_l">
-			<span class="current">中文</span>
-			<span>English</span>
+			<a href="{$MOD[linkurl]}?lt=1"><span>中文</span></a>
+			<a href="{$MOD[linkurl]}?lt=0"><span class="current">English</span></a>
 		</div>
 		
 		<div class="b10"> </div>
@@ -89,7 +89,25 @@
 		
 		<div class="bOx_head">快速導覽</div>
 		<div class="box_body">
-			<img class="tour" src="{DT_SKIN}image/tour.jpg" />
+			<div class="how_to_buy f_l">
+				<h2>如何買?</h2>
+				<ul class="steps">
+					<li>步驟1.<a href="{$MOD[linkurl]}">尋找產品</a></li>					
+					<li>步驟2.<a href="{$MOD[linkurl]}">發佈採購需求</a></li>					
+					<li>步驟3.<a href="{$MOD[linkurl]}">發送詢問函</a></li>
+				</ul>
+			</div>		
+			
+			<img class="tour f_l" src="{DT_SKIN}image/tour.jpg" />
+			
+			<div class="how_to_sell f_l">
+				<h2>如何賣?</h2>
+				<ul class="steps">
+					<li>步驟1.<a href="{$MOD[linkurl]}">加入會員</a></li>					
+					<li>步驟2.<a href="{$MOD[linkurl]}">提高買家詢問機會</a></li>					
+					<li>步驟3.<a href="{$MOD[linkurl]}">接收詢問函</a></li>
+				</ul>				
+			</div>
 		</div>
 	</div>
 </div>

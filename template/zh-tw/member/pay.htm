@@ -1,0 +1,76 @@
+{template 'header'}
+<div class="m">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	<td valign="top" class="left_menu">
+		<ul>
+		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">網站首頁</a></li>
+		<li class="left_menu_on"><a href="pay.php">站內支付</a></li>
+		<li class="left_menu_li"><a href="charge.php?action=pay">在線充值</a></li>
+		<li class="left_menu_li"><a href="record.php">支付記錄</a></li>
+		</ul>
+	</td>
+	<td valign="top">
+		<div class="left_box">	
+			<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="">商務中心</a> &raquo; <a href="pay.php">站內支付</a></div>
+			<div style="padding:25px;font-size:14px;">
+			<form method="post" action="pay.php" id="dform" onsubmit="return check();">
+			<input type="hidden" name="mid" value="{$mid}"/>
+			<input type="hidden" name="itemid" value="{$itemid}"/>
+			<input type="hidden" name="fee" value="{$fee}"/>
+			<input type="hidden" name="sign" value="{$sign}"/>
+			<input type="hidden" name="title" value="{$title}"/>
+			<input type="hidden" name="currency" value="{$currency}"/>
+			<input type="hidden" name="forward" value="{$forward}"/>
+			<input type="hidden" name="submit" value="1"/>
+			<table cellpadding="10" cellspacing="1" width="100%">
+			<tr>
+			<td>支付對像</td>
+			<td><a href="{$forward}" class="f_b">{$title}</a></td>
+			</tr>
+			<tr>
+			<td>總價</td>
+			<td><strong class="px16 f_b f_red">{$fee}</strong> {$DT[money_unit]}</td>
+			</tr>
+			<tr bgcolor="#F1F7FC">
+			<td>會員價</td>
+			<td><strong class="px16 f_b f_orange">{$member_fee}</strong> {$DT[money_unit]}&nbsp;&nbsp;<span class="px12 f_gray">(帳戶餘額:{$_money}{$DT[money_unit]})</span>&nbsp;&nbsp;<a href="charge.php?action=pay&amount={$amount}" class="px12">帳戶充值</a></td>
+			</tr>
+			<tr>
+			<td>支付密碼 <span class="f_red">*</span></td>
+			<td>{template 'password', 'chip'} <span id="dpassword" class="f_red"></span></td>
+			</tr>
+			<tr>
+			<td> </td>
+			<td>
+				<input type="image" src="{DT_SKIN}image/btn_pay.gif"/>
+				&nbsp;
+				<a href="charge.php?action=pay&amount={$amount}"><img src="{DT_SKIN}image/btn_charge.gif" width="100" height="30" alt="帳戶充值"/></a>
+			</td>
+			</tr>
+			</table>
+			</form>
+			</div>
+			<script type="text/javascript">
+			function check() {
+				if({$fee} > {$_money}) {
+					if(confirm('帳戶餘額不足，是否現在充值？')) window.location='charge.php?action=pay&amount={$amount}';
+					return false;
+				}
+				var l;
+				var f;
+				f = 'password';
+				l = Dd(f).value.length;
+				if(l < 6) {
+					Dmsg('請輸入支付密碼', f);
+					return false;
+				}
+			}
+			</script>
+		
+		</div>
+	</td>
+	</tr>
+	</table>
+</div>
+{template 'footer'}

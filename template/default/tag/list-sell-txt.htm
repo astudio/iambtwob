@@ -23,7 +23,7 @@
 					{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}&nbsp;{/if}
 					&nbsp;&nbsp;</span>					
 				</span>
-				<a href="{userurl($t[username])}" class="com trigger" target="_blank" title="{if $t[dcount]>1}All Items({$t[dcount]}){/if}">{$t[company]}</a>&nbsp;
+				<a href="{if $kw}{userurl($t[username],'file=sell&kw='.$kw)}{else}{userurl($t[username],'file=sell')}{/if}" class="com trigger" target="_blank" title="{if $t[dcount]>1}All Items({$t[dcount]}){/if}">{$t[company]}</a>&nbsp;
 				<span class="f_gray">
 				{if $t[validated]}<span class="f_green">[Verified]</span>{else}[Unverified]{/if}
 				{if !$t[username]} [Unregistered]{/if}

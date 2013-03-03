@@ -28,6 +28,7 @@ $maincat = get_maincat($child ? $catid : $parentid, $moduleid);
 
 $condition = 'status=3';
 $condition .= ($CAT['child']) ? " AND catid IN (".$CAT['arrchildid'].")" : " AND catid=$catid";
+$condition .= " AND totime>$DT_TIME"; // additional
 if($cityid) {
 	$areaid = $cityid;
 	$ARE = $AREA[$cityid];

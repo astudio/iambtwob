@@ -1,0 +1,123 @@
+{php $CSS = array('gift');}
+{template 'header'}
+<div class="m">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	<td valign="top" class="left_menu">
+		<ul>
+		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">網站首頁</a></li>
+		<li class="left_menu_li" id="type_0"><a href="./">積分換禮</a></li>
+		<li class="left_menu_li" id="type_my"><a href="{rewrite('index.php?action=my')}">我的訂單</a></li>
+		{loop $TYPE $t}
+		<li class="left_menu_li" id="type_{$t[typeid]}"><a href="{rewrite('index.php?typeid='.$t['typeid'])}">{$t[typename]}</a></li>
+		{/loop}
+		</ul>
+	</td>
+	<td width="8"> </td>
+	<td valign="top">
+		<div class="left_box">		
+			<div class="pos">
+			<span class="f_r">
+			<form action="index.php">
+			<input type="text" name="kw" size="20" value="{if $kw}{$kw}{else}關鍵詞{/if}" onfocus="if(this.value=='關鍵詞')this.value='';" id="gift_kw"/>&nbsp;
+			<input type="submit" value=" 搜索 " class="btn" onclick="if(Dd('gift_kw').value=='關鍵詞' || Dd('gift_kw').value.length<2){Dd('gift_kw').focus();return false;}"/>
+			<input type="button" value=" 重搜 " class="btn" onclick="window.location='./';"/>
+			</form>
+			</span>
+			當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="./">積分換禮</a>
+			</div>
+			{if $action == 'my'}
+				<div class="b15">&nbsp;</div>
+				<table cellpadding="6" cellspacing="1" width="96%" align="center" bgcolor="#E3EEF5">
+				<tr bgcolor="#F1F7FC">
+				<th>訂單編號</th>
+				<th>禮品</th>
+				<th>{$DT[credit_name]}</th>
+				<th>下單時間</th>
+				<th>狀態</th>
+				</tr>
+				{loop $lists $k $v}
+				<tr align="center" bgcolor="#FFFFFF">
+				<td>{$v[oid]}</td>
+				<td><a href="{$v[linkurl]}" target="_blank">{$v[title]}</a></td>
+				<td>{$v[credit]}</td>
+				<td>{$v[adddate]}</td>
+				<td>{$v[status]}</td>
+				</tr>
+				{/loop}
+				</table>
+				<div class="pages">{$pages}</div>
+				<div class="b10">&nbsp;</div>
+				<script type="text/javascript">try{Dd('type_my').className='left_menu_on';}catch(e){}</script>
+			{else}
+				{if $itemid}
+				{if isset($success)}
+					<div class="g_success">
+					恭喜您，禮品兌換成功！請檢查您的聯繫方式是否正確，以便工作人員與您取得聯繫&nbsp;&nbsp;
+					<a href="{$MODULE[2][linkurl]}edit.php" target="_blank">[更新聯繫方式]</a>
+					<a href="{rewrite('index.php?action=my')}">[查看訂單]</a>
+					</div>
+				{/if}
+				<div class="g_info">			
+					<table cellpadding="3" cellspacing="3" width="98%" align="center">
+					<tr>
+					<td width="180" valign="top">
+					<img src="{$middle}" width="160" alt="{$title}" class="g_img c_p" alt="{$title}" title="點擊查看大圖" onclick="View('{$thumb}');"/>
+					</td>
+					<td valign="top" width="360">
+					<ul>
+					<li><strong class="px14">{$title}</strong></li>
+					<li>瀏覽次數：{$hits}</li>
+					<li>會員權限：{if $gname}{$gname}{else}全部{/if}</li>
+					<li>當前狀態：{if $left}<img src="{DT_PATH}file/image/process_{get_process($fromtime, $totime)}.gif" align="absmiddle" alt="有效期：{$fromdate} 至 {$todate}"/>{else}<span class="f_red">已結束</span>{/if}</li>
+					</ul>
+					</td>
+					<td valign="top">
+					<ul>
+					<li>發佈時間：{$adddate}</li>
+					<li>所需{$DT[credit_name]}：<strong class="f_red">{$credit}</strong></li>
+					<li>剩餘名額：<strong>{$left}</strong></li>
+					<li><img src="{DT_SKIN}image/btn_gift.gif" alt="立即兌換" class="c_p" onclick="Order();"/></a></li>
+					</ul>
+					</td>
+					</tr>
+					</table>			
+				</div>
+				{if $content}<div class="pd20 lh18 px13">{$content}</div>{else}&nbsp;{/if}
+				<script type="text/javascript">
+				function Order() {
+					{if $process == 1}return confirm('抱歉，此兌換還沒有開始');{/if}
+					{if $process == 2}if(confirm('確定要兌換嗎？系統將扣除您{$credit}{$DT[credit_name]}')) Go('index.php?action=order&itemid={$itemid}'){/if}
+					{if $process == 3}return confirm('抱歉，此兌換已經過期');{/if}
+					{if $process == 4}return confirm('抱歉，此兌換名額用盡，已經結束');{/if}
+				}
+				</script>
+				{else}
+				<div class="b10"></div>
+				<table cellpadding="3" cellspacing="3" width="98%" align="center">
+				{loop $lists $k $v}
+				{if $k%4==0}<tr align="center">{/if}
+				<td width="25%" valign="top">
+				<div class="thumb">
+					<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="100" alt="{$v[alt]}"/></a>
+					<ul>
+					<li><a href="{$v[linkurl]}">{$v[title]}</a></li>
+					<li><strong class="f_red">{$v[credit]}</strong> {$DT[credit_name]}</li>
+					<li>剩餘 <span class="f_gray">{$v[left]}</span> 個名額</li>
+					<li style="padding:5px 0 5px 0;"><a href="{$v[linkurl]}"><img src="{DT_SKIN}image/btn_gift.gif" alt="立即兌換" style="border:none;"/></a></li>
+					</ul>
+				</div>
+				</td>
+				{if $k%4==3}</tr>{/if}
+				{/loop}
+				</table>
+				<div class="pages">{$pages}</div>
+				{/if}
+				<script type="text/javascript">try{Dd('type_{$typeid}').className='left_menu_on';}catch(e){}</script>
+			{/if}
+		</div>
+	</td>
+	</tr>
+	</table>
+</div>
+{template 'footer'}

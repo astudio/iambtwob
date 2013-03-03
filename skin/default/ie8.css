@@ -13,4 +13,4 @@
 /*brand.css*/
 #searchBtn {vertical-align:middle;}
 
-.tHumb > ul > li img {border:1px solid #d7d7d7;}
+.img_tip, .tHumb > ul > li img, .list > div img, .mainlist img, .banner img {border:1px solid #d7d7d7;}

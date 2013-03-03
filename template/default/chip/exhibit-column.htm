@@ -1,9 +1,14 @@
 <div class="Rec">
-	<div class="box_head_2"><span class="f_r px12"><a class="more" href="{$MOD[linkurl]}">more</a></span><div><strong>{if $moduleid==22}參展實況{else}徵展活動{/if}</strong></div></div>
+	<div class="box_head_2"><span class="f_r px12"><a class="more" href="{if $moduleid==22||$moduleid==12}{$MODULE[12][linkurl]}{else}{$MODULE[22][linkurl]}list.php?catid=547{/if}">more</a></span><div><strong>{if $moduleid==22||$moduleid==12}參展實況{else}徵展活動{/if}</strong></div></div>
 	<div class="box_body">
 		<div class="invest_rec">
-			{php if($moduleid==22) $pagesize=3; else $pagesize=5;}
-			<!--{tag("moduleid=22&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&order=rand()&pagesize=$pagesize&template=left-side-rec",-1)}-->
+			{if $moduleid==22||$moduleid==12}
+			<!--{tag("moduleid=12&table=".$DT_PRE."info_22 a,".$DT_PRE."photo b&prefix=&condition=a.status=3 and a.thumb<>'' and a.totime>".$DT_TIME." and a.itemid=b.investid&order=a.addtime asc&pagesize=3&fields=a.thumb,a.title,b.linkurl,b.title as title2&template=left-side-rec",-1)}-->
+			{else}
+			<!--{tag("moduleid=22&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&order=addtime asc&pagesize=3&template=left-side-rec",-1)}-->			
+			
+			<!--{tag("moduleid=22&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&order=addtime asc&pagesize=13&template=list",-1)}-->			
+			{/if}
 		</div>
 	</div>
 </div>

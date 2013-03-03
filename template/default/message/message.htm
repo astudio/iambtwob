@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<title>提示信息{$DT[seo_delimiter]}{$DT[sitename]}</title>
+<title>Tips{$DT[seo_delimiter]}{$DT[sitename]}</title>
 <meta name="robots" content="noindex,nofollow"/>
 <style type="text/css">
 *{font-size:12px;color:#2B61BA;}
@@ -31,13 +31,13 @@ a:link,a:visited,a:active {color:#ABBBD6;text-decoration:none;}
 <tr>
 <td>
 	<div class="msg">
-		<div class="head"><div class="mr">&nbsp;</div><div class="ml">提示信息</div></div>
+		<div class="head"><div class="mr">&nbsp;</div><div class="ml">Tips</div></div>
 		<div class="content">
 		{$dmessage}<br/>
 		{if $dforward == 'goback'}
-		<a href="javascript:window.history.back();">[ 點這裡返回上一頁 ]</a><br/>
+		<a href="javascript:window.history.back();">[ Click here to go back ]</a><br/>
 		{else}
-		<a href="{$dforward}">如果您的瀏覽器沒有自動跳轉，請點擊這裡</a><br/>
+		<a href="{$dforward}">Please click here if your webpage is not redirected.</a><br/>
 		<meta http-equiv="refresh" content="{$dtime};URL={$dforward}">
 		{/if}
 		</div>

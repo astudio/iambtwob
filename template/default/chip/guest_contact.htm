@@ -1,37 +1,37 @@
 <tr>
 <td colspan="2" style="background:#AACCEE;">
 &nbsp;&nbsp;
-<strong>非會員補充信息：</strong>
+<strong>Non-Member Additional Information: </strong>
 &nbsp;&nbsp;
-建議 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">立即登錄</a> 或 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">註冊會員</a> 以便系統長久保存您的聯繫方式
+You can <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">Login</a> or <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">Join Free</a> for reserving your Contact Info at ImB2B.com.
 </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 公司名稱</td>
-<td class="tr"><input name="post[company]" type="text" id="company" size="50" value="{$company}" /> 個人請填姓名 例如：張三<br/><span id="dcompany" class="f_red"></span> </td>
+<td class="tl"><span class="f_red">*</span> Co. Name</td>
+<td class="tr"><input name="post[company]" type="text" id="company" size="50" value="{$company}" /> If individual, enter "Full Name (personal)". For example: Kelvin Chu (personal)<br/><span id="dcompany" class="f_red"></span> </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 所在地區</td>
-<td class="tr">{ajax_area_select('post[areaid]', '請選擇', $areaid)} <span id="dareaid" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Location</td>
+<td class="tr">{ajax_area_select('post[areaid]', 'Select a location', $areaid)} <span id="dareaid" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 聯繫人</td>
+<td class="tl"><span class="f_red">*</span> Contact</td>
 <td class="tr"><input name="post[truename]" type="text" id="truename" size="20" value="{$truename}" /> <br/><span id="dtruename" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 聯繫手機</td>
+<td class="tl"><span class="f_red">*</span> Mobile</td>
 <td class="tr"><input name="post[mobile]" id="mobile" type="text" size="30" value="{$mobile}"/> <span id="dmobile" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">電子郵件</td>
+<td class="tl">Email</td>
 <td class="tr"><input name="post[email]" id="email" type="text" size="30" value="{$email}" /> <span id="demail" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">聯繫電話</td>
+<td class="tl">TEL</td>
 <td class="tr"><input name="post[telephone]" id="telephone" type="text" size="30" value="{$telephone}"/> <span id="dtelephone" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">聯繫地址</td>
+<td class="tl">Address</td>
 <td class="tr"><input name="post[address]" type="text" size="60" value="{$address}"/></td>
 </tr>
 {if $DT[im_qq]}

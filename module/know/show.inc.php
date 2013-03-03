@@ -48,5 +48,9 @@ include DT_ROOT.'/include/update.inc.php';
 $seo_file = 'show';
 include DT_ROOT.'/include/seo.inc.php';
 $template = $item['template'] ? $item['template'] : ($CAT['show_template'] ? $CAT['show_template'] : 'show');
-include template($template, $module);
+if($ltype) {
+	include template($template.'_tw', $module);
+} else {
+	include template($template, $module);
+}
 ?>

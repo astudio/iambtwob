@@ -105,7 +105,15 @@ if(!isset($moduleid)) {
 	isset($MODULE[$moduleid]) or dheader(DT_PATH);
 	$module = $MODULE[$moduleid]['module'];
 	$MOD = $moduleid == 3 ? $EXT : cache_read('module-'.$moduleid.'.php');
-	include DT_ROOT.'/lang/'.DT_LANG.'/'.$module.'.inc.php';
+	
+	preg_match('/^([a-z\-]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $kmatch);
+	$userlocale = $kmatch ? strtolower($kmatch[1]) : $CFG['language'];	
+	if($moduleid < 4 && $userlocale == 'zh-tw'){ // member dir only
+		$CFG['language'] = $CFG['template'] = $userlocale;
+		include DT_ROOT.'/lang/'.$userlocale.'/'.$module.'.inc.php';
+	} else {
+		include DT_ROOT.'/lang/'.DT_LANG.'/'.$module.'.inc.php';
+	}
 }
 $cityid = 0;
 $city_name = $L['allcity'];

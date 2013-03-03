@@ -2,14 +2,14 @@
 	{if $module == 'exhibit'}
 		<div class="pd10 lh18 px13">
 		{$content}<br/>
-		<strong>聯繫方式</strong><br/>
-		{if $homepage}網址：<a href="{$homepage}" target="_blank">{$homepage}</a><br/>{/if}
-		聯繫人：{$truename}<br/>
-		{if $addr}地址：{$addr}<br/>{/if}
-		{if $postcode}郵編：{$postcode}<br/>{/if}
-		{if $mobile}手機：{anti_spam($mobile)}<br/>{/if}
-		電話：{anti_spam($telephone)}<br/>
-		{if $fax}傳真：{anti_spam($fax)}<br/>{/if}
+		<strong>Contact Info</strong><br/>
+		{if $homepage}Homepage: <a href="{$homepage}" target="_blank">{$homepage}</a><br/>{/if}
+		Contact: {$truename}<br/>
+		{if $addr}Address: {$addr}<br/>{/if}
+		{if $postcode}Post Code: {$postcode}<br/>{/if}
+		{if $mobile}Mobile: {anti_spam($mobile)}<br/>{/if}
+		Telephone: {anti_spam($telephone)}<br/>
+		{if $fax}Fax: {anti_spam($fax)}<br/>{/if}
 		{if $email}Email：{anti_spam($email)}<br/>{/if}
 		{if $msn}MSN：<a href="msnim:chat?contact={$msn}">{$msn}</a><br/>{/if}
 		{if $qq}QQ：<a href="tencent://message/?uin={$qq}&Site={$title}&Menu=yes"><img src="http://wpa.qq.com/pa?p=1:{$qq}:17" width="25" height="17" title="點擊QQ交談/留言" alt=""/> {$qq}</a><br/>{/if}
@@ -68,7 +68,7 @@
 		<a href="{$v[linkurl]}#p"><img src="{$v[thumb]}" width="80" height="80" title="{$v[introduce]}" alt="" {if $page==$v[page]}class="thumb_b"{else}class="thumb_a" onmouseover="this.className='thumb_b';" onmouseout="this.className='thumb_a';"{/if}/></a>
 		{/loop}
 		{else}
-		<div><img src="{DT_SKIN}image/spacer.gif" id="cursor_a" onclick="Go('{$prev_photo}#p');" title="上一張"/></a><img src="{DT_SKIN}image/spacer.gif" id="cursor_b" onclick="Go('{$next_photo}#p');" title="下一張"/></div>
+		<div><img src="{DT_SKIN}image/spacer.gif" id="cursor_a" onclick="Go('{$prev_photo}#p');" title="Previous"/></a><img src="{DT_SKIN}image/spacer.gif" id="cursor_b" onclick="Go('{$next_photo}#p');" title="Next"/></div>
 		<div class="t_c"><img src="{$P[src]}" id="destoon_photo" oncontextmenu="return false;" onload="if(this.width>{$MOD[max_width]})this.width={$MOD[max_width]};if(this.src.indexOf('spacer.gif')!=-1){this.width={$MOD[max_width]};this.height=1;}"/></div>
 		{/if}
 	{elseif $module == 'video'}

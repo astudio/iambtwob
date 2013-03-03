@@ -35,5 +35,9 @@ $area_select = $DT['city'] ? ajax_area_select('areaid', $L['all_area'], $areaid)
 $seo_file = 'index';
 include DT_ROOT.'/include/seo.inc.php';
 $destoon_task = "moduleid=$moduleid&html=index";
-include template('index', $module);
+if($ltype) {
+	include template('index_tw', $module);
+} else {
+	include template('index', $module);
+}
 ?>

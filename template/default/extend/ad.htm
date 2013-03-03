@@ -4,8 +4,8 @@
 	<tr>
 	<td valign="top" class="left_menu">
 		<ul>
-		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">網站首頁</a></li>
-		<li class="left_menu_li" id="type_0"><a href="./">廣告中心</a></li>
+		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">Home</a></li>
+		<li class="left_menu_li" id="type_0"><a href="./">AD Center</a></li>
 		{loop $TYPE $k $v}
 		{if $k}<li class="left_menu_li" id="type_{$k}"><a href="{rewrite('index.php?typeid='.$k)}">{$v}</a></li>{/if}
 		{/loop}
@@ -13,30 +13,30 @@
 	</td>
 	<td valign="top">
 		<div class="left_box">		
-			<div class="pos"><span class="f_r"><a href="{$MODULE[2][linkurl]}ad.php">[我的廣告]</a></span>當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="./">廣告中心</a></div>
+			<div class="pos"><span class="f_r"><a href="{$MODULE[2][linkurl]}ad.php">[My AD]</a></span>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">AD Center</a></div>
 			<div class="b15">&nbsp;</div>
 			<table cellpadding="6" cellspacing="1" width="96%" align="center" bgcolor="#E3EEF5">
 			<tr bgcolor="#F1F7FC">
-			<th>編號</th>
-			<th>廣告位名稱</th>
-			{if !$typeid}<th>廣告類型</th>{/if}
-			<th>規格(px)</th>
-			<th title="({$DT[money_unit]}/月)">價格</th>
-			<th title="({$DT[money_unit]}/月)">單位</th>
-			<th>示意圖</th>
-			{if $MOD[ad_buy]}<th>預定</th>{/if}
+			<th>No.</th>
+			<th>Position of AD</th>
+			{if !$typeid}<th>Type of AD</th>{/if}
+			<th>Size(px)</th>
+			<th title="({$DT[money_unit]}/月)">Price</th>
+			<th title="({$DT[money_unit]}/月)">Unit</th>
+			<th>Preview</th>
+			{if $MOD[ad_buy]}<th>Order</th>{/if}
 			</tr>
 			{loop $ads $k $v}
 			<tr align="center" bgcolor="#FFFFFF" title="{$v[introduce]}">
 			<td id="a_{$v[pid]}">A{$v[pid]}</td>
-			<td><a href="{rewrite('index.php?pid='.$v['pid'])}" title="效果預覽">{$v[name]}</a></td>
+			<td><a href="{rewrite('index.php?pid='.$v['pid'])}" title="Preview">{$v[name]}</a></td>
 			{if !$typeid}<td><a href="{rewrite('index.php?typeid='.$v['typeid'])}">{$v[typename]}</a></td>{/if}
 			<td class="f_gray">{$v[width]} x {$v[height]}</td>
 			<td class="f_orange f_b">{if $v[price]}{$v[price]}{else}面議{/if}</td>
 			<td>{$unit}</td>
 			<td{if $v[thumb]} onmouseover="show_tip(Dd('a_{$v[pid]}'),'{$v[thumb]}');" onmouseout="show_tip(0,0);" onclick="View('{$v[thumb]}');" title="點擊查看大圖"{/if} class="f_gray">{if $v[thumb]}<img src="{DT_SKIN}image/zoomin.gif" class="c_p"/>{else}暫無{/if}</td>
 			{if $MOD[ad_buy]}
-			<td><a href="{rewrite('index.php?action=buy&pid='.$v['pid'])}"><img src="{DT_SKIN}image/buy.gif" alt="訂購"/></a></td>
+			<td><a href="{rewrite('index.php?action=buy&pid='.$v['pid'])}"><img src="{DT_SKIN}image/buy.gif" alt="Order"/></a></td>
 			{/if}
 			</tr>
 			{/loop}

@@ -4,15 +4,15 @@
 	<div class="warn">
 		<div>
 			<h1>{$head_title}</h1><br/>
-			&nbsp;&nbsp;<span id="second" class="f_red f_b"><script type="text/javascript">document.write(i);</script></span> 秒後將自動跳轉到<a href="{$MOD[linkurl]}">{$MOD[name]}首頁</a>
+			&nbsp;&nbsp;<span id="second" class="f_red f_b">This page will redirect you to <a href="{$MOD[linkurl]}">{$MOD[ename]} homepage</a> within <script type="text/javascript">document.write(i);</script></span> seconds.
 			<br/><br/>
-			&nbsp;&nbsp;1、請檢查輸入的網址是否正確。 <br/>
-			&nbsp;&nbsp;2、如果不能確認輸入的網址，請瀏覽<a href="{$MOD[linkurl]}">{$MOD[name]}首頁</a>來查看所要訪問的網址。 <br/>
-			&nbsp;&nbsp;3、直接輸入要訪問的內容進行搜索： <br/>
+			&nbsp;&nbsp;1. Please ensure the web address you`ve entered. <br/>
+			&nbsp;&nbsp;2. If you are not sure of the web address, please visit <a href="{$MOD[linkurl]}">{$MOD[ename]} homepage</a> to confirm. <br/>
+			&nbsp;&nbsp;3. Fill in search options you want to search: <br/>
 			<form action="{$MOD[linkurl]}search.php">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="25" name="kw"/> 
-			<input type="submit" value="搜索" class="btn"/>
-			<input type="button" value="高級" class="btn" onclick="window.location='{$MOD[linkurl]}search.php';"/>
+			<input type="submit" value="Search" class="btn"/>
+			<input type="button" value="Advanced" class="btn" onclick="window.location='{$MOD[linkurl]}search.php';"/>
 			</form>
 		</div>
 	</div>

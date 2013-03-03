@@ -1,0 +1,219 @@
+{template 'header', $module}
+<script type="text/javascript">c(1);</script>
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="sms.php?action=add"><span>發送短信</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="action_buy"><a href="sms.php?action=buy"><span>短信購買<span class="px10">({$_sms})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="action"><a href="sms.php"><span>短信記錄</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="action_record"><a href="sms.php?action=record"><span>接收記錄</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="action_send"><a href="sms.php?action=send"><span>發送記錄</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+</tr>
+</table>
+</div>
+{if $action == 'add'}
+<form method="post" action="sms.php" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl"><span class="f_red">*</span> 接收號碼</td>
+<td class="tr">
+<textarea name="mob" id="mob" rows="2" cols="35">{$mob}</textarea><br/>
+[一行一個手機號碼]&nbsp;&nbsp;
+<!--<input type="text" name="mob" id="mob" size="20" value="{$mob}"/>-->
+<a href="javascript:Diframe('friend.php?action=my&from=sms&obj=mob', '450', 0, 1, '我的商友');" class="t">[選擇商友]</a><br/><span id="dmob" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 短信內容</td>
+<td class="tr"><textarea name="content" id="content" rows="15" cols="35" onkeyup="S();" onblur="S();"></textarea>
+<br/>當前已輸入<strong id="chars" class="f_red">0</strong>字，計<strong id="counts" class="f_green">0</strong>條({$DT[sms_len]}字/條)，可用<strong class="f_blue">{$_sms}</strong>條
+<br/><span id="dcontent" class="f_red"></span>
+</td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">
+function S() {
+	var sms_len = <?php echo $DT['sms_len'];?>;
+	Dd('chars').innerHTML = Dd('content').value.length;
+	Dd('counts').innerHTML = Math.ceil(Dd('content').value.length/sms_len);
+}
+function check() {
+	if(Dd('mob').value.length < 7) {
+		Dmsg('請填寫接收號碼', 'mob');
+		return false;
+	}
+	if(Dd('content').value.length < 2) {
+		Dmsg('請填寫短信內容', 'content');
+		return false;
+	}
+}
+</script>
+<script type="text/javascript">s('sms');m('add');</script>
+{elseif $action == 'buy'}
+<form method="post" action="sms.php" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl">帳戶可用餘額</td>
+<td class="tr"><strong class="f_blue">{$_money}</strong> {$DT[money_unit]}</td>
+</tr>
+<tr>
+<td class="tl">短信單價</td>
+<td class="tr"><strong class="f_red">{$fee}</strong> {$DT[money_unit]}/條</td>
+</tr>
+<tr>
+<td class="tl">剩餘短信</td>
+<td class="tr"><strong>{$_sms}</strong> 條</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 購買數量</td>
+<td class="tr c_p"><input type="text" name="total" id="total" size="10"/> 條&nbsp;<span id="dtotal" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 支付密碼</td>
+<td class="tr">{template 'password', 'chip'}&nbsp;<span id="dpassword" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">
+function check() {
+	if(Dd('total').value == '') {
+		Dmsg('請填寫購買數量', 'total');
+		return false;
+	}
+	if(Dd('password').value == '') {
+		Dmsg('請填寫支付密碼', 'password');
+		return false;
+	}
+}
+</script>
+<script type="text/javascript">s('sms');m('action_buy');</script>
+{elseif $action == 'record'}
+<form action="?">
+<div class="tt">
+關鍵詞：<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+</div>
+</form>
+<div class="bd">
+<table cellpadding="1" cellspacing="0" class="tb">
+<tr>
+<th>流水號</th>
+<th width="110">發送時間</th>
+<th>內容</th>
+<th>字數</th>
+<th>分條</th>
+<th>狀態</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td height="30" class="px11">{$v[itemid]}</td>
+<td class="px11">{$v[sendtime]}</td>
+<td align="left" style="width:150px;padding:8px;line-height:20px;">{$v[message]}</td>
+<td class="px11">{$v[word]}</td>
+<td class="px11">{$v[num]}</td>
+<td>{$v[code]}</td>
+</tr>
+{/loop}
+</table>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('sms');m('action_record');</script>
+{elseif $action == 'send'}
+<form action="?">
+<div class="tt">
+關鍵詞：<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+</div>
+</form>
+<div class="bd">
+<table cellpadding="1" cellspacing="0" class="tb">
+<tr>
+<th>流水號</th>
+<th width="110">發送時間</th>
+<th>內容</th>
+<th>字數</th>
+<th>分條</th>
+<th>狀態</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td height="30" class="px11">{$v[itemid]}</td>
+<td class="px11">{$v[sendtime]}</td>
+<td align="left" style="width:150px;padding:8px;line-height:20px;">{$v[message]}</td>
+<td class="px11">{$v[word]}</td>
+<td class="px11">{$v[num]}</td>
+<td>{$v[code]}</td>
+</tr>
+{/loop}
+</table>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('sms');m('action_send');</script>
+{else}
+<form action="?">
+<input type="hidden" name="action" value="{$action}"/>
+<div class="tt">
+{$fields_select}&nbsp;
+<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<select name="type">
+<option value="0">類型</option>
+<option value="1" {if $type==1}selected{/if}>增加</option>
+<option value="2" {if $type==2}selected{/if}>扣除</option>
+</select>
+&nbsp;
+{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}
+&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+</div>
+</form>
+<div class="bd">
+<table cellpadding="1" cellspacing="0" class="tb">
+<tr>
+<th>流水號</th>
+<th>增加</th>
+<th>扣除</th>
+<th>剩餘</th>
+<th width="150">發生時間</th>
+<th width="150">事由</th>
+<th width="150">備註</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td height="30" class="px11">{$v[itemid]}</td>
+<td class="px11 f_blue">{if $v[amount] > 0}{$v[amount]}{else}&nbsp;{/if}</td>
+<td class="px11 f_red">{if $v[amount] < 0}{$v[amount]}{else}&nbsp;{/if}</td>
+<td class="px11">{if $v[balance]}{$v[balance]}{else}&nbsp;{/if}</td>
+<td class="px11 f_gray">{$v[addtime]}</td>
+<td title="{$v[reason]}"><input type="text" size="20" value="{$v[reason]}"/></td>
+<td title="{$v[note]}"><input type="text" size="20" value="{$v[note]}"/></td>
+</tr>
+{/loop}
+<tr align="center">
+<td height="35"><strong>小計</strong></td>
+<td class="px11 f_blue">{$income}</td>
+<td class="px11 f_red">{$expense}</td>
+<td colspan="4">&nbsp;</td>
+</tr>
+</table>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('sms');m('action');</script>
+{/if}
+{template 'footer', $module}

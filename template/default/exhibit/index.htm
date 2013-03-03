@@ -29,7 +29,7 @@
 						<!-- single show -->
 						<!--{tag("moduleid=$moduleid&areaid=$cityid&catid=".$c[catid]."&condition=status=3 and thumb<>'' and totime>".$DT_TIME."&order=".$MOD[order]."&pagesize=1&template=list-exhibit-single",-1)}-->
 						
-						<!--{php $tags=tag("moduleid=$moduleid&areaid=$cityid&catid=".$c[catid]."&condition=status=3 and totime>".$DT_TIME."&order=".$MOD[order]."&pagesize=".$MOD[page_icat]."&template=null");}-->
+						<!--{php $tags=tag("moduleid=$moduleid&areaid=$cityid&catid=".$c[catid]."&condition=status=3 and totime>".$DT_TIME."&order=".$MOD[order]."&pagesize=4&template=null");}-->
 						<ul class="sublist">
 							{loop $tags $i $t}
 								<li title="{$t[alt]}&#13;Organizer：{$t[sponsor]}&#13;Venue：{$t[hallname]}"><span class="f_r"> &nbsp; {timetodate($t[fromtime], 3)} > {timetodate($t[totime], 3)}</span><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a>&nbsp;[{$t[city]}]</li>

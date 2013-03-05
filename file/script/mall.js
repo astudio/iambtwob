@@ -1,11 +1,13 @@
+function astudio() {
+	$("#DIMG").elevateZoom({
+		zoomWindowWidth:380,
+		zoomWindowHeight:292				
+	});
+}
+
 (function($) {
 	if(!$) return false;
 
-/* 	function getMoreLink(id) {
-		var catid = id ? id : $('ul.tabs > li:first-child').data('catid');
-		$('.main .more > a').attr('href',DTPath+'brand/list.php?catid='+catid);
-	} */
-	
 	$(function(){
 
 		//checkall or uncheckall
@@ -65,12 +67,11 @@
 				href			: href+'.php?fbox=1&length='+len+'&itemids='+itemid,
 				onComplete		: function(){
 					$('#fancybox-title').css({width:width});
-					//Dh('sell_tip');
-					//$(":checkbox:checked").each(function () {
-					//	$(this).attr('checked',false).parent().parent().find('.info').css({opacity:'0.6'});
-					//});
 				}				
 			});	
-		});		
+		});
+
+		// image zoom init
+		astudio();			
 	});				
 })(jQuery);

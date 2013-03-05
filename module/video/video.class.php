@@ -17,20 +17,26 @@ class video {
 		$this->table_data = $table_data;
 		$this->split = $MOD['split'];
 		$this->db = &$db;
-		$this->fields = array('catid','areaid','level','title','style','fee','introduce','tag','thumb','video','width','height','player','status','hits','username','addtime','editor','edittime','ip','template', 'linkurl','filepath','note');
+		$this->fields = array('catid','areaid','level','title','style','fee','introduce','tag','thumb','video','width','height','player','status','hits','username','addtime','editor','edittime','ip','template','islink','linkurl','filepath','note','youtubeurl');
     }
 
 	function pass($post) {
 		global $DT_TIME, $MOD;
+		//var_dump($post);die;
 		if(!is_array($post)) return false;
 		if(!$post['catid']) return $this->_(lang('message->pass_catid'));
 		if(strlen($post['title']) < 3) return $this->_(lang('message->pass_title'));
-		if(!$post['thumb']) return $this->_(lang('message->pass_thumb'));
+		if(isset($post['islink'])) {
+			if(!$post['youtubeurl']) return $this->_(lang('message->pass_linkurl'));
+		} else {		
+			if(!$post['thumb']) return $this->_(lang('message->pass_thumb'));
+		}
 		return true;
 	}
 
 	function set($post) {
 		global $MOD, $DT_TIME, $DT_IP, $_username, $_userid;
+		$post['islink'] = isset($post['islink']) ? 1 : 0;
 		$post['editor'] = $_username;
 		$post['addtime'] = (isset($post['addtime']) && $post['addtime']) ? strtotime($post['addtime']) : $DT_TIME;
 		$post['edittime'] = $DT_TIME;

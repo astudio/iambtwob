@@ -4,7 +4,6 @@
 */
 a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
-/* .type {height:28px;line-height:29px;overflow:hidden;border-top:#AACCEE 1px solid;background:#D7E9FF url('image/type_bg.gif') repeat-x;padding-left:35px;} */
 a.type_1:link,a.type_1:visited,a.type_1:active,a.type_1:hover {float:left;display:block;color:#404041;font-weight:bold;}
 a.type_2:link,a.type_2:visited,a.type_2:active {float:left;display:block;color:#404041;}
 

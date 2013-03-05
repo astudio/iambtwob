@@ -6,7 +6,8 @@ function Print(i) {if(isIE) {window.print();} else {var i = i ? i : 'content'; v
 function addFav(t) {document.write('<a href="'+window.location.href+'" title="'+document.title+'" rel="sidebar" onclick="window.external.addFavorite(this.href, this.title);return false;">'+t+'</a>');}
 function Album(id, s) {
 	for(var i=0; i<3; i++) {Dd('t_'+i).className = i==id ? 'ab_on' : 'ab_im';}
-	Dd('abm').innerHTML = '<img src="'+s+'" onload="if(this.width>240){this.width=240;}" onclick="PAlbum(this);" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" id="DIMG"/>';
+	if(s.indexOf('.middle.') != -1) o = s.substring(0, s.length-8-ext(s).length);
+	Dd('abm').innerHTML = '<img src="'+s+'" data-zoom-image="'+o+'" onload="if(this.width>240){this.width=240;}" onclick="PAlbum('+o+');" id="DIMG" />';
 }
 function SAlbum(s) {
 	if(s.indexOf('nopic240.gif') != -1) return;

@@ -5,10 +5,10 @@
 .reg_inp {border:#7F9DB9 1px solid;padding:3px 0 3px 0;}
 .tips {position:absolute;z-index:1000;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
 .tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+#ccaptcha img {top:0;left:0;}
 </style>
 <div class="m">
 	<div class="left_box">
-	<!-- <div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$DT[file_register]}">會員註冊</a></div> -->
 	<div style="padding:20px 50px 20px 50px;">
 		<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
 		<span class="f_b">
@@ -32,11 +32,11 @@
 			<tr>
 			<td class="tl">Member Type <span class="f_red">*</span></td>
 			<td>
-			<input type="radio" name="post[regid]" value="6" id="g_6"onclick="reg(1);" checked/><label for="g_6"> {$GROUP[6][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="post[regid]" value="6" id="g_6"onclick="reg(1);" checked/><label for="g_6"> {$GROUP[6][engroupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;
 			{loop $GROUP $k $v}
-			{if $k>6 && $v[vip]==0 && $v[reg]==1}<input type="radio" name="post[regid]" value="{$k}" id="g_{$k}" onclick="reg(1);"/><label for="g_{$k}"> {$GROUP[$k][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;{/if}{/loop}
+			{if $k>6 && $v[vip]==0 && $v[reg]==1}<input type="radio" name="post[regid]" value="{$k}" id="g_{$k}" onclick="reg(1);"/><label for="g_{$k}"> {$GROUP[$k][engroupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;{/if}{/loop}
 			<span{if !$GROUP[5][reg]} class="dsn"{/if}>
-			<input type="radio" name="post[regid]" value="5" id="g_5"onclick="reg(0);"/><label for="g_5"> {$GROUP[5][groupname]}</label>
+			<input type="radio" name="post[regid]" value="5" id="g_5"onclick="reg(0);"/><label for="g_5"> {$GROUP[5][engroupname]}</label>
 			</span>
 			</td>
 			</tr>

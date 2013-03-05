@@ -78,7 +78,7 @@ a:hover {color:#F60;}
 /* show */
 .Contact {width:290px;}
 .banner {padding-left:40px;}
-.banner img {width:465px;height:290px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin-bottom:10px;}
+.banner img {width:465px;height:290px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin-bottom:10px;*border:1px solid #d7d7d7;}
 .detail {padding-left:40px;}
 .detail .info_head {width:465px;border:1px solid #d7d7d7;border-bottom:none;text-align:center;height:26px;background:url('image/astudio.png') repeat-x 20px -277px;}
 .detail .info_head strong {font-size:15px;line-height:26px;}
@@ -98,3 +98,9 @@ a:hover {color:#F60;}
 .viewOnline {width:135px;height:34px;margin-top:20px;margin-left:78px;}
 
 .share img {width:20px;height:20px;padding:0 6px;}
+
+#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left: 0 !important;height: 45px;background: #0569B4;
+width: 1090px;}
+#fancybox-title-float-main {font-size: 20px;line-height: 45px;}
+#fancybox-close {top: -40px;right: 6px;}
+#destoon_photo {width:820px;}

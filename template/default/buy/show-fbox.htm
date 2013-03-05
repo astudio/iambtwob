@@ -14,6 +14,8 @@
 		<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
 		<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
 		<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/jquery.min.js"></script>
+		<script type="text/javascript" src="{DT_PATH}file/script/zoom.js"></script>
 		
 		<style>
 			/* show */
@@ -43,7 +45,11 @@
 			.tools {height:30px;}			
 			.share img {width:20px;height:20px;padding:5px 6px 15px 6px;}					
 			#quoteBox {margin:0 10px 0 5px;}
+			#abm > img {*border:1px solid #d7d7d7;*width:318px;}
 		</style>
+		<!--[if IE 8]>
+		<style>#abm > img {border:1px solid #d7d7d7;width:318px;}</style>
+		<![endif]-->		
 	</head>
 	<body>
 		<div id="quoteBox" class="fbox_body">
@@ -57,13 +63,13 @@
 					<div class="album">
 						<table width="100%" cellpadding="0" cellspacing="0">
 						<tr align="center">
-						<td width="250" valign="top"><div><span id="abm"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" id="DIMG"/></span></div></td>
+						<td width="250" valign="top"><div><span id="abm"><img src="{$albums[0]}" data-zoom-image="{substr($albums[0],0,-11)}" onload="if(this.width>240){this.width=240;}" id="DIMG"/></span></div></td>
 						</tr>
 						</table>
 					</div>
 				</td>
 				<td valign="top">
-					<div id="imgshow" style="display:none;"></div>
+					<!-- <div id="imgshow" style="display:none;"></div> -->
 				</td>
 				</tr>
 			</table>
@@ -77,7 +83,9 @@
 				&nbsp;<strong class="f_red">Tips</strong>:Find items from <a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP} member with the best services</strong></a>
 				{/if}
 				
-				{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}				
+				<div class="pd10"> 
+				{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');astudio();"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
+				</div>	
 			</td>
 			</tr>
 			</table>
@@ -94,35 +102,35 @@
 			<div class="box_body">		
 				<table width="100%" cellpadding="5" cellspacing="0">
 				<tr>
-				<td class="f_dblue">Quantity：</td>
+				<td class="f_dblue">Quantity:</td>
 				<td class="f_b f_orange">{$amount}&nbsp;</td>
 				</tr>
 				<tr>
-				<td class="f_dblue">Price：</td>
+				<td class="f_dblue">Price:</td>
 				<td class="f_b f_orange">{$price}&nbsp;{if $username && !$expired}<span class="price"><a href="{$MOD[linkurl]}{rewrite('price.php?itemid='.$itemid)}" target="_blank"><img src="{DT_SKIN}image/btn_price.gif" alt="Make Offer" class="c_p"/></a></span>{/if}</td>
 				</tr>
 				<tr>
-				<td class="f_dblue">specification：</td>
+				<td class="f_dblue">specification:</td>
 				<td class="f_b f_orange">{$standard}</td>
 				</tr>
 				<tr>
-				<td class="f_dblue">Package：</td>
+				<td class="f_dblue">Package:</td>
 				<td class="f_b f_orange">{$pack}</td>
 				</tr>
 				<tr>
-				<td class="f_dblue">Location：</td>
+				<td class="f_dblue">Location:</td>
 				<td>{area_pos($areaid, '', 1)}</td>
 				</tr>
 				<tr>
-				<td class="f_dblue">Valid Date：</td>
+				<td class="f_dblue">Valid Date:</td>
 				<td>{if $todate}{$todate}{else}permanent{/if}{if $expired} <span class="f_red">[expired]</span>{/if}</td>
 				</tr>
 				<tr>
-				<td class="f_dblue">Updated：</td>
+				<td class="f_dblue">Updated:</td>
 				<td colspan="2">{$editdate}</td>
 				</tr>
 				<tr>
-				<td width="80" class="f_dblue">Views：</td>
+				<td width="80" class="f_dblue">Views:</td>
 				<td><span id="hits">{$hits}</span></td>
 				</tr>
 				</table>				
@@ -138,6 +146,18 @@
 
 			{template 'show_toolbar','chip'}
 		</div>
+
+		<script>
+			function astudio() {
+				$("#DIMG").elevateZoom({
+					zoomWindowWidth:312,
+					zoomWindowHeight:312				
+				});
+			}		
+			$(function(){
+				astudio();
+			});
+		</script>		
 	{template 'zoom', 'chip'}
 	</body>
 </html>

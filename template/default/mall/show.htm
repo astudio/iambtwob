@@ -1,4 +1,4 @@
-{php $CSS = array('sell');}
+{php $CSS = array('sell');$JS = array('zoom');}
 {template 'header'}
 <div class="m">
 	<div class="f_l side">
@@ -36,13 +36,13 @@
 				<div class="album f_l">
 					<div>
 						<span id="abm">
-							<img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/>
+							<img src="{$albums[0]}" data-zoom-image="{substr($albums[0],0,-11)}" onload="if(this.width>240){this.width=240;}" id="DIMG"/>
 						</span>						
 					</div>
 					
-					{loop $thumbs $k $v}<img src="{$v}" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
+					{loop $thumbs $k $v}<img src="{$v}" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');astudio();"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
 				</div>
-				<div id="imgshow" style="display:none;"></div>
+				<!-- <div id="imgshow" style="display:none;"></div> -->
 				<div class="rside f_l">
 					<table width="100%" cellpadding="3" cellspacing="0">
 					<tr>

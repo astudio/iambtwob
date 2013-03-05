@@ -3,6 +3,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 load('player.js');
+//var_dump($FD);die;
 ?>
 <form method="post" action="?" id="dform" onsubmit="return check();">
 <input type="hidden" name="moduleid" value="<?php echo $moduleid;?>"/>
@@ -14,12 +15,17 @@ load('player.js');
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td class="tl"><span class="f_red">*</span> 所屬分類</td>
-<td><?php echo $_admin == 1 ? category_select('post[catid]', '選擇分類', $catid, $moduleid) : ajax_category_select('post[catid]', '選擇分類', $catid, $moduleid);?> <span id="dcatid" class="f_red"></span></td>
+<td><?php echo $_admin == 1 ? category_select('post[catid]', '選擇分類', $catid, $moduleid) : ajax_category_select('post[catid]', '選擇分類', $catid, $moduleid);?>&nbsp;&nbsp;<input type="checkbox" name="post[islink]" value="1" id="islink" onclick="_islink();" <?php if($islink) echo 'checked';?>/> 嵌入Youtube影片<span id="dcatid" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> <?php echo $MOD['name'];?>標題</td>
 <td><input name="post[title]" type="text" id="title" size="60" value="<?php echo $title;?>"/> <?php echo level_select('post[level]', '級別', $level);?> <?php echo dstyle('post[style]', $style);?> <br/><span id="dtitle" class="f_red"></span></td>
 </tr>
+<tr id="link" style="display:<?php echo $islink ? '' : 'none';?>;">
+<td class="tl"><span class="f_red">*</span> Youtube連結網址</td>
+<td><input name="post[youtubeurl]" type="text" id="youtubeurl" size="60" value="<?php echo $youtubeurl;?>"/> <span id="dyoutubeurl" class="f_red"></span></td>
+</tr>
+<tbody id="basic" style="display:<?php echo $islink ? 'none' : '';?>;">
 <tr>
 <td class="tl"><span class="f_red">*</span> 標題圖片</td>
 <td><input name="post[thumb]" id="thumb" type="text" size="60" value="<?php echo $thumb;?>"/>&nbsp;&nbsp;<span onclick="Dthumb(<?php echo $moduleid;?>,<?php echo $MOD['thumb_width'];?>,<?php echo $MOD['thumb_height'];?>, Dd('thumb').value);" class="jt">[上傳]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[預覽]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[刪除]</span><span id="dthumb" class="f_red"></span></td>
@@ -171,6 +177,7 @@ var property_admin = 1;
 <?php echo deditor($moduleid, 'content', $MOD['editor'], '98%', 350);?><span id="dcontent" class="f_red"></span>
 </td>
 </tr>
+</tbody>
 <tr>
 <td class="tl"><span class="f_hid">*</span> 視頻系列</td>
 <td><input name="post[tag]" id="tag" type="text" size="50" value="<?php echo $tag;?>"/> <span id="dtag" class="f_red"></span><?php tips('填寫一個視頻的關鍵詞或者系列名稱，以便關聯同系列的視頻');?></td>
@@ -254,26 +261,35 @@ function check() {
 	if(l < 2) {
 		Dmsg('請填寫視頻名稱', f);
 		return false;
-	}
-	f = 'thumb';
-	l = Dd(f).value.length;
-	if(l < 10) {
-		Dmsg('請上傳標題圖片', f);
-		return false;
-	}
-	f = 'video';
-	l = Dd(f).value.length;
-	if(l < 10) {
-		Dmsg('請填寫視頻地址', f);
-		return false;
-	}
-	if(!Dd('width').value) {
-		Dmsg('請填寫視頻寬度', 'size');
-		return false;
-	}
-	if(!Dd('height').value) {
-		Dmsg('請填寫視頻高度', 'size');
-		return false;
+	}	
+	if(Dd('islink').checked) {
+		f = 'youtubeurl';
+		l = Dd(f).value.length;
+		if(l < 10) {
+			Dmsg('請填寫Youtube連結網址', f);
+			return false;		
+		}
+	} else {
+		f = 'thumb';
+		l = Dd(f).value.length;
+		if(l < 10) {
+			Dmsg('請上傳標題圖片', f);
+			return false;
+		}
+		f = 'video';
+		l = Dd(f).value.length;
+		if(l < 10) {
+			Dmsg('請填寫視頻地址', f);
+			return false;
+		}
+		if(!Dd('width').value) {
+			Dmsg('請填寫視頻寬度', 'size');
+			return false;
+		}
+		if(!Dd('height').value) {
+			Dmsg('請填寫視頻高度', 'size');
+			return false;
+		}
 	}
 	<?php echo $FD ? fields_js() : '';?>
 	if(Dd('property_require') != null) {

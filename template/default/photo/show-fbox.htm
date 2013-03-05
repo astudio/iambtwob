@@ -56,7 +56,7 @@ Views:<span id="hits" class="px11">{$hits}</span>&nbsp;&nbsp;/&nbsp;&nbsp;
 </div>
 <div class="b10"></div>
 <div id="photo">
-	<div><img src="{DT_SKIN}image/spacer.gif" id="cursor_a" onclick="Go('{$prev_photo}&fbox=1#p');" title="上一張"/></a><img src="{DT_SKIN}image/spacer.gif" id="cursor_b" onclick="Go('{$next_photo}&fbox=1#p');" title="下一張"/></div>
+	<div><img src="{DT_SKIN}image/spacer.gif" id="cursor_a" onclick="Go('{$prev_photo}&fbox=1');" title="Previous"/></a><img src="{DT_SKIN}image/spacer.gif" id="cursor_b" onclick="Go('{$next_photo}&fbox=1');" title="Next"/></div>
 	<div class="t_c"><img src="{$P[src]}" id="destoon_photo" oncontextmenu="return false;" onload="if(this.width>{$MOD[max_width]})this.width={$MOD[max_width]};if(this.src.indexOf('spacer.gif')!=-1){this.width={$MOD[max_width]};this.height=1;}"/></div>
 </div>
 {if $P[introduce]}<div class="photo_intro">{nl2br($P[introduce])}</div>{/if}
@@ -67,15 +67,15 @@ Views:<span id="hits" class="px11">{$hits}</span>&nbsp;&nbsp;/&nbsp;&nbsp;
 <div id="side">
 {if $user_status == 3}
 	{loop $S $k $v}
-	<a href="{$v[linkurl]}&fbox=1#p"><img src="{$v[thumb]}" width="80" height="80" title="{$v[introduce]}" alt="" {if $page==$v[page]}class="thumb_b"{else}class="thumb_a" onmouseover="this.className='thumb_b';" onmouseout="this.className='thumb_a';"{/if}/></a>
+	<a href="{$v[linkurl]}&fbox=1"><img src="{$v[thumb]}" width="80" height="80" title="{$v[introduce]}" alt="" {if $page==$v[page]}class="thumb_b"{else}class="thumb_a" onmouseover="this.className='thumb_b';" onmouseout="this.className='thumb_a';"{/if}/></a>
 	{/loop}
 {else}
 <div style="height:200px;">&nbsp;</div>
 {/if}
 </div>
 
-<a href="{$prev_photo}&fbox=1#p" class="left browse" title="上一張"><span></span></a>
-<a href="{$next_photo}&fbox=1#p" class="right browse f_r" title="下一張"><span></span></a>
+<a href="{$prev_photo}&fbox=1" class="left browse" title="Previous"><span></span></a>
+<a href="{$next_photo}&fbox=1" class="right browse f_r" title="Next"><span></span></a>
 </td>
 </tr>
 </table>

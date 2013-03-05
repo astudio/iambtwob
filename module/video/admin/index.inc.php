@@ -39,6 +39,7 @@ if(in_array($action, array('', 'check', 'reject', 'recycle'))) {
 
 	$areaid = isset($areaid) ? intval($areaid) : 0;
 	$thumb = isset($thumb) ? intval($thumb) : 0;
+	$islink = isset($islink) ? intval($islink) : 0;	
 	$guest = isset($guest) ? intval($guest) : 0;
 	$itemid or $itemid = '';
 
@@ -56,6 +57,7 @@ if(in_array($action, array('', 'check', 'reject', 'recycle'))) {
 	if($fromtime) $condition .= " AND `$datetype`>=$fromtime";
 	if($totime) $condition .= " AND `$datetype`<=$totime";
 	if($thumb) $condition .= " AND thumb!=''";
+	if($islink) $condition .= " AND islink>0";	
 	if($guest) $condition .= " AND username=''";
 	if($itemid) $condition = " AND itemid=$itemid";
 

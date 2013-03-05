@@ -1,3 +1,10 @@
+function astudio() {
+	$("#DIMG").elevateZoom({
+		zoomWindowWidth:380,
+		zoomWindowHeight:292				
+	});
+}
+
 (function($) {
 	if(!$) return false;				
 
@@ -11,9 +18,12 @@
 				},
 				function(){
 					if( $(this).parent().find('input').attr('checked') ) return;
-					$(this).css({opacity: '0.6'});				
+					$(this).css({opacity: '0.6'});
 				});
 		}
+
+		// image zoom init
+		astudio();		
 		
 		//checkall or uncheckall
 		$('#checkAll').toggle(
@@ -84,10 +94,6 @@
 				href			: href+'.php?fbox=1&length='+len+'&itemids='+itemid,
 				onComplete		: function(){
 					$('#fancybox-title').css({width:width});
-					//Dh('sell_tip');
-					//$(":checkbox:checked").each(function () {
-					//	$(this).attr('checked',false).parent().parent().find('.info').css({opacity:'0.6'});
-					//});
 				}				
 			});	
 		});

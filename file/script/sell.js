@@ -20,10 +20,7 @@ function astudio() {
 					if( $(this).parent().find('input').attr('checked') ) return;
 					$(this).css({opacity: '0.6'});
 				});
-		}
-
-		// image zoom init
-		astudio();		
+		}	
 		
 		//checkall or uncheckall
 		$('#checkAll').toggle(

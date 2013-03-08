@@ -2,23 +2,6 @@
 	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
 	This is NOT a freeware, use is subject to license.txt
 */
-/* .player {text-align:center;padding:15px 0 15px 0;}
-.video {background:#333333 url('image/video_bg.gif');padding:15px 10px 10px 15px;}
-.video li {width:120px;}
-.video ul {margin:0 0 6px 0;}
-.li_video li {background:url('image/ico_video.gif') no-repeat 2px 4px;padding:0 10px 0 21px;} */
-
-/*
-	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
-	This is NOT a freeware, use is subject to license.txt
-*/
-/* .info_main {padding:20px 10px 0 10px;}
-.info_main li {padding:8px 0 8px 15px;}
-.info_main li strong {font-size:14px;}
-
-.brand {padding:5px 0 5px 0;}
-.brand img {padding:3px;}
-.brand li {height:22px;line-height:22px;overflow:hidden;} */
 a:link, a:visited, a:active {color:#0569b4;}
 a:hover {color:#F60;}
 .side {position:relative;}
@@ -39,23 +22,6 @@ ul.tabs a {padding:0 10px 0 20px;text-align:left;}
 .invest_rec span {display:block;overflow:hidden;margin-bottom:15px;}
 
 /* index */
-/* .showCat {width:1040px;}
-.showCat > li {width:500px;float:left;padding-right:20px;}
-.showCat .box_head {border:none;background:none;padding:30px 0 0 0;}
-.showCat .box_head .catIcon {width: 100px;display: inline-block;position: relative;left: 6px;bottom: 3px;background:url('image/exhibit_index_catIcon.png') no-repeat;*display:inline;zoom:1;}
-.showCat .box_head a {color:#404041;}
-.showCat .box_head strong {display:block;padding:0 10px 0 30px;float:left;background:#d7d7d7;}
-.showCat .box_body {border:1px solid #d7d7d7;}
-
-.mainlist {position:relative;}
-.mainlist img {width:200px;height:130px;float:left;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin:12px 10px 12px 15px;}
-.mainlist > ul {display:block;height:135px;padding:10px 0 15px 0;overflow:hidden;}
-.mainlist > ul > li {height:auto;line-height:16px;padding-right:10px;}
-.mainlist > ul > li > span {font-weight:bold;}
-.sublist {padding:0 15px 0 20px;height:80px;width:464px;overflow:hidden;}
-.sublist > li {border-top:1px dotted #d7d7d7;}
-.sublist > li > a {font-size:13px;}
-.sublist > li > a:hover {text-decoration:underline;} */
 /*===================slideshow=======================*/
 .slideshow {border: 1px solid #00aeef;position:relative;}
 .slideshow .tag {width: 125px;height: 33px;background: url('image/astudio.png') no-repeat -8px -96px;position: absolute;top: 0;left: 0;font-size:14px;color:#FFF;padding:5px 0 0 14px;line-height:16px;}

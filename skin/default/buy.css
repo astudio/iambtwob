@@ -19,11 +19,10 @@ a.type_2:link,a.type_2:visited,a.type_2:active {float:left;display:block;color:#
 .list .order {float:right;width:96px;height:25px;margin:30px 28px 110px 114px}
 .list .order img {width:96px;height:25px;-webkit-box-shadow: none;box-shadow: none;}
 
-	/*fbox*/
-/* 	#fancybox-outer {top:20px;} */
-	#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
-	#fancybox-title-float-main {font-size:20px;line-height:45px;}
-	#fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
+/*fbox*/
+#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
+#fancybox-title-float-main {font-size:20px;line-height:45px;}
+#fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
 	
 /* search */
 #fsearch label {padding-right:5px;}

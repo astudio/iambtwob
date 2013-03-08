@@ -20,8 +20,8 @@
 			&nbsp;&nbsp;</span>
 			<a href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;
 			<span class="f_gray">
-			{if $t[validated]}<span class="f_green">[已核實]</span>{else}[未核實]{/if}
-			{if !$t[username]} [未註册]{/if}
+			{if $t[validated]}<span class="f_green">[Verified]</span>{else}[Unverified]{/if}
+			{if !$t[username]} [Unregistered]{/if}
 			</span>
 			</li>
 			</ul>
@@ -30,11 +30,11 @@
 		<td width="100"> 
 		{if $t[unit] && $t[price]>0}
 			<span class="f_red"><strong class="px14">{$t[price]}</strong>/{$t[unit]}</span><br/>
-			{$t[minamount]}{$t[unit]}起訂<br/>
+			{$t[minamount]}{$t[unit]} (MOQ)<br/>
 		{else}
-		<span class="f_gray">面議</span><br/>
+		<span class="f_gray">Negotiable</span><br/>
 		{/if}
-		<img src="{DT_SKIN}image/inquiry.gif" alt="詢價" class="iq_btn" onclick="Go('{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?itemid='.$t['itemid'])}');"/>
+		<img src="{DT_SKIN}image/inquiry.gif" alt="Inquiry" class="iq_btn" onclick="Go('{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?itemid='.$t['itemid'])}');"/>
 		</td>
 	</tr>
 	</table>

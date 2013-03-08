@@ -9,8 +9,8 @@
 				<li>
 				<a class="publisher" href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;<span style="color:#b8b8b8;">[{area_pos($t[areaid], '', 1)}]&nbsp;{timetodate($t[edittime], $datetype)}</span>&nbsp;&nbsp;
 <!-- 				<span class="f_gray">
-				{if $t[validated]}[已核實]{else}[未核實]{/if}
-				{if !$t[username]} [未註冊]{/if}
+				{if $t[validated]}[Verified]{else}[Unverified]{/if}
+				{if !$t[username]} [Unregistered]{/if}
 				</span> -->
 				</li>
 			</ul>

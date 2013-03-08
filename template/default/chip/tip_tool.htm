@@ -20,8 +20,8 @@
 			</div>
 		{/if}						
 		<ul class="tabs">
-			<li><a href="{$MODULE[5][linkurl]}"{if $moduleid==5} class="current"{/if}>Products</a></li>
-			<li><a href="{$MODULE[4][linkurl]}{if $catid&&$comCatid}list.php?catid={$comCatid[0][catid]}{/if}"{if $moduleid==4} class="current"{/if}>Company</a></li>	
+			<li><a href="{$MODULE[5][linkurl]}{if $catid&&$pdtCatid}{$pdtCatid[0][linkurl]}{/if}"{if $moduleid==5} class="current"{/if}>Products</a></li>
+			<li><a href="{$MODULE[4][linkurl]}{if $catid&&$comCatid}{$comCatid[0][linkurl]}{/if}"{if $moduleid==4} class="current"{/if}>Company</a></li>
 		</ul>
 	</div>
 	{if $MOD[group] || $moduleid==4}

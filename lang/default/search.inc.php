@@ -4,45 +4,45 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
-$L['by_auto'] = '模糊';
-$L['by_title'] = '標題';
-$L['by_content'] = '全文';
-$L['by_introduce'] = '簡介';
-$L['by_author'] = '作者';
-$L['by_company'] = '公司';
-$L['by_brand'] = '品牌';
+$L['by_auto'] = 'Fuzzy';
+$L['by_title'] = 'Title';
+$L['by_content'] = 'Fulltext';
+$L['by_introduce'] = 'Introduction';
+$L['by_author'] = 'Author';
+$L['by_company'] = 'Company';
+$L['by_brand'] = 'Brand';
 
-$L['order'] = '結果排序方式';
-$L['order_auto'] = '按相似度排序';
-$L['order_addtime'] = '按添加時間排序';
-$L['order_edittime'] = '按更新時間排序';
-$L['order_fromtime'] = '按開始時間排序';
-$L['order_totime'] = '按結束時間排序';
-$L['order_hits'] = '按瀏覽人氣排序';
-$L['order_down'] = '按下載次數排序';
-$L['order_play'] = '按點播次數排序';
-$L['order_vip'] = '按'.VIP.'級別排序';
-$L['order_reward'] = '按懸賞分數排序';
-$L['order_answer'] = '按回答次數排序';
+$L['order'] = 'All';
+$L['order_auto'] = 'Similarity';
+$L['order_addtime'] = 'Released time';
+$L['order_edittime'] = 'Updated time';
+$L['order_fromtime'] = 'Starting time';
+$L['order_totime'] = 'Expiry time';
+$L['order_hits'] = 'Views';
+$L['order_down'] = 'Download frequencies';
+$L['order_play'] = 'Click frequencies';
+$L['order_vip'] = VIP.' Index';
+$L['order_reward'] = 'Reward scores';
+$L['order_answer'] = 'Answering frequencies';
 
-$L['all_category'] = '不限分類';
-$L['all_industry'] = '不限行業';
-$L['all_jobtype'] = '選擇行業/職位';
-$L['all_type'] = '信息類型';
-$L['all_area'] = '所在地區';
-$L['choose'] = '請選擇';
-$L['vip_level'] = VIP.'指數';
+$L['all_category'] = 'All Categories';
+$L['all_industry'] = 'All Industries';
+$L['all_jobtype'] = 'Select industry / job position';
+$L['all_type'] = 'All Origins';
+$L['all_area'] = 'All Locations';
+$L['choose'] = 'Select';
+$L['vip_level'] = VIP.' Index';
 
-$L['word_limit'] = '關鍵詞長度應為{V0}-{V1}字符之間';
-$L['time_limit'] = '兩次搜索時間間隔應大於{V0}秒';
+$L['word_limit'] = 'Keyword length should be between {V0}-{V1} characters.';
+$L['time_limit'] = 'There should be an interval of {V0} seconds between two searches.';
 
-$L['relate_search'] = '相關搜索';
-$L['relate_at'] = '在';
-$L['relate_find'] = '找';
-$L['fn_keyword'] = '關 鍵 詞：';
-$L['fn_category'] = '所屬分類：';
-$L['fn_industry'] = '所屬行業：';
-$L['fn_area'] = '所在地區：';
-$L['fn_type'] = '信息類型：';
-$L['fn_order'] = '排序方式：';
+$L['relate_search'] = 'Related Search';
+$L['relate_at'] = ' ';
+$L['relate_find'] = ' for ';
+$L['fn_keyword'] = 'Keyword: ';
+$L['fn_category'] = 'Category: ';
+$L['fn_industry'] = 'Industry: ';
+$L['fn_area'] = 'Area: ';
+$L['fn_type'] = 'Type of message: ';
+$L['fn_order'] = 'Sort by: ';
 ?>

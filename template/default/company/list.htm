@@ -20,7 +20,9 @@
 
 		<div class="left_box">
 			<form id="fsearch" method="POST">
+				<!--{php $astudio=str_replace('&','@@',$CAT[catname]);$pdtCatid=tag("table=category&condition=moduleid=5 and catname='".$astudio."'&order=catid asc&pagesize=1&template=null",-1);}-->			
 				{template 'tip_tool','chip'}
+				{php $astudio='';$pdtCatid='';}
 				
 				{if $page == 1}{ad($moduleid,0,'',6)}{/if}				
 

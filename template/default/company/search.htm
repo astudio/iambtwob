@@ -77,7 +77,7 @@
 			<div class="box_body">
 				<div class="sch_site">
 					<ul>
-						{loop $MODULE $mod}{if $mod[moduleid]>3 && $mod[moduleid]!=$moduleid && !$mod[islink]}<li><span>►</span><a href="{$mod[linkurl]}{rewrite('search.php?kw='.urlencode($kw))}">在 <span class="f_red">{$mod[name]}</span> 找 {$kw}</a></li>{/if}{/loop}
+						{loop $MODULE $mod}{if $mod[moduleid]>3 && $mod[moduleid]!=$moduleid && !$mod[islink]}<li><span>►</span><a href="{$mod[linkurl]}{rewrite('search.php?kw='.urlencode($kw))}">Find {$kw} by <span class="f_red">{$mod[ename]}</span></a></li>{/if}{/loop}
 					</ul>
 				</div>
 				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and word!='$kw' and keyword like '%$keyword%'&pagesize=10&order=total_search desc&template=list-search_relate", -2)}-->

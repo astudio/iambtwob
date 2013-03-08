@@ -29,14 +29,12 @@
 		</style>
 	</head>
 	<body>
-		<div class="left_box">	
-		<!-- 將以ajax輸入 -->
-		
+		<div class="left_box">		
 			<div class="pos" style="display:none;">
 				<span class="f_r">
 					<form method="post" action="{$MOD[linkurl]}compare.php?fbox=1&addid=1">
-						輸入信息ID <input type="text" name="itemid[]" id="newid" size="10"/>{loop $tags $k $v}<input type="hidden" name="itemid[]" id="itemid_{$v[itemid]}" value="{$v[itemid]}"/>{/loop}
-						<input type="submit" value="添加至對比欄" class="btn_4" onclick="if(Dd('newid').value==''){confirm('請輸入信息ID');Dd('newid').focus();return false;}"/>&nbsp;
+						Enter Product ID <input type="text" name="itemid[]" id="newid" size="10"/>{loop $tags $k $v}<input type="hidden" name="itemid[]" id="itemid_{$v[itemid]}" value="{$v[itemid]}"/>{/loop}
+						<input type="submit" value="Add to compare" class="btn_4" onclick="if(Dd('newid').value==''){confirm('Enter Product ID');Dd('newid').focus();return false;}"/>&nbsp;
 					</form>
 				</span>
 			</div>
@@ -113,25 +111,25 @@
 			<tr>
 			<td bgcolor="#f5f5f5"><div>Price</div></td>
 			{loop $tags $k $v}
-			<td id="price_{$v[itemid]}_{$k}">{if $v[price]>0}<strong class="f_red">{$v[price]}</strong>{$DT[money_unit]}/{$v[unit]}{else}面議{/if}</td>
+			<td id="price_{$v[itemid]}_{$k}">{if $v[price]>0}<strong class="f_red">{$v[price]}</strong>{$DT[money_unit]}/{$v[unit]}{else}Negotiable{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
 			<td bgcolor="#f5f5f5"><div>MOQ.</div></td>
 			{loop $tags $k $v}
-			<td id="min_{$v[itemid]}_{$k}">{if $v[minamount]}{$v[minamount]} {$v[unit]}{else}未填寫{/if}</td>
+			<td id="min_{$v[itemid]}_{$k}">{if $v[minamount]}{$v[minamount]} {$v[unit]}{else}No data{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
 			<td bgcolor="#f5f5f5"><div>Supply Ability</div></td>
 			{loop $tags $k $v}
-			<td id="amount_{$v[itemid]}_{$k}">{if $v[amount]}{$v[amount]} {$v[unit]}{else}未填寫{/if}</td>
+			<td id="amount_{$v[itemid]}_{$k}">{if $v[amount]}{$v[amount]} {$v[unit]}{else}No data{/if}</td>
 			{/loop}
 			</tr>
 			<tr>
 			<td bgcolor="#f5f5f5"><div>Processing Time</div></td>
 			{loop $tags $k $v}
-			<td id="days_{$v[itemid]}_{$k}">{if $v[days]}{$v[days]} days {else}未填寫{/if}</td>
+			<td id="days_{$v[itemid]}_{$k}">{if $v[days]}{$v[days]} days {else}No data{/if}</td>
 			{/loop}
 			</tr>
 			<tr>

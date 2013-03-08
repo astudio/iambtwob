@@ -20,9 +20,9 @@
 
 		<div class="left_box">
 			<form id="fsearch" method="POST">
-				<!--{php $comCatid=tag("table=category&condition=moduleid=4 and catname='".$CAT[catname]."'&order=catid asc&pagesize=1&template=null",-1);}-->			
+				<!--{php $astudio=str_replace('&','@@',$CAT[catname]);$comCatid=tag("table=category&condition=moduleid=4 and catname='".$astudio."'&order=catid asc&pagesize=1&template=null",-1);}-->			
 				{template 'tip_tool','chip'}
-				{php $comCatid='';}
+				{php $astudio='';$comCatid='';}
 				
 				{if $page == 1}{ad($moduleid,0,'',6)}{/if}
 				

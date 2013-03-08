@@ -31,10 +31,10 @@
 				<span> [{area_pos($t[areaid], '', 1)}]</span>
 				<span class="f_gray">{timetodate($t[edittime], $datetype)}</span>
 				{if $t[unit] && $t[price]>0}
-					<!-- <span class="f_red"><strong class="px14">{$t[price]}</strong>/{$t[unit]}</span><br/>
-					{$t[minamount]}{$t[unit]}起訂<br/> -->
+					<span class="f_red"><strong class="px14">{$t[price]}</strong>/{$t[unit]}</span><br/>
+					{$t[minamount]}{$t[unit]} (MOQ)<br/>
 				{else}
-				<!-- <span class="f_gray">面議</span><br/> -->
+				<span class="f_gray">Negotiable</span><br/>
 				{/if}				
 			</li>			
 		</ul>

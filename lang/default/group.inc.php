@@ -4,16 +4,16 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
-$L['price_dsc'] = '價格由高到低';
-$L['price_asc'] = '價格由低到高';
-$L['vip_dsc'] = VIP.'級別由高到低';
-$L['vip_asc'] = VIP.'級別由低到高';
-$L['amount_dsc'] = '供貨量由高到低';
-$L['amount_asc'] = '供貨量由低到高';
-$L['minamount_dsc'] = '起訂量由高到低';
-$L['minamount_asc'] = '起訂量由低到低高';
-$L['compare_choose'] = '請選擇需要對比的信息';
-$L['compare_max'] = '同時最多對比 8 條信息';
-$L['compare_min'] = '同時最少對比 2 條信息';
-$L['compare_title'] = '產品對比';
+$L['price_dsc'] = 'Price from high to low';
+$L['price_asc'] = 'Price from low to high';
+$L['vip_dsc'] = VIP.' Index from high to low';
+$L['vip_asc'] = VIP.' Index from low to high';
+$L['amount_dsc'] = 'Supply ability from high to low';
+$L['amount_asc'] = 'Supply ability from low to high';
+$L['minamount_dsc'] = 'MOQ from high to low';
+$L['minamount_asc'] = 'MOQ from low to high';
+$L['compare_choose'] = 'Select the products to compare.';
+$L['compare_max'] = 'Maximum of 8 products for each comparison';
+$L['compare_min'] = 'Minimum of 2 products for each comparison';
+$L['compare_title'] = 'Products Comparison';
 ?>

@@ -33,11 +33,10 @@ a.btn_1, a.btn_2 {display:inline-block;*display:inline;zoom:1;}
 #products_list .info > li > a.tu {text-decoration:underline;}
 #products_list .info:hover {opacity:1 !important;}
 
-	/*fbox*/
-/* 	#fancybox-outer {top:20px;} */
-	#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
-	#fancybox-title-float-main {font-size:20px;line-height:45px;}
-	#fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
+/*fbox*/
+#fancybox-title {margin: 0 20px;position: absolute;top: -5px;left:0 !important;height: 45px;background: #0569B4;width: 680px;}
+#fancybox-title-float-main {font-size:20px;line-height:45px;}
+#fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
 	
 .tool .btn_1 {width:88px;height:18px;border:1px solid #00aeef;line-height:18px;background:url('image/astudio.png') no-repeat -8px -72px;cursor:pointer;color:#404041;}
 .tool .btn_2 {width:88px;height:18px;border:1px solid #00aeef;line-height:18px;background:#0569b4;cursor:pointer;color:#FFF;}
@@ -79,6 +78,7 @@ a.btn_1, a.btn_2 {display:inline-block;*display:inline;zoom:1;}
 .rside table {margin:0 15px;width:345px;}
 .rside table td {font-size:13px;}
 .rside table td.kw {font-size:20px;padding-bottom:15px;}
+.rside table td.f_dblue {word-break:normal;}
 .rside .Buttons {position:absolute;top:380px;left:330px;}
 #inquiryBtn {background: url('image/btn_inquiry.gif') no-repeat;border: 0;width: 160px;height: 40px;cursor: pointer;vertical-align: middle;margin:0 0 0 15px;}
 .contact_head {background-position:0 -247px;padding:3px 0;font-size:16px;line-height:20px;color:#FFF;border-color:#00aeef;}

@@ -5,7 +5,7 @@
 	<li>
 		<span class="rank{if $i<3} winner{/if}">{if $i<9}0{/if}{$num}</span>
 		<span>►</span>
-		<a class="trigger" title="關鍵字[{$t[word]}] 搜索{$t[$key]}次 約{$t[items]}條結果" href="{$MODULE[$moduleid][linkurl]}{rewrite($file.'.php?kw='.urlencode($t['word']))}"{if $target} target="{$target}"{/if}>{$t[word]}</a>
+		<a class="trigger" title="Keyword:<span style=color:#404041;>{$t[word]}</span>, searched {$t[$key]} time{if $t[$key]>1}s{/if}, about {$t[items]} result{if $t[items]>1}s{/if}" href="{$MODULE[$moduleid][linkurl]}{rewrite($file.'.php?kw='.urlencode($t['word']))}"{if $target} target="{$target}"{/if}>{$t[word]}</a>
 	</li>
 	{/loop}
 </ul>

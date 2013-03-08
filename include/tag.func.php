@@ -26,9 +26,8 @@ function tag($parameter, $expires = 0) {
 		}
 	}
 	$parameter = str_replace(array('&amp;', '%'), array('', '##'), $parameter);
-	// add for '&' treating
 	parse_str($parameter, $par);
-	$par['condition'] = str_replace('@@', '&', $par['condition']);
+	$par['condition'] = str_replace('@@', '&', $par['condition']); // add for '&' treating
 	if(!is_array($par)) return '';
 	$par = dstripslashes($par);
 	extract($par);

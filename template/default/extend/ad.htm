@@ -32,9 +32,9 @@
 			<td><a href="{rewrite('index.php?pid='.$v['pid'])}" title="Preview">{$v[name]}</a></td>
 			{if !$typeid}<td><a href="{rewrite('index.php?typeid='.$v['typeid'])}">{$v[typename]}</a></td>{/if}
 			<td class="f_gray">{$v[width]} x {$v[height]}</td>
-			<td class="f_orange f_b">{if $v[price]}{$v[price]}{else}面議{/if}</td>
+			<td class="f_orange f_b">{if $v[price]}{$v[price]}{else}Negotiable{/if}</td>
 			<td>{$unit}</td>
-			<td{if $v[thumb]} onmouseover="show_tip(Dd('a_{$v[pid]}'),'{$v[thumb]}');" onmouseout="show_tip(0,0);" onclick="View('{$v[thumb]}');" title="點擊查看大圖"{/if} class="f_gray">{if $v[thumb]}<img src="{DT_SKIN}image/zoomin.gif" class="c_p"/>{else}暫無{/if}</td>
+			<td{if $v[thumb]} onmouseover="show_tip(Dd('a_{$v[pid]}'),'{$v[thumb]}');" onmouseout="show_tip(0,0);" onclick="View('{$v[thumb]}');" title="Click to view the original"{/if} class="f_gray">{if $v[thumb]}<img src="{DT_SKIN}image/zoomin.gif" class="c_p"/>{else}No Image{/if}</td>
 			{if $MOD[ad_buy]}
 			<td><a href="{rewrite('index.php?action=buy&pid='.$v['pid'])}"><img src="{DT_SKIN}image/buy.gif" alt="Order"/></a></td>
 			{/if}

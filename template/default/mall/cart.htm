@@ -77,8 +77,8 @@ function check() {
 		</tr>
 		<tr align="center">
 		<td height="50">&nbsp;</td>
-		<td class="f_gray">您也可以返回到{$MOD[name]}首頁，繼續挑選商品</td>
-		<td class="f_gray">如果您已經完成挑選，請您點下一步進入提交訂單</td>
+		<td class="f_gray">You can also back to {$MOD[ename]}, and continue to choose products.</td>
+		<td class="f_gray">If you already choose completely, please click `Buy next` button to do order processing.</td>
 		</tr>
 		</table>
 	</form>
@@ -91,12 +91,12 @@ function check() {
 <script type="text/javascript">
 function check() {
 	if(Dd('total_good').innerHTML == '0') {
-		alert('最少需要挑選1件商品');
+		alert('Please choose 1 product at least.');
 		window.scroll(0, 0);
 		return false;
 	}
 	{if !$_userid}
-	if(confirm('您還沒有登錄，是否現在登錄？')) {
+	if(confirm('You are not logged in, confirm that you want to sign in now?')) {
 		window.location='{$MODULE[2][linkurl]}login.php?forward={urlencode($DT_URL)}';
 	}
     return false;

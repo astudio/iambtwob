@@ -4,11 +4,11 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 defined('IN_DESTOON') or exit('Access Denied');
-$L['error_password'] = '密碼錯誤';
-$L['error_answer'] = '答案錯誤';
-$L['private_title'] = '身份驗證';
-$L['no_picture'] = '暫無圖片';
-$L['pass_password'] = '請填寫密碼';
-$L['pass_question'] = '請填寫問題';
-$L['pass_answer'] = '請填寫答案';
+$L['error_password'] = 'Password error.';
+$L['error_answer'] = 'Answer error.';
+$L['private_title'] = 'Identity Verification.';
+$L['no_picture'] = 'No picture temporarily.';
+$L['pass_password'] = 'Please fill in password.';
+$L['pass_question'] = 'Please fill in question.';
+$L['pass_answer'] = 'Please fill in answer.';
 ?>

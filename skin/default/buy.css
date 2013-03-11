@@ -25,7 +25,8 @@ a.type_2:link,a.type_2:visited,a.type_2:active {float:left;display:block;color:#
 #fancybox-close {top:-40px;right:6px;} /*inquiry fbox close position*/
 	
 /* search */
+.fsearch #fsearch {width:720px;}
 #fsearch label {padding-right:5px;}
 #fsearch input {padding:1px 3px;}
-#fsearch select {width:170px;height:21px;overflow:hidden;}
-#fsearch #kw {width:90px;}
+#fsearch select {width:170px;height:21px;overflow:hidden;vertical-align:middle;}
+#fsearch #kw {width:123px;}

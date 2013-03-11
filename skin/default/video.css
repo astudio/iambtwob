@@ -52,6 +52,11 @@ ul.tabs {border:0;height:25px;}
 .box_head_1 span {padding:5px 15px;background:#00aeef;line-height:25px;color:#FFF;}
 .more {clear:both;text-align:right;padding:20px;text-decoration:underline;}
 
+/* search */
+.fsearch #fsearch {width:680px;}
+#fsearch label {padding-right:5px;}
+#fsearch input {padding:1px 3px;}
+
 /* show */
 .left_box {width:998px;}
 .tiTle {text-align:left;margin:0;border-bottom:1px solid #0569b4;padding-left:40px;color:#0569b4;background:url('image/astudio.png') no-repeat -396px -248px;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:20px;font-weight:normal;}

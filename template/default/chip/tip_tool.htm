@@ -20,8 +20,8 @@
 			</div>
 		{/if}						
 		<ul class="tabs">
-			<li><a href="{$MODULE[5][linkurl]}{if $catid&&$pdtCatid}{$pdtCatid[0][linkurl]}{/if}"{if $moduleid==5} class="current"{/if}>Products</a></li>
-			<li><a href="{$MODULE[4][linkurl]}{if $catid&&$comCatid}{$comCatid[0][linkurl]}{/if}"{if $moduleid==4} class="current"{/if}>Company</a></li>
+			<li><a href="{$MODULE[5][linkurl]}{if $catid&&$pdtCatid}{$pdtCatid[0][linkurl]}{/if}{if $kw&&$moduleid==4}search.php?kw={$kw}{/if}"{if $moduleid==5} class="current"{/if}>Products</a></li>
+			<li><a href="{$MODULE[4][linkurl]}{if $catid&&$comCatid}{$comCatid[0][linkurl]}{/if}{if $kw&&$moduleid==5}search.php?kw={$kw}{/if}"{if $moduleid==4} class="current"{/if}>Company</a></li>
 		</ul>
 	</div>
 	{if $MOD[group] || $moduleid==4}
@@ -30,8 +30,8 @@
 		</div>
 	{/if}
 	{if $moduleid==5}					
-		<label for="checkAll">Select All</label><input id="checkAll" type="checkbox" />
-		<a href="javascript:;" rel="compare" class="btn_1 fb"><span>►</span>Compare</a>&nbsp; 
-		<a href="javascript:;" rel="inquiry" class="btn_2 fb"><span>►</span>Inquiry</a>	
+<!-- 		<label for="checkAll">Select All</label><input id="checkAll" type="checkbox" />
+		<a href="javascript:;" rel="compare" class="btn_1 fb"><span>►</span>Compare</a> -->&nbsp; 
+<!-- 		<a href="javascript:;" rel="inquiry" class="btn_2 fb"><span>►</span>Inquiry</a>	 -->
 	{/if}	
 </div>

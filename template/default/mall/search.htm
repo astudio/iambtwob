@@ -26,22 +26,20 @@
 				{/loop}<br />
 
 				<label for="category">Category: </label>
-				{$category_select}
+				{$category_select} &nbsp;
 				
 				<label for="area">Location: </label>
-				{$area_select}
-
-				<label for="price">Price Range: </label>
-				<input type="text" size="10" name="minprice" value="{$minprice}"/> ~ <input type="text" size="10" name="maxprice" value="{$maxprice}"/>
-				
-				<label for="order">Sort by: </label>
-				{$order_select}
+				{$area_select} <br/>
 
 				<div class="f_r buttons">
 					<input type="image" src="{DT_SKIN}image/btn_search.png"/>&nbsp;&nbsp;
 					<a href="{$MOD[linkurl]}search.php"><img src="{DT_SKIN}image/btn_reset_search.png"/></a>
 				</div>
+				<label for="price">Price Range: </label>
+				<input type="text" size="10" name="minprice" value="{$minprice}"/> ~ <input type="text" size="10" name="maxprice" value="{$maxprice}"/> &nbsp;
 				
+				<label for="order">Sort by: </label>
+				{$order_select}				
 			{if $CP}
 				{loop $PPT $p}
 				<div class="ppt">
@@ -81,10 +79,10 @@
 		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
 		
 		<div class="b10">&nbsp;</div>
-
-		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
-
-		<!--{tag("table=ad&condition=status=3 and pid=19 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=19&template=ad-single",-1)}-->
+		
+		{if $kw||$x||$y}
+		<!--{tag("table=ad&condition=status=3 and pid=26 and totime>".$DT_TIME."&order=rand()&pagesize=2&id=26&class=h580&template=ad-single",-1)}-->
+		{/if}
 	</div>
 </div>
 {template 'footer'}

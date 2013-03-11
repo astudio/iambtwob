@@ -134,16 +134,16 @@
 	<div class="m_r_1 f_l">
 		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
 		
-		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
-		
 		<div class="b10">&nbsp;</div>
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->
 		
 		{if $kw}
 			<div class="box_head_3"><div><strong>Related Search</strong></div></div>
 			<div class="box_body">
 				<div class="sch_site">
 					<ul>
-						{loop $MODULE $mod}{if $mod[moduleid]>3 && $mod[moduleid]!=$moduleid && !$mod[islink]}<li><span>►</span><a href="{$mod[linkurl]}{rewrite('search.php?kw='.urlencode($kw))}">Find {$kw} by <span class="f_red">{$mod[ename]}</span></a></li>{/if}{/loop}
+						{loop $MODULE $mod}{if $mod[moduleid]>3 && ($mod[moduleid]!=12 && $mod[moduleid]!=10) && $mod[moduleid]!=$moduleid && $mod[ename]}<li><span>►</span><a href="{$mod[linkurl]}{rewrite('search.php?kw='.urlencode($kw))}">Find {$kw} by <span class="f_red">{$mod[ename]}</span></a></li>{/if}{/loop}
 					</ul>
 				</div>
 				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and word!='$kw' and keyword like '%$keyword%'&pagesize=10&order=total_search desc&template=list-search_relate", -2)}-->

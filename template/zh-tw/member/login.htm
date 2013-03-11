@@ -47,7 +47,7 @@ form .password {margin:14px 0;}
 				<input name="username" type="text" id="username" value="{$username}" placeholder="Username" />
 			</div>				
 			<div class="tips" id="tusername" style="display:none;">
-				<div>如果忘记了用户名，请在左侧选择其他登录名称<br/>例如Email、手机号、公司名等</div>
+				<div>如果忘記了用户名，請在左側選擇其他登錄名稱<br/>例如Email、手機號、公司名等</div>
 			</div>
 
 			<div class="password" onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
@@ -55,7 +55,7 @@ form .password {margin:14px 0;}
 				{template 'password', 'chip'}
 			</div>			
 			<div class="tips" id="tpassword" style="display:none;">
-				<div>如果忘记了密码，请<a href="send.php" class="f_b">点击这里</a>自主找回或联系本站工作人员协助找回</div>
+				<div>如果忘記了密码，請<a href="send.php" class="f_b">點擊這裡</a>自主找回或聯繫本站工作人員協助找回</div>
 			</div>
 
 			{if $MOD[captcha_login]}
@@ -66,13 +66,13 @@ form .password {margin:14px 0;}
 			<div class="remark">If you do not know the verification code, click the picture to refresh</div>
 
 			<div class="remember">
-				<span title="选中后 一月内不用再次登录 网吧或公共计算机请勿选"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">Remember me</label></span>
-				<span title="选中后 将直接进入商务室 不返回登录前的页面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">Enter My ImB2B</label></span>
+				<span title="選中後 12小時内不用再次登錄 網咖或公用電腦請勿勾選"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">Remember me</label></span>
+				<span title="選中後 將直接進入商務中心 不返回登錄前的頁面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">Enter My ImB2B</label></span>
 				<button type="submit" name="submit">Login</button>
 			</div>	
 
 			{if $oa}
-			其他登录：
+			其他登錄：
 			{loop $OAUTH $k $v}
 			{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
 			{/loop}
@@ -88,7 +88,7 @@ form .password {margin:14px 0;}
 	<div class="m b15"> </div>
 	
 	<div class="m_l f_l">
-		<!--{tag("table=ad&condition=status=3 and pid=24 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=24&template=ad-single",-1)}-->	
+		<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=24&template=ad-single",-1)}-->	
 	</div>
 	<div class="m_n f_l">&nbsp;</div>
 	<div class="m_n f_l">&nbsp;</div>
@@ -104,18 +104,18 @@ if(Dd('username').value == '') {
 }
 function Dcheck() {
 	if(Dd('username').value == '') {
-		confirm('请输入登录名称');
+		confirm('請輸入登錄名稱');
 		Dd('username').focus();
 		return false;
 	}
 	if(Dd('password').value == '') {
-		confirm('请输入密码');
+		confirm('請輸入密碼');
 		Dd('password').focus();
 		return false;
 	}
 {if $MOD[captcha_login]}
 	if(!is_captcha(Dd('captcha').value)) {
-		confirm('请填写验证码');
+		confirm('請填寫驗證碼');
 		Dd('captcha').focus();
 		return false;
 	}

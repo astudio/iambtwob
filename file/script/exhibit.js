@@ -5,11 +5,11 @@
 		// top slideshow
 		$("#tab_nav ul").tabs("#panes > div", {
 			effect: 'fade',
-			fadeOutSpeed: 400,
+			fadeInSpeed: 600,
 			rotate: true
 		}).slideshow({
 			autoplay: true,
-			interval: 3000
+			interval: 8000
 		});
 		// remove duplicated left entry
 		$('.Rec .invest_rec > ul > li:lt(3)').hide().parent().show();			

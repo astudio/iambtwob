@@ -7,7 +7,7 @@
 				<li>{if $t[vip]}<!-- <span class="f_r"><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span> -->{/if}<a href="{$t[linkurl]}{if $moduleid==12}&fbox=1{/if}" {if $moduleid==12}class="Detail" data-title="{$t[title2]}"{else}target="_blank"{/if}><strong class="px14">{$t[title]}</strong></a></li>
 				<li class="intro">{if $moduleid==22}<span class="f_r"><a href="{$t[linkurl]}"><img src="{DT_SKIN}image/info_inquiry.png"></a></span>{elseif $moduleid==12}<span class="f_r"><a href="{$t[linkurl]}&fbox=1" class="Detail" data-title="{$t[title2]}"><img src="{DT_SKIN}image/view_now.png"></a></span>{/if}{$t[introduce]}...</li>
 				<li>
-				<a class="publisher" href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;<span style="color:#b8b8b8;">[{area_pos($t[areaid], '', 1)}]&nbsp;{timetodate($t[edittime], $datetype)}</span>&nbsp;&nbsp;
+				{if $t[groupid]>5}<a class="publisher" href="{userurl($t[username])}" target="_blank">{$t[company]}</a>{else}<span class="f_orange">{$t[company]}</span>{/if}&nbsp;<span style="color:#b8b8b8;">[{area_pos($t[areaid], '', 1)}]&nbsp;{timetodate($t[edittime], $datetype)}</span>&nbsp;&nbsp;
 <!-- 				<span class="f_gray">
 				{if $t[validated]}[Verified]{else}[Unverified]{/if}
 				{if !$t[username]} [Unregistered]{/if}

@@ -70,12 +70,12 @@ a:hover {color:#F60;}
 #panes img {  width:400px;  height:200px;  float:left;  }
 /*==================icon=====================*/
 #cat_113 {height:30px;}
-#cat_114 {height:44px;background-position-y:-39px;bottom:13px;}
-#cat_115 {height:36px;background-position-y:-83px;bottom:10px;}
-#cat_116 {height:30px;background-position-y:-127px;bottom:4px;}
-#cat_117 {height:36px;background-position-y:-164px;bottom:10px;}
-#cat_118 {height:40px;background-position-y:-209px;bottom:14px;}
-#cat_4716 {height:44px;background-position-y:-254px;bottom:14px;}
+#cat_114 {height:44px;background-position:0 -39px;bottom:13px;}
+#cat_115 {height:36px;background-position:0 -83px;bottom:10px;}
+#cat_116 {height:30px;background-position:0 -127px;bottom:4px;}
+#cat_117 {height:36px;background-position:0 -164px;bottom:10px;}
+#cat_118 {height:40px;background-position:0 -209px;bottom:14px;}
+#cat_4716 {height:44px;background-position:0 -254px;bottom:14px;}
 .go_now {width:500px;height:200px;margin-top:30px;}
 
 /* list */
@@ -86,6 +86,7 @@ a:hover {color:#F60;}
 
 /* search */
 #fsearch label {padding-right: 5px;}
+#fsearch input {padding:1px 3px;}
 .fsearch #fsearch {width:700px;*padding-left:0;}
 
 /* show */

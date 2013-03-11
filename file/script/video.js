@@ -7,12 +7,12 @@
 			effect: 'fade',
 			fadeOutSpeed: 400,
 			rotate: true
-		}).slideshow({
-			//autoplay: true,
-			//interval: 3000
-		});
+		}).slideshow({});
 		
 		// index category tabs
-		$("ul.tabs").tabs("div.panes > div");		
+		$("ul.tabs").tabs("div.panes > div", {
+			effect: 'fade',
+			fadeInSpeed: 600		
+		});		
 	});				
 })(jQuery);

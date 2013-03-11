@@ -89,6 +89,7 @@ a.right.disabled span {background-position:-196px -61px;}
 .scrollable .active {    border:2px solid #000;    position:relative;    cursor:default;}
 
 /*==========================================*/
+.link {width:517px;}
 .link ul {margin-top:15px;text-align:center;width:521px}
 .link li {display:inline-block;margin:0 3px 10px 3px;height:40px;*display:inline;zoom:1;}
 

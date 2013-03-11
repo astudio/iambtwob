@@ -28,7 +28,7 @@ a:hover {color:#F60;}
 /* index */
 .booklist {height:435px;padding:20px;}
 .booklist > li {width:33.3%;height:218px;float:left;}
-.booklist > li img {width:132px;height:192px;-webkit-box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);margin:3px;}
+.booklist > li img {width:132px;height:192px;-webkit-box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);margin:3px;*border:1px solid #d7d7d7;}
 .booklist > li > ul {padding:5px 20px 0 10px;margin-left:136px}
 .booklist .publisher {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .booklist > li > ul > li {line-height:18px;height:18px;}
@@ -67,11 +67,15 @@ a:hover {color:#F60;}
 
 /* search */
 .fsearch #fsearch {width:650px;}
+#fsearch label {padding-right:5px;}
+#fsearch input {padding:1px 3px;}
+#fsearch select {width:170px;height:21px;overflow:hidden;vertical-align:middle;}
+#fsearch #kw {width:260px;}
 
 /* show */
 .Contact {width:290px;}
 .banner {padding-left:40px;}
-.banner img {width:465px;height:290px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin-bottom:10px;*border:1px solid #d7d7d7;}
+.banner img {width:465px;min-height:100%;/* height:290px; */-webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);margin-bottom:10px;*border:1px solid #d7d7d7;}
 .detail {padding-left:40px;}
 .detail .info_head {width:465px;border:1px solid #d7d7d7;border-bottom:none;text-align:center;height:26px;background:url('image/astudio.png') repeat-x 20px -277px;}
 .detail .info_head strong {font-size:15px;line-height:26px;}

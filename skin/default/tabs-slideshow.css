@@ -6,7 +6,7 @@
 .images div {    display:none;    position:absolute;    top:0;    left:0;    height:192px;    font-size:12px;}
 
 /* tabs (those little circles below slides) */
-.slidetabs {    clear:left;    height:25px;	width:827px;*width:828px;	background:#f5f5f5;	border-top:1px solid #D7D7D7;}
+.slidetabs {    clear:left;    height:25px;	width:827px;*width:828px;	background:#f5f5f5;	border-top:1px solid #D7D7D7;position:absolute;top:192px;left:0;}
 
 /* single tab */
 .slidetabs a {    width:25%;   /*  height:8px; */    float:left;    margin:4px 0;    display:block;    font-size:13px;	text-align:center;	color:#000;	position:relative;	*cursor:pointer;}

@@ -263,6 +263,7 @@
 	font-family: Helvetica;
 	font-size: 12px;
 	z-index: 1102;
+	overflow:hidden\0;
 }
 
 .fancybox-title-inside {
@@ -307,10 +308,6 @@
 
 #fancybox-title-float-wrap td {
 	border: none;
-	white-space: nowrap;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	max-width:600px;
 }
 
 #fancybox-title-float-left {
@@ -323,6 +320,11 @@
 	line-height: 29px;
 	font-weight: bold;
 	padding: 0 0 3px 10px;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	max-width:600px;
+	width:600px\9;
 }
 
 #fancybox-title-float-right {

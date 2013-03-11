@@ -26,26 +26,26 @@
 				
 				<form action="{$MOD[linkurl]}search.php" id="fsearch">
 
-					<label for="kw">Keyword</label><input type="text" size="60" name="kw" value="{$kw}" id="kw" />&nbsp;
+					<label for="kw">Keywords:</label><input type="text" size="60" name="kw" value="{$kw}" id="kw" style="width:201px;" />&nbsp;
 					{$vip_select}&nbsp; <br />
 					
-					<label for="load_area_1">Location</label>			{$area_select}		
+					<label for="load_area_1">Location:</label>			{$area_select}		
 					<span class="pr10">&nbsp;</span>
-					<label for="typeid">Type</label>{$type_select}
+					<label for="typeid">Type:</label>{$type_select}
 					<span class="pr10">&nbsp;</span>
-					<label for="mode">Mode</label>{$mode_select}
+					<label for="mode">Mode:</label>{$mode_select}
 					<span class="pr10">&nbsp;</span> <br />
 					
-					<label for="scale">Scale</label>{$size_select} 
+					<label for="scale">Scale:</label>{$size_select} 
 					<span class="pr10">&nbsp;</span>
-					<label for="capital">Capital</label>			
+					<label for="capital">Capital:</label>			
 					<input type="text" size="8" name="mincapital" value="{$mincapital}"/> ~ <input type="text" size="8" name="maxcapital" value="{$maxcapital}"/>USD <br />
 
 					<div class="f_r buttons">
 						<input type="image" class="search" src="{DT_SKIN}image/btn_search.png"/>&nbsp;&nbsp;
 						<a class="reset" href="{$MOD[linkurl]}search.php"><img src="{DT_SKIN}image/btn_reset_search.png"/></a>
 					</div>						
-					<label for="catid_1">Category</label>{$category_select}
+					<label for="catid_1">Category:</label>{$category_select}
 				</form>
 			</div>
 
@@ -71,6 +71,8 @@
 		<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
 		
 		<div class="b10">&nbsp;</div>
+		
+		<!--{tag("table=ad&condition=status=3 and pid=21 and totime>".$DT_TIME."&order=rand()&pagesize=1&id=21&template=ad-single",-1)}-->		
 		
 		{if $kw}
 			<div class="box_head_3"><div><strong>Related Search</strong></div></div>

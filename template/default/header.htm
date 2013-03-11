@@ -41,7 +41,7 @@
 	</head>
 	<body>
 		<!--*** header	 -->
-		<header id="header">
+		<header id="header" _height="none">
 			<!-- top fixed bar -->
 			<div class="top">
 				<div class="top_div">
@@ -70,7 +70,7 @@
 					<div class="f_l head_search">
  						<div id="search_module" onmouseout="Dh('search_module');" onmouseover="Ds('search_module');" style="display:none;">
 							{loop $MODULE $m}
-								{if $m[ismenu] && !$m[islink] || $m[moduleid] == 5 || $m[moduleid] == 4}<a{if $searchid == $m[moduleid]} class="head_search_on"{/if} href="javascript:void(0);" onclick="setModule({$m}, this, '{$m[ename]}');">{$m[ename]}</a>{/if}
+								{if $m[ismenu] && !$m[islink] || $m[moduleid] == 5 || $m[moduleid] == 4 || $m[moduleid] == 10}<a{if $searchid == $m[moduleid]} class="head_search_on"{/if} href="javascript:void(0);" onclick="setModule({$m[moduleid]}, this, '{$m[ename]}');">{$m[ename]}</a>{/if}
 							{/loop}
 						</div>
 						<div class="f_l head_search_cmn">
@@ -92,13 +92,14 @@
 			</div>
 		</header>
 		<!--*** navigation -->
-		<div class="m">
-			<nav id="nav">
-				<div class="menu_category">Categories</div>
-				<div class="menu_b">
-					<div class="menu">
-						<ul>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}{if $m[moduleid]==22} class="invest"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
+		<div id="content" _height="auto">
+			<div class="m">
+				<nav id="nav">
+					<div class="menu_category">Categories</div>
+					<div class="menu_b">
+						<div class="menu">
+							<ul>{loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="menuon"{/if}{if $m[moduleid]==22} class="invest"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[ename]}</span></a></li>{/if}{/loop}</ul>
+						</div>
 					</div>
-				</div>
-			</nav>
-		</div>
+				</nav>
+			</div>

@@ -18,7 +18,7 @@
 		<span class="resultSpan"><strong>Result{if $item>1}s{/if}{if $catid} for <span class="f_red">{$CAT[$catid]}</span>{/if}:</strong></span> {$item} {if $moduleid==4}{if $item>1}companies{else}company{/if}{else} product{if $item>1}s{/if}{/if}{if $total} from {$total} {if $total>1}companies{else}company{/if}{/if}<span> (<?php echo $pagesize*($page-1)+1;?> - <?php if($group) {echo $total<$pagesize*$page ? $total : $pagesize*$page;} else { echo $item<$pagesize*$page ? $item : $pagesize*$page;}?> out of <?php echo $group ? $total : $item;?>)</span>
 	</div>
 				
-	<label for="checkAll">Select All</label><input id="checkAll" type="checkbox" />
-	<a href="javascript:;" rel="compare" class="btn_1 fb"><span>►</span>Compare</a>&nbsp; 
-	<input type="submit" value="►    Order" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_2" />	
+<!-- 	<label for="checkAll">Select All</label><input id="checkAll" type="checkbox" />
+	<a href="javascript:;" rel="compare" class="btn_1 fb"><span>►</span>Compare</a> -->&nbsp; 
+<!-- 	<input type="submit" value="►    Order" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_2" />	 -->
 </div>

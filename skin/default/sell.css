@@ -59,10 +59,11 @@ a.btn_1, a.btn_2 {display:inline-block;*display:inline;zoom:1;}
 .list > ul > li .f_r {margin-left:50px;}
 
 /* search */
+.fsearch #fsearch {width:715px;}
 #fsearch label {padding-right:5px;}
 #fsearch input {padding:1px 3px;}
-#fsearch select {width:170px;height:21px;overflow:hidden;}
-#fsearch #kw {width:90px;}
+#fsearch select {width:170px;height:21px;overflow:hidden;vertical-align:middle;}
+#fsearch #kw {width:178px;}
 
 /* show */
 .Content {position:relative;}

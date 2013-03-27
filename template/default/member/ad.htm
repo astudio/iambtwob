@@ -3,11 +3,11 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="ad.php?action=add"><span>廣告預定</span></a></td>
+<td class="tab" id="add"><a href="ad.php?action=add"><span>Buy AD</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s3"><a href="ad.php"><span>已通過</span></a></td>
+<td class="tab" id="s3"><a href="ad.php"><span>Released</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s2"><a href="ad.php?status=2"><span>審核中</span></a></td>
+<td class="tab" id="s2"><a href="ad.php?status=2"><span>Pending</span></a></td>
 </tr>
 </table>
 </div>
@@ -18,158 +18,158 @@
 <input type="hidden" name="price" value="{$p[price]}" id="price"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">廣告位名稱：</td>
+<td class="tl">Position of AD:</td>
 <td class="tr"><strong>{$p[name]}</strong></td>
 </tr>
 <tr>
-<td class="tl">廣告位類型：</td>
+<td class="tl">Type of AD:</td>
 <td class="tr">{$TYPE[$typeid]}</td>
 </tr>
 {if $p[introduce]}
 <tr>
-<td class="tl">廣告位介紹：</td>
+<td class="tl">Introduce:</td>
 <td class="tr">{$p[introduce]}</td>
 </tr>
 {/if}
 {if $p[width] && $p[height]}
 <tr>
-<td class="tl">廣告位大小：</td>
+<td class="tl">Size:</td>
 <td class="tr">{$p[width]}px X {$p[height]}px</td>
 </tr>
 {/if}
 {if $typeid == 1}
 <tr>
-<td class="tl"><span class="f_red">*</span> 廣告代碼：</td>
+<td class="tl"><span class="f_red">*</span> AD Code:</td>
 <td class="tr"><textarea name="post[code]" id="code" style="width:98%;height:50px;overflow:visible;font-family:Fixedsys,verdana;"></textarea></td>
 </tr>
 {elseif $typeid == 2}
 <tr>
-<td class="tl"><span class="f_red">*</span> 鏈接文字：</td>
+<td class="tl"><span class="f_red">*</span> Link Text:</td>
 <td class="tr f_gray"><input type="text" size="30" name="post[text_name]" id="text_name"/></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 鏈接地址：</td>
+<td class="tl"><span class="f_red">*</span> Link URL:</td>
 <td class="tr"><input type="text" size="60" name="post[text_url]" id="text_url" value="http://"/> <span id="dtext_url" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">Title提示：</td>
+<td class="tl">Title Description:</td>
 <td class="tr"><input type="text" size="60" name="post[text_title]"/></td>
 </tr>
 {elseif $typeid == 3 || $typeid == 5}
 <tr>
-<td class="tl"><span class="f_red">*</span> 圖片地址：</td>
-<td class="tr f_gray"><input type="text" size="60" name="post[image_src]" id="thumb"/>&nbsp;&nbsp;<span onclick="Dthumb({$moduleid},{$p[width]},{$p[height]}, Dd('thumb').value,true);" class="jt">[上傳]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[預覽]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[刪除]</span> <span id="dthumb" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Image Path:</td>
+<td class="tr f_gray"><input type="text" size="60" name="post[image_src]" id="thumb"/>&nbsp;&nbsp;<span onclick="Dthumb({$moduleid},{$p[width]},{$p[height]}, Dd('thumb').value,true);" class="jt">[Upload]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[Preview]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[Delete]</span> <span id="dthumb" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">鏈接地址：</td>
+<td class="tl">Link URL:</td>
 <td class="tr"><input type="text" size="60" name="post[image_url]" id="image_url" value="http://"/> <span id="dimage_url" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">標題：</td>
+<td class="tl">Title:</td>
 <td class="tr"><input type="text" size="60" name="post[image_alt]"/></td>
 </tr>			
 {elseif $typeid == 4}
 <tr>
-<td class="tl"><span class="f_red">*</span> Flash地址：</td>
+<td class="tl"><span class="f_red">*</span> Flash URL:</td>
 <td class="tr f_gray"><input type="text" size="60" name="post[flash_src]" id="flash"/></td>
 </tr>
 <tr>
-<td class="tl">循環播放：</td>
+<td class="tl">Loop:</td>
 <td class="tr">
-<input type="radio" name="post[flash_loop]" value="1" checked/> 是&nbsp;&nbsp;
-<input type="radio" name="post[flash_loop]" value="0"/> 否
+<input type="radio" name="post[flash_loop]" value="1" checked/> Yes&nbsp;&nbsp;
+<input type="radio" name="post[flash_loop]" value="0"/> No
 </td>
 </tr>
 <tr>
-<td class="tl">鏈接地址：</td>
+<td class="tl">Link URL:</td>
 <td class="tr"><input type="text" size="60" name="post[flash_url]" value="http://"/></td>
 </tr>
 {elseif $typeid == 6}
 <tr>
-<td class="tl">所屬模塊：</td>
+<td class="tl">Selection:</td>
 <td class="tr"><a href="{$MODULE[$p[moduleid]][linkurl]}" target="_blank" class="t">{$MODULE[$p[moduleid]][name]}</a></td>
 </tr>
 <tr>
-<td class="tl">所屬分類：</td>
-<td class="tr">{ajax_category_select('post[catid]', '請選擇', 0, $p[moduleid])}</td>
+<td class="tl">Category:</td>
+<td class="tr">{ajax_category_select('post[catid]', 'Select a category', 0, $p[moduleid])}</td>
 </tr>
 <tr>
-<td class="tl">關鍵詞：</td>
+<td class="tl">Keyword:</td>
 <td class="tr"><input type="text" size="30" name="post[word]"/></td>
 </tr>
 {if $p[moduleid] == 4}
 <input type="hidden" name="post[key_id]" id="key_id" value="{$_userid}"/>
 {else}
 <tr>
-<td class="tl"><span class="f_red">*</span> 信息ID：</td>
-<td class="tr"><input type="text" size="10" name="post[key_id]" id="key_id" onfocus="select_item({$p[moduleid]}, 'member');"/> <a href="javascript:select_item({$p[moduleid]}, 'member');" class="t">選擇..</a>  <span id="dkey_id" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Message ID:</td>
+<td class="tr"><input type="text" size="10" name="post[key_id]" id="key_id" onfocus="select_item({$p[moduleid]}, 'member');"/> <a href="javascript:select_item({$p[moduleid]}, 'member');" class="t">Select..</a>  <span id="dkey_id" class="f_red"></span></td>
 </tr>
 {/if}
 {elseif $typeid == 7}
 <tr>
-<td class="tl">所屬模塊：</td>
+<td class="tl">Selection:</td>
 <td class="tr"><a href="{$MODULE[$p[moduleid]][linkurl]}" target="_blank" class="t">{$MODULE[$p[moduleid]][name]}</a></td>
 </tr>
 <tr>
-<td class="tl">所屬分類：</td>
-<td class="tr">{ajax_category_select('post[catid]', '請選擇', 0, $p[moduleid])}</td>
+<td class="tl">Category:</td>
+<td class="tr">{ajax_category_select('post[catid]', 'Select a category', 0, $p[moduleid])}</td>
 </tr>
 <tr>
-<td class="tl">關鍵詞：</td>
+<td class="tl">Keyword:</td>
 <td class="tr"><input type="text" size="30" name="post[word]"/></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 廣告代碼：</td>
+<td class="tl"><span class="f_red">*</span> AD Code:</td>
 <td class="tr"><textarea name="post[code]" id="code" style="width:98%;height:50px;overflow:visible;font-family:Fixedsys,verdana;"></textarea><br/><span id="dcode" class="f_red"></span></td>
 </tr>
 {/if}
 <tr>
-<td class="tl"><span class="f_red">*</span> 開始日期：</td>
+<td class="tl"><span class="f_red">*</span> Start Date:</td>
 <td class="tr">{dcalendar('post[fromtime]', $fromdate)}&nbsp;<span id="dpostfromtime" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 購買時長：</td>
+<td class="tl"><span class="f_red">*</span> Display Duration:</td>
 <td class="tr f_gray">
 <select name="month" id="month"{if $price} onchange="CA();"{/if}>
-{loop $months $m}<option value="{$m}">{$m}月</option>{/loop}
+{loop $months $m}<option value="{$m}">{$m} month{if $m>1}s{/if}</option>{/loop}
 </select>
-(注:按30天/月計算)
+(Notice: The duration of each month is thirty days.)
 </td>
 </tr>
 {if $price}
 <tr>
-<td class="tl">廣告價格：</td>
-<td class="tr"><span class="f_red f_b">{$p[price]} {$unit}/月</span></td>
+<td class="tl">Price:</td>
+<td class="tr"><span class="f_red f_b">{$p[price]} {$unit}/Month</span></td>
 </tr>
 <tr>
-<td class="tl">應付總價：</td>
-<td class="tr f_red f_b" id="payment">{$p[price]}{$unit}</td>
+<td class="tl">Amount</td>
+<td class="tr f_red f_b" id="payment">{$p[price]} {$unit}</td>
 </tr>
 {if $currency == 'money'}
 <tr>
-<td class="tl">{$DT[money_name]}餘額：</td>
-<td class="tr"><span class="f_blue f_b">{$_money}{$unit}</span> <a href="charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+<td class="tl">{$DT[money_name]} Balance:</td>
+<td class="tr"><span class="f_blue f_b">{$_money} {$unit}</span> <a href="charge.php?action=pay" target="_blank" class="t">[Recharge]</a></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 支付密碼：</td>
+<td class="tl"><span class="f_red">*</span> Payment Password:</td>
 <td class="tr">{template 'password', 'chip'}</td>
 </tr>
 {else}
 <tr>
-<td class="tl">{$DT[credit_name]}餘額：</td>
-<td class="tr"><span class="f_blue f_b">{$_credit}{$unit}</span> <a href="credit.php?action=buy" target="_blank" class="t">[購買]</a></td>
+<td class="tl">{$DT[credit_name]} Balance:</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$unit}</span> <a href="credit.php?action=buy" target="_blank" class="t">[Buy]</a></td>
 </tr>
 {/if}
 {/if}
 <tr>
-<td class="tl">備註事項：</td>
+<td class="tl">Note:</td>
 <td class="tr"><input type="text" size="60" name="post[note]"/></td>
 </tr>
 <tr>
 <td class="tl"> </td>
 <td class="tr">
-<input type="submit" name="submit" value="確定購買" class="btn"/>&nbsp;
-<input type="button" value="重新選擇" class="btn" onclick="Go('{$adurl}');"/>
+<input type="submit" name="submit" value="Buy" class="btn"/>&nbsp;
+<input type="button" value="Reset" class="btn" onclick="Go('{$adurl}');"/>
 </td>
 </tr>
 </table>
@@ -183,60 +183,60 @@ function check() {
 	var p = Dd('price').value;
 {if $currency == 'money'}
 	if(p*Dd('month').value > {$_money}) {
-		alert('帳戶餘額不足，請先充值');
+		alert('Your credit is low. Please recharge.');
 		return false;
 	}
 {else}
 	if(p*Dd('month').value > {$_credit}) {
-		alert('您的{$DT[credit_name]}不足，請先購買');
+		alert('Your {$DT[credit_name]} is low. Please buy.');
 		return false;
 	}
 {/if}
 {if $typeid == 1 || $typeid == 7}
 	if(Dd('code').value.length < 5) {
-		alert('請填寫廣告代碼');
+		alert('Fill in AD code.');
 		Dd('code').focus();
 		return false;
 	}
 {elseif $typeid == 2}
 	if(Dd('text_name').value.length < 2) {
-		alert('請填寫鏈接文字');
+		alert('Fill in link text.');
 		Dd('text_name').focus();
 		return false;
 	}
 	if(Dd('text_url').value.length < 10) {
-		alert('請填寫鏈接地址');
+		alert('Fill in link URL.');
 		Dd('text_url').focus();
 		return false;
 	}
 {elseif $typeid == 3 || $typeid == 5}
 	if(Dd('thumb').value.length < 10) {
-		alert('請填寫圖片地址或上傳圖片');
+		alert('Fill in image path, or upload your image.');
 		Dd('thumb').focus();
 		return false;
 	}
 {elseif $typeid == 4}
 	if(Dd('flash').value.length < 10) {
-		alert('請填寫Flash地址');
+		alert('Fill in flash path.');
 		Dd('flash').focus();
 		return false;
 	}
 {elseif $typeid == 6}
 	if(Dd('key_id').value.length < 1) {
-		alert('請填寫信息ID');
+		alert('Enter the ID value of your selling/buying lead.');
 		Dd('key_id').focus();
 		return false;
 	}
 {/if}
 	if(Dd('postfromtime').value.replace(/-/g, '') < '{$fromdate}'.replace(/-/g, '')) {
-		alert('開始投放日期需從{$fromdate}開始');
+		alert('Start display date should begin in {$fromdate}.');
 		Dd('postfromtime').value = '{$fromdate}';
 		Dd('postfromtime').focus();
 		return false;
 	}
 {if $price && $currency == 'money'}
 	if(Dd('password').value.length < 6) {
-		alert('請填寫支付密碼');
+		alert('Enter your payment password.');
 		Dd('password').focus();
 		return false;
 	}
@@ -248,19 +248,19 @@ function check() {
 <div class="ls">
 <table cellpadding="0" cellspacing="0" class="tb">
 <tr>
-<th>廣告類型</th>
-<th>廣告名稱</th>
-<th>&nbsp;出價&nbsp;</th>
-<th>&nbsp;單位&nbsp;</th>
-<th>開始日期</th>
-<th>結束日期</th>
-<th>剩餘(天)</th>
-<th>投放狀態</th>
-<th>申請時間</th>
-<th>&nbsp;預覽&nbsp;</th>
+<th>Type of AD</th>
+<th>Position of AD</th>
+<th>&nbsp;Price&nbsp;</th>
+<th>&nbsp;Unit&nbsp;</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th>Remaining (day)</th>
+<th>Display Status</th>
+<th>Applied Time</th>
+<th>&nbsp;Preview&nbsp;</th>
 </tr>
 {loop $lists $k $v}
-<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center" title="簡介:{$v[introduce]}">
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center" title="Introduction:{$v[introduce]}">
 <td>{$TYPE[$v[typeid]]}</td>
 <td align="left">&nbsp;&nbsp;<a href="{$adurl}{rewrite('index.php?aid='.$v['aid'])}" target="_blank" class="t">{$v[title]}</a></td>
 <td class="f_red f_b">{$v[amount]}</td>
@@ -270,7 +270,7 @@ function check() {
 <td{if $v[days]<5} class="f_red"{/if}>{$v[days]}</td>
 <td>{$v[process]}</td>
 <td class="f_gray px11">{timetodate($v[addtime], 5)}</td>
-<td><a href="{$adurl}{rewrite('index.php?aid='.$v['aid'])}" target="_blank" class="t">預覽</a></td>
+<td><a href="{$adurl}{rewrite('index.php?aid='.$v['aid'])}" target="_blank" class="t">Preview</a></td>
 </tr>
 {/loop}
 </table>

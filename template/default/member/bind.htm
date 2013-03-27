@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<title>帳號綁定</title>
+<title>Add to your account</title>
 <script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
 <script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
 <script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
@@ -35,12 +35,12 @@ a:hover {color:#FF6600;}
 	<tr>
 	<td><a href="{$MODULE[1][linkurl]}"><img src="{if $DT[logo]}{$DT[logo]}{else}{DT_SKIN}image/logo.gif{/if}" alt="{$DT[sitename]}"/></a></td>
 	<td width="70" align="center"><img src="{if $avatar}{$avatar}{else}{DT_PATH}api/oauth/avatar.png{/if}" width="50"/></td>
-	<td>來自 <img src="{DT_PATH}api/oauth/{$site}/ico.png" align="absmiddle"/> {$OAUTH[$site][name]} 的 {if $url}<a href="{$url}" target="_blank">{/if}<strong style="color:#1C6797;">{if $nickname}{$nickname}{else}用戶{/if}</strong>{if $url}</a>{/if}，您好!<div style="padding-top:5px;">現在可以連接 <span style="color:#FF6600;">{$DT[sitename]}</span> 了</div></td>
+	<td>From <img src="{DT_PATH}api/oauth/{$site}/ico.png" align="absmiddle"/> {$OAUTH[$site][name]} {if $url}<a href="{$url}" target="_blank">{/if}<strong style="color:#1C6797;">Hello, {if $nickname}{$nickname}{else}user{/if}</strong>{if $url}</a>.{/if} <div style="padding-top:5px;">You are added to <span style="color:#FF6600;">{$DT[sitename]}</span>.</div></td>
 	</tr>
 	</table>
 
 	<br/>
-	<div class="u"><strong>已經是會員：</strong>使用已有用戶名連接</div>
+	<div class="u"><strong>Already a user? </strong>Add to my account</div>
 	<br/>
 	
 	<div class="l">
@@ -48,30 +48,30 @@ a:hover {color:#FF6600;}
 	<input name="forward" type="hidden" id="forward" value="{$forward}">
 	<table cellpadding="3" cellspacing="4" width="100%">
 	<tr>
-	<td align="right">戶名或郵件：</td>
+	<td align="right">Username or Email:</td>
 	<td>
 	<input name="username" type="text" id="username" class="i"/>
 	</td>
 	</td>
 	</tr>
 	<tr>
-	<td align="right">密 碼：</td>
+	<td align="right">Password:</td>
 	<td>
 	<input name="password" type="password" id="password" class="i"/>
-	<a href="{$MODULE[2][linkurl]}send.php">&nbsp;忘記了密碼？</a>
+	<a href="{$MODULE[2][linkurl]}send.php">&nbsp;Forgot password?</a>
 	</td>
 	</tr>
 	{if $MOD[captcha_login]}
 	<tr>
-	<td align="right">驗證碼：</td>
+	<td align="right">Security code:</td>
 	<td>{template 'captcha', 'chip'}</td>
 	</tr>
 	{/if}
 	<tr>
 	<td width="80"> </td>
 	<td>
-	<input type="submit" name="submit" value=" 綁 定 " class="s"/>&nbsp;&nbsp;
-	<input type="button" value=" 取 消 "onclick="window.location='{$MODULE[1][linkurl]}';" class="c"/>
+	<input type="submit" name="submit" value=" Add " class="s"/>&nbsp;&nbsp;
+	<input type="button" value=" Cancel "onclick="window.location='{$MODULE[1][linkurl]}';" class="c"/>
 	</td>
 	</tr>
 	</table>
@@ -79,28 +79,28 @@ a:hover {color:#FF6600;}
 	</div>
 	<br/><br/>
 
-	<div class="u"><strong>還不是會員：</strong>創建新用戶</div>
+	<div class="u"><strong>I am new user: </strong>Sign up NOW!</div>
 	<br/>
 
 	<div class="r">
-	<input type="button" value="創建新用戶並綁定" class="b" onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_register]}?forward={urlencode($forward)}';"/>
+	<input type="button" value="Sign up NOW! and add to my account" class="b" onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_register]}?forward={urlencode($forward)}';"/>
 	</div>		
 </div>
 <script type="text/javascript">
 function Dcheck() {
 	if(Dd('username').value == '') {
-		confirm('請輸入您在{$DT[sitename]}的戶名或郵件');
+		confirm('Enter your account or Email at {$DT[sitename]}.');
 		Dd('username').focus();
 		return false;
 	}
 	if(Dd('password').value == '') {
-		confirm('請輸入您在{$DT[sitename]}的密碼');
+		confirm('Enter your password at {$DT[sitename]}.');
 		Dd('password').focus();
 		return false;
 	}
 {if $MOD[captcha_login]}
 	if(!is_captcha(Dd('captcha').value)) {
-		confirm('請填寫驗證碼');
+		confirm('Enter the security code.');
 		Dd('captcha').focus();
 		return false;
 	}

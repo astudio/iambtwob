@@ -10,7 +10,7 @@
 	</td>
 	<td valign="top">
 		<div class="left_box">		
-			<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">RSS Feed</a></div>
+			
 			{if $MOD[feed_enable]}
 			{if $MOD[feed_enable]==2}
 				<div class="b15">&nbsp;</div>
@@ -25,7 +25,7 @@
 					<select name="mid">
 						<option value="0">- Channel -</option>
 						{loop $FD $k $v}
-						<option value="{$v[moduleid]}"{if $mid==$v[moduleid]} selected{/if}>{$v[name]}</option>
+						<option value="{$v[moduleid]}"{if $mid==$v[moduleid]} selected{/if}>{$v[ename]}</option>
 						{/loop}
 					</select>&nbsp;
 					<input type="text" name="kw" size="20" value="{if $kw}{$kw}{else}Keywords{/if}" onfocus="if(this.value=='Keywords')this.value='';"/>&nbsp;
@@ -62,7 +62,7 @@
 			</tr>
 			{loop $FD $k $v}
 			<tr align="center" bgcolor="#FFFFFF">
-			<td><a href="{$v[linkurl]}" target="_blank">{$v[name]}</a></td>
+			<td><a href="{$v[linkurl]}" target="_blank">{$v[ename]}</a></td>
 			<td><input type="text" size="80" value="{$v[rssurl]}" onmouseover="this.select();"/></td>
 			<td><a href="{$v[rssurl]}" target="_blank"><img src="{DT_PATH}file/image/xml.gif" alt="Subscribe"/></a></td>
 			</tr>

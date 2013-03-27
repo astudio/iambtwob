@@ -4,16 +4,16 @@
 <table cellpadding="0" cellspacing="0">
 <tr>
 {if $MOD[pay_online]}
-<td class="tab" id="action_pay"><a href="charge.php?action=pay"><span>在線充值</span></a></td>
+<td class="tab" id="action_pay"><a href="charge.php?action=pay"><span>Online Recharge</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 {/if}
-<td class="tab" id="action_card"><a href="charge.php?action=card"><span>充值卡充值</span></a></td>
+<td class="tab" id="action_card"><a href="charge.php?action=card"><span>Recharge by Card</span></a></td>
 {if $MOD[pay_url]}
 <td class="tab_nav">&nbsp;</td>
-<td class="tab"><a href="{$MOD[pay_url]}"><span>銀行匯款</span></a></td>
+<td class="tab"><a href="{$MOD[pay_url]}"><span>Telegraphic Transfer</span></a></td>
 {/if}
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_record"><a href="charge.php?action=record"><span>充值記錄</span></a></td>
+<td class="tab" id="action_record"><a href="charge.php?action=record"><span>Records</span></a></td>
 </tr>
 </table>
 </div>
@@ -22,29 +22,29 @@
 <input type="hidden" name="action" value="{$action}"/>
 <div class="tt">
 <select name="bank">
-<option value="">支付平台</option>
+<option value="">Payment Platform</option>
 {loop $PAY $k $v}
 <option value="{$k}" {if $bank == $k}selected{/if}>{$v[name]}</option>;
 {/loop}
 </select>
 &nbsp;
-{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}
+{dcalendar('fromtime', $fromtime)} to {dcalendar('totime', $totime)}
 &nbsp;
-<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
-<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+<input type="submit" value=" Search " class="btn"/>&nbsp;
+<input type="button" value=" Reset " class="btn" onclick="window.location='?action={$action}';"/>
 </div>
 </form>
 <div class="bd">
 <table cellpadding="1" cellspacing="0" class="tb">
 <tr>
-<th>流水號</th>
-<th>充值金額</th>
-<th>手續費</th>
-<th>實收金額</th>
-<th>支付平台</th>
-<th width="130">下單時間</th>
-<th width="130">支付時間</th>
-<th>狀態</th>
+<th>No.</th>
+<th>Recharge Amount</th>
+<th>Fee</th>
+<th>Paid Amount</th>
+<th>Payment Platform</th>
+<th width="130">Date of Order</th>
+<th width="130">Payment Time</th>
+<th>Status</th>
 </tr>
 {loop $charges $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
@@ -59,7 +59,7 @@
 </tr>
 {/loop}
 <tr align="center">
-<td height="35"><strong>小計</strong></td>
+<td height="35"><strong>Subtotal</strong></td>
 <td class="px11">{$amount}</td>
 <td class="px11">{$fee}</td>
 <td class="px11 f_blue">{$money}</td>
@@ -74,17 +74,17 @@
 <input type="hidden" name="action" value="card"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">卡號：</td>
+<td class="tl">Card No.:</td>
 <td class="tr"><input type="text" name="number" size="20" id="number"/> <span id="dnumber" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">密碼：</td>
+<td class="tl">Password:</td>
 <td class="tr"><input type="text" name="password" size="20" id="password"/> <span id="dpassword" class="f_red"></span>
 </td>
 </tr>
 <tr>
 <td class="tl"></td>
-<td class="tr"><input type="submit" name="submit" value=" 充 值 " class="btn"/>
+<td class="tr"><input type="submit" name="submit" value=" Recharge " class="btn"/>
 </td>
 </tr>
 </form>
@@ -92,11 +92,11 @@
 <script type="text/javascript">
 function check_card() {
 	if(Dd('number').value.length < 8) {
-		Dmsg('請填寫正確的充值卡卡號', 'number');
+		Dmsg('Enter a valid prepaid card number.', 'number');
 		return false;
 	}
 	if(Dd('password').value.length < 6) {
-		Dmsg('請填寫正確的充值卡密碼', 'password');
+		Dmsg('Enter a valid password.', 'password');
 		return false;
 	}
 }
@@ -108,7 +108,7 @@ function check_card() {
 <input type="hidden" name="action" value="confirm"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 充值金額</td>
+<td class="tl"><span class="f_red">*</span> Recharge Amount</td>
 <td class="tr">&nbsp;
 {if $charges}
 {loop $charges $k $v}
@@ -120,7 +120,7 @@ function check_card() {
 </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 支付平台</td>
+<td class="tl"><span class="f_red">*</span> Payment Platform</td>
 <td class="tr">
 	<table cellspacing="5" cellpadding="5" class="c_p">
 	{php $i=0;}
@@ -129,7 +129,7 @@ function check_card() {
 	<tr onclick="Dd('{$k}').checked=true;">
 	<td><input type="radio" name="bank" value="{$k}" id="{$k}"{if $i==0} checked{/if}/></td>
 	<td><img src="{DT_PATH}file/image/logo_{$k}.gif" alt=""/></td>
-	<td>手續費 {$v[percent]}%</td>
+	<td>Fee {$v[percent]}%</td>
 	</tr>	
 	{php $i=1;}
 	{/if}
@@ -144,7 +144,7 @@ function check_card() {
 </tr>
 <tr>
 <td class="tl" height="50"> </td>
-<td class="tr"><input type="submit" value=" 下一步 " class="btn"{if $i==0} disabled{/if}/></td>
+<td class="tr"><input type="submit" value=" Next " class="btn"{if $i==0} disabled{/if}/></td>
 </tr>
 </form>
 </table>
@@ -153,12 +153,12 @@ function check_card() {
 function check() {
 {if !$charges}
 	if(!Dd('amount').value) {
-		Dmsg('請填寫充值金額', 'amount');
+		Dmsg('Enter a valid amount.', 'amount');
 		return false;
 	}
 {if $mincharge}
 	if(Dd('amount').value < {$mincharge}) {
-		Dmsg('金額最少{$mincharge}', 'amount');
+		Dmsg('Minimum amount: {$mincharge}', 'amount');
 		return false;
 	}
 {/if}
@@ -173,33 +173,33 @@ function check() {
 <input type="hidden" name="bank" value="{$bank}"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">支付平台</td>
+<td class="tl">Payment Platform</td>
 <td class="tr"><img src="{DT_PATH}file/image/logo_{$bank}.gif" alt=""/></td>
 </tr>
 <tr>
-<td class="tl">充值金額</td>
+<td class="tl">Recharge Amount</td>
 <td class="tr">&nbsp;<strong>{$amount}</strong> {$DT[money_unit]}</td>
 </tr>
 <tr>
-<td class="tl">手續費</td>
+<td class="tl">Fee</td>
 <td class="tr">&nbsp;<strong>{$fee}</strong> {$DT[money_unit]}</td>
 </tr>
 <tr>
-<td class="tl">實收金額</td>
+<td class="tl">Net Amount</td>
 <td class="tr">&nbsp;<strong class="f_red">{$charge}</strong> {$DT[money_unit]}</td>
 </tr>
 <tr>
-<td class="tl">提示信息</td>
+<td class="tl">Tips</td>
 <td class="tr f_gray">
-&nbsp;- 點擊確認充值，系統將跳轉至第三方支付平台，支付成功後系統將自動為您入賬。<br/>
-&nbsp;- 如果在支付過程中遇到任何問題，請及時與客服中心取得聯繫，以便及時處理。<br/>
+&nbsp;- Click "Confirm" to recharge and the webpage will be redirected to third-party payment platform. The money will be automatically deposited in your account when the payment is completed.<br/>
+&nbsp;- Please contact service center for any inquiries during the process.<br/>
 </td>
 </tr>
 <tr>
 <td class="tl"> </td>
 <td height="50" class="tr">
-<input type="submit" name="submit" value=" 確認充值 " class="btn"/> &nbsp;
-<input type="button" value=" 返回修改 " class="btn" onclick="history.back(-1);"/>
+<input type="submit" name="submit" value=" Confirm " class="btn"/> &nbsp;
+<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/>
 </td>
 </tr>
 </table>
@@ -209,40 +209,40 @@ function check() {
 <table cellspacing="1" cellpadding="6" class="tb">
 {if $charge_status == 2}
 <tr>
-<td class="tl">充值結果</td>
-<td class="tr f_red f_b px14">×充值異常</td>
+<td class="tl">Recharge Result</td>
+<td class="tr f_red f_b px14">×Recharge Error</td>
 </tr>
 <tr>
-<td class="tl" height="50">相關說明</td>
+<td class="tl" height="50">Instructions</td>
 <td class="tr lh18">
-- 錯誤代碼「{$charge_errcode}」，請與<a href="ask.php?action=add" class="b">客服聯繫</a>並告知錯誤代碼。<br/>
+- Error Code ({$charge_errcode}」, please contact <a href="ask.php?action=add" class="b">Service Center</a> and provide this error code.<br/>
 - <a href="charge.php?action=pay" class="b">重新充值請點這裡。</a><br/>
 </td>
 </tr>
 {elseif $charge_status == 1}
 <tr>
-<td class="tl">充值結果</td>
-<td class="tr f_green f_b px14">√ 充值成功，已經為您的帳戶充值 <span class="f_red">{$charge_amount}</span> {$DT[money_unit]}</td>
+<td class="tl">Recharge Result</td>
+<td class="tr f_green f_b px14">√ Recharged <span class="f_red">{$charge_amount}</span> {$DT[money_unit]}</td>
 </tr>
 <tr>
-<td class="tl" height="50">相關說明</td>
+<td class="tl" height="50">Instructions</td>
 <td class="tr lh18">
-- <a href="record.php?action=charge" class="b">查詢記錄請點這裡。</a><br/>
-- <a href="charge.php?action=pay" class="b">繼續充值請點這裡。</a><br/>
+- <a href="record.php?action=charge" class="b">Click here to review records.</a><br/>
+- <a href="charge.php?action=pay" class="b">Click here to continue recharge.</a><br/>
 </td>
 </tr>
 {else}
 <tr>
-<td class="tl" height="50">充值結果</td>
+<td class="tl" height="50">Recharge Result</td>
 <td class="tr f_red f_b px14">
-×充值失敗
+×Failure
 </td>
 </tr>
 <tr>
-<td class="tl" height="50">相關說明</td>
+<td class="tl" height="50">Instructions</td>
 <td class="tr lh18">
-- 如果您確認充值成功，請立即<a href="ask.php?action=add" class="b">聯繫客服</a>解決。<br/>
-- <a href="charge.php?action=pay" class="b">重新充值請點這裡。</a><br/>
+- If you confirmed the recharge result was complete. Please contact <a href="ask.php?action=add" class="b">Service Center</a> to review.<br/>
+- <a href="charge.php?action=pay" class="b">Click here to recharge again</a>.<br/>
 </td>
 </tr>
 {/if}

@@ -1,26 +1,26 @@
 {template 'header'}
 <div class="m b10">&nbsp;</div>
 <div class="m">
-	<h1 class="title">{$DT[sitename]}會員服務一覽表</h1>
+	<h1 class="title">{$DT[sitename]} Service List</h1>
 	<table cellpadding="8" cellspacing="1" width="100%" bgcolor="#E3EEF5">
 	<tr bgcolor="#F1F7FC" align="center">
-	<td class="f_b px14" width="{$percent}">服務範圍\會員組</td>
+	<td class="f_b px14" width="{$percent}">Features\Member Groups</td>
 	{loop $GROUPS $k $v}{if $k > 4}
-	<td class="f_b px14" width="{$percent}">{$v[groupname]}</td>
+	<td class="f_b px14" width="{$percent}">{$v[engroupname]}</td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>收費模式</td>
+	<td>Fee Mode</td>
 	{loop $GROUPS $k $v}{if $k > 4}
-	<td>{if $v[fee_mode]}<span class="f_red">包年</span>{else}<span class="f_green">免費</span>{/if}</td>
+	<td>{if $v[fee_mode]}<span class="f_red">Annual Rate</span>{else}<span class="f_green">FREE</span>{/if}</td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>年 費</td>
+	<td>Annual Rate</td>
 	{loop $GROUPS $k $v}{if $k > 4}
-	<td>{if $v[fee]}<span class="f_red"><strong>{$v[fee]}</strong> {$DT[money_unit]}/年</span>{else}--{/if}</td>
+	<td>{if $v[fee]}<span class="f_red"><strong>{$v[fee]}</strong> {$DT[money_unit]}/year</span>{else}--{/if}</td>
 	{/if}{/loop}
 	</tr>
 	{if $UP}
@@ -32,11 +32,11 @@
 	</tr>
 	{/if}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>允許發佈信息</td>
+	<td>Message Release</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td valign="top" class="f_gray">
 	{loop $DM $m}
-		{if in_array($m[moduleid], $v[moduleids])}<a href="{$m[linkurl]}" target="_blank">{$m[name]}</a> | {/if}
+		{if in_array($m[moduleid], $v[moduleids])}<a href="{$m[linkurl]}" target="_blank">{$m[ename]}</a> | {/if}
 	{/loop}
 	</td>
 	{/if}
@@ -44,56 +44,56 @@
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>擁有{VIP}標識 <img src="{DT_SKIN}image/vip.gif" align="absmiddle"/></td>
+	<td>{VIP} Mark <img src="{DT_SKIN}image/vip.gif" align="absmiddle"/></td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>信息優先排序</td>
+	<td>Message Priority</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>產品首頁推薦</td>
+	<td>Spotlight of product</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>產品在線銷售</td>
+	<td>Online Sales</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[trade_sell]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>信息關鍵字排名</td>
+	<td>Keyword Ranking</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[spread]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>擁有公司主頁</td>
+	<td>Company Website</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[homepage]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>自定義公司主頁</td>
+	<td>Customized Website</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[home]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>自定義公司模板</td>
+	<td>Customized Template</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[style]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
@@ -101,34 +101,34 @@
 
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>客戶服務</td>
+	<td>Online Service</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[ask]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>商機訂閱</td>
+	<td>eNewsletter Subscription</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[mail]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>郵件發送</td>
+	<td>Email Sending</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[sendmail]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>收件箱容量</td>
+	<td>Capacity of Inbox</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[inbox_limit] == -1}
 	0
 	{elseif $v[inbox_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[inbox_limit]}
 	{/if}
@@ -137,13 +137,13 @@
 	</tr>
 	
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>每日可發站內信</td>
+	<td>Daily Internal Mails</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[message_limit] == -1}
 	0
 	{elseif $v[message_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[message_limit]}
 	{/if}
@@ -152,13 +152,13 @@
 	</tr>
 	
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>每日詢盤次數</td>
+	<td>Daily Inquiries</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[inquiry_limit] == -1}
 	0
 	{elseif $v[inquiry_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[inquiry_limit]}
 	{/if}
@@ -167,13 +167,13 @@
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>每日報價次數</td>
+	<td>Daily Quotations</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[price_limit] == -1}
 	0
 	{elseif $v[price_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[price_limit]}
 	{/if}
@@ -182,13 +182,13 @@
 	</tr>
 	
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>商友數量數量</td>
+	<td>Number of My Friends</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[friend_limit] == -1}
 	0
 	{elseif $v[friend_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[friend_limit]}
 	{/if}
@@ -197,13 +197,13 @@
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>貿易提醒數量</td>
+	<td>Number of Trade Alerts</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[alert_limit] == -1}
 	0
 	{elseif $v[alert_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[alert_limit]}
 	{/if}
@@ -212,13 +212,13 @@
 	</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>商機收藏數量</td>
+	<td>Number of My Favorites</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[favorite_limit] == -1}
 	0
 	{elseif $v[favorite_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[favorite_limit]}
 	{/if}
@@ -228,13 +228,13 @@
 
 	{if $MODULE[16]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>發佈商品數量</td>
+	<td>Number of Mall products</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[mall_limit] == -1}
 	0
 	{elseif $v[mall_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[mall_limit]}
 	{/if}
@@ -245,13 +245,13 @@
 
 	{if $MODULE[5]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>供應信息數量</td>
+	<td>Number of Selling Leads</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[sell_limit] == -1}
 	0
 	{elseif $v[sell_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[sell_limit]}
 	{/if}
@@ -262,13 +262,13 @@
 
 	{if $MODULE[6]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>求購信息數量</td>
+	<td>Number of Buying Leads</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[buy_limit] == -1}
 	0
 	{elseif $v[buy_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[buy_limit]}
 	{/if}
@@ -277,14 +277,14 @@
 	</tr>
 	{/if}
 
-	<tr bgcolor="#FFFFFF" align="center">
-	<td>招商信息數量</td>
+<!-- 	<tr bgcolor="#FFFFFF" align="center">
+	<td>招商信息数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[info_limit] == -1}
 	0
 	{elseif $v[info_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[info_limit]}
 	{/if}
@@ -294,13 +294,13 @@
 
 	{if $MODULE[8]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>展會信息數量</td>
+	<td>展会信息数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[exhibit_limit] == -1}
 	0
 	{elseif $v[exhibit_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[exhibit_limit]}
 	{/if}
@@ -311,13 +311,13 @@
 
 	{if $MODULE[9]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>招聘信息數量</td>
+	<td>招聘信息数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[job_limit] == -1}
 	0
 	{elseif $v[job_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[job_limit]}
 	{/if}
@@ -327,13 +327,13 @@
 	{/if}
 
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>新聞稿件數量</td>
+	<td>新闻稿件数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[article_limit] == -1}
 	0
 	{elseif $v[article_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[article_limit]}
 	{/if}
@@ -343,13 +343,13 @@
 
 	{if $MODULE[9]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>個人簡歷數量</td>
+	<td>个人简历数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[resume_limit] == -1}
 	0
 	{elseif $v[resume_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[resume_limit]}
 	{/if}
@@ -360,30 +360,30 @@
 
 	{if $MODULE[10]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>行業知道數量</td>
+	<td>行业知道数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[know_limit] == -1}
 	0
 	{elseif $v[know_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[know_limit]}
 	{/if}
 	</td>
 	{/if}{/loop}
 	</tr>
-	{/if}
+	{/if} -->
 
 	{if $MODULE[13]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>公司品牌數量</td>
+	<td>Number of Company Brands</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[brand_limit] == -1}
 	0
 	{elseif $v[brand_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[brand_limit]}
 	{/if}
@@ -392,32 +392,32 @@
 	</tr>
 	{/if}
 
-	{if $MODULE[17]}
+<!-- 	{if $MODULE[17]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>發佈團購數量</td>
+	<td>发布团购数量</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[group_limit] == -1}
 	0
 	{elseif $v[group_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[group_limit]}
 	{/if}
 	</td>
 	{/if}{/loop}
 	</tr>
-	{/if}
+	{/if} -->
 
 	{if $MODULE[12]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>公司相冊數量</td>
+	<td>Number of Company Albums</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[photo_limit] == -1}
 	0
 	{elseif $v[photo_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[photo_limit]}
 	{/if}
@@ -428,13 +428,13 @@
 
 	{if $MODULE[14]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>公司視頻數量</td>
+	<td>Number of Company Videos</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[video_limit] == -1}
 	0
 	{elseif $v[video_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[video_limit]}
 	{/if}
@@ -445,13 +445,13 @@
 
 	{if $MODULE[15]}
 	<tr bgcolor="#FFFFFF" align="center">
-	<td>上傳資料數量</td>
+	<td>Number of File Uploads</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
 	{if $v[down_limit] == -1}
 	0
 	{elseif $v[down_limit] == 0}
-	不限
+	Unlimited
 	{else}
 	{$v[down_limit]}
 	{/if}
@@ -470,9 +470,9 @@
 	{/if}
 
 	<tr bgcolor="#F1F7FC" align="center">
-	<td class="f_b px14" width="{$percent}">服務範圍\會員組</td>
+	<td class="f_b px14" width="{$percent}">Features\Member Groups</td>
 	{loop $GROUPS $k $v}{if $k > 4}
-	<td class="f_b px14" width="{$percent}">{$v[groupname]}</td>
+	<td class="f_b px14" width="{$percent}">{$v[engroupname]}</td>
 	{/if}{/loop}
 	</tr>
 	</table>
@@ -482,104 +482,104 @@
 
 <div class="m">
 <div class="m_l f_l">
-	<div class="box_head"><div><strong>在線升級</strong><a name="up"></a></div></div>
+	<div class="box_head"><div><strong>Upgrade Online</strong><a name="up"></a></div></div>
 	<div class="box_body">
 		<form method="post" action="grade.php" onsubmit="return check();">
 		<input type="hidden" name="groupid" value="{$groupid}"/>
 		<table cellpadding="6" cellspacing="0" width="100%">
 		<tr>
-		<td align="right" width="100" height="25"><span class="f_red">*</span> 升級為：</td>
+		<td align="right" width="100" height="25"><span class="f_red">*</span> Upgrade to:</td>
 		<td>
 		<span class="f_orange f_b">
 		{if $UP}
 			{if $groupid}
-			{$UP[$groupid][groupname]}
+			{$UP[$groupid][engroupname]}
 			{else}
-			請選擇升級會員組
+			Select a member group you want to upgrade.
 			{/if}
 		{else}
-			暫時沒有供您升級的會員組
+			Sorry! We can`t provide you member group to upgrade.
 		{/if}
 		</span>
 		&nbsp;&nbsp;
 		{if $_userid}
-		您的當前會員組為<strong>{$GROUP[$_groupid][groupname]}</strong>
+		Your current member group is <strong>{$GROUP[$_groupid][engroupname]}</strong>.
 		{else}
-		您還沒有登錄，建議您先 <a href="{$DT[file_login]}" class="f_b">登錄</a > 或 <a href="{$DT[file_register]}" class="f_b">註冊會員</a>
+		You are not logged in, suggest you <a href="{$DT[file_login]}" class="f_b">Login</a > or <a href="{$DT[file_register]}" class="f_b">Join Free</a>.
 		{/if}
 		</td>
 		</tr>
 		{if $fee}
 		<tr>
-		<td align="right"><span class="f_red">*</span> 所需費用：</td>
-		<td><span class="f_red f_b">{$fee}{$DT[money_unit]}/年</span></td>
+		<td align="right"><span class="f_red">*</span> Price: </td>
+		<td><span class="f_red f_b">{$fee}{$DT[money_unit]}/year</span></td>
 		</tr>
 		<tr>
-		<td align="right">優惠碼：</td>
-		<td><input name="promo_code" type="text" id="promo_code" size="20" value="" style="border:green 2px solid;padding:2px;font-size:14px;margin:0 0 5px;" onblur="pcode(this.value);"/> 	<br/><span class="f_gray" id="code">使用優惠碼可充抵部分費用或獲贈一段有效期</span>
+		<td align="right">Coupon: </td>
+		<td><input name="promo_code" type="text" id="promo_code" size="20" value="" style="border:green 2px solid;padding:2px;font-size:14px;margin:0 0 5px;" onblur="pcode(this.value);"/> 	<br/><span class="f_gray" id="code">Use Coupon can get discount or free using time for your account.</span>
 		</td>
 		</tr>
 		{/if}
 		{if $need_fee}
 		<tr>
-		<td align="right">賬戶餘額：</td>
-		<td><span class="f_blue f_b">{$_money} {$DT[money_unit]}</span> {if $fee>$_money}&nbsp;&nbsp;您的餘額不足， <a href="charge.php?action=pay" target="_blank" class="f_b">請充值</a>{/if}</td>
+		<td align="right">Balance: </td>
+		<td><span class="f_blue f_b">{$_money} {$DT[money_unit]}</span> {if $fee>$_money}&nbsp;&nbsp;Your credit is low, please <a href="charge.php?action=pay" target="_blank" class="f_b">recharge</a>.{/if}</td>
 		</tr>
 		{/if}
 		<tr>
-		<td align="right"><span class="f_red">*</span> 公司全稱：</td>
+		<td align="right"><span class="f_red">*</span> Co. Name: </td>
 		<td><input type="text" name="company" id="company" value="{$company}" size="50"/><br/><span id="dcompany" class="f_red"></span></td>
 		</tr>
 		<tr>
-		<td align="right"><span class="f_red">*</span> 聯繫人：</td>
+		<td align="right"><span class="f_red">*</span> Contact: </td>
 		<td><input name="truename" type="text" id="truename" size="20" value="{$truename}" /> <br/><span id="dtruename" class="f_red"></span></td>
 		</tr>
 		<tr>
-		<td align="right"><span class="f_red">*</span> 電話號碼：</td>
+		<td align="right"><span class="f_red">*</span> TEL: </td>
 		<td><input name="telephone" id="telephone" type="text" size="30" value="{$telephone}"/> <span id="dtelephone" class="f_red"></span></td>
 		</tr>
 		<tr>
-		<td align="right">手機號碼：</td>
+		<td align="right">Mobile: </td>
 		<td><input name="mobile" id="mobile" type="text" size="30" value="{$mobile}"/> <span id="dmobile" class="f_red"></span></td>
 		</tr>
 		<tr>
-		<td align="right">電子郵件：</td>
+		<td align="right">Email: </td>
 		<td><input name="email" id="email" type="text" size="30" value="{$email}" /></td>
 		</tr>
 		{if $DT[im_qq]}
 		<tr>
-		<td align="right">QQ：</td>
+		<td align="right">QQ: </td>
 		<td><input name="qq" type="text" size="20" value="{$qq}"/></td>
 		</tr>
 		{/if}
 		{if $DT[im_ali]}
 		<tr>
-		<td align="right">阿里旺旺：</td>
+		<td align="right">阿里旺旺: </td>
 		<td><input name="ali" type="text" size="20" value="{$ali}"/></td>
 		</tr>
 		{/if}
 		{if $DT[im_msn]}
 		<tr>
-		<td align="right">MSN：</td>
+		<td align="right">MSN: </td>
 		<td><input name="msn" type="text" size="30" value="{$msn}"/></td>
 		</tr>
 		{/if}
 		{if $DT[im_skype]}
 		<tr>
-		<td align="right">Skype：</td>
+		<td align="right">Skype: </td>
 		<td><input name="skype" type="text" size="20" value="{$skype}"/></td>
 		</tr>
 		{/if}
 		<tr>
-		<td align="right">附言：</td>
+		<td align="right">Remark: </td>
 		<td>
 		<textarea style="width:400px;height:60px;" name="content" id="content"></textarea><br/>
-		<span id="dcontent" class="f_red"></span>- 500字內
+		<span id="dcontent" class="f_red"></span>- 500 characters limit
 		</td>
 		</tr>
 		<tr>
 		<td align="right"> </td>
-		<td><input type="submit" name="submit" value=" 提 交 "{if !$could_up} disabled{/if}/></td>
+		<td><input type="submit" name="submit" value=" Upgrade "{if !$could_up} disabled{/if}/></td>
 		</tr>
 		</table>
 		</form>
@@ -587,15 +587,15 @@
 </div>
 <div class="m_n f_l">&nbsp;</div>
 <div class="m_r f_l">
-	<div class="box_head_1"><div><strong>相關說明</strong></div></div>
+	<div class="box_head_1"><div><strong>Instructions: </strong></div></div>
 	<div class="box_body">
 		<div style="line-height:24px;font-size:13px;padding:5px;">
-		- 如果升級有任何問題，請致電客戶專員<br/>
-		&nbsp;&nbsp;服務電話：{$DT[telephone]}<br/>
+		- Please call service staff if you have any questions about member upgrade.<br/>
+		&nbsp;&nbsp;Hotline: {$DT[telephone]}<br/>
 		</div>
 	</div>
 	<div class="b10"> </div>
-	<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[4][linkurl]}{rewrite('search.php?vip=1')}">更多..</a></span><strong>最新{VIP}</strong></div></div>
+	<div class="box_head_1"><div><span class="f_r"><a href="{$MODULE[4][linkurl]}{rewrite('search.php?vip=1')}">More..</a></span><strong>Latest {VIP}</strong></div></div>
 	<div class="box_body li_dot f_gray">
 		<div id="vips" style="height:220px;overflow:hidden;">
 		<!--{tag("moduleid=4&condition=vip>0&areaid=$cityid&pagesize=20&order=fromtime desc&template=list-com")}-->
@@ -622,22 +622,22 @@ function check() {
 	return false;
 	{/if}
 	if(Dd('company').value.length < 2) {
-		Dmsg('請填寫公司全稱', 'company');
+		Dmsg('Enter the full name of your company.', 'company');
 		return false;
 	}
 	if(Dd('truename').value.length < 2) {
-		Dmsg('請填寫聯繫人', 'truename');
+		Dmsg('Enter a contact name.', 'truename');
 		return false;
 	}
 	if(Dd('telephone').value.length < 6) {
-		Dmsg('請填寫電話號碼', 'telephone');
+		Dmsg('Enter a TEL.', 'telephone');
 		return false;
 	}
 	if(Dd('content').value.length > 500) {
-		Dmsg('附言最多500字 當前已輸入'+Dd('content').value.length+' 字', 'content');
+		Dmsg('Maximum of 500 characters for postscripts. '+Dd('content').value.length+' characters has been entered.', 'content');
 		return false;
 	}
-	return confirm('確認填寫無誤，提交此升級申請嗎？');
+	return confirm('Are you sure to submit the upgrade request?');
 }
 </script>
 {template 'footer'}

@@ -3,11 +3,11 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="action"><a href="cash.php"><span>申請提現</span></a></td>
+<td class="tab" id="action"><a href="cash.php"><span>Withdrawal Request</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_setting"><a href="cash.php?action=setting"><span>帳號設置</span></a></td>
+<td class="tab" id="action_setting"><a href="cash.php?action=setting"><span>Account Setting</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_record"><a href="cash.php?action=record"><span>提現記錄</span></a></td>
+<td class="tab" id="action_record"><a href="cash.php?action=record"><span>Records</span></a></td>
 </tr>
 </table>
 </div>
@@ -16,30 +16,30 @@
 <input type="hidden" name="action" value="{$action}"/>
 <div class="tt">
 <select name="bank">
-<option value="">收款方式</option>
+<option value="">Term of payment</option>
 {loop $BANKS $v}
 <option value="{$v}" {if $bank == $v}selected{/if}>{$v}</option>;
 {/loop}
 </select>
 &nbsp;
-{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}
+{dcalendar('fromtime', $fromtime)} to {dcalendar('totime', $totime)}
 &nbsp;
-<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
-<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+<input type="submit" value=" Search " class="btn"/>&nbsp;
+<input type="button" value=" Reset " class="btn" onclick="window.location='?action={$action}';"/>
 </div>
 </form>
 <div class="bd">
 <table cellpadding="1" cellspacing="0" class="tb">
 <tr>
-<th>流水號</th>
-<th>金額</th>
-<th>手續費</th>
-<th>收款方式</th>
-<th>收款帳號</th>
-<th>收款人</th>
-<th width="130">申請時間</th>
-<th width="130">受理時間</th>
-<th>狀態</th>
+<th>No.</th>
+<th>Amount</th>
+<th>Fee</th>
+<th>Term of Payment</th>
+<th>Beneficiary Account</th>
+<th>Beneficiary</th>
+<th width="130">Request Time</th>
+<th width="130">Acceptance Time</th>
+<th>Status</th>
 </tr>
 {loop $cashs $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
@@ -51,11 +51,11 @@
 <td>{$v[truename]}</td>
 <td class="px11 f_gray">{$v[addtime]}</td>
 <td class="px11 f_gray">{$v[edittime]}</td>
-<td{if $v[note]} title="原因及備註:{$v[note]}"{/if}>{$v[dstatus]}</td>
+<td{if $v[note]} title="Reason &amp; Remark: {$v[note]}"{/if}>{$v[dstatus]}</td>
 </tr>
 {/loop}
 <tr align="center">
-<td height="35"><strong>小計</strong></td>
+<td height="35"><strong>Subtotal</strong></td>
 <td class="px11 f_red">{$amount}</td>
 <td class="px11 f_blue">{$fee}</td>
 <td colspan="6">&nbsp;</td>
@@ -68,20 +68,20 @@
 {if $vbank}
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">收款方式</td>
+<td class="tl">Term of Payment</td>
 <td class="tr">{$member[bank]}</td>
 </tr>
 <tr>
-<td class="tl"> 收款帳號</td>
+<td class="tl"> Beneficiary Account</td>
 <td class="tr">{$member[account]}</td>
 </tr>
 <tr>
-<td class="tl"> 收款人</td>
+<td class="tl"> Beneficiary</td>
 <td class="tr">{$member[truename]}</td>
 </tr>
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_green">已認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_green">Proved</td>
 </tr>
 </table>
 {else}
@@ -89,21 +89,21 @@
 <input type="hidden" name="action" value="{$action}"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl"> <span class="f_red">*</span>收款方式</td>
+<td class="tl"> <span class="f_red">*</span>Term of Payment</td>
 <td class="tr">{$bank_select}</td>
 </tr>
 <tr>
-<td class="tl"> <span class="f_red">*</span>收款帳號</td>
-<td class="tr"><input type="text" size="30" name="account" value="{$member[account]}"/> [注意] 此帳號開戶名必須為 <strong>{$member[truename]}</strong></td>
+<td class="tl"> <span class="f_red">*</span>Beneficiary Account</td>
+<td class="tr"><input type="text" size="30" name="account" value="{$member[account]}"/> [Notice] The account name must be <strong>{$member[truename]}</strong></td>
 </tr>
 <tr>
-<td class="tl"> <span class="f_red">*</span>支付密碼</td>
+<td class="tl"> <span class="f_red">*</span>Payment Password</td>
 <td class="tr">{template 'password', 'chip'}</td>
 </tr>
 <tr>
 <td class="tl"> </td>
 <td class="tr">
-<input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/>
+<input type="submit" name="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/>
 </td>
 </tr>
 </table>
@@ -116,22 +116,22 @@
 <input type="hidden" name="amount" value="{$amount}"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">金額確認</td>
+<td class="tl">Account Confirmation</td>
 <td class="tr" style="line-height:180%;">
-提現金額：<strong>{$amount}</strong><br/>
-手 續 費：<strong>{$fee}</strong><br/>
-實收金額：<strong class="f_red">{$money}</strong><br/>
-可用金額：<strong class="f_blue">{$_money}</strong><br/>
+Withdrawal amount:<strong>{$amount}</strong><br/>
+Fee:<strong>{$fee}</strong><br/>
+Received amount:<strong class="f_red">{$money}</strong><br/>
+Available amount:<strong class="f_blue">{$_money}</strong><br/>
 </td>
 </tr>
 <tr>
-<td class="tl"> <span class="f_red">*</span>支付密碼</td>
+<td class="tl"> <span class="f_red">*</span>Payment Password</td>
 <td class="tr">{template 'password', 'chip'}</td>
 </tr>
 <tr>
 <td class="tl"> </td>
 <td class="tr">
-<input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/>
+<input type="submit" name="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/>
 </td>
 </tr>
 </table>
@@ -142,28 +142,28 @@
 <input type="hidden" name="action" value="confirm"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">我的帳戶</td>
-<td class="tr">可用餘額 <span class="f_red">{$_money}</span> {$DT[money_unit]}</td>
+<td class="tl">My Account</td>
+<td class="tr">Balance <span class="f_red">{$_money}</span> {$DT[money_unit]}</td>
 </tr>
 <tr>
-<td class="tl">提現說明</td>
+<td class="tl">Directions</td>
 <td class="tr f_gray">
-{if $MOD[cash_times]}- 24小時可提現次數{$MOD[cash_times]}次<br/>{/if}
-{if $MOD[cash_min]}- 單次提現最小金額{$MOD[cash_min]}{$DT[money_unit]}<br/>{/if}
-{if $MOD[cash_max]}- 單次提現最大金額{$MOD[cash_max]}{$DT[money_unit]}<br/>{/if}
-{if $MOD[cash_fee]}- 提現費率{$MOD[cash_fee]}%<br/>{/if}
-{if $MOD[cash_fee_min]}- 提現費率最小值{$MOD[cash_fee_min]}{$DT[money_unit]}<br/>{/if}
-{if $MOD[cash_fee_max]}- 提現費率封頂值{$MOD[cash_fee_max]}{$DT[money_unit]}<br/>{/if}
+{if $MOD[cash_times]}- Maximum of {$MOD[cash_times]} withdrawals within 24 hours.<br/>{/if}
+{if $MOD[cash_min]}- Minimum of {$MOD[cash_min]} {$DT[money_unit]} for each operations.<br/>{/if}
+{if $MOD[cash_max]}- Maximum of {$MOD[cash_max]} {$DT[money_unit]} for each operations.<br/>{/if}
+{if $MOD[cash_fee]}- Withdrawal fee is {$MOD[cash_fee]}%.<br/>{/if}
+{if $MOD[cash_fee_min]}- Minimum of {$MOD[cash_fee_min]} {$DT[money_unit]} for withdrawal fee.<br/>{/if}
+{if $MOD[cash_fee_max]}- Maximum of {$MOD[cash_fee_max]} {$DT[money_unit]} for withdrawal fee.<br/>{/if}
 </td>
 </tr>
 <tr>
-<td class="tl"> <span class="f_red">*</span>提現金額</td>
+<td class="tl"> <span class="f_red">*</span>Withdrawal Amount</td>
 <td class="tr"><input type="text" size="10" name="amount"/></td>
 </tr>
 <tr>
 <td class="tl"> </td>
 <td class="tr">
-<input type="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/>
+<input type="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/>
 </td>
 </tr>
 </table>

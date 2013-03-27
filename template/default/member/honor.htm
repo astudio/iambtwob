@@ -3,15 +3,15 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="honor.php?action=add"><span>添加證書</span></a></td>
+<td class="tab" id="add"><a href="honor.php?action=add"><span>Add Certificate</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s3"><a href="honor.php"><span>已發佈<span class="px10">({$nums[3]})</span></span></a></td>
+<td class="tab" id="s3"><a href="honor.php"><span>Released<span class="px10">({$nums[3]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s2"><a href="honor.php?status=2"><span>審核中<span class="px10">({$nums[2]})</span></span></a></td>
+<td class="tab" id="s2"><a href="honor.php?status=2"><span>Pending<span class="px10">({$nums[2]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s1"><a href="honor.php?status=1"><span>未通過<span class="px10">({$nums[1]})</span></span></a></td>
+<td class="tab" id="s1"><a href="honor.php?status=1"><span>Rejected<span class="px10">({$nums[1]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s4"><a href="honor.php?status=4"><span>已過期<span class="px10">({$nums[4]})</span></span></a></td>
+<td class="tab" id="s4"><a href="honor.php?status=4"><span>Expired<span class="px10">({$nums[4]})</span></span></a></td>
 </tr>
 </table>
 </div>
@@ -20,49 +20,49 @@
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 證書名稱</td>
+<td class="tl"><span class="f_red">*</span> Name</td>
 <td class="tr"><input name="post[title]" type="text" id="title" size="40" /> {dstyle('post[style]')} <span id="dtitle" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 發證機構</td>
+<td class="tl"><span class="f_red">*</span> Issuer</td>
 <td class="tr"><input type="text" size="40" name="post[authority]" id="authority"/> <span id="dauthority" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 發證日期</td>
+<td class="tl"><span class="f_red">*</span> Issued Date</td>
 <td class="tr">{dcalendar('post[fromtime]')} <span id="dpostfromtime" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">到期日期</td>
-<td class="tr">{dcalendar('post[totime]')} 不設置表示永久有效</td>
+<td class="tl">Expiry Date</td>
+<td class="tr">{dcalendar('post[totime]')} No setting means permanent.</td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 證書圖片</td>
+<td class="tl"><span class="f_red">*</span> Image</td>
 <td class="tr">
 	<input type="hidden" name="post[thumb]" id="thumb"/>
 	<table width="120">
 	<tr align="center" height="120" class="c_p">
-	<td width="120"><img src="{DT_SKIN}image/waitpic.gif" id="showthumb" title="預覽圖片" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb').src, 1);}else{Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);}"/></td>
+	<td width="120"><img src="{DT_SKIN}image/waitpic.gif" id="showthumb" title="Preview" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb').src, 1);}else{Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);}"/></td>
 	</tr>
 	<tr align="center" height="25">
-	<td><span onclick="Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);" class="jt">[上傳]</span>&nbsp;<span onclick="delAlbum('','wait');" class="jt">[刪除]</span></td>
+	<td><span onclick="Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);" class="jt">[Upload]</span>&nbsp;<span onclick="delAlbum('','wait');" class="jt">[Delete]</span></td>
 	</tr>
 	</table>
 	<span id="dthumb" class="f_red"></span>
 </td>
 </tr>
 <tr>
-<td class="tl">證書介紹</td>
+<td class="tl">Description</td>
 <td class="tr"><textarea name="post[content]" id="content" class="dsn"></textarea>
 {deditor($moduleid, 'content', $group_editor, '98%', 300)}<span id="dcontent" class="f_red"></span>
 </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 添加時間</td>
-<td class="tr"><input type="text" size="21" name="post[addtime]" id="addtime" value="{$addtime}"/> <span class="f_gray">請保持時間格式</span> <span id="daddtime" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Released Date</td>
+<td class="tr"><input type="text" size="21" name="post[addtime]" id="addtime" value="{$addtime}"/> <span class="f_gray">Please remain the date format.</span> <span id="daddtime" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/></td>
 </tr>
 </table>
 </form>
@@ -76,54 +76,54 @@
 <table cellpadding="6" cellspacing="1" class="tb">
 {if $status==1 && $note}
 <tr>
-<td class="tl">未通過原因</td>
+<td class="tl">Rejected Reason</td>
 <td class="tr f_blue">{$note}</td>
 </tr>
 {/if}
 <tr>
-<td class="tl"><span class="f_red">*</span> 證書名稱</td>
+<td class="tl"><span class="f_red">*</span> Name</td>
 <td class="tr"><input name="post[title]" type="text" id="title" size="40" value="{$title}"/>  {dstyle('post[style]', $style)} <span id="dtitle" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 發證機構</td>
+<td class="tl"><span class="f_red">*</span> Issuer</td>
 <td class="tr"><input type="text" size="40" name="post[authority]" id="authority" value="{$authority}"/> <span id="dauthority" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 發證日期</td>
+<td class="tl"><span class="f_red">*</span> Issued Date</td>
 <td class="tr">{dcalendar('post[fromtime]', $fromtime)} <span id="dpostfromtime" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">到期日期</td>
-<td class="tr">{dcalendar('post[totime]', $totime)} 不設置表示永久有效</td>
+<td class="tl">Expiry Date</td>
+<td class="tr">{dcalendar('post[totime]', $totime)} No setting means permanent.</td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 證書圖片</td>
+<td class="tl"><span class="f_red">*</span> Image</td>
 <td class="tr">
 	<input type="hidden" name="post[thumb]" id="thumb" value="{$thumb}"/>
 	<table width="120">
 	<tr align="center" height="120" class="c_p">
-	<td width="120"><img src="{if $thumb}{$thumb}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb" title="預覽圖片" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb').src, 1);}else{Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);}"/></td>
+	<td width="120"><img src="{if $thumb}{$thumb}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb" title="Preview" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb').src, 1);}else{Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);}"/></td>
 	</tr>
 	<tr align="center" height="25">
-	<td><span onclick="Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);" class="jt">[上傳]</span>&nbsp;<span onclick="delAlbum('','wait');" class="jt">[刪除]</span></td>
+	<td><span onclick="Dalbum('',{$moduleid},100, 100, Dd('thumb').value, true);" class="jt">[Upload]</span>&nbsp;<span onclick="delAlbum('','wait');" class="jt">[Delete]</span></td>
 	</tr>
 	</table>
 	 <span id="dthumb" class="f_red"></span>
 </td>
 </tr>
 <tr>
-<td class="tl">證書介紹</td>
+<td class="tl">Description</td>
 <td class="tr"><textarea name="post[content]" id="content" class="dsn">{$content}</textarea>
 {deditor($moduleid, 'content', $group_editor, '98%', 300)}<span id="dcontent" class="f_red"></span>
 </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 添加時間</td>
-<td class="tr"><input type="text" size="21" name="post[addtime]" id="addtime" value="{$addtime}"/> <span class="f_gray">請保持時間格式</span> <span id="daddtime" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Released Date</td>
+<td class="tr"><input type="text" size="21" name="post[addtime]" id="addtime" value="{$addtime}"/> <span class="f_gray">Please remain the date format.</span> <span id="daddtime" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 修 改 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Edit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
@@ -133,37 +133,37 @@
 <form action="honor.php">
 <input type="hidden" name="status" value="{$status}"/>
 <div class="tt">
-&nbsp;<input type="text" size="60" name="kw" value="{$kw}" title="關鍵詞"/> &nbsp;
-<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
-<input type="button" value=" 重 置 " class="btn" onclick="window.location='honor.php?status={$status}';"/>
+&nbsp;<input type="text" size="60" name="kw" value="{$kw}" title="Keyword"/> &nbsp;
+<input type="submit" value=" Search " class="btn"/>&nbsp;
+<input type="button" value=" Reset " class="btn" onclick="window.location='honor.php?status={$status}';"/>
 </div>
 </form>
 <div class="ls">
 <table cellspacing="0" cellpadding="0" class="tb">
 <tr>
-<th width="120">證書</th>
-<th>證書名稱</th>
-<th>發證機構</th>
-<th>發證日期</th>
-<th>到期日期</th>
-<th width="40">修改</th>
-<th width="40">刪除</th>
+<th width="120">Image</th>
+<th>Name</th>
+<th>Issuer</th>
+<th>Issued Date</th>
+<th>Expiry Date</th>
+<th width="40">Edit</th>
+<th width="40">Delete</th>
 </tr>
 {loop $lists $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
-<td title="點擊查看大圖 添加時間: {$v[adddate]} 更新時間: {$v[editdate]}" style="padding:10px 0 10px 0;"><a href="{$v[image]}" target="_blank"><img src="{$v[thumb]}" width="100" height="100"/></a></td>
-<td>{$v[title]}{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="image/why.gif" title="未通過原因"/></a>{/if}</td>
+<td title="Click thumbnail to enlarge. Released Date: {$v[adddate]} Updated Date: {$v[editdate]}" style="padding:10px 0 10px 0;"><a href="{$v[image]}" target="_blank"><img src="{$v[thumb]}" width="100" height="100"/></a></td>
+<td>{$v[title]}{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="image/why.gif" title="Rejected Reason"/></a>{/if}</td>
 <td>{$v[authority]}</td>
 <td class="f_gray">{$v[fromdate]}</td>
 <td class="f_gray">{$v[todate]}</td>
-<td><a href="honor.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="修改" alt=""/></a></td>
-<td><a href="honor.php?action=delete&itemid={$v[itemid]}" onclick="if(!confirm('確定要刪除嗎？此操作將不可撤銷')) return false;"><img width="16" height="16" src="image/delete.png" title="刪除" alt=""/></a></td>
+<td><a href="honor.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="Edit" alt=""/></a></td>
+<td><a href="honor.php?action=delete&itemid={$v[itemid]}" onclick="if(!confirm('Are you sure to delete it?')) return false;"><img width="16" height="16" src="image/delete.png" title="Delete" alt=""/></a></td>
 </tr>
 {/loop}
 </table>
 </div>
 {if $MG[honor_limit]}
-<div class="limit">總共可發 <span class="f_b f_red">{$MG[honor_limit]}</span> 條&nbsp;&nbsp;&nbsp;當前已發 <span class="f_b">{$limit_used}</span> 條&nbsp;&nbsp;&nbsp;還可以發 <span class="f_b f_blue">{$limit_free}</span> 條</div>
+<div class="limit">You can add <span class="f_b f_red">{$MG[honor_limit]}</span> certificate{if $MG[honor_limit]>1}s{/if} in total.&nbsp;&nbsp;&nbsp;You`ve added <span class="f_b">{$limit_used}</span>.&nbsp;&nbsp;&nbsp;<span class="f_b f_blue">{$limit_free}</span> more can be added.</div>
 {/if}
 <div class="pages">{$pages}</div>
 <script type="text/javascript">s('honor');m('s{$status}');</script>
@@ -172,24 +172,24 @@
 <script type="text/javascript">
 function check() {
 	if(Dd('title').value == '') {
-		Dmsg('請填寫證書名稱', 'title');
+		Dmsg('Enter a certificate name.', 'title');
 		return false;
 	}
 	if(Dd('authority').value == '') {
-		Dmsg('請填寫發證機構', 'authority');
+		Dmsg('Enter an issuer.', 'authority');
 		return false;
 	}
 	if(Dd('postfromtime').value == '') {
-		Dmsg('請選擇發證日期', 'postfromtime');
+		Dmsg('Select the issued date.', 'postfromtime');
 		return false;
 	}
 
 	if(Dd('postfromtime').value.replace(/-/g, '') > {$today}) {
-		Dmsg('發證日期尚未開始', 'postfromtime');
+		Dmsg('The issued date of certificate has not yet started.', 'postfromtime');
 		return false;
 	}
 	if(Dd('thumb').value == '') {
-		Dmsg('請上傳證書圖片', 'thumb', 1);
+		Dmsg('Upload an image of this certificate.', 'thumb', 1);
 		return false;
 	}
 	return true;

@@ -2,20 +2,20 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add"><span>添加商品</span></a></td>
+<td class="tab" id="add"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add"><span>Add Product</span></a></td>
 {if $_userid}
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s3"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}"><span>已上架<span class="px10">({$nums[3]})</span></span></a></td>
+<td class="tab" id="s3"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}"><span>For sale<span class="px10">({$nums[3]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s2"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=2"><span>審核中<span class="px10">({$nums[2]})</span></span></a></td>
+<td class="tab" id="s2"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=2"><span>Pending<span class="px10">({$nums[2]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s1"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=1"><span>未通過<span class="px10">({$nums[1]})</span></span></a></td>
+<td class="tab" id="s1"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=1"><span>Rejected<span class="px10">({$nums[1]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s4"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=4"><span>已下架<span class="px10">({$nums[4]})</span></span></a></td>
+<td class="tab" id="s4"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status=4"><span>Removed<span class="px10">({$nums[4]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="type"><a href="{$MODULE[2][linkurl]}trade.php"><span>訂單管理<span class="px10">({$nums[9]})</span></span></a></td>
+<td class="tab" id="type"><a href="{$MODULE[2][linkurl]}trade.php"><span>Order management<span class="px10">({$nums[9]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="type"><a href="{$MODULE[2][linkurl]}type.php?item=mall"><span>商品分類<span class="px10">({$nums[0]})</span></span></a></td>
+<td class="tab" id="type"><a href="{$MODULE[2][linkurl]}type.php?item=mall"><span>Category<span class="px10">({$nums[0]})</span></span></a></td>
 {/if}
 </tr>
 </table>
@@ -30,33 +30,33 @@
 <table cellpadding="6" cellspacing="1" class="tb">
 {if $status==1 && $action=='edit' && $note}
 <tr>
-<td class="tl">未通過原因</td>
+<td class="tl"> REASON WHY</td>
 <td class="tr f_blue">{$note}</td>
 </tr>
 {/if}
 <tr>
-<td class="tl"><span class="f_red">*</span> 商品分類</td>
-<td class="tr"><div id="catesch"></div>{ajax_category_select('post[catid]', '', $catid, $moduleid, 'size="2" style="height:120px;width:180px;"')}<br/>{if $DT[schcate_limit]}<input type="button" value="搜索分類" onclick="schcate({$moduleid});" class="btn"/> {/if}<span id="dcatid" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Category</td>
+<td class="tr"><div id="catesch"></div>{ajax_category_select('post[catid]', '', $catid, $moduleid, 'size="2" style="height:120px;width:180px;"')}<br/>{if $DT[schcate_limit]}<input type="button" value="Search by category" onclick="schcate({$moduleid});" class="btn"/> {/if}<span id="dcatid" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 商品名稱</td>
-<td class="tr f_gray"><input name="post[title]" type="text" id="title" size="50" value="{$title}"/> （2-30個字）<span id="dtitle" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Product name</td>
+<td class="tr f_gray"><input name="post[title]" type="text" id="title" size="50" value="{$title}"/> (2-100 characters)<span id="dtitle" class="f_red"></span></td>
 </tr>
 {if $action=='add' && $could_color}
 <tr>
-<td class="tl">標題顏色</td>
+<td class="tl">Color of Title</td>
 <td class="tr">
 {dstyle('style')}&nbsp;
-設置信息標題顏色需消費 <strong class="f_red">{$MOD[credit_color]}</strong> {$DT[credit_name]}
+To set the color you need to pay <strong class="f_red">{$MOD[credit_color]}</strong> {$DT[credit_ename]}
 </td>
 </tr>
 {/if}
 <tr>
-<td class="tl"><span class="f_red">*</span> 商品價格</td>
+<td class="tl"><span class="f_red">*</span> Price</td>
 <td class="tr"><input name="post[price]" type="text" size="10" value="{$price}" id="price"/><span id="dprice" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 商品庫存</td>
+<td class="tl"><span class="f_red">*</span> In stock</td>
 <td class="tr"><input name="post[amount]" type="text" size="10" value="{$amount}" id="amount"/><span id="damount" class="f_red"></span></td>
 </tr>
 {if $CP}
@@ -72,13 +72,13 @@ var property_admin = 0;
 </tbody>
 {/if}
 <tr>
-<td class="tl">商品品牌</td>
+<td class="tl">Brand</td>
 <td class="tr"><input name="post[brand]" type="text" size="30" value="{$brand}"/></td>
 </tr>
 {if $FD}{fields_html('<td class="tl">', '<td class="tr">', $item)}{/if}
 
 <tr>
-<td class="tl">商品圖片</td>
+<td class="tl">Images</td>
 <td class="tr">
 	<input type="hidden" name="post[thumb]" id="thumb" value="{$thumb}"/>
 {if $IMVIP || !$MG[uploadpt]}
@@ -87,24 +87,24 @@ var property_admin = 0;
 {/if}
 	<table width="360">
 	<tr align="center" height="120" class="c_p">
-	<td width="120"><img src="{if $thumb}{$thumb}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb" title="預覽圖片" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb').src, 1);}else{Dalbum('',{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);}"/></td>
+	<td width="120"><img src="{if $thumb}{$thumb}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb" title="Preview" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb').src, 1);}else{Dalbum('',{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);}"/></td>
 {if $IMVIP || !$MG[uploadpt]}
-	<td width="120"><img src="{if $thumb1}{$thumb1}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb1" title="預覽圖片" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb1').src, 1);}else{Dalbum(1,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb1').value, true);}"/></td>
+	<td width="120"><img src="{if $thumb1}{$thumb1}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb1" title="Preview" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb1').src, 1);}else{Dalbum(1,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb1').value, true);}"/></td>
 
-	<td width="120"><img src="{if $thumb2}{$thumb2}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb2" title="預覽圖片" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb2').src, 1);}else{Dalbum(2,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb2').value, true);}"/></td>
+	<td width="120"><img src="{if $thumb2}{$thumb2}{else}{DT_SKIN}image/waitpic.gif{/if}" id="showthumb2" title="Preview" alt="" onclick="if(this.src.indexOf('waitpic.gif') == -1){_preview(Dd('showthumb2').src, 1);}else{Dalbum(2,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb2').value, true);}"/></td>
 {else}
 	<td width="120"><a href="{$MODULE[2][linkurl]}grade.php" target="_blank"><img src="{DT_SKIN}image/vippic.gif"/></a></td>
 	<td width="120"><a href="{$MODULE[2][linkurl]}grade.php" target="_blank"><img src="{DT_SKIN}image/vippic.gif"/></a></td>
 {/if}
 	</tr>
 	<tr align="center" class="c_p">
-	<td><img src="image/img_upload.gif" width="12" height="12" title="上傳" onclick="Dalbum('',{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="選擇" onclick="selAlbum('');"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="刪除" onclick="delAlbum('','wait');"/></td>
+	<td><img src="image/img_upload.gif" width="12" height="12" title="Upload" onclick="Dalbum('',{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="Select" onclick="selAlbum('');"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="Delete" onclick="delAlbum('','wait');"/></td>
 {if $IMVIP || !$MG[uploadpt]}
-	<td><img src="image/img_upload.gif" width="12" height="12" title="上傳" onclick="Dalbum(1,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb1').value, true);"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="選擇" onclick="selAlbum(1);"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="刪除" onclick="delAlbum(1,'wait');"/></td>
-	<td><img src="image/img_upload.gif" width="12" height="12" title="上傳" onclick="Dalbum(2,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb2').value, true);"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="選擇" onclick="selAlbum(2);"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="刪除" onclick="delAlbum(2,'wait');"/></td>
+	<td><img src="image/img_upload.gif" width="12" height="12" title="Upload" onclick="Dalbum(1,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb1').value, true);"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="Select" onclick="selAlbum(1);"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="Delete" onclick="delAlbum(1,'wait');"/></td>
+	<td><img src="image/img_upload.gif" width="12" height="12" title="Upload" onclick="Dalbum(2,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb2').value, true);"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="Select" onclick="selAlbum(2);"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="Delete" onclick="delAlbum(2,'wait');"/></td>
 {else}
-	<td onclick="if(confirm('此操作僅限{VIP}會員，是否現在申請？')) Go('{$MODULE[2][linkurl]}grade.php');"><img src="image/img_upload.gif" width="12" height="12" title="上傳"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="選擇"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="刪除"/></td>
-	<td onclick="if(confirm('此操作僅限{VIP}會員，是否現在申請？')) Go('{$MODULE[2][linkurl]}grade.php');"><img src="image/img_upload.gif" width="12" height="12" title="上傳"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="選擇"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="刪除"/></td>
+	<td onclick="if(confirm(' Upgrade {VIP} to do it now!')) Go('{$MODULE[2][linkurl]}grade.php');"><img src="image/img_upload.gif" width="12" height="12" title="Upload"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="Select"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="Delete"/></td>
+	<td onclick="if(confirm(' Upgrade {VIP} to do it now!')) Go('{$MODULE[2][linkurl]}grade.php');"><img src="image/img_upload.gif" width="12" height="12" title="Upload"/>&nbsp;&nbsp;<img src="image/img_select.gif" width="12" height="12" title="Select"/>&nbsp;&nbsp;<img src="image/img_delete.gif" width="12" height="12" title="Delete"/></td>
 {/if}
 	</tr>
 	</table>
@@ -112,7 +112,7 @@ var property_admin = 0;
 </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 商品詳情</td>
+<td class="tl"><span class="f_red">*</span> Description</td>
 <td class="tr f_gray"><textarea name="post[content]" id="content" class="dsn">{$content}</textarea>
 {deditor($moduleid, 'content', $group_editor, '98%', 350)}<br/>
 <span id="dcontent" class="f_red"></span>
@@ -122,55 +122,55 @@ var property_admin = 0;
 {php include DT_ROOT.'/file/swfupload/editor.inc.php';}
 {/if}
 <tr{if !$_userid} style="display:none;"{/if}>
-<td class="tl">自定義分類</td>
-<td class="tr">{$mycatid_select}&nbsp; <a href="{$MODULE[2][linkurl]}type.php?item=mall" class="t" target="_blank">[管理分類]</a></td>
+<td class="tl">Customize category</td>
+<td class="tr">{$mycatid_select}&nbsp; <a href="{$MODULE[2][linkurl]}type.php?item=mall" class="t" target="_blank">[category management]</a></td>
 </tr>
 <tr{if !$_userid} style="display:none;"{/if}>
-<td class="tl">我的推薦</td>
+<td class="tl">My recommend</td>
 <td class="tr">
-<input type="radio" name="post[elite]" value="1"{if $elite} checked{/if}/> 是
+<input type="radio" name="post[elite]" value="1"{if $elite} checked{/if}/> Yes
 &nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="post[elite]" value="0"{if !$elite} checked{/if}/> 否
+<input type="radio" name="post[elite]" value="0"{if !$elite} checked{/if}/> No
 </td>
 </tr>
 {if $fee_add}
 <tr>
-<td class="tl">發佈此信息需消費</td>
+<td class="tl">release it you need to pay</td>
 <td class="tr"><span class="f_b f_red">{$fee_add}</span> {$fee_unit}</td>
 </tr>
 {if $fee_currency == 'money'}
 <tr>
-<td class="tl">{$DT[money_name]}餘額</td>
-<td class="tr"><span class="f_blue f_b">{$_money}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+<td class="tl">{$DT[money_ename]} Balance</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}charge.php?action=pay" target="_blank" class="t">[Topup]</a></td>
 </tr>
 {else}
 <tr>
-<td class="tl">{$DT[credit_name]}餘額</td>
-<td class="tr"><span class="f_blue f_b">{$_credit}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}credit.php?action=buy" target="_blank" class="t">[購買]</a></td>
+<td class="tl">{$DT[credit_ename]} Balance</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}credit.php?action=buy" target="_blank" class="t">[Buy]</a></td>
 </tr>
 {/if}
 {/if}
 {if $need_password}
 <tr>
-<td class="tl"><span class="f_red">*</span> 支付密碼</td>
+<td class="tl"><span class="f_red">*</span> Payment Password</td>
 <td class="tr">{template 'password', 'chip'} <span id="dpassword" class="f_red"></span></td>
 </tr>
 {/if}
 {if $need_question}
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證問題</td>
+<td class="tl"><span class="f_red">*</span> Security Question</td>
 <td class="tr">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
 </tr>
 {/if}
 {if $need_captcha}
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tl"><span class="f_red">*</span> Security Code</td>
 <td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 {/if}
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 提 交 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value="submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
@@ -185,18 +185,18 @@ var property_admin = 0;
 <form action="{$MODULE[2][linkurl]}{$DT[file_my]}">
 <input type="hidden" name="mid" value="{$mid}"/>
 <input type="hidden" name="status" value="{$status}"/>
-&nbsp;{category_select('catid', '商品分類', $catid, $moduleid)}&nbsp;
+&nbsp;{category_select('catid', 'category', $catid, $moduleid)}&nbsp;
 {$mycat_select}&nbsp;
-<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<input type="text" size="30" name="kw" value="{$kw}" title="Keyword"/>&nbsp;
 {$order_select}&nbsp;
-<input type="submit" value=" 搜 索 " class="btn"/>
-<input type="button" value=" 重 置 " class="btn" onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status={$status}';"/>
+<input type="submit" value="Search" class="btn"/>
+<input type="button" value=" Reset " class="btn" onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&status={$status}';"/>
 <div class="b10"></div>
-&nbsp;單價：<input type="text" size="3" name="minprice" value="<?php echo $minprice;?>"/> ~ <input type="text" size="3" name="maxprice" value="<?php echo $maxprice;?>"/>&nbsp;
-訂單：<input type="text" size="3" name="minorders" value="<?php echo $minorders;?>"/> ~ <input type="text" size="3" name="maxorders" value="<?php echo $maxorders;?>"/>&nbsp;
-銷量：<input type="text" size="3" name="minsales" value="<?php echo $minsales;?>"/> ~ <input type="text" size="3" name="maxsales" value="<?php echo $maxsales;?>"/>&nbsp;
-庫存：<input type="text" size="3" name="minamount" value="<?php echo $minamount;?>"/> ~ <input type="text" size="3" name="maxamount" value="<?php echo $maxamount;?>"/>&nbsp;
-評論：<input type="text" size="3" name="mincomments" value="<?php echo $mincomments;?>"/> ~ <input type="text" size="3" name="maxcomments" value="<?php echo $maxcomments;?>"/>&nbsp;
+&nbsp;Price: <input type="text" size="3" name="minprice" value="<?php echo $minprice;?>"/> ~ <input type="text" size="3" name="maxprice" value="<?php echo $maxprice;?>"/>&nbsp;
+Order: <input type="text" size="3" name="minorders" value="<?php echo $minorders;?>"/> ~ <input type="text" size="3" name="maxorders" value="<?php echo $maxorders;?>"/>&nbsp;
+Sold: <input type="text" size="3" name="minsales" value="<?php echo $minsales;?>"/> ~ <input type="text" size="3" name="maxsales" value="<?php echo $maxsales;?>"/>&nbsp;
+Available: <input type="text" size="3" name="minamount" value="<?php echo $minamount;?>"/> ~ <input type="text" size="3" name="maxamount" value="<?php echo $maxamount;?>"/>&nbsp;
+Comments: <input type="text" size="3" name="mincomments" value="<?php echo $mincomments;?>"/> ~ <input type="text" size="3" name="maxcomments" value="<?php echo $maxcomments;?>"/>&nbsp;
 </form>
 </div>
 <div class="ls">
@@ -204,32 +204,32 @@ var property_admin = 0;
 <table cellpadding="0" cellspacing="0" class="tb">
 <tr>
 <th width="20"><input type="checkbox" onclick="checkall(this.form);"/></th>
-<th width="60">圖片</th>
-<th>商品</th>
-<th>價格</th>
-<th>訂單</th>
-<th>銷量</th>
-<th>庫存</th>
-<th>評論</th>
-<th>人氣</th>
-<th width="100">管理</th>
+<th width="60">Image</th>
+<th>Product</th>
+<th>Price</th>
+<th>Order</th>
+<th>Available</th>
+<th>In Stock</th>
+<th>Comments</th>
+<th>Popularity</th>
+<th width="100">manage</th>
 </tr>
 {loop $lists $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
 <td><a href="javascript:_preview('{$v[thumb]}');"><img src="{if $v[thumb]}{$v[thumb]}{else}{DT_SKIN}image/nopic50.gif{/if}" width="50" class="thumb"/></a></td>
-<td align="left" title="{$v[alt]}"><ul><li>&nbsp;{if $v[elite]}<span class="f_red" title="公司主頁推薦">[薦]</span> {/if}{if $v[status]>2}<a href="{$v[linkurl]}" target="_blank" class="t">{else}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="image/why.gif" title="未通過原因"/></a>{/if}</li><li title="更新時間 {timetodate($v[edittime], 5)} 添加時間 {timetodate($v[addtime], 5)}" class="px11 f_gray">&nbsp;{if $timetype=='add'}{timetodate($v[addtime], 5)}{else}{timetodate($v[edittime], 5)}{/if}</li></ul></td>
+<td align="left" title="{$v[alt]}"><ul><li>&nbsp;{if $v[elite]}<span class="f_red" title="Show it on your homepage">[YES]</span> {/if}{if $v[status]>2}<a href="{$v[linkurl]}" target="_blank" class="t">{else}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="image/why.gif" title="REASON WHY"/></a>{/if}</li><li title="Update {timetodate($v[edittime], 5)} Add time {timetodate($v[addtime], 5)}" class="px11 f_gray">&nbsp;{if $timetype=='add'}{timetodate($v[addtime], 5)}{else}{timetodate($v[edittime], 5)}{/if}</li></ul></td>
 <td class="f_price">{$v[price]}</td>
-<td class="px11{if $v[orders]>0} f_blue f_b c_p" title="查看訂單" onclick="Go('{$MODULE[2][linkurl]}trade.php?mallid={$v[itemid]}');{/if}">{$v[orders]}</td>
+<td class="px11{if $v[orders]>0} f_blue f_b c_p" title="Check Order" onclick="Go('{$MODULE[2][linkurl]}trade.php?mallid={$v[itemid]}');{/if}">{$v[orders]}</td>
 <td class="px11">{$v[sales]}</td>
-<td class="px11{if $v[amount]<5} f_red f_b" title="庫存不足{/if}">{$v[amount]}</td>
+<td class="px11{if $v[amount]<5} f_red f_b" title="Out of stock{/if}">{$v[amount]}</td>
 <td class="px11">{$v[comments]}</td>
 <td class="px11">{$v[hits]}</td>
 <td>
-<a href="{$MODULE[2][linkurl]}trade.php?mallid={$v[itemid]}"><img width="16" height="16" src="image/order.gif" title="訂單管理" alt=""/></a>
-<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="修改" alt=""/></a>
-{if $MG[copy]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add&itemid={$v[itemid]}&catid={$v[catid]}"><img width="16" height="16" src="image/new.png" title="複製信息" alt=""/></a>{/if}
-{if $MG[delete]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=delete&itemid={$v[itemid]}" onclick="return confirm('確定要刪除嗎？此操作將不可撤銷');"><img width="16" height="16" src="image/delete.png" title="刪除" alt=""/></a>{/if}
+<a href="{$MODULE[2][linkurl]}trade.php?mallid={$v[itemid]}"><img width="16" height="16" src="image/order.gif" title="Order Management" alt=""/></a>
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="Modify" alt=""/></a>
+{if $MG[copy]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add&itemid={$v[itemid]}&catid={$v[catid]}"><img width="16" height="16" src="image/new.png" title="Copy Message" alt=""/></a>{/if}
+{if $MG[delete]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=delete&itemid={$v[itemid]}" onclick="return confirm(' Are you sure you want to delete?');"><img width="16" height="16" src="image/delete.png" title="Delete" alt=""/></a>{/if}
 </td>
 </tr>
 {/loop}
@@ -238,14 +238,14 @@ var property_admin = 0;
 {if $MG[delete] || $timetype!='add'}
 <div class="btns">
 {if $MG[delete]}
-<span class="f_r"><input type="submit" value=" 刪除選中 " class="btn" onclick="if(confirm('確定要刪除選中{$MOD[name]}嗎？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/></span>
+<span class="f_r"><input type="submit" value=" Select to delete " class="btn" onclick="if(confirm('Are you sure to delete{$MOD[name]}？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/></span>
 {/if}
-{if $status==3}<input type="submit" value=" 批量下架 " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=unsale';"/>&nbsp;{/if}
-{if $status==4}<input type="submit" value=" 批量上架 " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=onsale';"/>&nbsp;{/if}
+{if $status==3}<input type="submit" value=" Remove more than 2 products " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=unsale';"/>&nbsp;{/if}
+{if $status==4}<input type="submit" value=" Upload more than 2 products " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=onsale';"/>&nbsp;{/if}
 {if $timetype!='add'}
-<input type="submit" value=" 刷新選中 " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=refresh';"/>
+<input type="submit" value=" Refresh " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=refresh';"/>
 {if $MOD[credit_refresh]}
-刷新一條信息一次需消費 <strong class="f_red">{$MOD[credit_refresh]}</strong> {$DT[credit_name]}，當{$DT[credit_name]}不足時將不可刷新
+To refresh you need to pay  <strong class="f_red">{$MOD[credit_refresh]}</strong> {$DT[credit_name]}，can not do that when out of {$DT[credit_name]}
 {/if}
 {/if}
 </div>
@@ -254,13 +254,13 @@ var property_admin = 0;
 {if $MG[mall_limit] || (!$MG['fee_mode'] && $MOD[fee_add])}
 <div class="limit">
 {if $MG[mall_limit]}
-總共可發 <span class="f_b f_red">{$MG[mall_limit]}</span> 條&nbsp;&nbsp;&nbsp;
-當前已發 <span class="f_b">{$limit_used}</span> 條&nbsp;&nbsp;&nbsp;
-還可以發 <span class="f_b f_blue">{$limit_free}</span> 條&nbsp;&nbsp;&nbsp;
+you can send <span class="f_b f_red">{$MG[mall_limit]}</span> &nbsp;&nbsp;&nbsp;
+You`ve sent <span class="f_b">{$limit_used}</span> &nbsp;&nbsp;&nbsp;
+<span class="f_b f_blue">{$limit_free}</span> available&nbsp;&nbsp;&nbsp;
 {/if}
 {if !$MG['fee_mode'] && $MOD[fee_add]}
-發佈信息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
-可免費發佈 <span class="f_b">{if $MG[mall_free_limit]<0}無限{else}{$MG[mall_free_limit]}{/if}</span> 條&nbsp;&nbsp;&nbsp;
+To release it you need to pay <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/&nbsp;&nbsp;&nbsp;
+you can do it for free <span class="f_b">{if $MG[mall_free_limit]<0}无限{else}{$MG[mall_free_limit]}{/if}</span> &nbsp;&nbsp;&nbsp;
 {/if}
 </div>
 {/if}
@@ -279,37 +279,37 @@ function check() {
 	var f;
 	f = 'catid_1';
 	if(Dd(f).value == 0) {
-		Dmsg('請選擇商品分類', 'catid', 1);
+		Dmsg('Select a category.', 'catid', 1);
 		return false;
 	}
 	f = 'title';
 	l = Dd(f).value.length;
-	if(l < 2) {
-		Dmsg('商品名稱最少2字，當前已輸入'+l+'字', f);
+	if(l < 2 || l > 100) {
+		Dmsg('Min.2/Max.100. Current '+l+'.', f);
 		return false;
 	}
 	f = 'price';
 	l = Dd(f).value;
 	if(l < 0.1) {
-		Dmsg('請填寫商品價格', f);
+		Dmsg('Please fill in price.', f);
 		return false;
 	}
 	f = 'amount';
 	l = Dd(f).value;
 	if(l < 1) {
-		Dmsg('請填寫庫存', f);
+		Dmsg('Please fill in quantity.', f);
 		return false;
 	}
 	f = 'thumb';
 	l = Dd(f).value.length;
 	if(l < 5) {
-		Dmsg('請上傳第一張商品圖片', f);
+		Dmsg('Upload your image.', f);
 		return false;
 	}
 	f = 'content';
 	l = FCKLen();
 	if(l < 15 || l > 50000) {
-		Dmsg('詳細說明應為15-50000字，當前已輸入'+l+'字', f);
+		Dmsg('Specification should be 15-50000 characters. Current '+l+'.', f);
 		return false;
 	}
 	{if $FD}{fields_js()}{/if}
@@ -318,7 +318,7 @@ function check() {
 		for(var i = 0; i < ptrs.length; i++) {		
 			f = 'property-'+ptrs[i].value;
 			if(Dd(f).value == 0 || Dd(f).value == '') {
-				Dmsg('請填寫或選擇'+ptrs[i].innerHTML, f);
+				Dmsg('Please fill in or select'+ptrs[i].innerHTML, f);
 				return false;
 			}
 		}
@@ -327,7 +327,7 @@ function check() {
 	f = 'password';
 	l = Dd(f).value.length;
 	if(l < 6) {
-		Dmsg('請填寫支付密碼', f);
+		Dmsg('Enter your payment password.', f);
 		return false;
 	}
 {/if}
@@ -335,7 +335,7 @@ function check() {
 	f = 'answer';
 	l = Dd(f).value.length;
 	if(l < 1) {
-		Dmsg('請填寫驗證問題', f);
+		Dmsg('Answer the security question.', f);
 		return false;
 	}
 	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
@@ -347,7 +347,7 @@ function check() {
 	f = 'captcha';
 	l = Dd(f).value;
 	if(!is_captcha(l)) {
-		Dmsg('請填寫正確的驗證碼', f);
+		Dmsg('Enter security code.', f);
 		return false;
 	}
 	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {

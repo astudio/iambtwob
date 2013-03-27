@@ -1,4 +1,5 @@
 {template 'header'}
+<style>.btn {width:60px;letter-spacing:0;background:none;background-color:#d7d7d7;} #ccaptcha img {top:0;left:0;}</style>
 <div class="m">
 	<table cellpadding="0" cellspacing="0" width="100%">
 	<tr>
@@ -10,7 +11,7 @@
 	</td>
 	<td valign="top">
 		<div class="left_box">		
-			<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">Contact Us</a></div>
+			<!-- <div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">Contact Us</a></div> -->
 			<div class="pd20">
 			<form action="index.php" method="post" onsubmit="return check();">
 			<table width="100%" cellpadding="8" cellspacing="1" bgcolor="#E3EEF5">
@@ -32,10 +33,10 @@
 			</td>
 			</tr>
 			<tr>
-			<td bgcolor="#F1F7FC" width="90" align="right">與我聯繫&nbsp;&nbsp;</td>
+			<td bgcolor="#F1F7FC" width="90" align="right">Contact Us&nbsp;&nbsp;</td>
 			<td bgcolor="#FFFFFF">
-			<input type="radio" name="my" value="1" id="my_1" onclick="Ds('gb_contact');"/> <label for="my_1">需要</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="radio" name="my" value="0" id="my_0" checked onclick="Dh('gb_contact');"/> <label for="my_0">不需要</label>
+			<input type="radio" name="my" value="1" id="my_1" onclick="Ds('gb_contact');"/> <label for="my_1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="my" value="0" id="my_0" checked onclick="Dh('gb_contact');"/> <label for="my_0">No</label>
 			</td>
 			</tr>
 			<tbody id="gb_contact" style="display:none;">

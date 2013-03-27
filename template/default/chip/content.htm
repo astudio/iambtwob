@@ -12,28 +12,28 @@
 		{if $fax}Fax: {anti_spam($fax)}<br/>{/if}
 		{if $email}Email：{anti_spam($email)}<br/>{/if}
 		{if $msn}MSN：<a href="msnim:chat?contact={$msn}">{$msn}</a><br/>{/if}
-		{if $qq}QQ：<a href="tencent://message/?uin={$qq}&Site={$title}&Menu=yes"><img src="http://wpa.qq.com/pa?p=1:{$qq}:17" width="25" height="17" title="點擊QQ交談/留言" alt=""/> {$qq}</a><br/>{/if}
+		{if $qq}QQ：<a href="tencent://message/?uin={$qq}&Site={$title}&Menu=yes"><img src="http://wpa.qq.com/pa?p=1:{$qq}:17" width="25" height="17" title="Chat/Message by QQ" alt=""/> {$qq}</a><br/>{/if}
 		</div>
 	{elseif $module == 'job'}
 		<table cellpadding="6" cellspacing="0" width="100%">
 		<tr>
-		<td width="100" align="center">聯繫手機</td>
+		<td width="100" align="center">Mobile</td>
 		<td>{anti_spam($mobile)}</td>
 		</tr>
 		<tr>
-		<td align="center">電子郵件</td>
+		<td align="center">Email</td>
 		<td >{anti_spam($email)}</td>
 		</tr>
 		<tr>
-		<td align="center">聯繫電話</td>
+		<td align="center">TEL</td>
 		<td>{anti_spam($telephone)}</td>
 		</tr>
 		<tr>
-		<td align="center">聯繫地址</td>
+		<td align="center">Address</td>
 		<td>{$address}</td>
 		</tr>
 		<tr>
-		<td align="center">即時通訊</td>
+		<td align="center">Live Chat</td>
 		<td>
 		{if $username && $DT[im_web]}{im_web($username.'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
 		{if $qq && $DT[im_qq]}{im_qq($qq)}&nbsp;{/if}
@@ -47,7 +47,7 @@
 		<div class="best_answer_show">
 		{$best[content]}
 		{if $best[linkurl]}<br/>
-		<span class="px12"><strong>參考資料：</strong><a href="{fix_link($best[linkurl])}" target="_blank">{$best[linkurl]}</a></span>
+		<span class="px12"><strong>Reference: </strong><a href="{fix_link($best[linkurl])}" target="_blank">{$best[linkurl]}</a></span>
 		{/if}
 		</div>
 	{elseif $module == 'down'}
@@ -134,7 +134,7 @@
 </tr>
 {if $DT[telephone]}
 <tr>
-<td>咨詢電話：{$DT[telephone]}</td>
+<td>Hotline: {$DT[telephone]}</td>
 </tr>
 {/if}
 <tr>
@@ -151,29 +151,29 @@
 <br/><br/>
 <div class="user" style="margin:auto;width:300px;">
 <br/>
-<div class="user_warn"><img src="{DT_SKIN}image/no.gif" align="absmiddle"/> 您還沒有登錄，請登錄後查看詳情</div>
+<div class="user_warn"><img src="{DT_SKIN}image/no.gif" align="absmiddle"/> Please login first for viewing contact information</div>
 <div class="user_login">
 	<form action="{$MODULE[2][linkurl]}{$DT[file_login]}" method="post" onsubmit="return user_login();">
 	<input type="hidden" name="submit" value="1"/>
-	<input name="username" id="user_name" type="text" value="會員名/Email" onfocus="if(this.value=='會員名/Email')this.value='';" class="user_input"/>&nbsp; 
+	<input name="username" id="user_name" type="text" value="username/Email" onfocus="if(this.value=='Username/Email')this.value='';" class="user_input"/>&nbsp; 
 	<input name="password" id="user_pass" type="password" value="password" onfocus="if(this.value=='password')this.value='';" class="user_input"/>&nbsp; 
 	<input type="image" src="{DT_SKIN}image/user_login.gif" align="absmiddle"/>
 	</form>
 </div>
-<div class="user_tip">免費註冊為會員後，您可以...</div>
+<div class="user_tip">Join free as a member, you can...</div>
 <div class="user_can">
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> 發佈供求信息</td>
-<td><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> 推廣企業產品</td>
+<td><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> Post leads</td>
+<td><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> Display products</td>
 </tr>
 <tr>
-<td><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> 建立企業商舖</td>
-<td><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> 在線洽談生意</td>
+<td><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> Create website</td>
+<td><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> Access to buyers</td>
 </tr>
 </table>
 </div>
-<div class="user_reg"><a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><img src="{DT_SKIN}image/user_reg.gif" width="260" height="26" alt="還不是會員，立即免費註冊"/></a></div>
+<div class="user_reg"><a href="{$MODULE[2][linkurl]}{$DT[file_register]}"><img src="{DT_SKIN}image/user_reg.gif" width="260" height="26" alt="Not a member, now Join Free"/></a></div>
 <div class="user_foot">&nbsp;</div>
 </div>
 <br/><br/>

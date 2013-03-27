@@ -3,11 +3,11 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="alert.php?action=add"><span>添加提醒</span></a></td>
+<td class="tab" id="add"><a href="alert.php?action=add"><span>Create Alert</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s3"><a href="alert.php"><span>已通過<span class="px10">({$nums[3]})</span></span></a></td>
+<td class="tab" id="s3"><a href="alert.php"><span>Released<span class="px10">({$nums[3]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s2"><a href="alert.php?status=2"><span>審核中<span class="px10">({$nums[2]})</span></span></a></td>
+<td class="tab" id="s2"><a href="alert.php?status=2"><span>Pending<span class="px10">({$nums[2]})</span></span></a></td>
 </tr>
 </table>
 </div>
@@ -19,37 +19,37 @@
 <input type="hidden" name="forward" value="{$forward}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl">商機類型</td>
-<td class="tr f_b">{$MODULE[$mid][name]}</td>
+<td class="tl">Channel</td>
+<td class="tr f_b">{$MODULE[$mid][ename]}</td>
 </tr>
 <tr>
-<td class="tl">關鍵詞</td>
+<td class="tl">Keyword</td>
 <td class="tr"><input type="text" name="post[word]" id="word" size="30" value="{$word}" maxlength="30"/><span id="dword" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">行業分類</td>
+<td class="tl">Category</td>
 <td class="tr"><div id="catesch"></div>{ajax_category_select('post[catid]', '', $catid, $mid, 'size="2" style="height:120px;width:180px;"')}<span id="dcatid" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">所在地區</td>
-<td class="tr">{ajax_area_select('post[areaid]', '請選擇', $areaid)} <span id="dareaid" class="f_red"></span></td>
+<td class="tl">Location</td>
+<td class="tr">{ajax_area_select('post[areaid]', 'Select a location', $areaid)} <span id="dareaid" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">發送頻率</td>
+<td class="tl">Frequency</td>
 <td class="tr">
 <select name="post[rate]">
-<option value="0"{if $rate==0} selected{/if}>不限</option>
-<option value="1"{if $rate==1} selected{/if}>1天</option>
-<option value="3"{if $rate==3} selected{/if}>3天</option>
-<option value="7"{if $rate==7} selected{/if}>7天</option>
-<option value="15"{if $rate==15} selected{/if}>15天</option>
-<option value="30"{if $rate==30} selected{/if}>30天</option>
+<option value="0"{if $rate==0} selected{/if}>Unlimited</option>
+<option value="1"{if $rate==1} selected{/if}>1 day</option>
+<option value="3"{if $rate==3} selected{/if}>3 days</option>
+<option value="7"{if $rate==7} selected{/if}>7 days</option>
+<option value="15"{if $rate==15} selected{/if}>15 days</option>
+<option value="30"{if $rate==30} selected{/if}>30 days</option>
 </select>
 </td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Create " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/></td>
 </tr>
 </table>
 </form>
@@ -57,10 +57,10 @@
 {elseif $action=='choose'}
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 請選擇商機類型</td>
+<td class="tl"><span class="f_red">*</span> Channel</td>
 <td class="tr">
 {loop $mids $v}
-<input type="radio" name="mid" value="{$v}" id="mid_{$v}" onclick="Go('?action=add&mid={$v}');"/><label for="mid_{$v}"> {$MODULE[$v][name]}</label>&nbsp;&nbsp;
+<input type="radio" name="mid" value="{$v}" id="mid_{$v}" onclick="Go('?action=add&mid={$v}');"/><label for="mid_{$v}"> {$MODULE[$v][ename]}</label>&nbsp;&nbsp;
 {/loop}
 </td>
 </tr>
@@ -70,39 +70,39 @@
 <div class="ls">
 <table cellpadding="0" cellspacing="0" class="tb">
 <tr>
-<th>類別</th>
-<th>關鍵詞</th>
-<th>行業</th>
-<th>地區</th>
-<th>添加時間</th>
-<th>上次發送</th>
-<th>頻率</th>
-<th width="60">管理</th>
+<th>Channel</th>
+<th>Keyword</th>
+<th>Category</th>
+<th>Location</th>
+<th>Released Date</th>
+<th>Last Delivered</th>
+<th>Frequency</th>
+<th width="60">Manage</th>
 </tr>
 {loop $lists $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
-<td><a href="{$MODULE[$v[mid]][linkurl]}" class="t" target="_blank">{$MODULE[$v[mid]][name]}</a></td>
-<td>{if $v[word]}<a href="{$MODULE[$v[mid]][linkurl]}search.php?kw={urlencode($v[word])}" class="t" target="_blank">{$v[word]}</a>{else}不限{/if}</td>
-<td>{if $v[catid]}{$v[cate]}{else}不限{/if}</td>
-<td>{if $v[areaid]}<a href="{$MODULE[$v[mid]][linkurl]}search.php?areaid={$v[areaid]}" target="_blank">{area_pos($v[areaid], '-')}</a>{else}不限{/if}</td>
+<td><a href="{$MODULE[$v[mid]][linkurl]}" class="t" target="_blank">{$MODULE[$v[mid]][ename]}</a></td>
+<td>{if $v[word]}<a href="{$MODULE[$v[mid]][linkurl]}search.php?kw={urlencode($v[word])}" class="t" target="_blank">{$v[word]}</a>{else}All{/if}</td>
+<td>{if $v[catid]}{$v[cate]}{else}All{/if}</td>
+<td>{if $v[areaid]}<a href="{$MODULE[$v[mid]][linkurl]}search.php?areaid={$v[areaid]}" target="_blank">{area_pos($v[areaid], '-')}</a>{else}All{/if}</td>
 <td class="px11 f_gray">{timetodate($v[addtime], 5)}</td>
 {if $v[sendtime]}
 <td class="px11 f_gray">{timetodate($v[sendtime], 5)}</td>
 {else}
-<td class="f_gray">從未</td>
+<td class="f_gray">Anytime</td>
 {/if}
-<td class="f_red">{if $v[rate]}{$v[rate]}天{else}不限{/if}</td>
-<td><a href="alert.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="修改" alt=""/></a>
-<a href="alert.php?action=delete&itemid={$v[itemid]}" onclick="if(!confirm('確定要刪除嗎？此操作將不可撤銷')) return false;"><img width="16" height="16" src="image/delete.png" title="刪除" alt=""/></a></td>
+<td class="f_red">{if $v[rate]}{$v[rate]} day{if $v[rate]>1}s{/if}{else}Unlimited{/if}</td>
+<td><a href="alert.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="Edit" alt=""/></a>
+<a href="alert.php?action=delete&itemid={$v[itemid]}" onclick="if(!confirm('Are you sure to delete it?')) return false;"><img width="16" height="16" src="image/delete.png" title="Delete" alt=""/></a></td>
 </tr>
 {/loop}
 </table>
 </div>
 {if $MG[alert_limit]}
-<div class="limit">總共可添加 <span class="f_b f_red">{$MG[alert_limit]}</span> 條&nbsp;&nbsp;&nbsp;當前已添加 <span class="f_b">{$limit_used}</span> 條&nbsp;&nbsp;&nbsp;還可以添加 <span class="f_b f_blue">{$limit_free}</span> 條</div>
+<div class="limit">You can create <span class="f_b f_red">{$MG[alert_limit]}</span> alert{if $MG[alert_limit]>1}s{/if} in total.&nbsp;&nbsp;&nbsp;You`ve created <span class="f_b">{$limit_used}</span>.&nbsp;&nbsp;&nbsp;<span class="f_b f_blue">{$limit_free}</span> more can be created.</div>
 {/if}
 <br/>
-<span class="f_gray">&nbsp;&nbsp;<strong>提示</strong>：如果無法正常收到郵件，請將 <span class="f_blue">{$DT[mail_sender]}</span> 加入您的郵件白名單。</span>
+<span class="f_gray">&nbsp;&nbsp;<strong>Tips</strong>: If you can not receive mail, please add <span class="f_blue">{$DT[mail_sender]}</span> to your whitelist.</span>
 <br/>
 <div class="pages">{$pages}</div>
 <script type="text/javascript">s('alert');m('s{$status}');</script>

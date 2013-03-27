@@ -3,14 +3,14 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="action"><a href="credit.php"><span>{$DT[credit_name]}記錄</span></a></td>
+<td class="tab" id="action"><a href="credit.php"><span>{$DT[credit_name]} Record</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_buy"><a href="credit.php?action=buy"><span>{$DT[credit_name]}購買</span></a></td>
+<td class="tab" id="action_buy"><a href="credit.php?action=buy"><span>Buy {$DT[credit_name]}</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab"><a href="invite.php"><span>推廣賺{$DT[credit_name]}</span></a></td>
+<td class="tab"><a href="invite.php"><span>Earn {$DT[credit_name]} by promotion</span></a></td>
 {if $MOD[credit_exchange]}
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_exchange"><a href="credit.php?action=exchange"><span>{$DT[credit_name]}兌換</span></a></td>
+<td class="tab" id="action_exchange"><a href="credit.php?action=exchange"><span>{$DT[credit_name]} Exchange</span></a></td>
 {/if}
 </tr>
 </table>
@@ -21,20 +21,20 @@
 <input type="hidden" name="submit" value="1"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">可用{$MOD[ex_name]}</td>
+<td class="tl">Available {$MOD[ex_name]}</td>
 <td class="tr"><strong class="f_blue">{$num}</strong></td>
 </tr>
 <tr>
-<td class="tl">兌換比率</td>
-<td class="tr"><span class="f_blue">1</span> {$MOD[ex_name]} 兌換 <span class="f_red">{$MOD[ex_rate]}</span> {$DT[credit_name]}</td>
+<td class="tl">Exchange Rate</td>
+<td class="tr"><span class="f_blue">1</span> {$MOD[ex_name]} exchange <span class="f_red">{$MOD[ex_rate]}</span> {$DT[credit_name]}</td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 兌換額度</td>
+<td class="tl"><span class="f_red">*</span> Amount</td>
 <td class="tr"><input type="text" size="8`" name="amount"/> <span id="damount" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" value=" 確 定 " class="btn"/></td>
+<td class="tr" height="50"><input type="submit" value=" Sure " class="btn"/></td>
 </tr>
 </table>
 </form>
@@ -43,10 +43,10 @@ function check() {
 	m = parseInt(Dd('amount').value);
 	n = {$num};
 	if(m > 0 && m < n) {
-		return confirm('確定要兌換'+m+'{$MOD[ex_name]}嗎？ 可換取'+(m*{$MOD[ex_rate]})+'{$DT[credit_name]}\n\n注意:兌換{$MOD[ex_name]}可能會降低您在論壇的會員級別');
+		return confirm('Do you confirm to exchange '+m+'{$MOD[ex_name]}? Exchangable '+(m*{$MOD[ex_rate]})+'{$DT[credit_name]}\n\nNotice: Your membership level might be downgraded by exchange {$MOD[ex_name]}.');
 	} else {
 		Dd('amount').value = '';
-		Dmsg('請填寫兌換額度', 'amount');
+		Dmsg('Enter an exchange rate.', 'amount');
 		return false;
 	}
 }
@@ -57,15 +57,15 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">帳戶可用餘額</td>
+<td class="tl">Amount Balance</td>
 <td class="tr"><strong class="f_blue">{$_money}</strong> {$DT[money_unit]}</td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 購買額度</td>
+<td class="tl"><span class="f_red">*</span> Purchase Amount</td>
 <td class="tr c_p">
 <table cellpadding="5" cellspacing="3">
 <tr align="center">
-<td>選</td>
+<td>Select</td>
 <td>&nbsp;&nbsp;{$DT[credit_name]}({$DT[credit_unit]})&nbsp;&nbsp;</td>
 <td>&nbsp;&nbsp;{$DT[money_name]}({$DT[money_unit]})&nbsp;&nbsp;</td>
 </tr>
@@ -80,19 +80,19 @@ function check() {
 </td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 支付密碼</td>
+<td class="tl"><span class="f_red">*</span> Payment Password</td>
 <td class="tr">{template 'password', 'chip'}&nbsp;<span id="dpassword" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('password').value == '') {
-		Dmsg('請填寫支付密碼', 'password');
+		Dmsg('Enter your payment password.', 'password');
 		return false;
 	}
 }
@@ -102,29 +102,29 @@ function check() {
 <form action="?">
 <div class="tt">
 {$fields_select}&nbsp;
-<input type="text" size="30" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<input type="text" size="30" name="kw" value="{$kw}" title="Keyword"/>&nbsp;
 <select name="type">
-<option value="0">類型</option>
-<option value="1" {if $type==1}selected{/if}>收入</option>
-<option value="2" {if $type==2}selected{/if}>支出</option>
+<option value="0">Type</option>
+<option value="1" {if $type==1}selected{/if}>Income</option>
+<option value="2" {if $type==2}selected{/if}>Expenditure</option>
 </select>
 &nbsp;
-{dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}
+{dcalendar('fromtime', $fromtime)} to {dcalendar('totime', $totime)}
 &nbsp;
-<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
-<input type="button" value=" 重 置 " class="btn" onclick="window.location='?action={$action}';"/>
+<input type="submit" value=" Search " class="btn"/>&nbsp;
+<input type="button" value=" Reset " class="btn" onclick="window.location='?action={$action}';"/>
 </div>
 </form>
 <div class="bd">
 <table cellpadding="1" cellspacing="0" class="tb">
 <tr>
-<th>流水號</th>
-<th>收入</th>
-<th>支出</th>
-<th>餘額</th>
-<th width="130">發生時間</th>
-<th width="150">事由</th>
-<th width="150">備註</th>
+<th>No.</th>
+<th>Income</th>
+<th>Expenditure</th>
+<th>Balance</th>
+<th width="130">Occurrence Time</th>
+<th width="150">Reason</th>
+<th width="150">Remark</th>
 </tr>
 {loop $records $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
@@ -138,7 +138,7 @@ function check() {
 </tr>
 {/loop}
 <tr align="center">
-<td height="35"><strong>小計</strong></td>
+<td height="35"><strong>Subtotal</strong></td>
 <td class="px11 f_blue">{$income}</td>
 <td class="px11 f_red">{$expense}</td>
 <td colspan="4">&nbsp;</td>

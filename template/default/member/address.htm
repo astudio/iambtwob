@@ -3,9 +3,9 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="address.php?action=add"><span>添加地址</span></a></td>
+<td class="tab" id="add"><a href="address.php?action=add"><span>Add address</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="s3"><a href="address.php"><span>收貨地址</span></a></td>
+<td class="tab" id="s3"><a href="address.php"><span>Shipping address</span></a></td>
 </tr>
 </table>
 </div>
@@ -14,43 +14,43 @@
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 詳細地址</td>
-<td class="tr">{ajax_area_select('post[areaid]', '請選擇')}<input name="post[address]" type="text" id="title" size="60" /> <span id="dtitle" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> Address detail</td>
+<td class="tr">{ajax_area_select('post[areaid]', 'Select')}<input name="post[address]" type="text" id="title" size="60" /> <span id="dtitle" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 郵政編碼</td>
+<td class="tl"><span class="f_red">*</span> Postal Code</td>
 <td class="tr"><input name="post[postcode]" type="text" id="postcode" size="10" /> <span id="dpostcode" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 真實姓名</td>
+<td class="tl"><span class="f_red">*</span> Realname</td>
 <td class="tr"><input name="post[truename]" type="text" id="truename" size="10" /> <span id="dtruename" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 手機號碼</td>
+<td class="tl"><span class="f_red">*</span> Mobile</td>
 <td class="tr"><input name="post[mobile]" type="text" id="mobile" size="20" /> <span id="dmobile" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"> 電話號碼</td>
+<td class="tl"> TEL</td>
 <td class="tr"><input name="post[telephone]" type="text" id="telephone" size="20" /> <span id="dtelephone" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"> 顯示順序</td>
-<td class="tr f_gray"><input name="post[listorder]" type="text" id="listorder" size="4" /> 數字越小越靠前<span id="dlistorder" class="f_red"></span></td>
+<td class="tl"> Browse by</td>
+<td class="tr f_gray"><input name="post[listorder]" type="text" id="listorder" size="4" /> smaller number first<span id="dlistorder" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"> 備註信息</td>
+<td class="tl"> Note</td>
 <td class="tr"><input name="post[note]" type="text" id="note" size="60" /> <span id="dnote" class="f_red"></span></td>
 </tr>
 
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Yes " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/></td>
 </tr>
 </table>
 </form>
@@ -64,43 +64,43 @@
 <table cellpadding="6" cellspacing="1" class="tb">
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 詳細地址</td>
+<td class="tl"><span class="f_red">*</span> Address detail</td>
 <td class="tr"><input name="post[address]" type="text" id="title" size="60" value="{$address}"/> <span id="dtitle" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 郵政編碼</td>
+<td class="tl"><span class="f_red">*</span> Zip Code</td>
 <td class="tr"><input name="post[postcode]" type="text" id="postcode" size="10" value="{$postcode}" /> <span id="dpostcode" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 真實姓名</td>
+<td class="tl"><span class="f_red">*</span> Realname</td>
 <td class="tr"><input name="post[truename]" type="text" id="truename" size="10" value="{$truename}"/> <span id="dtruename" class="f_red"></span></td>
 </tr>
 
 
 <tr>
-<td class="tl"><span class="f_red">*</span> 手機號碼</td>
+<td class="tl"><span class="f_red">*</span> Mobile</td>
 <td class="tr"><input name="post[mobile]" type="text" id="mobile" size="20" value="{$mobile}"/> <span id="dmobile" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"> 電話號碼</td>
+<td class="tl"> Tel</td>
 <td class="tr"><input name="post[telephone]" type="text" id="telephone" size="20" value="{$telephone}"/> <span id="dtelephone" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"> 顯示順序</td>
-<td class="tr f_gray"><input name="post[listorder]" type="text" id="listorder" size="4" value="{$listorder}"/> 數字越小越靠前<span id="dlistorder" class="f_red"></span></td>
+<td class="tl"> Browse by</td>
+<td class="tr f_gray"><input name="post[listorder]" type="text" id="listorder" size="4" value="{$listorder}"/> smaller number first<span id="dlistorder" class="f_red"></span></td>
 </tr>
 
 <tr>
-<td class="tl"> 備註信息</td>
+<td class="tl"> Note</td>
 <td class="tr"><input name="post[note]" type="text" id="note" size="60" value="{$note}"/> <span id="dnote" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 修 改 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Modify " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
@@ -110,31 +110,31 @@
 <div class="ls">
 <table cellpadding="0" cellspacing="0" class="tb">
 <tr>
-<th>地址(郵編)</th>
-<th>姓名</th>
-<th>手機</th>
-<th>電話</th>
-<th>添加時間</th>
-<th>排序</th>
-<th width="40">修改</th>
-<th width="40">刪除</th>
+<th>Address(Zip Code)</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Tel</th>
+<th>Add time</th>
+<th>Sort</th>
+<th width="40">Modify</th>
+<th width="40">Delete</th>
 </tr>
 {loop $lists $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
-<td height="30" align="left">&nbsp;&nbsp{$v[address]}({$v[postcode]}){if $v[note]} <a href="javascript:" onclick="alert('備註:{$v[note]}');"><img src="image/why.gif" title="備註:{$v[note]}"/></a>{/if}</td>
+<td height="30" align="left">&nbsp;&nbsp{$v[address]}({$v[postcode]}){if $v[note]} <a href="javascript:" onclick="alert('Note:{$v[note]}');"><img src="image/why.gif" title="Note:{$v[note]}"/></a>{/if}</td>
 <td>{$v[truename]}</td>
 <td>{$v[mobile]}</td>
 <td>{if $v[telephone]}{$v[telephone]}{else}&nbsp;{/if}</td>
-<td class="px11 f_gray" title="更新時間 {$v[editdate]}">{$v[adddate]}</td>
+<td class="px11 f_gray" title="Update {$v[editdate]}">{$v[adddate]}</td>
 <td class="px11 f_gray">{$v[listorder]}</td>
-<td><a href="address.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="修改" alt=""/></a></td>
-<td><a href="address.php?action=delete&itemid={$v[itemid]}" onclick="if(!confirm('確定要刪除嗎？此操作將不可撤銷')) return false;"><img width="16" height="16" src="image/delete.png" title="刪除" alt=""/></a></td>
+<td><a href="address.php?action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="Modify" alt=""/></a></td>
+<td><a href="address.php?action=delete&itemid={$v[itemid]}" onclick="if(!confirm(' Are you sure you want to delete?')) return false;"><img width="16" height="16" src="image/delete.png" title="Delete" alt=""/></a></td>
 </tr>
 {/loop}
 </table>
 </div>
 {if $MG[address_limit]}
-<div class="limit">總共可發 <span class="f_b f_red">{$MG[address_limit]}</span> 條&nbsp;&nbsp;&nbsp;當前已發 <span class="f_b">{$limit_used}</span> 條&nbsp;&nbsp;&nbsp;還可以發 <span class="f_b f_blue">{$limit_free}</span> 條</div>
+<div class="limit"> <span class="f_b f_red">{$MG[address_limit]}</span> Can be sent&nbsp;&nbsp;&nbsp;You`ve sent <span class="f_b">{$limit_used}</span> &nbsp;&nbsp;&nbsp; <span class="f_b f_blue">{$limit_free}</span> available</div>
 {/if}
 <div class="pages">{$pages}</div>
 <script type="text/javascript">s('address');m('s3');</script>
@@ -142,33 +142,33 @@
 {if $action=='add' || $action=='edit'}
 <script type="text/javascript">
 function check() {
-	var l;
-	var f;
-	f = 'title';
-	l = Dd(f).value.length;
-	if(l < 5) {
-		Dmsg('請填寫詳細地址', f);
-		return false;
-	}
-	f = 'postcode';
-	l = Dd(f).value.length;
-	if(l < 6) {
-		Dmsg('請填寫郵政編碼', f);
-		return false;
-	}
-	f = 'truename';
-	l = Dd(f).value.length;
-	if(l < 2) {
-		Dmsg('請填寫真實姓名', f);
-		return false;
-	}
-	f = 'mobile';
-	l = Dd(f).value.length;
-	if(l < 11) {
-		Dmsg('請填寫手機號碼', f);
-		return false;
-	}
-	return true;
+        var l;
+        var f;
+        f = 'title';
+        l = Dd(f).value.length;
+        if(l < 5) {
+                Dmsg('Please fill inAddress detail.', f);
+                return false;
+        }
+        f = 'postcode';
+        l = Dd(f).value.length;
+        if(l < 6) {
+                Dmsg('Please fill in ZIP code.', f);
+                return false;
+        }
+        f = 'truename';
+        l = Dd(f).value.length;
+        if(l < 2) {
+                Dmsg('Please fill in your true name.', f);
+                return false;
+        }
+        f = 'mobile';
+        l = Dd(f).value.length;
+        if(l < 11) {
+                Dmsg('Please fill in your Mobile number.', f);
+                return false;
+        }
+        return true;
 }
 </script>
 {/if}

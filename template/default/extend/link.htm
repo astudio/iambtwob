@@ -1,4 +1,5 @@
 {template 'header'}
+<style>.left_box ul > li {display:inline-block;*display:inline;zoom:1;}.left_box ul > li img {width:166px;height:40px;margin-right:4px;margin-bottom:10px;border:1px solid #d7d7d7;}</style>
 <div class="m">
 	<table cellpadding="0" cellspacing="0" width="100%">
 	<tr>
@@ -89,7 +90,6 @@
 			try{Dd('type_reg').className='left_menu_on';}catch(e){}
 			</script>
 		{else}
-			<div class="pos"><span class="f_r f_b"><a href="{rewrite('index.php?action=reg')}">Apply</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="./">Logo Link</a></div>
 			<div style="padding:10px;">
 			{if $typeid}
 			<!--{tag("table=link&condition=thumb!='' and status=3 and username='' and typeid=$typeid&areaid=$cityid&pagesize=1400&order=listorder desc,itemid desc&template=list-link&cols=7")}-->

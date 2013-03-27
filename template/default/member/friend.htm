@@ -28,7 +28,7 @@ function send(name) {
 }
 </script>
 {else}
-<p style="padding:10px;"><a href="friend.php?action=add" class="t" target="_top">您還沒有添加商友...點這裡添加</a></p>
+<p style="padding:10px;"><a href="friend.php?action=add" class="t" target="_top">You do really need a friend. Click here to add.</a></p>
 {/if}
 </div>
 <script type="text/javascript">
@@ -42,11 +42,11 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="friend.php?action=add"><span>添加商友</span></a></td>
+<td class="tab" id="add"><a href="friend.php?action=add"><span>Add Friend</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="home"><a href="friend.php"><span>我的商友</span></a></td>
+<td class="tab" id="home"><a href="friend.php"><span>My Friends</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="type"><a href="type.php?item=friend"><span>商友分類</span></a></td>
+<td class="tab" id="type"><a href="type.php?item=friend"><span>Group</span></a></td>
 </tr>
 </table>
 </div>
@@ -55,35 +55,35 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="5" cellspacing="1" class="tb">
 <tr>
-<td class="tl">分類</td>
-<td class="tr">{$type_select}&nbsp; <a href="type.php?item=friend" class="t">[管理分類]</a></td>
+<td class="tl">Group</td>
+<td class="tr">{$type_select}&nbsp; <a href="type.php?item=friend" class="t">[Manage]</a></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 姓 名</td>
+<td class="tl"><span class="f_red">*</span> Contact</td>
 <td class="tr"><input type="text" size="20" name="post[truename]" id="truename" value="{$truename}"/> {dstyle('post[style]')} <span id="dtruename" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">會員名</td>
-<td class="tr"><input type="text" size="20" name="post[username]" id="username" value="{$username}"/> <input type="button" class="btn" value="顯示資料" onclick="window.location='friend.php?action=add&username='+Dd('username').value;"/></td>
+<td class="tl">Username</td>
+<td class="tr"><input type="text" size="20" name="post[username]" id="username" value="{$username}"/> <input type="button" class="btn" value=" Show " onclick="window.location='friend.php?action=add&username='+Dd('username').value;"/></td>
 </tr>
 <tr>
-<td class="tl">公司名稱</td>
+<td class="tl">Co. Name</td>
 <td class="tr"><input type="text" size="40" name="post[company]" id="company" value="{$company}"/></td>
 </tr>
 <tr>
-<td class="tl">職位</td>
+<td class="tl">Position</td>
 <td class="tr"><input type="text" size="20" name="post[career]" id="career" value="{$career}"/></td>
 </tr>
 <tr>
-<td class="tl">電話</td>
+<td class="tl">TEL</td>
 <td class="tr"><input type="text" size="20" name="post[telephone]" id="telephone" value="{$telephone}"/></td>
 </tr>
 <tr>
-<td class="tl">手機</td>
+<td class="tl">Mobile</td>
 <td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile"/></td>
 </tr>
 <tr>
-<td class="tl">主頁</td>
+<td class="tl">Website</td>
 <td class="tr"><input type="text" size="40" name="post[homepage]" id="homepage" value="{$homepage}"/></td>
 </tr>
 <tr>
@@ -115,12 +115,12 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 </tr>
 {/if}
 <tr>
-<td class="tl">備註</td>
+<td class="tl">Remark</td>
 <td class="tr"><input type="text" size="40" name="post[note]" id="note"/></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Add " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" Reset " class="btn"/></td>
 </tr>
 </table>
 </form>
@@ -132,39 +132,39 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 <input type="hidden" name="forward" value="{$forward}"/>
 <table cellpadding="5" cellspacing="1" class="tb">
 <tr>
-<td class="tl">分類</td>
-<td class="tr">{$type_select}&nbsp; <a href="type.php?item=friend" class="t">[管理分類]</a></td>
+<td class="tl">Group</td>
+<td class="tr">{$type_select}&nbsp; <a href="type.php?item=friend" class="t">[Manage]</a></td>
 </tr>
 <tr>
-<td class="tl">顯示順序</td>
-<td class="tr f_gray"><input type="text" size="3" name="post[listorder]" id="listorder" value="{$listorder}"/> 請填寫數字，數字越大越靠前</td>
+<td class="tl">Sort by</td>
+<td class="tr f_gray"><input type="text" size="3" name="post[listorder]" id="listorder" value="{$listorder}"/> Only integer. With a larger number comes a greater priority.</td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 姓名</td>
+<td class="tl"><span class="f_red">*</span> Contact</td>
 <td class="tr"><input type="text" size="20" name="post[truename]" id="truename" value="{$truename}"/> {dstyle('post[style]', $style)} <span id="dtruename" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">會員名</td>
+<td class="tl">Username</td>
 <td class="tr"><input type="text" size="20" name="post[username]" id="username" value="{$username}"/></td>
 </tr>
 <tr>
-<td class="tl">公司名稱</td>
+<td class="tl">Co. Name</td>
 <td class="tr"><input type="text" size="40" name="post[company]" id="company" value="{$company}"/></td>
 </tr>
 <tr>
-<td class="tl">職位</td>
+<td class="tl">Position</td>
 <td class="tr"><input type="text" size="20" name="post[career]" id="career" value="{$career}"/></td>
 </tr>
 <tr>
-<td class="tl">電話</td>
+<td class="tl">TEL</td>
 <td class="tr"><input type="text" size="20" name="post[telephone]" id="telephone" value="{$telephone}"/></td>
 </tr>
 <tr>
-<td class="tl">手機</td>
+<td class="tl">Mobile</td>
 <td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile" value="{$mobile}"/></td>
 </tr>
 <tr>
-<td class="tl">主頁</td>
+<td class="tl">Website</td>
 <td class="tr"><input type="text" size="40" name="post[homepage]" id="homepage" value="{$homepage}"/></td>
 </tr>
 <tr>
@@ -196,12 +196,12 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 </tr>
 {/if}
 <tr>
-<td class="tl">備註</td>
+<td class="tl">Remark</td>
 <td class="tr"><input type="text" size="40" name="post[note]" id="note" value="{$note}"/></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 修 改 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" Edit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
@@ -210,10 +210,10 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 <form action="friend.php">
 <div class="tt">
 &nbsp;{$fields_select}&nbsp;
-<input type="text" size="50" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" title="Keyword"/>&nbsp;
 {$type_select}&nbsp;
-<input type="submit" value=" 搜 索 " class="btn"/>
-<input type="button" value=" 重 置 " class="btn" onclick="window.location='friend.php';"/>
+<input type="submit" value=" Search " class="btn"/>
+<input type="button" value=" Reset " class="btn" onclick="window.location='friend.php';"/>
 </div>
 </form>
 <table cellpadding="5" cellspacing="1" width="100%" bgcolor="#9CB8CC">
@@ -229,22 +229,22 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 <td height="22">{$v[truename]}{if $v[career]} ({$v[career]}){/if}</td>
 </tr>
 <tr>
-<td height="20">電話：{$v[telephone]}</td>
+<td height="20">Telephone: {$v[telephone]}</td>
 </tr>
 <tr>
-<td height="20">手機：{$v[mobile]}</td>
+<td height="20">Mobile: {$v[mobile]}</td>
 </tr>
 <tr>
 <td height="20">
-<span class="f_r" title="添加時間 {$v[adddate]}">
+<span class="f_r" title="Released Date: {$v[adddate]}">
 <a href="friend.php?typeid={$v[typeid]}" class="t">[{$v[type]}]</a>&nbsp;
-<a href="friend.php?action=edit&itemid={$v[itemid]}" class="t">[修改]</a>&nbsp;
-<a href="friend.php?action=delete&itemid={$v[itemid]}" onclick="return confirm('確定要刪除嗎？此操作將不可撤銷');" class="t">[刪除]</a>&nbsp;
+<a href="friend.php?action=edit&itemid={$v[itemid]}" class="t">[Edit]</a>&nbsp;
+<a href="friend.php?action=delete&itemid={$v[itemid]}" onclick="return confirm('Are you sure to delete it?');" class="t">[Delete]</a>&nbsp;
 </span>
-{if $v[homepage]}<a href="{$v[homepage]}" target="_blank"><img width="16" height="16" src="{DT_SKIN}image/homepage.gif" title="公司主頁" alt="" align="absmiddle"/></a>&nbsp;{/if}
-{if $DT[sms] && $v[mobile]}<a href="sms.php?action=add&mob={$v[mobile]}"><img width="16" height="16" src="{DT_SKIN}image/mobile.gif" title="發送短信" align="absmiddle"/></a>&nbsp;{/if}
-{if $v[username]}<a href="message.php?action=send&touser={$v[username]}"><img width="16" height="16" src="{DT_SKIN}image/msg.gif" title="發送站內信" alt="" align="absmiddle"/></a>&nbsp;{/if}
-{if $v[email]}<a href="sendmail.php?email={$v[email]}"><img width="16" height="16" src="{DT_SKIN}image/email.gif" title="發送Email {$v[email]}" alt="" align="absmiddle"/></a>&nbsp;{/if}
+{if $v[homepage]}<a href="{$v[homepage]}" target="_blank"><img width="16" height="16" src="{DT_SKIN}image/homepage.gif" title="Goto business website" alt="" align="absmiddle"/></a>&nbsp;{/if}
+{if $DT[sms] && $v[mobile]}<a href="sms.php?action=add&mob={$v[mobile]}"><img width="16" height="16" src="{DT_SKIN}image/mobile.gif" title="Send SMS" align="absmiddle"/></a>&nbsp;{/if}
+{if $v[username]}<a href="message.php?action=send&touser={$v[username]}"><img width="16" height="16" src="{DT_SKIN}image/msg.gif" title="Send Message" alt="" align="absmiddle"/></a>&nbsp;{/if}
+{if $v[email]}<a href="sendmail.php?email={$v[email]}"><img width="16" height="16" src="{DT_SKIN}image/email.gif" title="Send {$v[email]}" alt="" align="absmiddle"/></a>&nbsp;{/if}
 {if $v[username] && $DT[im_web]}{im_web($v[username])}&nbsp;{/if}
 {if $v[qq] && $DT[im_qq]}{im_qq($v[qq])}&nbsp;{/if}
 {if $v[ali] && $DT[im_ali]}{im_ali($v[ali])}&nbsp;{/if}
@@ -261,7 +261,7 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 {/loop}
 </table>
 {if $MG[friend_limit]}
-<div class="limit">商友上限 <span class="f_b f_red">{$MG[friend_limit]}</span> 人&nbsp;&nbsp;&nbsp;當前已加 <span class="f_b">{$limit_used}</span> 人&nbsp;&nbsp;&nbsp;還可以加 <span class="f_b f_blue">{$limit_free}</span> 人</div>
+<div class="limit">You can add <span class="f_b f_red">{$MG[friend_limit]}</span> friend{if $MG[friend_limit]>1}s{/if}&nbsp;&nbsp;&nbsp;You`ve added <span class="f_b">{$limit_used}</span>.&nbsp;&nbsp;&nbsp;<span class="f_b f_blue">{$limit_free}</span> more can be added.</div>
 {/if}
 <div class="pages">{$pages}</div>
 <script type="text/javascript">s('friend');m('home');</script>
@@ -270,7 +270,7 @@ try{parent.Dd('dload').style.display='none';parent.Dd('diframe').style.height = 
 <script type="text/javascript">
 function check() {
 	if(Dd('truename').value == '') {
-		Dmsg('請填寫姓名', 'truename');
+		Dmsg('Enter your name.', 'truename');
 		return false;
 	}
 	return true;

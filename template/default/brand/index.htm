@@ -18,7 +18,7 @@
 			</div>
 			<div class="topl">
 				<!-- 1st slideshow (AD) -->
-				<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=16&template=ad-slideshow-brand",-1)}-->
+				<!--{tag("table=ad&condition=status=3 and pid=16 and totime>".$DT_TIME."&order=rand()&pagesize=4&id=16&template=ad-slideshow",-1)}-->
 			</div>				
 		</div>
 					
@@ -41,11 +41,9 @@
 			
 			<div class="panes">
 				{loop $maincat $i $c} 
-					<div>
-						<a href="{$MOD[linkurl]}{$s[linkurl]}">
-							<img class="lazy bAnner" data-src="{DT_SKIN}image/brand_cat_{substr(strtolower($c[catname]),0,3)}.jpg" src="{DT_SKIN}image/blank.gif" />
-							<div class="catName">{$c[catname]}</div>
-						</a>
+					<div>						
+						<img class="lazy bAnner" data-src="{DT_SKIN}image/brand_cat_{substr(strtolower($c[catname]),0,3)}.jpg" src="{DT_SKIN}image/blank.gif" />
+						<div class="catName">{$c[catname]}</div>
 						<!--{tag("moduleid=$moduleid&areaid=$cityid&catid=".$c[catid]."&condition=status=3 and thumb<>''&order=rand()&pagesize=12&cols=4&template=thumb-brand",-1)}-->						
 					</div>
 				{/loop}	

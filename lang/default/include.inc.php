@@ -14,12 +14,12 @@ $L['fields_match'] = '{V0}不符合填寫規則';
 /* global.func.php */
 $L['msg_ip_ban'] = 'IP {V0} 已經被網站禁止 如有疑問請聯繫我們';
 $L['msg_word_ban'] = '提交的內容含有被網站禁止的字符';
-$L['captcha_missed'] = '請填寫驗證碼';
-$L['captcha_expired'] = '驗證碼已過期';
-$L['captcha_error'] = '驗證碼不正確';
-$L['answer_missed'] = '請填寫答案';
-$L['question_expired'] = '問題已過期';
-$L['answer_error'] = '答案不正確';
+$L['captcha_missed'] = 'Enter security code.';
+$L['captcha_expired'] = 'The security code has expired.';
+$L['captcha_error'] = 'The security code is not valid.';
+$L['answer_missed'] = 'Answer the security question.';
+$L['question_expired'] = 'The security question has expired.';
+$L['answer_error'] = 'The answer is not valid.';
 /* module.func.php */
 $L['mod_day'] = '天';
 $L['mod_hour'] = '小時';

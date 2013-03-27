@@ -3,45 +3,45 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="code"><a href="invite.php"><span>獲取代碼</span></a></td>
+<td class="tab" id="code"><a href="invite.php"><span>Gain Inviting URL</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="list"><a href="credit.php?kw={urlencode('推廣')}"><span>推廣記錄</span></a></td>
+<td class="tab" id="list"><a href="credit.php?kw={urlencode('Earn')}"><span>Record</span></a></td>
 </tr>
 </table>
 </div>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
-<td class="tl">引導至</td>
+<td class="tl">Forward to</td>
 <td class="tr">
-<input type="radio" name="goto" value="1" id="goto_1" onclick="Dd('codes').value='{$url}';" checked/><label for="goto_1"> 網站首頁</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="goto" value="2" id="goto_2" onclick="Dd('codes').value='{$url}&goto=register';"/><label for="goto_2"> 會員註冊</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="goto" value="3" id="goto_3" onclick="Dd('codes').value='{$url}&goto=homepage';"/><label for="goto_3"> 我的主頁</label>
+<input type="radio" name="goto" value="1" id="goto_1" onclick="Dd('codes').value='{$url}';" checked/><label for="goto_1"> ImB2B</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="goto" value="2" id="goto_2" onclick="Dd('codes').value='{$url}&goto=register';"/><label for="goto_2"> Member Registration</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="goto" value="3" id="goto_3" onclick="Dd('codes').value='{$url}&goto=homepage';"/><label for="goto_3"> My Website</label>
 </td>
 </tr>
 <tr>
-<td class="tl">推廣網址</td>
+<td class="tl">Inviting URL</td>
 <td class="tr"><input type="text" name="code" value="{$url}" size="80" id="codes" onmouseover="this.select();" style="padding:3px;"/></td>
 </tr>
 <tr>
-<td class="tl">推廣方法</td>
+<td class="tl">Method</td>
 <td class="tr">
-- 將上面的網址發給您QQ/MSN/Email等好友<br/>
-- 在論壇簽名,博客鏈接,網站等加上上面的網址<br/>
+- Share the URL above to your friend lists of Facebook/Skype/Email.<br/>
+- Add the URL above into forums, blogs and other websites.<br/>
 </td>
 </tr>
 <tr>
-<td class="tl">獎勵方法</td>
+<td class="tl">Bonus</td>
 <td class="tr">
-- 每引導一個IP訪問您可以獲贈 <strong class="f_blue">{$MOD[credit_ip]}</strong> {$DT[credit_name]} (24小時內最多積{$MOD[credit_maxip]}{$DT[credit_name]})<br/>
-- 每引導一個用戶註冊您可以獲贈 <strong class="f_blue">{$MOD[credit_user]}</strong> {$DT[credit_name]}<br/>
+- You can obtain <strong class="f_blue">{$MOD[credit_ip]}</strong> {$DT[credit_ename]} (Maximum of {$MOD[credit_maxip]} {$DT[credit_ename]} within 24 hours.)<br/>
+- You can also obtain <strong class="f_blue">{$MOD[credit_user]}</strong> {$DT[credit_ename]} for each registered member through your invitation.<br/>
 </td>
 </tr>
 <tr>
-<td class="tl">備註事項</td>
+<td class="tl">Remark</td>
 <td class="tr">
-- 無論引導至那個頁面，系統均會自動記錄您為用戶註冊推薦人<br/>
-- 引導用戶需註冊成功完善資料後方可為您加分<br/>
-- 同一IP 24小時內計算一次<br/>
+- You will be automatically recognized as introducer no matter which webpage the new member has been visited.<br/>
+- {$DT[credit_ename]} will be added only after the new member has completed the register steps.<br/>
+- {$DT[credit_ename]} accumulate for each IP is once within 24 hours.<br/>
 </td>
 </tr>
 </table>

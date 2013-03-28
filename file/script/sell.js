@@ -73,7 +73,7 @@ function astudio() {
 			//title
 			var title = href == 'compare' ? 'Compare' : 'Inquiry';
 			//width
-			var width = href == 'compare' ? 800 : 680;
+			var width = href == 'compare' ? 888 : 680;
 						
 			$.fancybox({
 				width			: width,

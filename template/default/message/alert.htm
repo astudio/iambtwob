@@ -8,11 +8,15 @@
 </head>
 <body>
 <script type="text/javascript">
+function Dd(i) {return document.getElementById(i);}
+function Dh(i) {parent.Dd(i).style.display = 'none';}
 {if $dmessage}alert('{$dmessage}');{/if}
 {if $dforward}
 	{if $dforward == 'goback'}
 		window.history.back();
 	{else}
+		Dh('fancybox-wrap');
+		Dh('fancybox-overlay');
 		window.location='{$dforward}';
 	{/if}
 {/if}

@@ -2,10 +2,11 @@
 defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 $MG['inquiry_limit'] > -1 or dalert(lang('message->without_permission'), 'goback');
+$DT_URL = $DT_REF;
 include load('misc.lang');
 $limit_used = $limit_free = 0;
 if($MG['inquiry_limit']) {
-	if((is_array($itemid) && count($itemid) > $MG['inquiry_limit']) || (isset($fbox) && $length > $MG['inquiry_limit'])) dalert(lang($L['inquiry_limit'], array($MG['inquiry_limit'])), 'goback');
+	if((is_array($itemid) && count($itemid) > $MG['inquiry_limit']) || (isset($fbox) && $length > $MG['inquiry_limit'])) dalert(lang($L['inquiry_limit'], array($MG['inquiry_limit'])), $DT_URL); //changed
 	$today = strtotime(timetodate($DT_TIME, 3).' 00:00:00');
 	$sql = $_userid ? "fromuser='$_username'" : "ip='$DT_IP'";
 	$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}message WHERE $sql AND addtime>$today AND typeid=1 AND status=3");

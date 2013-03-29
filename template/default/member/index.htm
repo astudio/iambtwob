@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="image/index.css"/>
 <div id="warn">
 {if $_groupid == 4}
-	<div class="warn">尊敬的會員，您的帳號<span class="f_red f_b">正在審核中..</span>，本站部分功能和服務可能受到一定的使用限制，{if $MOD[checkuser]==2}<a href="send.php?action=check" class="l">請點這裡驗證您的郵箱</a>，系統將自動審核{else}請稍候，等待網站審核{/if}</div>
+	<div class="warn">Hello! Your account<span class="f_red f_b">is pending..</span>, you may not use all of our service. {if $MOD[checkuser]==2}<a href="send.php?action=check" class="l">Verifying your email address</a>, system will check automatically.{else}You should then receive an email message from ImB2B support.{/if}</div>
 {/if}
 {if $_groupid > 5 && !$_edittime}
 	<div class="warn">A detailed company profile helps better present enterprise image to prospective partners and lead you to infinite trade opportunities.&nbsp;&nbsp;<a href="edit.php?tab=2" class="t f_b">Complete profile NOW, click here!</a></div>
@@ -62,7 +62,7 @@
 <a href="credit.php?action=buy" class="l">Buy</a> | 
 <a href="invite.php" class="l">Earn</a>
 {if $MOD[credit_exchange]}| <a href="credit.php?action=exchange" class="l">Exchange</a>{/if}
-{if $EXT[gift_enable]}| <a href="{$EXT[gift_url]}" class="l">積分換禮</a>{/if}
+{if $EXT[gift_enable]}| <a href="{$EXT[gift_url]}" class="l">Get Gift</a>{/if}
 </li>
 {if $DT[sms] && $MG[sms]}
 <li>
@@ -192,8 +192,8 @@
 {/if}
 {if $support}
 <tr>
-<td class="i_user_l">客服專員</td>
-<td><img src="image/support.gif" align="absmiddle"/><a href="support.php" class="l">點擊聯繫</a></td>
+<td class="i_user_l">ImB2B Team</td>
+<td><img src="image/support.gif" align="absmiddle"/><a href="support.php" class="l">Contact Us</a></td>
 </tr>
 {/if}
 <tr>

@@ -1,16 +1,18 @@
+{php $CSS = array('style_o');}
 {template 'header'}
+<div class="b10"> </div>
 <div class="m">
 <div class="m_l f_l">
 	<div class="left_box">
-		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo; 正文</div>
+		<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[ename]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo; Detail</div>
 		<h1 class="title">{$title}</h1>
-		<div class="info"><span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字體" class="c_p" onclick="fontZoom('+', 'article');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="縮小字體" class="c_p" onclick="fontZoom('-', 'article');"/></span>
-		發佈日期：{$adddate}
-		{if $copyfrom}&nbsp;&nbsp;來源：{if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}{/if}
-		{if $author}&nbsp;&nbsp;作者：{$author}{/if}
-		&nbsp;&nbsp;瀏覽次數：<span id="hits">{$hits}</span>	
+		<div class="info"><span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="Zoom in" class="c_p" onclick="fontZoom('+', 'article');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="Zoom out" class="c_p" onclick="fontZoom('-', 'article');"/></span>
+		Released Date: {$adddate}
+		{if $copyfrom}&nbsp;&nbsp;Source: {if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}{/if}
+		{if $author}&nbsp;&nbsp;Author: {$author}{/if}
+		&nbsp;&nbsp;Views: <span id="hits">{$hits}</span>	
 		</div>
-		{if $introduce && $user_status == 3 && $page == 1}<div class="introduce">核心提示：{$introduce}</div>{/if}
+		{if $introduce && $user_status == 3 && $page == 1}<div class="introduce">{$introduce}</div>{/if}
 
 		{if $CP}{template 'property', 'chip'}{/if}
 		<div id="content">{template 'content', 'chip'}</div>
@@ -47,35 +49,23 @@
 		</form>
 		{if $keytags}
 		<div class="keytags">
-		<strong>關鍵詞：</strong>
+		<strong>Keyword: </strong>
 		{loop $keytags $t}
 		<a href="{$MOD[linkurl]}{rewrite('search.php?kw='.urlencode($t))}" target="_blank">{$t}</a>
 		{/loop}
 		</div>
 		{/if}
-		{if $MOD[show_np]}
-		<div class="np">
-		<ul>
-		<li><strong>下一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&areaid=$cityid&pagesize=1&order=addtime asc&template=list-np", -1)}--></li>
-		<li><strong>上一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&areaid=$cityid&pagesize=1&order=addtime desc&template=list-np", -1)}--></li>
-		</div>
-		<div class="b10">&nbsp;</div>
-		{/if}
-		<center>
-		[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]}搜索</a> ]&nbsp;
-		[ <script type="text/javascript">addFav('加入收藏');</script> ]&nbsp;
-		[ <a href="javascript:Dd('sendmail').submit();void(0);">告訴好友</a> ]&nbsp;
-		[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
-		[ <a href="javascript:window.close()">關閉窗口</a> ]
-		</center>
+
+		{template 'show_toolbar','chip'}
+		
 		<br/>
 		{if $MOD[page_srelate]}
 		<div class="b10">&nbsp;</div>
 		{if $keytags}
-		<div class="left_head"><a href="{$MOD[linkurl]}{rewrite('search.php?kw='.urlencode($keytags[0]))}">同類{$MOD[name]}</a></div>
+		<div class="left_head"><a href="{$MOD[linkurl]}{rewrite('search.php?kw='.urlencode($keytags[0]))}">Related {$MOD[ename]}</a></div>
 		<div class="related"><!--{tag("moduleid=$moduleid&length=44&condition=status=3 and itemid<>$itemid and keyword like '%".$keytags[0]."%'&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=".$MOD[order]."&cols=2&template=list-table", -2)}--></div>
 		{else}
-		<div class="left_head"><a href="{$MOD[linkurl]}{$CAT[linkurl]}">同類{$MOD[name]}</a></div>
+		<div class="left_head"><a href="{$MOD[linkurl]}{$CAT[linkurl]}">Related {$MOD[ename]}</a></div>
 		<div class="related"><!--{tag("moduleid=$moduleid&length=44&catid=$catid&condition=status=3 and itemid!=$itemid&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=".$MOD[order]."&cols=2&template=list-table", -2)}--></div>
 		{/if}
 		{/if}
@@ -86,18 +76,18 @@
 <div class="m_n f_l">&nbsp;</div>
 <div class="m_r f_l">
 	{if $MOD[page_srecimg]}
-	<div class="box_head_1"><div><strong>推薦圖文</strong></div></div>
+	<div class="box_head_1"><div><strong>Recommended Pictures</strong></div></div>
 	<div class="box_body thumb"><!--{tag("moduleid=$moduleid&length=20&condition=status=3 and level=3 and thumb!=''&catid=$catid&areaid=$cityid&pagesize=".$MOD[page_srecimg]."&order=".$MOD[order]."&width=120&height=90&cols=2&template=thumb-table")}--></div>
 	<div class="b10"> </div>
 	{/if}
 	{if $MOD[page_srec]}
-	<div class="box_head_1"><div><strong>推薦{$MOD[name]}</strong></div></div>
+	<div class="box_head_1"><div><strong>Recommended {$MOD[ename]}</strong></div></div>
 	<div class="box_body li_dot"><!--{tag("moduleid=$moduleid&condition=status=3 and level=1&catid=$catid&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_srec])}-->
 	</div>
 	<div class="b10"> </div>
 	{/if}
 	{if $MOD[page_shits]}
-	<div class="box_head_1"><div><strong>點擊排行</strong></div></div>
+	<div class="box_head_1"><div><strong>Click Ranking</strong></div></div>
 	<div class="box_body">
 		<div class="rank_list"><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$today_endtime-30*86400&catid=$catid&areaid=$cityid&order=hits desc&pagesize=".$MOD[page_shits], -2)}--></div>
 	</div>

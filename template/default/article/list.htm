@@ -1,15 +1,17 @@
+{php $CSS = array('style_o');}
 {template 'header'}
 <script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div class="b10"> </div>
 <div class="m">
 <div class="m_l f_l">
 	<div class="left_box">
-		<div class="pos">當前位置: <a href="{$MODULE[1][linkurl]}">首頁</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
+		<div class="pos">You are here: <a href="{$MODULE[1][linkurl]}">Home</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[ename]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
 		{if $CP}
 		{loop $PPT $p}
 		<div class="ppt">
 			<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-			<td class="ppt_l" valign="top">按{$p[name]}</td>
+			<td class="ppt_l" valign="top">by {$p[name]}</td>
 			<td class="ppt_r" valign="top">
 			{loop $p[options] $o}
 			<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
@@ -29,7 +31,7 @@
 <div class="m_n f_l">&nbsp;</div>
 <div class="m_r f_l">
 	{if $MOD[show_lcat]}
-	<div class="box_head_1"><div><strong>按分類瀏覽</strong></div></div>
+	<div class="box_head_1"><div><strong>Browse by Category</strong></div></div>
 	<div class="box_body">
 	<table width="100%" cellpadding="3">
 	{loop $maincat $k $v}
@@ -42,18 +44,18 @@
 	<div class="b10">&nbsp;</div>
 	{/if}
 	{if $MOD[page_lrecimg]}
-	<div class="box_head_1"><div><strong>推薦圖文</strong></div></div>
+	<div class="box_head_1"><div><strong>Recommended Pictures</strong></div></div>
 	<div class="box_body thumb"><!--{tag("moduleid=$moduleid&length=20&condition=status=3 and level=3 and thumb!=''&catid=$catid&pagesize=".$MOD[page_lrecimg]."&order=".$MOD[order]."&width=120&height=90&cols=2&target=_blank&template=thumb-table")}--></div>
 	<div class="b10"> </div>
 	{/if}
 	{if $MOD[page_lrec]}
-	<div class="box_head_1"><div><strong>推薦{$MOD[name]}</strong></div></div>
+	<div class="box_head_1"><div><strong>Recommended {$MOD[ename]}</strong></div></div>
 	<div class="box_body li_dot"><!--{tag("moduleid=$moduleid&condition=status=3 and level=1&catid=$catid&order=".$MOD[order]."&pagesize=".$MOD[page_lrec]."&target=_blank")}-->
 	</div>
 	<div class="b10"> </div>
 	{/if}
 	{if $MOD[page_lhits]}
-	<div class="box_head_1"><div><strong>點擊排行</strong></div></div>
+	<div class="box_head_1"><div><strong>Click Ranking</strong></div></div>
 	<div class="box_body">
 	<div class="rank_list"><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$today_endtime-30*86400&catid=$catid&order=hits desc&pagesize=".$MOD[page_lhits]."&target=_blank", -2)}--></div>
 	</div>

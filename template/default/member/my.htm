@@ -2,7 +2,7 @@
 <script type="text/javascript">c(0);</script>
 {if $MYMODS}
 {if $_userid}
-<div class="warn">尊敬的<strong>{$MG[groupname]}</strong>，您目前擁有以下欄目的發佈權限，請選擇發佈</div>
+<div class="warn">Dear <strong>{$MG[engroupname]}</strong>, you can do such thing like.., lets start to do it</div>
 {else}
 <div class="warn">You are not logged in, some of {$DT[sitename]} features and services maybe have certain restrictions, suggest to <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">Login</a> or <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">Join Free</a>.</div>
 {/if}
@@ -37,9 +37,9 @@
 </table>
 {else}
 	{if $_userid}
-	<div class="warn">尊敬的<strong>{$MG[groupname]}</strong>，您的會員組沒有在本站發佈信息的權限，請返回。&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}" class="t f_b">點擊返回商務中心首頁</a></div>
+	<div class="warn">Dear <strong>{$MG[engroupname]}</strong>, sorry! your member group can not do it, lets go back.&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}" class="t f_b">Back to My ImB2B</a></div>
 	{else}
-	<div class="warn">您還沒有登錄，目前沒有信息發佈權限，建議您 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">立即登錄</a> 或 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">註冊會員</a></div>
+	<div class="warn">You are not logged in yet, to post new lead need to <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">Login NOW</a> or <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">Join FREE</a></div>
 	{/if}
 {/if}
 {template 'footer', $module}

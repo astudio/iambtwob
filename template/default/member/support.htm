@@ -2,9 +2,9 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="ask.php?action=add"><span>在線提問</span></a></td>
+<td class="tab" id="add"><a href="ask.php?action=add"><span>Live Chat</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab_on"><a href="support.php"><span>客服專員</span></a></td>
+<td class="tab_on"><a href="support.php"><span>ImB2B Team</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 </tr>
 </table>
@@ -12,48 +12,48 @@
 <table cellspacing="1" cellpadding="10" class="tb">
 {if $user[truename]}
 <tr>
-<td class="tl">姓名</td>
-<td class="tr">{$user[truename]} （{if $user[gender]==1}先生{else}女士{/if}）</td>
+<td class="tl">Name</td>
+<td class="tr">{$user[truename]} （{if $user[gender]==1}Mr.{else}Ms.{/if}）</td>
 </tr>
 {/if}
 {if $user[telephone]}
 <tr>
-<td class="tl">電話</td>
+<td class="tl">TEL</td>
 <td class="tr">{$user[telephone]}</td>
 </tr>
 {/if}
 {if $user[mobile]}
 <tr>
-<td class="tl">手機</td>
-<td class="tr">{$user[mobile]} {if $DT[sms]}&nbsp;&nbsp;<a href="sms.php?action=add&auth={encrypt($user[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="發送短信" alt=""/></a>{/if}</td>
+<td class="tl">Mobile</td>
+<td class="tr">{$user[mobile]} {if $DT[sms]}&nbsp;&nbsp;<a href="sms.php?action=add&auth={encrypt($user[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="Send SMS" alt=""/></a>{/if}</td>
 </tr>
 {/if}
 {if $user[fax]}
 <tr>
-<td class="tl">傳真</td>
+<td class="tl">Fax</td>
 <td class="tr">{$user[fax]}</td>
 </tr>
 {/if}
 {if $user[mail]}
 <tr>
-<td class="tl">郵件</td>
+<td class="tl">Email</td>
 <td class="tr">{$user[mail]}</td>
 </tr>
 {/if}
 {if $user[address]}
 <tr>
-<td class="tl">地址</td>
+<td class="tl">Address</td>
 <td class="tr">{$user[address]}</td>
 </tr>
 {/if}
 {if $user[postcode]}
 <tr>
-<td class="tl">郵編</td>
+<td class="tl">Postal Code</td>
 <td class="tr">{$user[postcode]}</td>
 </tr>
 {/if}
 <tr>
-<td class="tl">對話</td>
+<td class="tl">Message</td>
 <td class="tr">
 {if $user[username] && $DT[im_web]}{im_web($user[username])}&nbsp;{/if}
 {if $user[qq] && $DT[im_qq]}{im_qq($user[qq])}&nbsp;{/if}

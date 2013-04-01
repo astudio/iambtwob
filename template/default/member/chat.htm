@@ -236,15 +236,15 @@
 				{/if}
 			</div>
 		</td>
-		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="if(Dd('font').style.display=='none')this.className='tool_a';" id="tool_font" onclick="font_show();"><img src="image/chat_font.gif" width="16" height="16" title="设置文字颜色和格式"/></td>
-		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="if(Dd('face').style.display=='none')this.className='tool_a';" id="tool_face" onclick="face_show();"><img src="image/chat_face.gif" width="16" height="16" title="表情"/></td>
+		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="if(Dd('font').style.display=='none')this.className='tool_a';" id="tool_font" onclick="font_show();"><img src="image/chat_font.gif" width="16" height="16" title="Set font format and style"/></td>
+		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="if(Dd('face').style.display=='none')this.className='tool_a';" id="tool_face" onclick="face_show();"><img src="image/chat_face.gif" width="16" height="16" title="Show icons"/></td>
 		{if $MOD[chat_file] && $MG[upload]}
-		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_file" onclick="Dfile({$moduleid}, '', 'chat', '{$MOD[chat_ext]}');"><img src="image/chat_file.gif" width="16" height="16" title="传文件"/></td>
+		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_file" onclick="Dfile({$moduleid}, '', 'chat', '{$MOD[chat_ext]}');"><img src="image/chat_file.gif" width="16" height="16" title="Send files"/></td>
 		{/if}
 		<td>&nbsp;</td>
-		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_log" onclick="chat_log();"><img src="image/chat_log.gif" width="16" height="16" title="查看对话记录"/></td>
-		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_save" onclick="chat_save();"><img src="image/chat_save.gif" width="16" height="16" title="保存对话记录"/></td>
-		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_clear" onclick="Dd('chat').innerHTML='';"><img src="image/chat_clear.gif" width="16" height="16" title="清屏"/></td>
+		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_log" onclick="chat_log();"><img src="image/chat_log.gif" width="16" height="16" title="View log"/></td>
+		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_save" onclick="chat_save();"><img src="image/chat_save.gif" width="16" height="16" title="Save log"/></td>
+		<td class="tool_a" onmouseover="this.className='tool_b';" onmouseout="this.className='tool_a';" id="tool_clear" onclick="Dd('chat').innerHTML='';"><img src="image/chat_clear.gif" width="16" height="16" title="Clear"/></td>
 		</tr>
 		</table>
 	</div>
@@ -310,11 +310,11 @@
 	<td class="i_user_l">certification:</td>
 	<td{if $user[validated]} title="{$user[validator]} verified"{/if}>
 	{if $user[vip]}&nbsp;<img src="{DT_SKIN}image/vip.gif" align="absmiddle" title="{VIP}:{$user[vip]}"/>{/if}
-	{if $user[vcompany]}&nbsp;<img src="image/v_company.gif" width="16" height="16" align="absmiddle" title="通过工商认证"/>{/if}
-	{if $user[vtruename]}&nbsp;<img src="image/v_truename.gif" width="16" height="16" align="absmiddle" title="通过实名认证"/>{/if}
-	{if $user[vbank]}&nbsp;<img src="image/v_bank.gif" width="16" height="16" align="absmiddle" title="通过银行帐号认证"/>{/if}
-	{if $user[vmobile]}&nbsp;<img src="image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通过手机认证"/>{/if}
-	{if $user[vemail]}&nbsp;<img src="image/v_email.gif" width="16" height="16" align="absmiddle" title="通过E-mail认证"/>{/if}
+	{if $user[vcompany]}&nbsp;<img src="image/v_company.gif" width="16" height="16" align="absmiddle" title="通過工商認證"/>{/if}
+	{if $user[vtruename]}&nbsp;<img src="image/v_truename.gif" width="16" height="16" align="absmiddle" title="通過實名認證"/>{/if}
+	{if $user[vbank]}&nbsp;<img src="image/v_bank.gif" width="16" height="16" align="absmiddle" title="通過銀行帳號認證"/>{/if}
+	{if $user[vmobile]}&nbsp;<img src="image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通過手機認證"/>{/if}
+	{if $user[vemail]}&nbsp;<img src="image/v_email.gif" width="16" height="16" align="absmiddle" title="通過E-mail認證"/>{/if}
 	&nbsp;	
 	</td>
 	</tr>

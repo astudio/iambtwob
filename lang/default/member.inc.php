@@ -214,13 +214,13 @@ $L['member_payword_len'] = 'Payment password should be between {V0}-{V1} charact
 $L['member_groupid_null'] = 'Select a member group.';
 $L['member_truename_null'] = 'Enter your real name.';
 $L['member_email_null'] = 'Invalid email format.';
-$L['member_email_ban'] = '此郵件域名已經被禁止註冊';
+$L['member_email_ban'] = 'This e-mail domain has been banned.';
 $L['member_email_reg'] = 'Exsited email address.';
 $L['member_areaid_null'] = 'Select a location.';
 $L['member_company_null'] = 'Enter your company name.';
 $L['member_company_bad'] = 'Invalid company name.';
 $L['member_company_reg'] = 'Exsited company name.';
-$L['member_company_ban'] = '此公司名已經被禁止註冊';
+$L['member_company_ban'] = 'This company name has been banned.';
 $L['member_type_null'] = 'Select a business type at least.';
 $L['member_telephone_null'] = 'Enter your company telephone number.';
 $L['member_regyear_null'] = 'Enter establishment year of your company.';
@@ -281,19 +281,19 @@ $L['news_record_add'] = 'Released';
 $L['news_record_del'] = 'Deleted';
 $L['news_msg_choose'] = 'Select the news.';
 
-$L['page_title'] = '公司單頁';
-$L['page_title_add'] = '添加單頁';
-$L['page_title_edit'] = '修改單頁';
-$L['page_record_add'] = '單頁發佈';
-$L['page_record_del'] = '單頁刪除';
-$L['page_msg_choose'] = '請選擇單頁';
+$L['page_title'] = 'Single page';
+$L['page_title_add'] = 'Add';
+$L['page_title_edit'] = 'Edit';
+$L['page_record_add'] = 'Release';
+$L['page_record_del'] = 'Delete';
+$L['page_msg_choose'] = 'Select';
 
-$L['address_title'] = '收貨地址';
-$L['address_title_add'] = '添加地址';
-$L['address_title_edit'] = '修改地址';
-$L['address_record_add'] = '地址發佈';
-$L['address_record_del'] = '地址刪除';
-$L['address_msg_choose'] = '請選擇地址';
+$L['address_title'] = 'Shipping address';
+$L['address_title_add'] = 'Add';
+$L['address_title_edit'] = 'Edit';
+$L['address_record_add'] = 'Release';
+$L['address_record_del'] = 'Delete';
+$L['address_msg_choose'] = 'Select';
 
 $L['pay_title'] = 'Online Payment';
 $L['pay_record_view'] = 'Views';
@@ -314,8 +314,8 @@ $L['register_msg_welcome'] = 'Welcome to Join '.$DT['sitename'];
 $L['register_pass_groupid'] = 'Select a member group.';
 
 /*2010-10-25<<*/
-$L['register_msg_emailcode'] = $DT['sitename'].'用戶註冊郵件驗證碼';
-$L['register_pass_emailcode'] = '郵件驗證碼錯誤';
+$L['register_msg_emailcode'] = $DT['sitename'].'`s validation code in your mail';
+$L['register_pass_emailcode'] = 'Validation code error';
 /*2010-10-25>>*/
 
 $L['renew_title'] = VIP.' Service Renewal';
@@ -343,7 +343,7 @@ $L['send_email_success'] = 'Email has been updated.';
 $L['send_email_mail'] = $DT['sitename'].'Amend Email Address';
 $L['send_email_title'] = 'Amend Email';
 $L['send_mobile_exist'] = 'Exsited mobile phone number.  Please enter a new one.';
-$L['send_mobile_fail'] = '短信發送失敗，請重試';
+$L['send_mobile_fail'] = 'SMS failed, please try again.';
 $L['send_mobile_success'] = 'Mobile phone number has been updated.';
 $L['send_mobile_code_error'] = 'Incorrect code.';
 $L['send_mobile_bad'] = 'Incorrect mobile phone number.';
@@ -442,7 +442,7 @@ $L['trade_refund_success'] = 'Your request has been submitted and under processi
 $L['trade_refund_title'] = 'Refund request';
 $L['trade_send_success'] = 'Shipment arranged.  Please wait for consignee\'s confirmation.';
 $L['trade_send_title'] = 'Shipment arranged';
-$L['trade_receive_title'] = '確認到貨';
+$L['trade_receive_title'] = 'Products received.';
 $L['trade_addtime_null'] = 'Please enter extension days.';
 $L['trade_addtime_success'] = 'The duration has been extended.';
 $L['trade_addtime_title'] = 'Extend the duration for buyer\'s confirmation.';
@@ -472,7 +472,7 @@ $L['trade_sms_confirm'] = 'Notify buyer to pay.';
 $L['trade_sms_pay'] = 'Notify seller for shipping.';
 $L['trade_sms_send'] = 'Notify buyer of shippment';
 $L['trade_sms_income'] = 'Internal payment notification';
-$L['trade_sms_receive'] = '通知賣家已收貨';
+$L['trade_sms_receive'] = 'Tell seller you have received.';
 $L['trade_message_t1'] = 'Internal reminder! You have a deal awaiting payment.(T{V0})';
 $L['trade_message_c1'] = 'Seller <a href="{V0}" class="t">{V1}</a> confirmed your order on <span class="f_gray">{V2}</span> <br/><a href="{V3}" class="t" target="_blank">&raquo; Please click here for further details.</a>';
 $L['trade_message_t2'] = 'Internal reminder! You have a deal awaiting shipment.(T{V0})';
@@ -487,18 +487,18 @@ $L['trade_message_t6'] = 'Internal reminder! You have a deal awaiting confirmati
 $L['trade_message_c6'] = '<a href="{V0}" class="t">{V1}</a> ordered ：<br/>{V3}<br/> on <span class="f_gray">{V2}</span> Order number：<span class="f_red">T{V4}</span> &nbsp;Order amount：<span class="f_blue f_b">{V5}'.$DT['money_unit'].'</span><br/><a href="{V6}" class="t" target="_blank">&raquo; Please click here for further details.</a>';
 
 $L['group_status'] = array(
-	'<span style="color:#0000FF;">已付款</span>',
-	'<span style="color:#FF0000;">已發貨</span>',
-	'<span style="color:#FF6600;">已消費</span>',
-	'<span style="color:#008000;">交易成功</span>',
-	'<span style="color:#888888;text-decoration:line-through;">已退款</span>',
+	'<span style="color:#0000FF;">Paid</span>',
+	'<span style="color:#FF0000;">Shipping</span>',
+	'<span style="color:#FF6600;">Spent</span>',
+	'<span style="color:#008000;">Complete</span>',
+	'<span style="color:#888888;text-decoration:line-through;">Refunded</span>',
 );
 $L['group_dstatus'] = array(
-	'已付款',
-	'已發貨',
-	'已消費',
-	'交易成功',
-	'已退款',
+	'Paid',
+	'Shipping',
+	'Spent',
+	'Complete',
+	'Refunded',
 );
 $L['group_detail_title'] = '訂單詳情';
 
@@ -517,7 +517,7 @@ $L['validate_email_title'] = 'Verify by email';
 $L['validate_mobile_exist'] = 'Exsited mobile phone number.  Please enter a new one.';
 $L['validate_mobile_title'] = 'Verify by mobile phone number';
 $L['validate_mobile_success'] = 'Your mobile phone number has been verified.';
-$L['validate_mobile_fail'] = '短信發送失敗，請重試';
+$L['validate_mobile_fail'] = 'SMS failed, please try again.';
 $L['validate_mobile_code_error'] = 'Wrong verication code.';
 $L['validate_mobile_bad'] = 'Incorrect mobile phone number';
 $L['validate_mobile_record'] = 'Verify by mobile phone';
@@ -531,10 +531,10 @@ $L['validate_company_image'] = 'Please upload the picture';
 $L['validate_company_success'] = 'Sent';
 $L['validate_bank_title'] = 'Verify by bank account';
 
-$L['oauth_title'] = '一鍵登錄';
-$L['oauth_quit'] = '解除成功';
+$L['oauth_title'] = 'Fast Login';
+$L['oauth_quit'] = 'Relieve successfully';
 
-$L['support_title'] = '客服專員';
-$L['support_error_1'] = '系統暫未為您分配客服專員';
-$L['support_error_2'] = '客服專員不存在，請與網站聯繫';
+$L['support_title'] = 'Service Team';
+$L['support_error_1'] = 'All the team is busy, please wait.';
+$L['support_error_2'] = 'Customer service is not available, please contact us.';
 ?>

@@ -96,7 +96,7 @@
 </tr>	
 </table>
 <div style="float:left;">&nbsp;&nbsp;<span onclick="vs();" class="jt">[Preview]</span>&nbsp;&nbsp;<span onclick="vh();Dd('video').value='';" class="jt">[Delete]</span>&nbsp;&nbsp; 
-<span class="f_gray">進度：<span id="tdPercentUploaded">0%</span></span> <span id="dvideo" class="f_red"></span></div>
+<span class="f_gray">Progressing: <span id="tdPercentUploaded">0%</span></span> <span id="dvideo" class="f_red"></span></div>
 <script type="text/javascript" src="{$MODULE[1][linkurl]}file/swfupload/swfupload.js"></script>
 <script type="text/javascript" src="{$MODULE[1][linkurl]}file/swfupload/swfupload.queue.js"></script>
 <script type="text/javascript" src="{$MODULE[1][linkurl]}file/swfupload/swfupload.speed.js"></script>
@@ -111,7 +111,7 @@
 			file_size_limit : "1000 MB",
 			/* file_types : "*.*", */
 			file_types : "*.<?php echo str_replace('|', ';*.', $MOD['upload']);?>",
-			file_types_description : "視頻文件",
+			file_types_description : "Video Files",
 			/* /file_upload_limit : 100, */
 			file_upload_limit : 10,
 			file_queue_limit : 0,
@@ -191,7 +191,7 @@ var property_admin = 0;
 </tr>
 {if $fee_add}
 <tr>
-<td class="tl">發佈此信息需消費</td>
+<td class="tl">Post this lead you need to pay</td>
 <td class="tr"><span class="f_b f_red">{$fee_add}</span> {$fee_unit}</td>
 </tr>
 {if $fee_currency == 'money'}
@@ -293,7 +293,7 @@ You`ve posted <span class="f_b">{$limit_used}</span>.&nbsp;&nbsp;&nbsp;
 <span class="f_b f_blue">{$limit_free}</span> more can be posted.&nbsp;&nbsp;&nbsp;
 {/if}
 {if !$MG['fee_mode'] && $MOD[fee_add]}
-發佈信息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
+發佈訊息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
 可免費發佈 <span class="f_b">{if $MG[video_free_limit]<0}無限{else}{$MG[video_free_limit]}{/if}</span> 條&nbsp;&nbsp;&nbsp;
 {/if}
 </div>

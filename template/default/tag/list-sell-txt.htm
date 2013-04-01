@@ -13,15 +13,15 @@
 		<ul>
 			<li class="title">{if $t[vip]}<span class="f_r"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?fbox=1&itemid='.$t['itemid'])}" class="Inquiry"><img src="{DT_SKIN}image/inquiry_btn.png" alt="Inquiry" class="iq_btn" /></a></span>{/if}<a href="{$t[linkurl]}" target="_blank"><strong class="px14">{$t[title]}</strong></a></li>
 			<li>
-				<span class="f_r">
-					<img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/>
+				<span class="f_r">					
 					<span>
 					{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
 					{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
 					{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
 					{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
 					{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}&nbsp;{/if}
-					&nbsp;&nbsp;</span>					
+					&nbsp;&nbsp;</span>
+					<img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/>	
 				</span>
 				<a href="{if $kw}{userurl($t[username],'file=sell&kw='.$kw)}{else}{userurl($t[username],'file=sell')}{/if}" class="com trigger" target="_blank" title="{if $t[dcount]>1}All Items({$t[dcount]}){/if}">{$t[company]}</a>&nbsp;
 				<span class="f_gray">

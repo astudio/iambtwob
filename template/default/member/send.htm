@@ -3,9 +3,9 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、設置新密碼</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Create a new password</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、郵件驗證</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Email activation</span></a></td>
 </tr>
 </table>
 </div>
@@ -13,40 +13,40 @@
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 新支付密碼</td>
+<td class="tl"><span class="f_red">*</span> New payment password</td>
 <td class="tr"><input type="password" size="20" name="password" id="password"/> <span id="dpassword" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 重複新支付密碼</td>
+<td class="tl"><span class="f_red">*</span> Re-enter payment password</td>
 <td class="tr"><input type="password" size="20" name="cpassword" id="cpassword"/>&nbsp;<span id="dcpassword" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tl"><span class="f_red">*</span> Security Code</td>
 <td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">提示信息</td>
-<td class="tr">提交後，系統將發送一封驗證郵件至{$_email}，請接收郵件完成驗證</td>
+<td class="tl">Tips</td>
+<td class="tr">The activation email will be sent to {$_email} while submitted. Please complete the activation procedure after receiving.</td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('password').value.length > {$MOD[maxpassword]} || Dd('password').value.length < {$MOD[minpassword]}) {
-		Dmsg('密碼長度應為{$MOD[minpassword]}-{$MOD[maxpassword]}字符', 'password');
+		Dmsg('The length of password should be {$MOD[minpassword]}-{$MOD[maxpassword]} characters.', 'password');
 		return false;
 	}
 	if(Dd('password').value != Dd('cpassword').value) {
-		Dmsg('兩次輸入的密碼不一致', 'cpassword');
+		Dmsg('Two passwords are not the same.', 'cpassword');
 		return false;
 	}
 	if(!is_captcha(Dd('captcha').value)) {
-		Dmsg('請填寫正確的驗證碼', 'captcha');
+		Dmsg('Enter the valid security code.', 'captcha');
 		return false;
 	}
 	return true;
@@ -56,11 +56,11 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、設置新Email</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Set up new email account</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、郵件驗證</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Email activation</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab2"><a href="?action={$action}"><span>3、修改成功</span></a></td>
+<td class="tab" id="Tab2"><a href="?action={$action}"><span>3. Email amended</span></a></td>
 </tr>
 </table>
 </div>
@@ -68,32 +68,32 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 新Email地址</td>
+<td class="tl"><span class="f_red">*</span> New Email Address</td>
 <td class="tr"><input type="text" size="30" name="email" id="email"/> <span id="demail" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tl"><span class="f_red">*</span> Security Code</td>
 <td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">提示信息</td>
-<td class="tr">提交後，系統將發送一封驗證郵件至新Email地址，請接收郵件完成驗證</td>
+<td class="tl">Tips</td>
+<td class="tr">The activation email will be sent to your new email address above while submitted. Please complete the activation procedure after receiving.</td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('email').value.length < 7) {
-		Dmsg('請填寫新Email地址', 'email');
+		Dmsg('Enter your new email address.', 'email');
 		return false;
 	}
 	if(!is_captcha(Dd('captcha').value)) {
-		Dmsg('請填寫正確的驗證碼', 'captcha');
+		Dmsg('Enter the valid security code.', 'captcha');
 		return false;
 	}
 	return true;
@@ -189,9 +189,9 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、重發驗證信</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Re-send activation email</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、郵件驗證</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Email activated</span></a></td>
 </tr>
 </table>
 </div>
@@ -199,45 +199,45 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 戶 名</td>
+<td class="tl"><span class="f_red">*</span> Username</td>
 <td class="tr"><input type="username" name="username" id="username" value="{$_username}" style="width:140px"/> <span id="dusername" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 密 碼</td>
+<td class="tl"><span class="f_red">*</span> Password</td>
 <td class="tr">{template 'password', 'chip'} <span id="dpassword" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">Email</td>
 <td class="tr"><input type="text" size="30" name="email" id="email"/> <span id="demail" class="f_red"></span><br/>
-<span class="f_gray">如果需要更換註冊Email，請填寫；如果不更換，請留空</span></td>
+<span class="f_gray">If need to change your registered email, please enter a new one. Or, make it blank.</span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tl"><span class="f_red">*</span> Security Code</td>
 <td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">提示信息</td>
-<td class="tr">提交後，系統將發送一封驗證郵件至您的註冊Email，請接收郵件完成驗證</td>
+<td class="tl">Tips</td>
+<td class="tr">The activation email will be sent to your registered email address above while submitted. Please complete the activation procedure after receiving.</td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('username').value.length < 1) {
-		Dmsg('請填寫用戶名', 'username');
+		Dmsg('Enter your username.', 'username');
 		return false;
 	}
 	if(Dd('password').value.length < 6) {
-		Dmsg('請填寫密碼', 'password');
+		Dmsg('Enter your password.', 'password');
 		return false;
 	}
 	if(!is_captcha(Dd('captcha').value)) {
-		Dmsg('請填寫正確的驗證碼', 'captcha');
+		Dmsg('Enter the valid security code.', 'captcha');
 		return false;
 	}
 	return true;
@@ -247,9 +247,9 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、找回密碼</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Find password</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、郵件驗證</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Email activated</span></a></td>
 </tr>
 </table>
 </div>
@@ -259,66 +259,66 @@ function check() {
 <tr>
 <td class="tl"><span class="f_red">*</span> 
 <select name="option">
-	<option value="username">用戶名</option>
-	{if $MOD['passport']}<option value="passport">通行證</option>{/if}
-	<option value="mobile">手機號</option>
-	<option value="company">公司名</option>
+	<option value="username">Username</option>
+	{if $MOD['passport']}<option value="passport">Passport</option>{/if}
+	<option value="mobile">Mobile</option>
+	<option value="company">Company Name</option>
 	{if $DT[im_qq]}<option value="qq">QQ</option>{/if}
 	{if $DT[im_msn]}<option value="msn">MSN</option>{/if}
 	{if $DT[im_ali]}<option value="ali">旺旺</option>{/if}
 	{if $DT[im_skype]}<option value="skype">Skype</option>{/if}
-	<option value="userid">會員ID</option>
+	<option value="userid">Member ID</option>
 </select>	
 </td>
 <td class="tr"><input type="username" size="20" name="username" id="username"/> <span id="dusername" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> Email</td>
-<td class="tr"><input type="text" size="30" name="email" id="email"/> <span id="demail" class="f_red"></span> <span class="f_gray">請填寫您註冊時填寫的Email</span></td>
+<td class="tr"><input type="text" size="30" name="email" id="email"/> <span id="demail" class="f_red"></span> <span class="f_gray">Please enter your registered email address</span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 新登錄密碼</td>
+<td class="tl"><span class="f_red">*</span> New Login Password</td>
 <td class="tr"><input type="password" size="20" name="password" id="password"/> <span id="dpassword" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 重複新登錄密碼</td>
+<td class="tl"><span class="f_red">*</span> Re-enter Login Password</td>
 <td class="tr"><input type="password" size="20" name="cpassword" id="cpassword"/>&nbsp;<span id="dcpassword" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tl"><span class="f_red">*</span> Security Code</td>
 <td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">提示信息</td>
-<td class="tr">提交後，系統將發送一封驗證郵件至您的註冊Email，請接收郵件完成驗證</td>
+<td class="tl">Tips</td>
+<td class="tr">The activation email will be sent to your registered email above while submitted. Please complete the activation procedure after receiving.</td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('username').value.length < 1) {
-		Dmsg('請填寫名稱', 'username');
+		Dmsg('Enter your username.', 'username');
 		return false;
 	}
 	if(Dd('email').value.length < 7) {
-		Dmsg('請填寫註冊Email地址', 'email');
+		Dmsg('Enter your registered email address.', 'email');
 		return false;
 	}
 	if(Dd('password').value.length > {$MOD[maxpassword]} || Dd('password').value.length < {$MOD[minpassword]}) {
-		Dmsg('密碼長度應為{$MOD[minpassword]}-{$MOD[maxpassword]}字符', 'password');
+		Dmsg('The length of password should be {$MOD[minpassword]}-{$MOD[maxpassword]} characters.', 'password');
 		return false;
 	}
 	if(Dd('password').value != Dd('cpassword').value) {
-		Dmsg('兩次輸入的密碼不一致', 'cpassword');
+		Dmsg('Two passwords are not the same.', 'cpassword');
 		return false;
 	}
 	if(!is_captcha(Dd('captcha').value)) {
-		Dmsg('請填寫正確的驗證碼', 'captcha');
+		Dmsg('Enter the valid security code.', 'captcha');
 		return false;
 	}
 	return true;

@@ -160,7 +160,7 @@ No selection means permanent
 {/if}
 {if $fee_add}
 <tr>
-<td class="tl">發佈此信息需消費</td>
+<td class="tl">Post this lead you need to pay</td>
 <td class="tr"><span class="f_b f_red">{$fee_add}</span> {$fee_unit}</td>
 </tr>
 {if $fee_currency == 'money'}
@@ -270,7 +270,7 @@ You`ve posted <span class="f_b">{$limit_used}</span>.&nbsp;&nbsp;&nbsp;
 <span class="f_b f_blue">{$limit_free}</span> more can be posted.&nbsp;&nbsp;&nbsp;
 {/if}
 {if !$MG['fee_mode'] && $MOD[fee_add]}
-發佈信息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
+發佈訊息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
 可免費發佈 <span class="f_b">{if $MG[buy_free_limit]<0}無限{else}{$MG[buy_free_limit]}{/if}</span> 條&nbsp;&nbsp;&nbsp;
 {/if}
 </div>

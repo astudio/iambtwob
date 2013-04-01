@@ -162,7 +162,7 @@
 	</form>
 	<script type="text/javascript">
 	function check() {
-		return confirm('您確認貨物已經發出，並且以上信息填寫無誤嗎？\n\n此操作將不可撤銷');
+		return confirm('您確認貨物已經發出，並且以上資訊填寫無誤嗎？\n\n此操作將不可撤銷');
 	}
 	</script>
 	<script type="text/javascript">s('trade');m('action');</script>
@@ -258,7 +258,7 @@
 <form action="{$MOD[linkurl]}group.php">
 <input type="hidden" name="action" value="{$action}"/>
 {$fields_select}&nbsp;
-<input type="text" size="10" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<input type="text" size="10" name="kw" value="{$kw}" title="關鍵字"/>&nbsp;
 {$status_select}&nbsp;
 {dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}&nbsp;
 單號：<input type="text" size="5" name="itemid" value="{$itemid}"/>&nbsp;
@@ -299,9 +299,9 @@
 <td colspan="8" class="f_gray">
 <span class="f_r">
 {if $v[status] == 1}
-<input type="button" value="確認收貨" class="btn" onclick="if(confirm('您確定已經收到商家貨物且質量與數量無誤嗎？此操作將不可撤銷'))window.location='{$MOD[linkurl]}group.php?itemid={$v[itemid]}&action=update&step=receive&page={$page}';"/>
+<input type="button" value="確認收貨" class="btn" onclick="if(confirm('您確定已經收到商家貨物且品質與數量無誤嗎？此操作將不可撤銷'))window.location='{$MOD[linkurl]}group.php?itemid={$v[itemid]}&action=update&step=receive&page={$page}';"/>
 {elseif $v[status] == 2}
-<input type="button" value="確認消費" class="btn" onclick="if(confirm('您確定已在商家消費且質量與數量無誤嗎？此操作將不可撤銷'))window.location='{$MOD[linkurl]}group.php?itemid={$v[itemid]}&action=update&step=used&page={$page}';"/>
+<input type="button" value="確認消費" class="btn" onclick="if(confirm('您確定已在商家消費且品質與數量無誤嗎？此操作將不可撤銷'))window.location='{$MOD[linkurl]}group.php?itemid={$v[itemid]}&action=update&step=used&page={$page}';"/>
 {/if}
 <input type="button" value="訂單詳情" class="btn" onclick="window.location='{$MOD[linkurl]}group.php?itemid={$v[itemid]}&action=update&step=detail';"/>
 &nbsp;
@@ -332,7 +332,7 @@
 <form action="{$MOD[linkurl]}group.php">
 <input type="hidden" name="action" value="{$action}"/>
 {$fields_select}&nbsp;
-<input type="text" size="20" name="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+<input type="text" size="20" name="kw" value="{$kw}" title="關鍵字"/>&nbsp;
 {$status_select}&nbsp;
 {dcalendar('fromtime', $fromtime)} 至 {dcalendar('totime', $totime)}&nbsp;
 <input type="submit" value=" 搜 索 " class="btn"/>&nbsp;

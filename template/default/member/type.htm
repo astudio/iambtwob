@@ -3,35 +3,35 @@
 <table cellpadding="0" cellspacing="0">
 <tr>
 {if $item == 'friend'}
-	<td class="tab" id="add"><a href="friend.php?action=add"><span>添加商友</span></a></td>
+	<td class="tab" id="add"><a href="friend.php?action=add"><span>Add Friend</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="home"><a href="friend.php"><span>我的商友</span></a></td>
+	<td class="tab" id="home"><a href="friend.php"><span>My Friend</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="type"><a href="type.php?item={$item}"><span>商友分類</span></a><script type="text/javascript">c(1);</script></td>
+	<td class="tab" id="type"><a href="type.php?item={$item}"><span>Group</span></a><script type="text/javascript">c(1);</script></td>
 {elseif $item == 'favorite'}
-	<td class="tab" id="add"><a href="favorite.php?action=add"><span>添加收藏</span></a></td>
+	<td class="tab" id="add"><a href="favorite.php?action=add"><span>Add Favorite</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="home"><a href="favorite.php"><span>商機收藏</span></a></td>
+	<td class="tab" id="home"><a href="favorite.php"><span>My Favorite</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="type"><a href="type.php?item={$item}"><span>收藏分類</span></a><script type="text/javascript">c(1);</script></td>
+	<td class="tab" id="type"><a href="type.php?item={$item}"><span>Category</span></a><script type="text/javascript">c(1);</script></td>
 {elseif $item == 'product'}
-	<td class="tab" id="add"><a href="{$DT[file_my]}?mid=5&action=add"><span>添加{$MODULE[5][name]}</span></a></td>
+	<td class="tab" id="add"><a href="{$DT[file_my]}?mid=5&action=add"><span>Post {$MODULE[5][ename]}ing Lead</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="home"><a href="{$DT[file_my]}?mid=5"><span>管理{$MODULE[5][name]}</span></a></td>
+	<td class="tab" id="home"><a href="{$DT[file_my]}?mid=5"><span>Manage</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="type"><a href="type.php?item={$item}"><span>{$MODULE[5][name]}分類</span></a></td>
+	<td class="tab" id="type"><a href="type.php?item={$item}"><span>Category</span></a></td>
 {elseif $item == 'mall'}
-	<td class="tab" id="add"><a href="{$DT[file_my]}?mid=16&action=add"><span>添加商品</span></a></td>
+	<td class="tab" id="add"><a href="{$DT[file_my]}?mid=16&action=add"><span>Add Product</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="home"><a href="{$DT[file_my]}?mid=16"><span>管理商品</span></a></td>
+	<td class="tab" id="home"><a href="{$DT[file_my]}?mid=16"><span>Manage</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="type"><a href="type.php?item={$item}"><span>商品分類</span></a></td>
+	<td class="tab" id="type"><a href="type.php?item={$item}"><span>Category</span></a></td>
 {elseif $item == 'news'}
-	<td class="tab" id="add"><a href="news.php?action=add"><span>添加新聞</span></a></td>
+	<td class="tab" id="add"><a href="news.php?action=add"><span>Release News</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="home"><a href="news.php"><span>管理新聞</span></a></td>
+	<td class="tab" id="home"><a href="news.php"><span>Manage</span></a></td>
 	<td class="tab_nav">&nbsp;</td>
-	<td class="tab" id="type"><a href="type.php?item={$item}"><span>新聞分類</span></a><script type="text/javascript">c(3);</script></td>
+	<td class="tab" id="type"><a href="type.php?item={$item}"><span>Category</span></a><script type="text/javascript">c(3);</script></td>
 {/if}
 </tr>
 </table>
@@ -45,9 +45,9 @@ var _del = 0;
 <div class="ls">
 <table cellpadding="0" cellspacing="0" class="tb">
 <tr>
-<th width="60">刪</th>
-<th width="80">排序</th>
-<th>名稱</th>
+<th width="60">Delete</th>
+<th width="80">Order</th>
+<th>Name</th>
 </tr>
 {loop $types $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';">
@@ -57,14 +57,14 @@ var _del = 0;
 </tr>
 {/loop}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';">
-<td class="f_red" align="center">新增</td>
+<td class="f_red" align="center">Create</td>
 <td align="center"><input name="type[0][listorder]" type="text" size="5" value="" maxlength="3"/></td>
 <td>&nbsp;&nbsp;<input name="type[0][typename]" type="text" size="20" value="" maxlength="50" style="width:200px;"/> {$new_style}</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td height="50" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value=" 提 交 " onclick="if(_del && !confirm('提示:您選擇刪除'+_del+'個分類？確定要刪除嗎？')) return false;" class="btn"/>
-{if $MG[type_limit]}&nbsp;最多可定義 <strong class="f_red">{$MG[type_limit]}</strong> 個分類&nbsp;&nbsp;&nbsp;當前已定義 <strong class="f_blue">{count($types)}</strong> 個&nbsp;&nbsp;&nbsp;{/if}
+<td height="50" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value=" Submit " onclick="if(_del && !confirm('Do you want to delete '+_del+' categories you have selected?')) return false;" class="btn"/>
+{if $MG[type_limit]}&nbsp;You can create <strong class="f_red">{$MG[type_limit]}</strong> types in total.&nbsp;&nbsp;&nbsp;You`ve created <strong class="f_blue">{count($types)}</strong>.&nbsp;&nbsp;&nbsp;{/if}
 </td>
 </tr>
 </table>
@@ -72,7 +72,7 @@ var _del = 0;
 </form>
 {else}
 <br/><br/>
-<center class="f_red">抱歉，您沒有權限自定義分類</center>
+<center class="f_red">Sorry! You have no permission to customize the categories.</center>
 <br/><br/>
 {/if}
 <script type="text/javascript">s('{$item}');m('type');</script>

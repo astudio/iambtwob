@@ -1,14 +1,14 @@
 {template 'header',$module}
 {if $action == 'email'}
-{if $itemid==1}<div class="warn">尊敬的用戶，為了保證信息的真實有效，請先<strong>認證</strong>您的<strong>Email</strong>，認證通過之後即可發佈信息</div>{/if}
+{if $itemid==1}<div class="warn">Dear Member, in order to ensure the validity of information, please <strong>validate</strong> your <strong>Email</strong> at first, and then post your leads.</div>{/if}
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、發送認證信</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Send the validation email</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、接收認證信</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Receive the validation code</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab2"><a href="?action={$action}"><span>3、通過認證</span></a></td>
+<td class="tab" id="Tab2"><a href="?action={$action}"><span>3. Proved by validation</span></a></td>
 </tr>
 </table>
 </div>
@@ -16,32 +16,32 @@
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 您的Email</td>
+<td class="tl"><span class="f_red">*</span> Your Email</td>
 <td class="tr"><input type="text" size="30" name="email" id="email" value="{$user[email]}"/> <span id="demail" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 驗證碼</td>
+<td class="tl"><span class="f_red">*</span> Validation Code</td>
 <td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">提示信息</td>
-<td class="tr">提交後，系統將發送一封驗證郵件至您的Email，請接收郵件完成認證</td>
+<td class="tl">Tips</td>
+<td class="tr">The validation email will be sent to the email you entered while submitted. Please complete the activation procedure after receiving.</td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('email').value.length < 7) {
-		Dmsg('請填寫Email', 'email');
+		Dmsg('Enter your valid Email address.', 'email');
 		return false;
 	}
 	if(!is_captcha(Dd('captcha').value)) {
-		Dmsg('請填寫正確的驗證碼', 'captcha');
+		Dmsg('Enter the valid security code.', 'captcha');
 		return false;
 	}
 	return true;
@@ -51,30 +51,30 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href=""><span>郵件認證</span></a></td>
+<td class="tab_on" id="Tab0"><a href=""><span>Email Validation</span></a></td>
 </tr>
 </table>
 </div>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">郵件地址</td>
-<td class="tr"><strong>{$_email}</strong> <a href="send.php?action=email" class="t">[修改]</a></td>
+<td class="tl">Email Address</td>
+<td class="tr"><strong>{$_email}</strong> <a href="send.php?action=email" class="t">[Edit]</a></td>
 </tr>
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_green">已認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_green">Proved</td>
 </tr>
 </table>
 {elseif $action == 'mobile'}
-{if $itemid==1}<div class="warn">尊敬的用戶，為了保證信息的真實有效，請先<strong>認證</strong>您的<strong>手機號碼</strong>，認證通過之後即可發佈信息</div>{/if}
+{if $itemid==1}<div class="warn">Dear Member, in order to ensure the validity of information, please <strong>validate</strong> your <strong>mobile number</strong> at first, and then post your leads.</div>{/if}
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、發送認證碼</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Send the validation code</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}&code=1"><span>2、接收認證碼</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}&code=1"><span>2. Receive the validation code</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab2"><a href="?action={$action}"><span>3、通過驗證</span></a></td>
+<td class="tab" id="Tab2"><a href="?action={$action}"><span>3. Proved by validation</span></a></td>
 </tr>
 </table>
 </div>
@@ -83,11 +83,11 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 認證碼</td>
-<td class="tr"><input type="text" size="10" name="auth" id="auth"/> <span id="dauth" class="f_red"></span> 請輸入你收到的短信認證碼</td>
+<td class="tl"><span class="f_red">*</span> Validation Code</td>
+<td class="tr"><input type="text" size="10" name="auth" id="auth"/> <span id="dauth" class="f_red"></span> Enter your SMS validation code.</td>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 重 發 " class="btn" onclick="Go('?action={$action}');"/></td>
+<td class="tr" height="30"><input type="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Resend " class="btn" onclick="Go('?action={$action}');"/></td>
 </tr>
 </table>
 </form>
@@ -96,7 +96,7 @@ Dd('Tab0').className = 'tab';
 Dd('Tab1').className = 'tab_on';
 function check() {
 	if(Dd('auth').value.length < 6) {
-		Dmsg('請填寫認證碼', 'auth');
+		Dmsg('Enter the validation code.', 'auth');
 		return false;
 	}
 	return true;
@@ -107,7 +107,7 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 您的手機號碼</td>
+<td class="tl"><span class="f_red">*</span> Your mobile number</td>
 <td class="tr"><input type="text" size="30" name="mobile" id="mobile" value="{$user[mobile]}"/> <span id="dmobile" class="f_red"></span></td>
 </tr>
 {if $fee && $_sms<1}
@@ -131,19 +131,19 @@ function check() {
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit"  name="submit" value=" 下一步 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit"  name="submit" value=" Next " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
 <script type="text/javascript">
 function check() {
 	if(Dd('mobile').value.length < 7) {
-		Dmsg('請填寫手機號碼', 'mobile');
+		Dmsg('Enter your mobile number.', 'mobile');
 		return false;
 	}
 {if $fee && $_sms<1}
 	if(Dd('password').value.length < 6) {
-		Dmsg('請填寫支付密碼', 'password');
+		Dmsg('Enter your payment password.', 'password');
 		return false;
 	}
 {/if}
@@ -155,28 +155,28 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href=""><span>手機認證</span></a></td>
+<td class="tab_on" id="Tab0"><a href=""><span>Mobile Validation</span></a></td>
 </tr>
 </table>
 </div>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">手機號碼</td>
-<td class="tr"><strong>{$user[mobile]}</strong> <a href="send.php?action=mobile" class="t">[修改]</a></td>
+<td class="tl">Mobile Number</td>
+<td class="tr"><strong>{$user[mobile]}</strong> <a href="send.php?action=mobile" class="t">[Edit]</a></td>
 </tr>
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_green">已認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_green">Proved</td>
 </tr>
 </table>
 {elseif $action == 'truename'}
-{if $itemid==1}<div class="warn">尊敬的用戶，為了保證信息的真實有效，請先<strong>認證</strong>您的<strong>真實姓名</strong>，認證通過之後即可發佈信息</div>{/if}
+{if $itemid==1}<div class="warn">Dear Member, in order to ensure the validity of information, please <strong>validate</strong> your <strong>Real Name</strong> at first, and then post your leads.</div>{/if}
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、提交證件</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Submit your ID or passport</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、通過認證</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Proved by validation</span></a></td>
 </tr>
 </table>
 </div>
@@ -184,35 +184,35 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 真實姓名</td>
+<td class="tl"><span class="f_red">*</span> Real Name</td>
 <td class="tr"><input type="text" size="10" name="truename" id="truename" value="{$user[truename]}"/> <span id="dtruename" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 證件圖片</td>
-<td class="tr"><input name="thumb" id="thumb" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true);" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[刪除]</a>
+<td class="tl"><span class="f_red">*</span> ID or Passport Image</td>
+<td class="tr"><input name="thumb" id="thumb" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true);" class="t">[Upload]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[Preview]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[Delete]</a>
 <span id="dthumb" class="f_red"></span>
 </td>
 </tr>
 <tr>
-<td class="tl">證件圖片</td>
-<td class="tr"><input name="thumb1" id="thumb1" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true, 'thumb1');" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb1').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb1').value='';" class="t">[刪除]</a></td>
+<td class="tl"> ID or Passport Image</td>
+<td class="tr"><input name="thumb1" id="thumb1" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true, 'thumb1');" class="t">[Upload]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb1').value);" class="t">[Preview]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb1').value='';" class="t">[Delete]</a></td>
 </tr>
 <tr>
-<td class="tl">證件圖片</td>
-<td class="tr"><input name="thumb2" id="thumb2" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb2').value, true, 'thumb2');" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb2').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb2').value='';" class="t">[刪除]</a></td>
+<td class="tl"> ID or Passport Image</td>
+<td class="tr"><input name="thumb2" id="thumb2" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb2').value, true, 'thumb2');" class="t">[Upload]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb2').value);" class="t">[Preview]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb2').value='';" class="t">[Delete]</a></td>
 </tr>
 <tr>
-<td class="tl">認證說明</td>
+<td class="tl">Description</td>
 <td class="tr lh18">
-請上傳個人有效證件（身份證或護照等）電子版本，以便網站核實認證<br/>
-證件上的姓名必須與填寫的真實姓名一致<br/>
-最少需要上傳1張，最多可上傳3張
+Upload scanned copy of ID or passport for approving.<br/>
+The entered name should be consistent with the license.<br/>
+Minimum of 1 image is required. Maximum of 3 images.
 </td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
@@ -221,9 +221,9 @@ function check() {
 <br/>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">傳真認證</td>
+<td class="tl">Fax Validation</td>
 <td class="tr">
-您可以傳真有效證件至 {$MOD[vfax]} 進行認證，複印件上需註明會員名
+Fax your valid ID/Passport to {$MOD[vfax]}. Indicate your username as well.
 </td>
 </tr>
 </table>
@@ -231,11 +231,11 @@ function check() {
 <script type="text/javascript">
 function check() {
 	if(Dd('truename').value.length < 2) {
-		Dmsg('請填寫真實姓名', 'truename');
+		Dmsg('Enter your real name.', 'truename');
 		return false;
 	}
 	if(Dd('thumb').value.length < 15) {
-		Dmsg('請上傳證件圖片', 'thumb');
+		Dmsg('Upload your ID/passport image.', 'thumb');
 		return false;
 	}
 	return true;
@@ -245,35 +245,35 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href=""><span>實名認證</span></a></td>
+<td class="tab_on" id="Tab0"><a href=""><span>Real Name Validation</span></a></td>
 </tr>
 </table>
 </div>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">真實姓名</td>
+<td class="tl">Real Name</td>
 <td class="tr f_b">{$user[truename]}</td>
 </tr>
 {if $user[vtruename] || $v[status] == 3}
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_green">已認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_green">Proved</td>
 </tr>
 {else}
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_red">審核中</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_red">Pending</td>
 </tr>
 {/if}
 </table>
 {elseif $action == 'company'}
-{if $itemid==1}<div class="warn">尊敬的用戶，為了保證信息的真實有效，請先<strong>認證</strong>您的<strong>公司信息</strong>，認證通過之後即可發佈信息</div>{/if}
+{if $itemid==1}<div class="warn">Dear Member, in order to ensure the validity of information, please <strong>validate</strong> your <strong>Company Information</strong> at first, and then post your leads.</div>{/if}
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、提交證件</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1. Submit your company certificates</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="?action={$action}"><span>2、通過認證</span></a></td>
+<td class="tab" id="Tab1"><a href="?action={$action}"><span>2. Proved by validation</span></a></td>
 </tr>
 </table>
 </div>
@@ -281,35 +281,35 @@ function check() {
 <input type="hidden" name="action" value="{$action}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl"><span class="f_red">*</span> 公司名</td>
+<td class="tl"><span class="f_red">*</span> Company Name</td>
 <td class="tr"><input type="text" size="60" name="company" id="company" value="{$user[company]}"/> <span id="dcompany" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 證件圖片</td>
-<td class="tr"><input name="thumb" id="thumb" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true);" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[刪除]</a>
+<td class="tl"><span class="f_red">*</span> Certificate Image</td>
+<td class="tr"><input name="thumb" id="thumb" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true);" class="t">[Upload]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[Preview]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[Delete]</a>
 <span id="dthumb" class="f_red"></span>
 </td>
 </tr>
 <tr>
-<td class="tl">證件圖片</td>
-<td class="tr"><input name="thumb1" id="thumb1" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true, 'thumb1');" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb1').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb1').value='';" class="t">[刪除]</a></td>
+<td class="tl">Certificate Image</td>
+<td class="tr"><input name="thumb1" id="thumb1" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true, 'thumb1');" class="t">[Upload]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb1').value);" class="t">[Preview]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb1').value='';" class="t">[Delete]</a></td>
 </tr>
 <tr>
-<td class="tl">證件圖片</td>
-<td class="tr"><input name="thumb2" id="thumb2" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb2').value, true, 'thumb2');" class="t">[上傳]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb2').value);" class="t">[預覽]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb2').value='';" class="t">[刪除]</a></td>
+<td class="tl">Certificate Image</td>
+<td class="tr"><input name="thumb2" id="thumb2" type="text" size="60" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb2').value, true, 'thumb2');" class="t">[Upload]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb2').value);" class="t">[Preview]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb2').value='';" class="t">[Delete]</a></td>
 </tr>
 <tr>
-<td class="tl">認證說明</td>
+<td class="tl">Description</td>
 <td class="tr lh18">
-請上傳公司有效證件（營業執照或組織機構代碼證等）電子版本，以便網站核實認證<br/>
-證件上的公司名稱必須與填寫的公司名稱一致<br/>
-最少需要上傳1張，最多可上傳3張
+Upload scanned copy of company certificates for approving.<br/>
+The entered name should be consistent with the license.<br/>
+Minimum of 1 image is required. Maximum of 3 images.
 </td>
 </tr>
 </tbody>
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 確 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" Submit " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" Back " class="btn" onclick="history.back(-1);"/></td>
 </tr>
 </table>
 </form>
@@ -318,9 +318,9 @@ function check() {
 <br/>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">傳真認證</td>
+<td class="tl">Fax Validation</td>
 <td class="tr">
-您可以傳真有效證件至 {$MOD[vfax]} 進行認證，複印件上需註明會員名
+Fax your valid company certificates to {$MOD[vfax]}. Indicate your username as well.
 </td>
 </tr>
 </table>
@@ -328,11 +328,11 @@ function check() {
 <script type="text/javascript">
 function check() {
 	if(Dd('company').value.length < 2) {
-		Dmsg('請填寫公司名', 'company');
+		Dmsg('Enter your company name.', 'company');
 		return false;
 	}
 	if(Dd('thumb').value.length < 15) {
-		Dmsg('請上傳證件圖片', 'thumb');
+		Dmsg('Upload your company certificate.', 'thumb');
 		return false;
 	}
 	return true;
@@ -342,24 +342,24 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href=""><span>公司認證</span></a></td>
+<td class="tab_on" id="Tab0"><a href=""><span>Company Validation</span></a></td>
 </tr>
 </table>
 </div>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">公司名</td>
+<td class="tl">Company Name</td>
 <td class="tr f_b">{$user[company]}</td>
 </tr>
 {if $user[vcompany] || $v[status] == 3}
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_green">已認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_green">Proved</td>
 </tr>
 {else}
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_red">審核中</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_red">Pending</td>
 </tr>
 {/if}
 </table>
@@ -367,38 +367,38 @@ function check() {
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>銀行帳號驗證</span></a></td>
+<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>Bank Account Validation</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="cash.php?action=setting"><span>銀行帳號設置</span></a></td>
+<td class="tab" id="Tab1"><a href="cash.php?action=setting"><span>Bank Account Setting</span></a></td>
 </tr>
 </table>
 </div>
 <table cellpadding="10" cellspacing="1" class="tb">
 <tr>
-<td class="tl">收款方式</td>
-<td class="tr">{if $user[bank]}{$user[bank]}{else}未設置{/if}</td>
+<td class="tl">Payment Term</td>
+<td class="tr">{if $user[bank]}{$user[bank]}{else}No setting{/if}</td>
 </tr>
 <tr>
-<td class="tl">收款帳號</td>
-<td class="tr">{if $user[account]}{$user[account]}{else}未設置{/if}</td>
+<td class="tl">Account</td>
+<td class="tr">{if $user[account]}{$user[account]}{else}No setting{/if}</td>
 </tr>
 <tr>
-<td class="tl">收款人</td>
+<td class="tl">Beneficiary</td>
 <td class="tr">{$user[truename]}</td>
 </tr>
 {if $user[vbank]}
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_green">已認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_green">Proved</td>
 </tr>
 {else}
 <tr>
-<td class="tl">認證狀態</td>
-<td class="tr f_gray">未認證</td>
+<td class="tl">Validation Status</td>
+<td class="tr f_gray">Unproved</td>
 </tr>
 <tr>
-<td class="tl">認證說明</td>
-<td class="tr f_red">銀行帳號在申請提現後，由網站進行認證</td>
+<td class="tl">Description</td>
+<td class="tr f_red">Withdraw request will be proved by {$DT[sitename]}.</td>
 </tr>
 {/if}
 </table>

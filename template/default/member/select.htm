@@ -17,40 +17,40 @@
 <body>
 {if $action == 'item'}
 <form action="?">
-<div class="tt">{$MODULE[$mid][name]}搜索</div>
+<div class="tt">Search {$MODULE[$mid][ename]}</div>
 <input type="hidden" name="action" value="{$action}"/>
 <input type="hidden" name="from" value="{$from}"/>
 <input type="hidden" name="mid" value="{$mid}"/>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td>
-&nbsp;&nbsp;關鍵詞：<input type="text" size="40" name="kw" id="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
+&nbsp;&nbsp;Keyword: <input type="text" size="40" name="kw" id="kw" value="{$kw}" title="Keyword"/>&nbsp;
 {$MODULE[$mid][name]}ID：<input type="text" size="10" name="itemid" value="{$itemid}">&nbsp;
-<input type="submit" value="搜 索" class="btn"/>&nbsp;
-<input type="button" value="重 置" class="btn" onclick="window.location='?action={$action}&mid={$mid}&from={$from}';"/>
+<input type="submit" value="Search" class="btn"/>&nbsp;
+<input type="button" value="Reset" class="btn" onclick="window.location='?action={$action}&mid={$mid}&from={$from}';"/>
 </td>
 </tr>
 </table>
 </form>
-<div class="tt">{$MODULE[$mid][name]}列表</div>
+<div class="tt">{$MODULE[$mid][ename]} List</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <th>ID</th>
 <th width="14"> </th>
 {if $mid == 4}
-<th>公 司</th>
+<th>Company</th>
 {else}
-<th>標 題</th>
-<th width="120">添加時間</th>
-<th>瀏覽</th>
+<th>Title</th>
+<th width="120">Released Date</th>
+<th>Views</th>
 {/if}
-<th width="60">選擇</th>
+<th width="60">Select</th>
 </tr>
 {loop $lists $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td>{$v[itemid]}</td>
-<td>{if $v[level]}<img src="{DT_PATH}admin/image/level_{$v[level]}.gif" title="{$v[level]}級" alt=""/>{/if}</td>
-<td align="left"><a href="{$v[linkurl]}" target="_blank">{$v[title]}</a>{if $v[thumb]} <a href="javascript:_preview('{$v[thumb]}');"><img src="{DT_PATH}admin/image/img.gif" width="10" height="10" title="標題圖,點擊預覽" alt=""/></a>{/if}</td>
+<td>{if $v[level]}<img src="{DT_PATH}admin/image/level_{$v[level]}.gif" title="{$v[level]} level" alt=""/>{/if}</td>
+<td align="left"><a href="{$v[linkurl]}" target="_blank">{$v[title]}</a>{if $v[thumb]} <a href="javascript:_preview('{$v[thumb]}');"><img src="{DT_PATH}admin/image/img.gif" width="10" height="10" title="Click to preview" alt=""/></a>{/if}</td>
 {if $mid > 4}
 <td class="px11">{$v[adddate]}</td>
 <td class="px11">{$v[hits]}</td>
@@ -59,7 +59,7 @@
 <div class="dsn">
 <div id="introduce_{$v[itemid]}">{$v[introduce]}</div>
 </div>
-<a href="javascript:S('{$v[itemid]}','{$v[alt]}','{$v[linkurl]}','{$v[thumb]}','{$v[level]}','{$v[style]}');" class="t">[選擇]</a>
+<a href="javascript:S('{$v[itemid]}','{$v[alt]}','{$v[linkurl]}','{$v[thumb]}','{$v[level]}','{$v[style]}');" class="t">[Select]</a>
 </td>
 </tr>
 {/loop}
@@ -89,7 +89,7 @@ try{parent.Dd('Dtop').style.top=new_top+'px';}catch(e){}
 <br/>
 {else}
 <form action="?">
-<div class="tt">{$MODULE[$mid][name]}搜索</div>
+<div class="tt">Search {$MODULE[$mid][ename]}</div>
 <input type="hidden" name="mid" value="{$mid}"/>
 <input type="hidden" name="action" value="{$action}"/>
 <input type="hidden" name="from" value="{$from}"/>
@@ -97,11 +97,11 @@ try{parent.Dd('Dtop').style.top=new_top+'px';}catch(e){}
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td>
-<input type="text" size="60" name="kw" id="kw" value="{$kw}" title="關鍵詞"/>&nbsp;
-<input type="submit" value="搜 索" class="btn"/>&nbsp;
-<input type="button" value="返 回" class="btn" onclick="window.location='?from={$from}&fid={$fid}';"/>&nbsp;
-<input type="button" value="上 傳" class="btn" onclick="window.open('{$MODULE[2][linkurl]}{$DT[file_my]}?mid=12&action=add');"/>
-<input type="button" value="關 閉" class="btn" onclick="window.close();"/>
+<input type="text" size="60" name="kw" id="kw" value="{$kw}" title="Keyword"/>&nbsp;
+<input type="submit" value="Search" class="btn"/>&nbsp;
+<input type="button" value="Back" class="btn" onclick="window.location='?from={$from}&fid={$fid}';"/>&nbsp;
+<input type="button" value="Upload" class="btn" onclick="window.open('{$MODULE[2][linkurl]}{$DT[file_my]}?mid=12&action=add');"/>
+<input type="button" value="Close" class="btn" onclick="window.close();"/>
 </td>
 </tr>
 </table>
@@ -128,7 +128,7 @@ function S(t, m, l) {
 {if $lists}
 {loop $lists $k $v}
 <div class="photo" title="{$v[introduce]}">
-<img src="{$v[thumb]}" width="100" title="點擊選擇" onclick="S('{$v[thumb]}','{$v[middle]}','{$v[large]}');" class="photo_img"/>
+<img src="{$v[thumb]}" width="100" title="Click to select" onclick="S('{$v[thumb]}','{$v[middle]}','{$v[large]}');" class="photo_img"/>
 <a href="{$v[large]}" target="_blank" class="t"><img src="{SKIN_PATH}image/zoomin.gif"/></a>&nbsp;&nbsp;
 <a href="{$v[middle]}" target="_blank" class="t"><img src="{SKIN_PATH}image/zoomout.gif"/></a>
 </div>
@@ -139,7 +139,7 @@ function S(t, m, l) {
 {/if}
 </div>
 {else}
-<div class="tt">{$MODULE[$mid][name]}列表</div>
+<div class="tt">{$MODULE[$mid][ename]} List</div>
 <div>
 	{if $lists}
 	{loop $lists $k $v}

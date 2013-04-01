@@ -219,7 +219,7 @@ var property_admin = 0;
 {if $timetype!='add'}
 <input type="submit" value=" 刷新選中 " class="btn" onclick="this.form.action='?mid={$mid}&status={$status}&action=refresh';"/>
 {if $MOD[credit_refresh]}
-刷新一條信息一次需消費 <strong class="f_red">{$MOD[credit_refresh]}</strong> 積分，當積分不足時將不可刷新
+刷新一條訊息一次需消費 <strong class="f_red">{$MOD[credit_refresh]}</strong> 積分，當積分不足時將不可刷新
 {/if}
 {/if}
 </div>
@@ -233,7 +233,7 @@ var property_admin = 0;
 還可以發 <span class="f_b f_blue">{$limit_free}</span> 條&nbsp;&nbsp;&nbsp;
 {/if}
 {if !$MG['fee_mode'] && $MOD[fee_add]}
-發佈信息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
+發佈訊息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
 可免費發佈 <span class="f_b">{if $MG[info_free_limit]<0}無限{else}{$MG[info_free_limit]}{/if}</span> 條&nbsp;&nbsp;&nbsp;
 {/if}
 </div>

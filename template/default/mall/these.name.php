@@ -4,6 +4,7 @@ $names = array (
   'cart' => '購物車',
   'comment' => '評價記錄',
   'compare' => '商品比較',
+  'compare-fbox' => '比較跳出視窗',
   'index' => '首頁',
   'list' => '列表頁',
   'order' => '交易記錄',

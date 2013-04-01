@@ -373,7 +373,7 @@
 還可以發 <span class="f_b f_blue">{$limit_free}</span> 條&nbsp;&nbsp;&nbsp;
 {/if}
 {if !$MG['fee_mode'] && $MOD[fee_add]}
-發佈信息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
+發佈訊息收費 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/條&nbsp;&nbsp;&nbsp;
 可免費發佈 <span class="f_b">{if $MG[resume_free_limit]<0}無限{else}{$MG[resume_free_limit]}{/if}</span> 條&nbsp;&nbsp;&nbsp;
 {/if}
 </div>

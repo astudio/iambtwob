@@ -22,9 +22,9 @@ $L['man'] = 'Male';
 $L['woman'] = 'Female';
 $L['sir'] = 'Mr.';
 $L['lady'] = 'Ms.';
-$L['allcity'] = '全國';
-$L['citysite'] = '{V0}站';
-$L['citytitle'] = '切換城市';
+$L['allcity'] = 'All city';
+$L['citysite'] = '{V0} sites';
+$L['citytitle'] = 'Select city';
 $L['seo_page'] = 'Page {V0}';
 $L['prev_page'] = 'Previous';
 $L['next_page'] = 'Next';
@@ -33,5 +33,5 @@ $L['last_page'] = 'Last';
 $L['curr_page'] = '<label title="{V0} page(s) in total">Page <em>{V1}</em> of <span>{V2}</span></label>';
 $L['info_page'] = ''; //<cite>{V0} item(s)/{V1} page(s)</cite>
 $L['message_type'] = array('Mail', 'Inquiry', 'Quotation', 'Message', 'ImB2B');
-$L['star_type'] = array('評分', '差評', '中評', '好評');
+$L['star_type'] = array('Comment', 'Negative', 'Neutral', 'Positive');
 ?>

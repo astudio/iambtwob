@@ -1,24 +1,38 @@
-<table cellpadding="0" cellspacing="0" width="700" align="center" style="font-family:Verdana,Arial;">
+<div style="background:#000;height:100%;margin:-8px;"><table cellpadding="0" cellspacing="0" width="700" align="center" style="font-family:Verdana,Arial;">
 <tr>
-<td><a href="{DT_PATH}"><img src="{DT_SKIN}image/logo.gif" border="0"/></a></td>
-<td align="right" style="font-size:12px;line-height:180%;"><a href="{DT_PATH}" target="_blank" style="color:#333333;text-decoration:none;">網站首頁</a> | <a href="{$MODULE[2][linkurl]}alert.php" target="_blank" style="color:#333333;text-decoration:none;">管理商機</a>&nbsp;<br/>發送時間:<span style="font-size:11px;">{timetodate($DT_TIME, 5)}</span>&nbsp;</td>
+<td style="background:#FFFFFF;line-height:30px;font-size:14px;font-weight:bold;color:#FFFFFF;">
+	<table cellpadding="0" cellspacing="0" width="700" align="center" style="font-family:Verdana,Arial;">
+		<tr>
+			<td width="550"><img src="{$DT[logo]}" width="135" height="45" style="padding-left:30px;padding-top:10px;" />&nbsp;&nbsp;{$title}<td>
+			<td width="30" style="background:#00adec;height:65px;">&nbsp;</td>
+			<td width="53" style="background:#f8b300;height:65px;">&nbsp;</td>
+			<td width="67" style="background:#e50a1f;height:65px;">&nbsp;</td>
+		</tr>
+	</table>
+</td>
 </tr>
 <tr>
-<td colspan="2">
+<td style="background:#b8b8b8;line-height:12px;font-size:12px;height:12px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="background:#ffffff;padding:25px 50px;line-height:180%;font-size:13px;min-height:250px;" valign="top">
+<div style="text-align:right;">
+<a href="{DT_PATH}" target="_blank" style="color:#333333;text-decoration:none;">Home</a> | <a href="{$MODULE[2][linkurl]}alert.php" target="_blank" style="color:#333333;text-decoration:none;">Create your alert</a>&nbsp;<br/>Sending Date:<span style="font-size:11px;">{timetodate($DT_TIME, 5)}</span>
+</div>
 <div style="padding:10px 0 10px 0;font-size:12px;border-top:#FF7418 2px solid;">
-&nbsp;<strong>商機分類：</strong><a href="{$MODULE[$mid][linkurl]}" target="_blank">{$MODULE[$mid][name]}</a>
-&nbsp;&nbsp;&nbsp;<strong>關鍵詞：</strong>{if $kw}{$kw}{else}不限{/if} 
-&nbsp;&nbsp;&nbsp;<strong>行業分類：</strong>{if $catid}{$CATEGORY[$catid][catname]}{else}不限{/if} 
-&nbsp;&nbsp;&nbsp;<strong>所在地區：</strong>{if $areaid}{$AREA[$areaid][areaname]}{else}不限{/if} 
-&nbsp;&nbsp;&nbsp;<strong>發送頻率：</strong>{if $rate}{$rate}天{else}不限{/if}
+&nbsp;<strong>Channel: </strong><a href="{$MODULE[$mid][linkurl]}" target="_blank">{$MODULE[$mid][ename]}</a>
+&nbsp;&nbsp;&nbsp;<strong>Keyword: </strong>{if $kw}{$kw}{else}Any{/if} 
+&nbsp;&nbsp;&nbsp;<strong>Category: </strong>{if $catid}{$CATEGORY[$catid][catname]}{else}All{/if} 
+&nbsp;&nbsp;&nbsp;<strong>Location: </strong>{if $areaid}{$AREA[$areaid][areaname]}{else}All{/if} 
+&nbsp;&nbsp;&nbsp;<strong>Frequency: </strong>{if $rate}{$rate} day{if $rate>1}s{/if}{else}Unlimited{/if}
 </div>
 <div style="line-height:180%;font-size:13px;">
 {if $lists}
 <table cellpadding="6" cellspacing="1" width="100%" bgcolor="#B8CFEA" style="font-size:12px;">
 <tr bgcolor="#E5EEFA" align="center">
-<th>標題</th>
-<th>地區</th>
-<th>發佈時間</th>
+<th>Title</th>
+<th>Location</th>
+<th>Released Date</th>
 </tr>
 {loop $lists $v}
 <tr bgcolor="#FFFFFF" align="center">
@@ -29,14 +43,14 @@
 {/loop}
 </table>
 {else}
-&nbsp;&nbsp;<br/><strong style="color:red;">抱歉，沒有找到相應的商機，建議您調整條件以便獲得更多商機。</strong><br/><br/>
-&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}alert.php?action=edit&itemid={$itemid}">點此立即調整</a><br/><br/>
+&nbsp;&nbsp;<br/><strong style="color:red;">Sorry, no corresponding business opportunity to be found, we recommend you adjust conditions in order to gain more business opportunities.</strong><br/><br/>
+&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}alert.php?action=edit&itemid={$itemid}">Click here to adjust</a><br/><br/>
 {/if}
 </div>
 </td>
-</tr>
+</tr>	
 <tr>
-<td colspan="2" style="background:#333333;padding:10px;line-height:180%;font-size:12px;color:#FFFFFF;">請注意：此郵件系 <a href="{DT_PATH}" target="_blank" style="color:#FFFFFF;">{$DT[sitename]}</a> 自動發送，請勿直接回復。如果需要取消此郵件，請<a href="{$MODULE[2][linkurl]}alert.php" target="_blank" style="color:#FFFFFF;">點這裡</a><br/>
+<td style="background:#404041;padding:10px 50px;line-height:180%;font-size:12px;color:#FFFFFF;height:80px;">Notice: This mail is delivered automatically by <a href="{DT_PATH}" target="_blank" style="color:#FFFFFF;">{$DT[sitename]}</a>. Please do not reply to this mail directly. If you would like unsubscribe this mail, please <a href="{$MODULE[2][linkurl]}alert.php" target="_blank" style="color:#FFFFFF;">click here</a>.<br/>
 </td>
 </tr>
-</table>
+</table></div>

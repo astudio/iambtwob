@@ -1,18 +1,30 @@
-<table cellpadding="0" cellspacing="0" width="600" style="margin:10px;font-family:Verdana,Arial;">
+<div style="background:#000;height:100%;margin:-8px;"><table cellpadding="0" cellspacing="0" width="700" align="center" style="font-family:Verdana,Arial;">
 <tr>
-<td style="background:#2682D9;line-height:24px;font-weight:bold;color:#FFFFFF;">&nbsp;&nbsp;{$title}</td>
-</tr>
-<tr>
-<td style="border:#CCCCCC 1px solid;padding:20px 20px 20px 20px;line-height:200%;font-size:12px;">
-<strong>{$touser}</strong>：<br/>
-您在<a href="{DT_PATH}" target="_blank">{$DT[sitename]}</a>收到了新的站內信，內容如下：<br/>
-{$content}<br/><br/>
-原始信件：<a href="{$member_url}message.php?action=show&itemid={$itemid}" target="_blank">{$member_url}message.php?action=show&itemid={$itemid}</a><br/>
-{if $fromuser}發件會員：<a href="{userurl($fromuser)}" target="_blank">{$fromuser}</a><br/>{/if}
-發送時間：{timetodate($addtime, 6)}<br/>
+<td style="background:#FFFFFF;line-height:30px;font-size:14px;font-weight:bold;color:#FFFFFF;">
+	<table cellpadding="0" cellspacing="0" width="700" align="center" style="font-family:Verdana,Arial;">
+		<tr>
+			<td width="550"><img src="{$DT[logo]}" width="135" height="45" style="padding-left:30px;padding-top:10px;" />&nbsp;&nbsp;{$title}<td>
+			<td width="30" style="background:#00adec;height:65px;">&nbsp;</td>
+			<td width="53" style="background:#f8b300;height:65px;">&nbsp;</td>
+			<td width="67" style="background:#e50a1f;height:65px;">&nbsp;</td>
+		</tr>
+	</table>
 </td>
 </tr>
 <tr>
-<td style="background:#555555;padding:3px;font-size:12px;color:#FFFFFF;">&nbsp;&nbsp;請注意：此信件系根據您的設置自動發送，如果不希望接收，請點<a href="{$member_url}message.php?action=setting" target="_blank" style="color:#FFFFFF;">這裡取消</a>。</td>
+<td style="background:#b8b8b8;line-height:12px;font-size:12px;height:12px;">&nbsp;</td>
 </tr>
-</table>
+<tr>
+<td style="background:#ffffff;padding:25px 50px;line-height:180%;font-size:13px;min-height:250px;" valign="top">
+<strong>{$touser}</strong>:<br/>
+You`ve received new internal mail at <a href="{DT_PATH}" target="_blank">{$DT[sitename]}</a>. The content is as below: <br/>
+{$content}<br/><br/>
+Original: <a href="{$member_url}message.php?action=show&itemid={$itemid}" target="_blank">{$member_url}message.php?action=show&itemid={$itemid}</a><br/>
+{if $fromuser}From: <a href="{userurl($fromuser)}" target="_blank">{$fromuser}</a><br/>{/if}
+Delivered Date: {timetodate($addtime, 6)}<br/>
+</td>
+</tr>
+<tr>
+<td style="background:#404041;padding:10px 50px;line-height:180%;font-size:12px;color:#FFFFFF;height:80px;">&nbsp;&nbsp;Notice: the mail is sent automatically according to your settings. If you don`t want to receive this mail, <a href="{$member_url}message.php?action=setting" target="_blank" style="color:#FFFFFF;">click here to cancel</a>.</td>
+</tr>
+</table></div>

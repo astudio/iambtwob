@@ -30,16 +30,16 @@
 <table cellpadding="6" cellspacing="1" class="tb">
 {if $status==1 && $action=='edit' && $note}
 <tr>
-<td class="tl"> REASON WHY</td>
+<td class="tl"> Rejected Reason</td>
 <td class="tr f_blue">{$note}</td>
 </tr>
 {/if}
 <tr>
 <td class="tl"><span class="f_red">*</span> Category</td>
-<td class="tr"><div id="catesch"></div>{ajax_category_select('post[catid]', '', $catid, $moduleid, 'size="2" style="height:120px;width:180px;"')}<br/>{if $DT[schcate_limit]}<input type="button" value="Search by category" onclick="schcate({$moduleid});" class="btn"/> {/if}<span id="dcatid" class="f_red"></span></td>
+<td class="tr"><div id="catesch"></div>{ajax_category_select('post[catid]', '', $catid, $moduleid, 'size="2" style="height:120px;width:180px;"')}<br/>{if $DT[schcate_limit]}<input type="button" value="Search" onclick="schcate({$moduleid});" class="btn"/> {/if}<span id="dcatid" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> Product name</td>
+<td class="tl"><span class="f_red">*</span> Product Name</td>
 <td class="tr f_gray"><input name="post[title]" type="text" id="title" size="50" value="{$title}"/> (2-100 characters)<span id="dtitle" class="f_red"></span></td>
 </tr>
 {if $action=='add' && $could_color}
@@ -119,11 +119,11 @@ var property_admin = 0;
 </td>
 </tr>
 {if $MOD[swfu] == 1}
-{php include DT_ROOT.'/file/swfupload/editor.inc.php';}
+{php include DT_ROOT.'/file/swfupload/editor_en.inc.php';}
 {/if}
 <tr{if !$_userid} style="display:none;"{/if}>
 <td class="tl">Customize category</td>
-<td class="tr">{$mycatid_select}&nbsp; <a href="{$MODULE[2][linkurl]}type.php?item=mall" class="t" target="_blank">[category management]</a></td>
+<td class="tr">{$mycatid_select}&nbsp; <a href="{$MODULE[2][linkurl]}type.php?item=mall" class="t" target="_blank">[Manage]</a></td>
 </tr>
 <tr{if !$_userid} style="display:none;"{/if}>
 <td class="tl">My recommend</td>
@@ -229,7 +229,7 @@ Comments: <input type="text" size="3" name="mincomments" value="<?php echo $minc
 <a href="{$MODULE[2][linkurl]}trade.php?mallid={$v[itemid]}"><img width="16" height="16" src="image/order.gif" title="Order Management" alt=""/></a>
 <a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.png" title="Modify" alt=""/></a>
 {if $MG[copy]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=add&itemid={$v[itemid]}&catid={$v[catid]}"><img width="16" height="16" src="image/new.png" title="Copy Message" alt=""/></a>{/if}
-{if $MG[delete]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=delete&itemid={$v[itemid]}" onclick="return confirm(' Are you sure you want to delete?');"><img width="16" height="16" src="image/delete.png" title="Delete" alt=""/></a>{/if}
+{if $MG[delete]}&nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&action=delete&itemid={$v[itemid]}" onclick="return confirm('Are you sure you want to delete it?');"><img width="16" height="16" src="image/delete.png" title="Delete" alt=""/></a>{/if}
 </td>
 </tr>
 {/loop}
@@ -260,7 +260,7 @@ You`ve sent <span class="f_b">{$limit_used}</span> &nbsp;&nbsp;&nbsp;
 {/if}
 {if !$MG['fee_mode'] && $MOD[fee_add]}
 To release it you need to pay <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/&nbsp;&nbsp;&nbsp;
-you can do it for free <span class="f_b">{if $MG[mall_free_limit]<0}无限{else}{$MG[mall_free_limit]}{/if}</span> &nbsp;&nbsp;&nbsp;
+you can do it for free <span class="f_b">{if $MG[mall_free_limit]<0}unlimited{else}{$MG[mall_free_limit]}{/if}</span> &nbsp;&nbsp;&nbsp;
 {/if}
 </div>
 {/if}

@@ -1,2 +1,2 @@
-<?php exit;?>歡迎使用Destoon B2B網站管理系統
-www.destoon.com
+<?php exit;?>Welcome to My ImB2B
+歡迎使用My ImB2B網站管理系統

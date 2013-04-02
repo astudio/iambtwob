@@ -128,12 +128,20 @@ tips('位於./template/目錄,一個目錄即為一套模板');
 <td><input name="setting[money_name]" type="text" value="<?php echo $money_name;?>" size="10"/></td>
 </tr>
 <tr>
+<td class="tl">真實貨幣名稱(英文)</td>
+<td><input name="setting[money_ename]" type="text" value="<?php echo $money_ename;?>" size="10"/></td>
+</tr>
+<tr>
 <td class="tl">真實貨幣單位</td>
 <td><input name="setting[money_unit]" type="text" value="<?php echo $money_unit;?>" size="10"/></td>
 </tr>
 <tr>
 <td class="tl">虛擬積分名稱</td>
 <td><input name="setting[credit_name]" type="text" value="<?php echo $credit_name;?>" size="10"/></td>
+</tr>
+<tr>
+<td class="tl">虛擬積分名稱(英文)</td>
+<td><input name="setting[credit_ename]" type="text" value="<?php echo $credit_ename;?>" size="10"/></td>
 </tr>
 <tr>
 <td class="tl">虛擬積分單位</td>

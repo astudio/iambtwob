@@ -75,7 +75,7 @@
 <td valign="top" class="side" id="side">
 
 {if $MYMODS || $show_menu}
-	<div class="side_head" onclick="c(0);"><div><img src="image/arrow_c.gif" width="16" height="16" align="right" alt="" id="I_0"/>信息管理</div></div>
+	<div class="side_head" onclick="c(0);"><div><img src="image/arrow_c.gif" width="16" height="16" align="right" alt="" id="I_0"/>訊息管理</div></div>
 	<div class="side_body" id="D_0">
 		<ul>
 		{loop $MENUMODS $k $v}
@@ -120,7 +120,7 @@
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="mail"><span class="f_r"><a href="{$MODULE[2][linkurl]}sendmail.php" class="m">電郵</a></span><a href="{$MODULE[2][linkurl]}mail.php" class="{if $MG[mail]}n{else}f{/if}">郵件訂閱</a></li>
 			{/if}
 			{if $MG[spread] || $show_menu}
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="spread"><span class="f_r"><a href="{$MODULE[2][linkurl]}spread.php?action=add" class="m">購買</a></span><a href="{$MODULE[2][linkurl]}spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推廣</a></li>
+			<!-- <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="spread"><span class="f_r"><a href="{$MODULE[2][linkurl]}spread.php?action=add" class="m">購買</a></span><a href="{$MODULE[2][linkurl]}spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推廣</a></li> -->
 			{/if}
 			{if $MG[ad] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="ad"><span class="f_r"><a href="{$MODULE[2][linkurl]}ad.php?action=add" class="m">購買</a></span><a href="{$MODULE[2][linkurl]}ad.php" class="{if $MG[ad]}n{else}f{/if}">廣告預定</a></li>
@@ -135,7 +135,7 @@
 	<div class="side_body" id="D_2" style="display:none;">
 		<ul>
 			
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="trade"><span class="f_r"><a href="{$MODULE[2][linkurl]}trade.php?action=pay" class="m">付款</a></span><a href="{$MODULE[2][linkurl]}trade.php" class="{if $_userid}n{else}f{/if}">我的訂單</a></li>
+			<!-- <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="trade"><span class="f_r"><a href="{$MODULE[2][linkurl]}trade.php?action=pay" class="m">付款</a></span><a href="{$MODULE[2][linkurl]}trade.php" class="{if $_userid}n{else}f{/if}">我的訂單</a></li> -->
 			
 
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="record"><a href="{$MODULE[2][linkurl]}record.php" class="{if $_userid}n{else}f{/if}">{$DT[money_name]}流水</a></li>

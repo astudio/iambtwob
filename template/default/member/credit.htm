@@ -3,14 +3,14 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="action"><a href="credit.php"><span>{$DT[credit_name]} Record</span></a></td>
+<td class="tab" id="action"><a href="credit.php"><span>{$DT[credit_ename]} Record</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_buy"><a href="credit.php?action=buy"><span>Buy {$DT[credit_name]}</span></a></td>
+<td class="tab" id="action_buy"><a href="credit.php?action=buy"><span>Buy {$DT[credit_ename]}</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab"><a href="invite.php"><span>Earn {$DT[credit_name]} by promotion</span></a></td>
+<td class="tab"><a href="invite.php"><span>Earn {$DT[credit_ename]} by promotion</span></a></td>
 {if $MOD[credit_exchange]}
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="action_exchange"><a href="credit.php?action=exchange"><span>{$DT[credit_name]} Exchange</span></a></td>
+<td class="tab" id="action_exchange"><a href="credit.php?action=exchange"><span>{$DT[credit_ename]} Exchange</span></a></td>
 {/if}
 </tr>
 </table>
@@ -26,7 +26,7 @@
 </tr>
 <tr>
 <td class="tl">Exchange Rate</td>
-<td class="tr"><span class="f_blue">1</span> {$MOD[ex_name]} exchange <span class="f_red">{$MOD[ex_rate]}</span> {$DT[credit_name]}</td>
+<td class="tr"><span class="f_blue">1</span> {$MOD[ex_name]} exchange <span class="f_red">{$MOD[ex_rate]}</span> {$DT[credit_ename]}</td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> Amount</td>
@@ -43,7 +43,7 @@ function check() {
 	m = parseInt(Dd('amount').value);
 	n = {$num};
 	if(m > 0 && m < n) {
-		return confirm('Do you confirm to exchange '+m+'{$MOD[ex_name]}? Exchangable '+(m*{$MOD[ex_rate]})+'{$DT[credit_name]}\n\nNotice: Your membership level might be downgraded by exchange {$MOD[ex_name]}.');
+		return confirm('Do you confirm to exchange '+m+'{$MOD[ex_name]}? Exchangable '+(m*{$MOD[ex_rate]})+'{$DT[credit_ename]}\n\nNotice: Your membership level might be downgraded by exchange {$MOD[ex_name]}.');
 	} else {
 		Dd('amount').value = '';
 		Dmsg('Enter an exchange rate.', 'amount');
@@ -66,8 +66,8 @@ function check() {
 <table cellpadding="5" cellspacing="3">
 <tr align="center">
 <td>Select</td>
-<td>&nbsp;&nbsp;{$DT[credit_name]}({$DT[credit_unit]})&nbsp;&nbsp;</td>
-<td>&nbsp;&nbsp;{$DT[money_name]}({$DT[money_unit]})&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;{$DT[credit_ename]}({$DT[credit_unit]})&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;{$DT[money_ename]}({$DT[money_unit]})&nbsp;&nbsp;</td>
 </tr>
 {loop $C $k $v}
 <tr align="center" onclick="Dd('type_{$k}').checked=true;">

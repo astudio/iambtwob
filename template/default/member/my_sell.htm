@@ -49,7 +49,7 @@
 <td class="tl">Color</td>
 <td class="tr">
 {dstyle('style')}&nbsp;
-<strong class="f_red">{$MOD[credit_color]}</strong> {$DT[credit_name]} will be deducted to set the color of Title each lead.
+<strong class="f_red">{$MOD[credit_color]}</strong> {$DT[credit_ename]} will be deducted to set the color of Title each lead.
 </td>
 </tr>
 {/if}
@@ -194,7 +194,7 @@ No selection means permanent
 <td class="tl">On the SPOTLIGHT</td>
 <td class="tr">
 <input type="checkbox" name="elite" value="1" onclick="if({$_credit} < {$MOD[credit_elite]}) {confirm('{$DT[credit_ename]} is low, current balance: {$_credit}');this.checked=false;}"/>
-"Spotlight" on {$DT[sitename]} is a great place to sell your products (<strong class="f_red">{$MOD[credit_elite]}</strong> {$DT[credit_name]}).
+"Spotlight" on {$DT[sitename]} is a great place to sell your products (<strong class="f_red">{$MOD[credit_elite]}</strong> {$DT[credit_ename]}).
 </td>
 </tr>
 {/if}

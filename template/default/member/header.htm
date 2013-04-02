@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}My ImB2B{$DT[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{$DT[seo_delimiter]}Powered By Destoon</title>
-<meta name="generator" content="Destoon B2B,www.destoon.com"/>
+<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}My ImB2B{$DT[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}</title>
+<meta name="generator" content="astudio"/>
 <link rel="shortcut icon" href="{DT_PATH}favicon.ico"/>
 <link rel="bookmark" href="{DT_PATH}favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="image/style.css"/>
@@ -45,7 +45,7 @@
 		<div class="head_user">
 		{if $_userid}
 			<strong class="px14" style="color:#555555;">Welcome, {$_truename} </strong>
-			({$MG[groupname]} <a href="{$MODULE[2][linkurl]}line.php" title="{if $_online}Click to be invisible{else}Click to be available{/if}">{if $_online}<span class="f_green">Available</span>{else}<span class="f_gray">Invisible</span>{/if}</a>)
+			({$MG[engroupname]} <a href="{$MODULE[2][linkurl]}line.php" title="{if $_online}Click to be invisible{else}Click to be available{/if}">{if $_online}<span class="f_green">Available</span>{else}<span class="f_gray">Invisible</span>{/if}</a>)
 			{if $MG[inbox_limit]>-1}
 			&nbsp;&nbsp;&nbsp;[ 
 			{if $_message}<img src="image/ico_newmessage.gif" align="absmiddle"/> {/if}<a href="{$MODULE[2][linkurl]}message.php" class="b">New Message</a>({if $_message}<a href="{$MODULE[2][linkurl]}message.php?action=last"><strong class="f_red">{$_message}</strong></a>{else}0{/if}) | 
@@ -120,7 +120,7 @@
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="mail"><span class="f_r"><a href="{$MODULE[2][linkurl]}sendmail.php" class="m">Email</a></span><a href="{$MODULE[2][linkurl]}mail.php" class="{if $MG[mail]}n{else}f{/if}">Subsribe</a></li>
 			{/if}
 			{if $MG[spread] || $show_menu}
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="spread"><span class="f_r"><a href="{$MODULE[2][linkurl]}spread.php?action=add" class="m">Order</a></span><a href="{$MODULE[2][linkurl]}spread.php" class="{if $MG[spread]}n{else}f{/if}">AD-word</a></li>
+			<!-- <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="spread"><span class="f_r"><a href="{$MODULE[2][linkurl]}spread.php?action=add" class="m">Order</a></span><a href="{$MODULE[2][linkurl]}spread.php" class="{if $MG[spread]}n{else}f{/if}">AD-word</a></li> -->
 			{/if}
 			{if $MG[ad] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="ad"><span class="f_r"><a href="{$MODULE[2][linkurl]}ad.php?action=add" class="m">Buy</a></span><a href="{$MODULE[2][linkurl]}ad.php" class="{if $MG[ad]}n{else}f{/if}">AD</a></li>
@@ -135,9 +135,8 @@
 	<div class="side_body" id="D_2" style="display:none;">
 		<ul>
 			
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="trade"><span class="f_r"><a href="{$MODULE[2][linkurl]}trade.php?action=pay" class="m">Pay</a></span><a href="{$MODULE[2][linkurl]}trade.php" class="{if $_userid}n{else}f{/if}">Order</a></li>
+			<!-- <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="trade"><span class="f_r"><a href="{$MODULE[2][linkurl]}trade.php?action=pay" class="m">Pay</a></span><a href="{$MODULE[2][linkurl]}trade.php" class="{if $_userid}n{else}f{/if}">Order</a></li> -->
 			
-
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="record"><a href="{$MODULE[2][linkurl]}record.php" class="{if $_userid}n{else}f{/if}">{$DT[money_ename]} Account</a></li>
 
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="charge"><span class="f_r"><a href="{$MODULE[2][linkurl]}charge.php?action=pay" class="m">Recharge</a></span><a href="{$MODULE[2][linkurl]}charge.php?action=record" class="{if $_userid}n{else}f{/if}">Records</a></li>
@@ -189,8 +188,8 @@
 	</div>
 {/if}
 	<div id="powered">
-	<div><a href="http://www.imb2b.com/" target="_blank">Powered by ImB2B</a></div>
-	<a href="http://www.imb2b.com/" target="_blank">&copy; 2009-2013 ImB2B.com<br/>
+	<div><a href="{DT_PATH}" target="_blank">Powered by ImB2B</a></div>
+	<a href="{DT_PATH}" target="_blank">&copy; 2009-2013 ImB2B.com<br/>
 	All rights reserved</a>
 	</div>
 

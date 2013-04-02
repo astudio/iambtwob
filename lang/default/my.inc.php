@@ -47,5 +47,5 @@ $L['type_my'] = 'Customized Category';
 $L['sell_upload_image'] = 'Upload the first picture of your product.';
 $L['group_process'] = array('<span style="color:#008000;">[成團中]</span>','<span style="color:#0000FF;">[團購中]</span>', '<span style="color:#FF0000;">[已結束]</span>');
 $L['group_orderby'] = array('結果排序方式', '訂單數量降序', '訂單數量升序', '銷售量降序', '銷售量升序', '團購價降序', '團購價升序', '市場價降序', '市場價升序', '節省費用降序', '節省費用升序', '享受折扣降序', '享受折扣升序', '最多人數降序', '最多人數升序', '最低人數降序', '最低人數升序', '瀏覽人次降序', '瀏覽人次升序');
-$L['mall_orderby'] = array('Sort by','Updated Descending', 'Updated Ascending', 'Add Time Descending', 'Add Time Ascending' 'Price Descending', 'Price ascending', 'order quantity Descending', '""order quantity Ascending '' sales volume Descending ',' sales volume Ascending ','inventory descending ''inventory Ascending ',' comment descending ',' comment Ascending ''popularity Descending', 'popularity Ascending');
+$L['mall_orderby'] = array('Sort by','Updated Descending', 'Updated Ascending', 'Add Time Descending', 'Add Time Ascending', 'Price Descending', 'Price Ascending', 'Order Quantity Descending', 'Order Quantity Ascending', 'Sales Volume Descending', ' Sales Volume Ascending', 'Inventory Descending', 'Inventory Ascending', 'Comment Descending', 'Comment Ascending', 'Popularity Descending', 'Popularity Ascending');
 ?>
